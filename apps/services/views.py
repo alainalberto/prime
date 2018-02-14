@@ -23,7 +23,7 @@ from apps.accounting.models import Customer
 from apps.logistic.models import CustomerHasLoad, Load
 from apps.tools.models import Folder, Busines, File, Alert
 from datetime import datetime, date, time, timedelta
-from FirstCall.util import accion_user
+from System.util import accion_user
 import os
 
 

@@ -6,7 +6,7 @@ from apps.logistic.components.LogisticForm import *
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.contrib import messages
 from django.contrib.admin.models import ADDITION, CHANGE, DELETION
-from FirstCall.util import accion_user
+from System.util import accion_user
 from apps.logistic.models import *
 from apps.tools.models import Folder, Busines, File, Alert
 from apps.services.models import Application, Customer, Driver

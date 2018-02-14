@@ -81,7 +81,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 300 # set just 5 min to test
 SESSION_SAVE_EVERY_REQUEST = True
 
-ROOT_URLCONF = 'FirstCall.urls'
+ROOT_URLCONF = 'System.urls'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
@@ -96,13 +96,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'FirstCall.context_processors.base',
+                'System.context_processors.base',
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'FirstCall.wsgi.application'
+WSGI_APPLICATION = 'System.wsgi.application'
 
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
