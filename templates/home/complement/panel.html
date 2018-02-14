@@ -1,0 +1,386 @@
+{% extends 'base.html' %}{% load i18n static %}
+{% block extrastyle %}
+<link href="{% static 'lib/calendar/fullcalendar.min.css'%}" rel="stylesheet">
+<link href="{% static 'lib/calendar/fullcalendar.print.min.css'%}" rel="stylesheet" media="print">
+
+<script src="{% static 'lib/calendar/moment.min.js' %}"></script>
+<script src="{% static 'lib/calendar/fullcalendar.min.js' %}"></script>
+<script type="text/javascript">
+ $(document).ready( function () {
+     $('#calendar_panel').fullCalendar({
+			header: {
+				left: 'prev,next',
+				center: 'title',
+				right: ''
+			},
+			defaultView: 'agendaDay',
+			defaultDate: new Date(),
+			navLinks: true, // can click day/week names to navigate views
+			businessHours: true, // display business hours
+			editable: true,
+			events: {
+                     url: 'http://localhost:8000/panel/calendar/list/',
+                     data: function() { // a function that returns an object
+                            return {
+                            dynamic_value: Math.random()
+                            };
+                     }
+            }
+
+		});
+
+     $(".zoom-mouse").mouseenter(function(evento){
+       $(this).animate({borderSpacing: "2px"}, "fast");
+    });
+
+    $(".zoom-mouse").mouseleave(function(evento){
+      $(this).animate({borderSpacing: "1px"},"fast");
+    });
+
+  });
+</script>
+{% endblock %}
+{% block content %}
+<section>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                User Panel <small>Statistics and Alerts Overview</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li class="active">
+                    <i class="fa fa-dashboard"></i> Dashboard
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="container" >
+        <div class="col-lg-11 col-md-6">
+            <div class="animate">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        {% for a in alert %}
+                        {% if a.show_date <= date_now and a.end_date >= date_now  %}
+                        <a class="text-danger" href="{% url 'panel:alert_view' a.id_alt  %}" data-toggle="modal" data-target="#popup">
+                            <div class="alert alert-danger alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <i class="fa fa-exclamation-triangle"></i><strong> {{a.category}} (Exp: {{a.end_date}}): </strong> {{a.description}}
+                            </div>
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+
+                    </div>
+                    <nav class="col-md-offset-9" aria-label="Page navigation">
+                <ul class="pager">
+                    {% if alert.has_previous %}
+                    <li>
+                        <a  href="?page={{ alert.previous_page_number }}"><span>
+                            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                        </span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    <span class="current">
+                        Page {{ alert.number }} of {{ alert.paginator.num_pages }}.
+                    </span>
+                    {% if alert.has_next %}
+                    <li>
+                        <a href="?page={{ alert.next_page_number }}">
+                            <span>
+                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                            </span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- /.row -->
+
+    <div class="row">
+        {% if perms.accounting.add_customer %}
+        <a class="" href="{% url 'accounting:customer_create' %}">
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-primary zoom-mouse">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-user fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <h3>Customer</h3>
+                                <div>New Customers!</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-footer">
+                        <span class="pull-left">Go to</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endif %}
+        {% if perms.accounting.add_customer %}
+        <a href="{% url 'accounting:customers' %}">
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-green zoom-mouse">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-search fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <h3>Customers</h3>
+                                <div>Search Customers!</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-footer">
+                        <span class="pull-left">Go to</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endif %}
+        {% if perms.accounting.add_invoice %}
+        <a href="{% url 'accounting:invoices' %}">
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-yellow zoom-mouse">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-shopping-cart fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <h3>Invoice</h3>
+                                <div>View Invoices!</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-footer">
+                        <span class="pull-left">Go to</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+            </div>
+        </a>
+        {% endif %}
+        {% if perms.services.add_insurance %}
+        <a href="{% url 'services:forms' %}">
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-red zoom-mouse">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-newspaper-o fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <h3>Forms</h3>
+                                <div>View Forms!</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-footer">
+                        <span class="pull-left">Go to</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+            </div>
+        </a>
+        {% endif %}
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-calendar-o"></i> Events for Today</h3>
+                </div>
+                <div class="panel-body">
+                    <a href="{% url 'panel:calendar' %}">
+                        <div id="calendar_container">
+                            <div class="primary" id='calendar_panel'></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-comments-o"></i> Chat </h3>
+                </div>
+                <div class="panel-body">
+                    <iframe style="height:495px;" src="{% url 'chat'%}" scrolling="no"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+    {% if perms.services %}
+    <div class="row">
+        <div class="col-md-12">
+            <p class="bg-primary text-center">SERVICES PENDING</p>
+            {% if equipments or permits or iftas or titles or contracts or insurances or audits %}
+
+            <table class="table data-table table-striped">
+                <thead>
+                <th>Service</th>
+                <th>Customer</th>
+                <th>Last UpDate</th>
+                <th>Status</th>
+                </thead>
+                <tbody>
+                {% for p in permits %}
+                <tr {% if p.state == "Initiated" %} class="warning" {% endif %}  {% if p.state == "Pending" %} class="danger" {% endif %} {% if p.state == "Finalized" %} class="success" {% endif %}>
+                <td>Permit</td>
+                <td><a href="{% url 'accounting:customer_view' p.customers_id %}">{{p.customers}}</a></td>
+                <td>{{ p.update }}</td>
+                <td>{{p.state}}</td>
+                </tr>
+                {% endfor %}
+                {% for e in equipments %}
+                <tr {% if e.state == "Initiated" %} class="warning" {% endif %}  {% if e.state == "Pending" %} class="danger" {% endif %} {% if e.state == "Finalized" %} class="success" {% endif %}>
+                <td>Equipment</td>
+                <td><a href="{% url 'accounting:customer_view' e.customers_id %}">{{e.customers}}</a></td>
+                <td>{{ e.update }}</td>
+                <td>{{e.state}}</td>
+                </tr>
+                {% endfor %}
+                {% for c in contracts %}
+                <tr {% if c.state == "Initiated" %} class="warning" {% endif %}  {% if c.state == "Pending" %} class="danger" {% endif %} {% if c.state == "Finalized" %} class="success" {% endif %}>
+                <td>Contract</td>
+                <td><a href="{% url 'accounting:customer_view' c.customers_id %}">{{c.customers}}</a></td>
+                <td>{{ c.update }}</td>
+                <td>{{c.state}}</td>
+                </tr>
+                {% endfor %}
+                {% for i in insurances %}
+                <tr {% if i.state == "Initiated" %} class="warning" {% endif %}  {% if i.state == "Pending" %} class="danger" {% endif %} {% if i.state == "Finalized" %} class="success" {% endif %}>
+                <td>Insurance</td>
+                <td><a href="{% url 'accounting:customer_view' i.customers_id %}">{{i.customers}}</a></td>
+                <td>{{ i.update }}</td>
+                <td>{{i.state}}</td>
+                </tr>
+                {% endfor %}
+                {% for d in drivers %}
+                <tr {% if d.state == "Initiated" %} class="warning" {% endif %}  {% if d.state == "Pending" %} class="danger" {% endif %} {% if d.state == "Finalized" %} class="success" {% endif %}>
+                <td>Driver</td>
+                <td><a href="{% url 'accounting:customer_view' d.customers_id %}">{{d.customers}}</a></td>
+                <td>{{ d.update }}</td>
+                <td>{{d.state}}</td>
+                </tr>
+                {% endfor %}
+                {% for it in iftas %}
+                <tr {% if it.state == "Initiated" %} class="warning" {% endif %}  {% if it.state == "Pending" %} class="danger" {% endif %} {% if it.state == "Finalized" %} class="success" {% endif %}>
+                <td>Plate</td>
+                <td><a href="{% url 'accounting:customer_view' it.customers_id %}">{{it.customers}}</a></td>
+                <td>{{ it.update }}</td>
+                <td>{{ it.state}}</td>
+                </tr>
+                {% endfor %}
+                {% for a in audits %}
+                <tr {% if a.state == "Initiated" %} class="warning" {% endif %}  {% if a.state == "Pending" %} class="danger" {% endif %} {% if a.state == "Finalized" %} class="success" {% endif %}>
+                <td>Audit</td>
+                <td><a href="{% url 'accounting:customer_view' a.customers_id %}">{{a.customers}}</a></td>
+                <td>{{ a.update }}</td>
+                <td>{{a.state}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <dir class="col-md-offset-11">
+                    <toolbar class="md-accent">
+                        <a data-type="info" data-animation="am-flip-x" data-trigger="focus" target="_blank" title="Print Pending" type="button" class="btn btn-success test-tooltip" href="{% url 'services:pending_pdf' %}">
+                            <i class="fa fa-print" aria-hidden="true"></i>
+                            <tooltip md-direction="left"></tooltip>
+                        </a>
+                    </toolbar>
+                </tfoot>
+                </dir>
+            </table>
+            {% else %}
+            <div class="alert alert-info"> <strong>Atention!</strong> No have service.</div>
+            {% endif %}
+        </div>
+    </div>
+    </div>
+    {% endif %}
+    {% if perms.accounting.account %}
+
+        <!--<div class="col-lg-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Recent Actions panel</h3>
+                </div>
+                <div class="panel-body">
+                    {% load log %}
+                    {% get_admin_log 10 as admin_log for_user user %}
+                    {% if not admin_log %}
+                    <p>None available</p>
+                    {% else %}
+                    <div class="list-group">
+                        {% for entry in admin_log %}
+                        {% if not entry.get_admin_url %}
+                        {{ entry.object_repr }}
+                        {% else %}
+                        <a  class="list-group-item">
+                            <strong class="text-primary">{{ entry.action_time }}</strong><br/>
+                            <i class="{% if entry.is_addition %}fa fa-plus-circle text-primary{% endif %}{% if entry.is_change %}fa fa-refresh text-success{% endif %}{% if entry.is_deletion %}fa fa-times-circle text-danger{% endif %}"></i>
+                            {% if entry.content_type %}
+                            <span class="mini quiet ">{% filter capfirst %}{{ entry.content_type }}{% endfilter %}</span>
+                            {% else %}
+                            <span class="mini quiet">Unknown content</span>
+                            {% endif %}
+                            <span class="label label-warning">{{ entry.object_repr }}</span>
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>-->
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-money fa-fw"></i><a class="item" href="{% url 'accounting:panel_account' %}"> Stadistic Panel Accounts</a></h3>
+            </div>
+            <div class="panel-body">
+                {% include 'accounting/statistic/accountPayMethod.html'%}
+            </div>
+            <div class="text-right">
+                <a href="{% url 'accounting:account_descripall' %}">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </div>
+    {% endif %}
+    <!-- /.row -->
+
+</section>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-xs-3">
+          <i class="fa fa-list fa-4x"></i>
+        </div>
+        <div class="col-xs-9 text-left">
+          <div><h3>Accounts</h3></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="navbar-button">
+        <a id="btnAdd" class="btn-primary btn col-md-offset-11" role="button" data-trigger="focus" title="Add Accounts" href="{% url 'accounting:account_create' %}" {% if not perms.accounting.add_account %} disabled {% endif %}>
+          <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+          <tooltip md-direction="left">New</tooltip>
+        </a>
+      </div>
+      <br/>
+        <ol class="ui list">
+          {% if primary %}
+         {% for prim in primary %}
+          <li><strong>{{prim.name}}</strong><ol>
+            {% for acin in accounts %}
+            {% if acin.accounts_id_id == prim.id_acn %}
+            <li><a href="{% url 'accounting:account_descrip' acin.id_acn %}"><strong>{{acin.name}}</strong> ( {{acin.business}} )</a><ol>
+              {% for sacin in accounts %}
+              {% if sacin.accounts_id_id == acin.id_acn %}
+              <li><a href="{% url 'accounting:account_descrip' sacin.id_acn%}">{{sacin.name}}</a></li>
+              {% endif %}
+              {% endfor %}
+            </ol>
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ol>
+          </li>
+            {% endfor %}
+          {% endif %}
+        </ol>
+      </div>
+    <div class="panel-footer">
+            <a type="button" onclick="history.back(-1)">
+            <i class="fa fa-arrow-circle-left fa-3x"></i>
+            </a>
+        </div>
+  </div>
+</section>
+{% endblock %}

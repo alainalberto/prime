@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% block extrastyle %}
+<script type="text/javascript">
+ function openpopup(url){
+   newwindow = window.open(url,'popup',' location=1, directories=0, resizable=0, width=500,height=700,Top=20,Left=490');
+   if (window.focus) {newwindow.focus()}
+   return false;
+ }
+ function closepopup(){
+   window.opener.location.href=window.opener.location.href;
+   window.close();
+   return false;
+ }
+ $(document).ready( function () {
+
+    $(function() {
+        $("#id_accounts").chained("#id_business");
+        {% if dispatch.comission %}
+          $('#id_comission').val(parseFloat({{dispatch.comission}}));
+        {% endif %}
+        {% if account %}
+           $("#id_accounts").val({{account.id_acn}});
+        {% endif %}
+        cal();
+    });
+
+
+    function cal (){
+       var sum = 0;
+       var porct = parseFloat($('#id_comission').val() || 0);
+       var other = parseFloat($('#id_discount').val() || 0);
+       $('.value').each(function(index, element) {
+         if ($(this).parents("tr").find('.paid').prop('checked')) {
+            sum += parseFloat($(this).val());
+            all_select += 1;
+          }
+       });
+       $('#id_subtotal').val(sum.toFixed(2));
+       var subtotal = sum;
+       var total = 0;
+
+       var comis = (subtotal*porct)/100;
+       $('#id_comision_value').val(comis.toFixed(2));
+       var fee = other;
+       var all_select = 0;
+       total = comis - fee;
+       $('#id_value').val(total.toFixed(2));
+       var no = $("#tbLoad tr").length-1;
+       if(all_select == no){
+         $('#id_paid').bootstrapSwitch('state', true, true);
+       }
+       else{
+         $('#id_paid').bootstrapSwitch('state', false, false);
+       }
+    }
+   $("#id_comision_value, #id_comission, #id_discount").on("change", function() {
+       cal();
+    });
+
+
+});
+</script>
+{% endblock %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-3">
+                <i class="fa fa-indent fa-4x"></i>
+            </div>
+            <div class="col-xs-9 text-left">
+                <div><h3>{{ title }}</h3></div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <form name="form_payDispatch" method="post" class="form" role="form" id="form_payDispatch" validate>{% csrf_token %}
+            <p class="bg-info"><strong>Payment Header</strong></p>
+            <fieldset>
+                <!-- Form Name -->
+                <!-- Text input-->
+                <div class="row">
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Period Beginning:</label>
+                        {{ form.start_date }}
+                        {{ form.start_date.error }}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Period Ending:</label>
+                          {{form.end_date}}
+                          {{form.end_date.error}}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Pay Date:</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{form.pay_date}}
+                            {{form.pay_date.error}}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">{{ form.business.label }} </label>
+                        {{ form.business }}
+                        {{ form.business.error }}
+                    </div>
+                    <!-- Select Basic -->
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">{{ form.waytopay.label }} </label>
+                        {{ form.waytopay }}
+                        {{ form.waytopay.error }}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Select Account:</label>
+
+                        <select id="id_accounts" class="form-control input-md" name="accounts" required="">
+                            <option value="" selected>---------</option>
+                            {% for a in accounts %}
+                            <option value="{{a.id_acn}}" class="{{a.business.id_bus}}">{{a}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <p class="bg-info"><strong>Drescription to Payment</strong></p>
+                <div id="panelLoad">
+                    <table id="tbLoad" class="table table-striped table-bordered ">
+                        <thead>
+                        <tr>
+                            <th class="col-md-0" style="display : none"></th>
+                            <th>No.</th>
+                            <th>Broker</th>
+                            <th>Pick Up Date</th>
+                            <th>Deliver Date</th>
+                            <th>Value</th>
+                            <th>Paid</th>
+                            <th>Action</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <input name="load_TOTAL_FORMS" value="0" id="id_load_TOTAL_FORMS" type="hidden">
+                        {% for d in loads %}
+                        <tr>
+                            <td class="col-md-0 Id" style="display : none"><input name="id_{{d.id_lod}}" value="{{d.id_lod}}" class="form-control " id="id_{{d.id_lod}}" type="number"></td>
+                            <td class="col-md-1">{{d.number}}</td>
+                            <td class="col-md-2">{{d.broker}}</td>
+                            <td class="col-md-2">{{d.pickup_date}}</td>
+                            <td class="col-md-2">{{d.deliver_date}}</td>
+                            <td class="col-md-1"><input name="value_{{d.id_lod}}" value="{{d.value}}"  class="form-control value" id="value_{{d.id_lod}}" type="text" readonly=""></td>
+                            <td class="col-md-1"><input type="checkbox"  aria-pressed="false" class="col-md-offset-4 paid" id="paid_{{d.id_lod}}" name="paid_{{d.id_lod}}" {% if d.paid %} checked {% endif %}></td>
+                            <td class="col-md-1"><toolbar class="md-accent"><button data-type="info" data-trigger="focus" title="Delete Load" data-animation="am-flip-x" type="button" class="btn remove btn-danger test-tooltip"><i class="fa fa-times" aria-hidden="true"></i><tooltip md-direction="left"></tooltip></button></toolbar></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="row" >
+                        <div class="form-group col-md-8">
+                            <label class="label-control">Note:</label>
+                                {{form.note}}
+                        </div>
+                        <div class="form-group col-md-3 ">
+                            <label class="label-control">Gross:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input id="id_subtotal" type="number" name="subtotal" placeholder="0.00" class="form-control" readonly>
+                            </div>
+                            <label class="label-control">Commission to pay:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">%</span>
+                                <input id="id_comission" type="text" name="comission" placeholder="0.00" class="form-control">
+                                <span class="input-group-addon">$</span>
+                                <input id="id_comision_value" type="number" name="comission_value" placeholder="0.00" class="form-control" readonly>
+                            </div>
+                            <label class="label-control">Discount:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                {{form.discount}}
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3 col-md-offset-4">
+                            <label class="label-control">Total:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                {{form.value}}
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3 col-md-offset-8">
+                            <label class="label-control">Is Paid:</label>
+                                {{form.paid}}
+                        </div>
+                    </div>
+
+                    <!-- Button (Double) -->
+                    <div class="form-group col-md-5 col-md-offset-4">
+                        <input type="submit" class="btn btn-success" value="Save">
+                        <a type="button" onclick="history.back(-1)" class="btn btn-danger">Cancel </a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+</section>
+{% endblock %}

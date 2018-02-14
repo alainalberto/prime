@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-tasks fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>Dispatch</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            {% if perms.logistic.add_dispatchlogt %}
+            <div class="navbar-button">
+                <a id="btnAdd" class="btn-primary btn col-md-offset-11" role="button" data-trigger="focus" title="Add Dispatch" href="{% url 'logistic:dispatch_create' %}">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    <tooltip md-direction="left">New</tooltip>
+                </a>
+            </div>
+            <br/>
+            {% endif %}
+            <div class="table-responsive">
+            <table id="listDispatch" class="data-table table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Deactivate</th>
+                    <th class="col-md-2">Action</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for l in object_list %}
+                <tr>
+                    <td>{{l.name}}</td>
+                    <td>{{l.address}}</td>
+                     <td>{{l.deactivate}}</td>
+                    <td>
+                        {% if perms.logistic.change_dispatchlogt %}
+                        <toolbar class="md-accent">
+                            <a data-type="info" data-trigger="focus" title="Edit Drivers" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'logistic:dispatch_edit' l.id_dsp %}">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                <tooltip md-direction="left"></tooltip>
+                            </a>
+                        </toolbar>
+                        {% endif %}
+                        {% if perms.logistic.delete_dispatchlogt %}
+                        <toolbar class="md-accent">
+                            <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Dispatch" type="button" class="btn btn-danger test-tooltip" href="{% url 'logistic:dispatch_delete' l.id_dsp %}">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                <tooltip md-direction="left"></tooltip>
+                            </a>
+                        </toolbar>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <a type="button" onclick="history.back(-1)">
+            <i class="fa fa-arrow-circle-left fa-3x"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

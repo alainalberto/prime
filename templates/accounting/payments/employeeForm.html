@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% block extrastyle %}
+<script type="text/javascript">
+ function openpopup(url){
+   newwindow = window.open(url,'popup',' location=1, directories=0, resizable=0, width=500,height=700,Top=20,Left=490');
+   if (window.focus) {newwindow.focus()}
+   return false;
+ }
+ function closepopup(){
+   window.opener.location.href=window.opener.location.href;
+   window.close();
+   return false;
+ }
+ $(document).ready( function () {
+
+{% if employee.type_salary == 'hour' %}
+    $(function() {
+       $("#id_accounts").chained("#id_business");
+       cal();
+    });
+    function cal (){
+       var regular = parseFloat($('#id_regular_hours').val()|| 0);
+       var overtime = parseFloat($('#id_overtime_hours').val()|| 0);
+       var rate = parseFloat($('#rate').val()|| 0);
+       var rateovertimer = rate*1.5
+       var discounts = parseFloat($('#id_discount').val()|| 0);
+       var gross = (regular*rate)+(overtime*rateovertimer)
+       var net = gross-discounts
+       $('#gross').val(gross);
+       $('#id_value').val(net);
+    };
+  {% endif %}
+
+  {% if employee.type_salary == 'commission' %}
+    $(function() {
+       $("#id_accounts").chained("#id_business");
+       $('#gross').removeAttr("readonly");
+       cal();
+    });
+    function cal (){
+       var rate = parseFloat($('#rate').val()|| 0);
+       var discounts = parseFloat($('#id_discount').val()|| 0);
+       var gross = parseFloat($('#gross').val()|| 0);
+       var net = ((gross*rate)/100)-discounts
+       $('#id_value').val(net);
+    };
+  {% endif %}
+
+  {% if employee.type_salary == 'salary' %}
+    $(function() {
+       $("#id_accounts").chained("#id_business");
+       $('#gross').removeAttr("readonly");
+       $('#gross').val({{employee.value}});
+       cal();
+    });
+    function cal (){
+       var discounts = parseFloat($('#id_discount').val()|| 0);
+       var gross = parseFloat($('#gross').val()|| 0);
+       var net = gross-discounts
+       $('#id_value').val(net);
+    };
+  {% endif %}
+
+   $("#id_regular_hours, #id_discount, #rate, #id_overtime_hours").on("change", function() {
+       cal();
+    });
+
+});
+</script>
+{% endblock %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-indent fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>{{ title }}</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <form name="form_invoices" method="post" class="form" role="form" id="form_invoices" validate>{% csrf_token %}
+                <fieldset>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Period Beginning:</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{ form.start_date }}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Period Ending:</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{form.end_date}}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Pay Date:</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{form.pay_date}}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Business: </label>
+                        {{ form.business }}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Account:</label>
+                        {% if account %}
+                        <input type="text" name="account" placeholder="0.00" value="{{account}}" class="form-control">
+                        {% else %}
+                        <select id="id_accounts" class="form-control input-md" name="accounts" required>
+                            <option value="" selected>---------</option>
+                            {% for a in accounts %}
+                            <option value="{{a.id_acn}}">{{a}}</option>
+                            {% endfor %}
+                        </select>
+                        {% endif %}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Payment Method: </label>
+                        {{ form.waytopay }}
+                    </div>
+                    {% if employee.type_salary == 'hour' %}
+                    <!-- Select Basic -->
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Regular Hours: </label>
+                        {{ form.regular_hours }}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Overtime Hours: </label>
+                        {{ form.overtime_hours }}
+                    </div>
+                    {% endif %}
+                    {% if employee.type_salary == 'hour' or employee.type_salary == 'commission' %}
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Rate: </label>
+                        <input id="rate" type="number" name="rate" placeholder="0.00" value="{{employee.value}}" class="form-control">
+                    </div>
+                    {% endif %}
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Gross Pay: </label>
+                        <input id="gross" name="subtotal" type="number" placeholder="0.00" class="form-control" readonly>
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Discount: </label>
+                        {{ form.discount }}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Net Pay: </label>
+                        {{ form.value }}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-8">
+                            <label class="label-control">Is Paid:</label>
+                                {{form.paid}}
+                        </div>
+                </fieldset>
+                <div class="form-group col-md-5 col-md-offset-4">
+                    <input type="submit" class="btn btn-success" value="Save">
+                    <a type="button" onclick="history.back(-1)" class="btn btn-danger">Cancel </a>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock %}
+

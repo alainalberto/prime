@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-indent fa-4x"></i>
+                    </div>
+                    <div class="col-xs-9 text-left">
+                        <div><h3>{{ title }}</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <p class="bg-info"><strong>Header Receipt</strong></p>
+                <fieldset>
+                    <!-- Form Name -->
+                    <!-- Text input-->
+                    <div class="form-group col-md-5 col-md-offset-1">
+                        <label class="label-control">Start Date:</label>
+                        {{ form.start_date }}
+                    </div>
+                    <div class="form-group col-md-5 col-md-offset-1">
+                        <label class="label-control">End Date:</label>
+                              {{form.end_date}}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Business:  </label>
+                        {{ form.business }}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Payment Method: </label>
+                        {{ form.waytopay }}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Account: </label>
+                        {{ account }}
+                    </div>
+                </fieldset>
+                <br/>
+                <fieldset>
+                    <p class="bg-info"><strong>Drescription to Receipt</strong></p>
+                    <div>
+                        <div class="form-group col-md-6 col-md-offset-1">
+                            <label class="label-control">Description: </label>
+                            {{ form.description }}
+                        </div>
+                        <div class="form-group col-xs-9 col-md-2 col-md-offset-1">
+                            <label class="label-control"> Total: </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">$</span>
+                                    {{ form.total }}
+                                </div>
+                        </div>
+                        <div class="form-group col-md-2 col-md-offset-1" >
+                            <label class="label-control">Is Pay: </label>
+                            {{form.paid}}
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <p class="bg-info"><strong>Attachments to Receipt</strong></p>
+                    {% if form_files %}
+                    <table class="table table-striped data-table">
+                              <thead>
+                              <th>Name</th>
+                              <th>Creative user </th>
+                              <th>Up load Date</th>
+                              <th>Category</th>
+                              <th>Action</th>
+                              </thead>
+                              <tbody>
+                              {% for f in form_files %}
+                              <tr>
+                                  <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="/static/media/{{ f.url }}" target="_blank">{{f.name}}</br></a></td>
+                                  <td>{% if f.users.first_name %} {{ f.users.first_name }} {% else %} {{ f.users }} {% endif %}</td>
+                                  <td>{{ f.date_save }}</td>
+                                  <td>{{ f.category }}</td>
+                                  <td>
+                                      <toolbar class="md-accent">
+                                          <a data-type="info"  data-trigger="focus"  data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'services:folder_edit' f.id_fil %}">
+                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                              <tooltip md-direction="left"></tooltip>
+                                          </a>
+                                      </toolbar>
+                                      <toolbar class="md-accent">
+                                          <a data-type="info"  data-animation="am-flip-x" data-trigger="focus"   type="button" class="btn btn-danger test-tooltip" target="popup" href="{% url 'services:folder_delete' f.id_fil %}">
+                                              <i class="fa fa-trash" aria-hidden="true"></i>
+                                              <tooltip md-direction="left"></tooltip>
+                                          </a>
+                                      </toolbar>
+                                  </td>
+                              </tr>
+                              {% endfor %}
+                              </tbody>
+                          </table>
+                    {% else %}
+                    <div class="form-group col-md-3 col-md-offset-1" >
+                        <label class="label-control">Name: </label>
+                        {{form_file.name}}
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Category: </label>
+                        {{ form_file.category }}
+                    </div>
+                    <!-- Select Basic -->
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Upload File: </label>
+                        {{ form_file.url }}
+                    </div>
+                    {% endif %}
+                    <!-- Button (Double) -->
+                </fieldset>
+            </div>
+            <div class="panel-footer">
+            <a type="button" onclick="history.back(-1)">
+            <i class="fa fa-arrow-circle-left fa-3x"></i>
+            </a>
+        </div>
+        </div>
+
+        <!-- Button (Double) -->
+    </form>
+</section>
+{% endblock %}
+

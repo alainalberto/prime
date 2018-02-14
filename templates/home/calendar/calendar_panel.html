@@ -1,0 +1,67 @@
+{% extends 'base.html' %}{% load i18n static %}
+{% block extrastyle %}
+<link href="{% static 'lib/calendar/fullcalendar.min.css'%}" rel="stylesheet">
+<link href="{% static 'lib/calendar/fullcalendar.print.min.css'%}" rel="stylesheet" media="print">
+
+<script src="{% static 'lib/calendar/moment.min.js' %}"></script>
+<script src="{% static 'lib/calendar/fullcalendar.min.js' %}"></script>
+<script type="text/javascript">
+ $(document).ready( function () {
+     $('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay,listMonth'
+			},
+
+			defaultDate: new Date(),
+			navLinks: true, // can click day/week names to navigate views
+			businessHours: true, // display business hours
+			editable: true,
+			events: {
+                     url: '/panel/calendar/list/',
+                     data: function() { // a function that returns an object
+                            return {
+                            dynamic_value: Math.random()
+                            };
+                     }
+            }
+
+	});
+
+  });
+ </script>
+{% endblock %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-calendar fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>My Calendar</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="navbar-button">
+                <a id="btnAdd" class="btn-primary btn col-md-offset-11" role="button" data-trigger="focus" title="Add new Event" href="{% url 'panel:calendar_create' %}">
+                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                    <tooltip md-direction="left">Add</tooltip>
+                </a>
+            </div>
+            <br/>
+            <div id="calendar_container">
+                <div class="primary" id='calendar'></div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <a type="button" onclick="history.back(-1)">
+            <i class="fa fa-arrow-circle-left fa-3x"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-folder fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>Folder</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="navbar-button">
+                <a id="btnAdd" class="btn-primary btn col-md-offset-11" role="button" data-trigger="focus" title="Add Accounts" href="{% url 'services:folder_create' %}" {% if not perms.accounting.add_account %} disabled {% endif %}>
+                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                    <tooltip md-direction="left">New</tooltip>
+                </a>
+            </div>
+            <br/>
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                {% if folders %}
+                {% for folder in folders %}
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading{{folder.id_fld}}">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{folder.id_fld}}" aria-expanded="true" aria-controls="{{folder.id_fld}}">
+                                <i class="fa fa-folder text-primary" aria-hidden="true"></i><strong>  {{folder.name}}</strong>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="{{folder.id_fld}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{folder.id_fld}}">
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                {% for fold in folders %}
+                                {% if fold.folders_id == folder.id_fld %}
+                                <li class="col-md-offset-1"><i class="fa fa-folder text-primary" aria-hidden="true"></i><strong>  {{fold.name}}</strong>
+                                    <ul class="list-unstyled">
+                                        {% for file in files %}
+                                        {% if file.folders_id == fold.id_fld %}
+                                        <li class="col-md-offset-2"><i class="fa fa-file text-primary" aria-hidden="true"></i><a href="/static/media/{{ file.url }}" target="_blank">  {{file.name}} -<samp> {{file.date_save}}</samp></a></li>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %}
+                                    {% endfor %}
+                                </li>
+                                {% for file in files %}
+                                {% if file.folders_id == folder.id_fld %}
+                                <li><i class="fa fa-file text-primary" aria-hidden="true"></i><a href="/static/media/{{ file.url }}" target="_blank">  {{file.name}} -<samp> {{file.date_save}}</samp></a></li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <nav class="col-md-offset-10" aria-label="Page navigation">
+                <ul class="pager">
+                    {% if folders.has_previous %}
+                    <li>
+                        <a  href="?page={{ folders.previous_page_number }}"><span>
+                            <span aria-hidden="true">&laquo;</span>
+                        </span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    <span class="current">
+                        Page {{ folders.number }} of {{ folders.paginator.num_pages }}.
+                    </span>
+                    {% if folders.has_next %}
+                    <li>
+                        <a href="?page={{ folders.next_page_number }}">
+                            <span>
+                                <span aria-hidden="true">&raquo;</span>
+                            </span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        <div class="panel-footer">
+            <a type="button" onclick="history.back(-1)">
+                <i class="fa fa-arrow-circle-left fa-3x"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,41 @@
+    div.dataTables_wrapper {
+        margin-bottom: 3em;
+    }
+
+    #calendar_container {
+		margin: 0;
+		padding: 0;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 14px;
+	}
+
+	#calendar {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+    #calendar_panel {
+		max-width: 90%;
+		height: 20%;
+		margin: 0 auto;
+	}
+
+    .zoom-mouse1 {
+        transition: 1.5s ease;
+ 		moz-transition: 1.5s ease;
+ 		webkit-transition: 1.5s ease;
+ 		o-transition: 1.5s ease;
+    }
+
+    .zoom-mouse1:hover {
+         transform : scale(2);
+		moz-transform : scale(2);
+		webkit-transform : scale(2);
+		o-transform : scale(2);
+		ms-transform : scale(2);
+    }
+
+    .modal-content
+     {
+       height:40%;
+       overflow:auto;
+      }

@@ -1,0 +1,187 @@
+{% load i18n static %}<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Application</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-switch.min.css'%}" rel="stylesheet">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/scrolling-nav.css'%}" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <header class="bg-primary text-white">
+
+      <div class="container text-center">
+        <div>
+        <img src="{% static 'img/truck.jpg'%}" width="15%" height="120%">
+       </div>
+        <h1 class="en">Welcome to {{company}} application</h1>
+        <h1 class="es" style="display:none">Bienvenido a la aplicacion de {{company}}</h1>
+        <div>
+        <p class="lead es" style="display:none">Llene todos los datos requeridos para procesar su solicitud</p>
+        <p class="lead en ">Fill in all the information required to process your request</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-md-offset-9" >
+        <input id="leng" name="leng" data-toggle="toggle" type="checkbox" data-on="English" data-off="Espanol" checked>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}}" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <i class="fa {% if message.tags == 'danger' %} fa-exclamation-triangle {% endif %} {% if message.tags == 'success' %} fa-smile-o {% endif %}" aria-hidden="true"></i>
+          <strong>{{message.tags|upper}} </strong>{{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <form name="form_apply" method="post" class="form" role="form" id="form_apply" validate>{% csrf_token %}
+          <fieldset>
+            <!-- Form Name -->
+            <!-- Text input-->
+            <div class="form-group col-md-4 col-md-offset-1" >
+              <label class="label-control en">Full Name:</label>
+              <label class="label-control es">Nombre Completo:</label>
+              {{form.fullname}}
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+              <label class="label-control en">Company Name:</label>
+              <label class="label-control es">Nombre de Compania:</label>
+              {{form.company_name}}
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+              <label class="label-control en">Address:</label>
+              <label class="label-control es">Direccion:</label>
+              {{form.address}}
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+              <label class="label-control en">Phone Number:</label>
+              <label class="label-control es">Numero de Telefono:</label>
+              {{form.phone}}
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+              <label class="label-control en">Social Security Number:</label>
+              <label class="label-control es">Numero de Seguro Social:</label>
+              {{form.no_social}}
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+              <label class="label-control en">Email:</label>
+              <label class="label-control es">Correo Electronico:</label>
+              {{form.email}}
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+              <label class="label-control en">License Number:</label>
+              <label class="label-control es">Numero de Licencia:</label>
+              {{form.license_numb}}
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+              <label class="label-control en">Years of experience :</label>
+              <label class="label-control es">Anos de experiencia:</label>
+              {{form.service}}
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+              <label class="label-control en">TXDMV:</label>
+              <label class="label-control es">TXDMV:</label>
+              {{form.txdmv}}
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+              <label class="label-control en">USDOT:</label>
+              <label class="label-control es">USDOT:</label>
+              {{form.usdot}}
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+              <label class="label-control en">EIN:</label>
+              <label class="label-control es">EIN:</label>
+              {{form.ein}}
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+              <label class="label-control en">MC:</label>
+              <label class="label-control es">MC:</label>
+              {{form.mc}}
+            </div>
+            {% if id %}
+            <div class="form-group col-md-4 col-md-offset-1" >
+              <label class="label-control en">Application State:</label>
+              <label class="label-control es">Estado de la Aplicacion:</label>
+              {{form.state}}
+            </div>
+            <div class="form-group col-md-8 col-md-offset-1" >
+              <label class="label-control en">Notes:</label>
+              <label class="label-control es">Notas:</label>
+              {{form.mc}}
+            </div>
+            {% endif %}
+            <!-- Text input-->
+
+            <!-- Button (Double) -->
+            <div class="form-group col-md-5 col-md-offset-4">
+              <input type="submit" class="btn btn-success en" value="Send" {% if is_popup %} onclick="closepopup()" {% endif %}>
+              <input type="submit" class="btn btn-success es" value="Enviar" {% if is_popup %} onclick="closepopup()" {% endif %}>
+              <a type="button"  class="btn btn-danger en" {% if is_popup %} onclick="closepopup()" {% else %} onclick="history.back(-1)" {% endif %}>Cancel </a>
+              <a type="button"  class="btn btn-danger es" {% if is_popup %} onclick="closepopup()" {% else %} onclick="history.back(-1)" {% endif %}>Cancelar </a>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Last Update January 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'js/jquery.js'%}"></script>
+    <script src="{% static 'js/jquery.easing.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap-switch.min.js'%}"></script>
+    <script src="{% static 'js/datetimepicker.min.js'%}"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="{% static 'js/scrolling-nav.js' %}"></script>
+    <script>
+    $(document).ready( function () {
+    $(function(){
+         $('.es').attr("style", "display : none;");
+    });
+    $("#leng").change(function() {
+        if (this.checked) {
+            $('.en').attr("style", "display : initial;");
+            $('.es').attr("style", "display : none;");
+        }
+        else {
+            $('.en').attr("style", "display : none;");
+            $('.es').attr("style", "display : initial;");
+        }
+    });
+
+  });
+  </script>
+  </body>
+
+</html>

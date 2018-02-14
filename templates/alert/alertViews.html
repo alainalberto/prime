@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+    <section>
+    <div class="panel panel-{{style}}">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-bell fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>{{title}}</h3></div>
+                </div>
+            </div>
+        </div>
+          <br>
+
+          <div class="panel-body">
+            <div class="navbar-button">
+                <a id="btnAdd" class="btn-primary btn col-md-offset-11" role="button" data-trigger="focus" title="Add Alert" href="{% url 'panel:alert_create' %}">
+                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                    <tooltip md-direction="left">New</tooltip>
+                </a>
+            </div>
+            <br/>
+            <div class="table-responsive">
+              <table id="listAlert" class="table data-table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th class="col-md-6">Description</th>
+                        <th class="col-md-3">Expiration date</th>
+                        <th class="col-md-1">Action</th>
+                    </tr>
+                    </thead>
+                  <tbody>
+                  {% for a in alerts %}
+                  {% if a.deactivated == 0 %}
+                  <tr {% if a.end_date <= today %} class="danger" {% endif %}>
+                      <td>
+                          <div class="form-group col-md-11 col-md-offset-0">
+                              <strong>{{a.users}}: </strong><samp {% if a.category == 'Notification'%} class="text-success" {% endif %} {% if a.category == 'Alert'%} class="text-warning" {% endif %} {% if a.category == 'Urgent'%} class="text-danger" {% endif %}>{{a.description}}</samp>
+                          </div> </td>
+                      <td>
+                          <strong>{{a.end_date}} </strong>
+                      </td>
+                      <td>
+                          <toolbar class="md-accent">
+                              <a data-type="info" href="{% url 'panel:alert_edit' a.id_alt %}" data-trigger="focus" {% if not user == a.users %} disabled="true" {% endif %} data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip">
+                                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                  <tooltip md-direction="left"></tooltip>
+                              </a>
+                          </toolbar>
+                          <toolbar class="md-accent">
+                              <a data-type="info" href="{% url 'panel:alert_delete' a.id_alt %}" data-animation="am-flip-x" data-trigger="focus" {% if not user == a.users %} disabled="true" {% endif %}   type="button" class="btn btn-danger test-tooltip">
+                                  <i class="fa fa-trash" aria-hidden="true"></i>
+                                  <tooltip md-direction="left"></tooltip>
+                              </a>
+                          </toolbar>
+                      </td>
+                  </tr>
+                  {% endif %}
+                  {% endfor %}
+                  </tbody>
+
+              </table>
+            </div>
+          </div>
+        <div class="panel-footer">
+            <a type="button" onclick="history.back(-1)">
+            <i class="fa fa-arrow-circle-left fa-3x"></i>
+            </a>
+        </div>
+    </div>
+    </section>
+</section>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<section xmlns="http://www.w3.org/1999/html">
+    <script>
+    $(document).ready(function() {
+    $('table.display').DataTable();
+      } );
+  </script>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-list fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>Account Description</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+
+            <table id="" class="table data-table table-hover table-bordered" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Account</th>
+                    <th>Business</th>
+                     <th>Payment Method</th>
+                    <th>Document</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for account in accounts %}
+                <tr>
+                    <td>{{ account.date}}</td>
+                    <td>{{ account.accounts.name }}</td>
+                    <td>{{ account.accounts.business }}</td>
+                    <td>{{ account.waytopay }}</td>
+                    <td><a href="{% url 'accounting:account_document' account.id_acd %}">{{ account.type}}</a></td>
+                    <td>${{ account.value}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+        <div class="panel-footer">
+            <a type="button" onclick="history.back(-1)">
+            <i class="fa fa-arrow-circle-left fa-3x"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

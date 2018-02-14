@@ -1,0 +1,403 @@
+{% load i18n static %}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+<html lang="{{ LANGUAGE_CODE|default:'en-us'}}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+<title>{% block title %}{% endblock %}</title>
+    <meta name="robots" content="NONE,NOARCHIVE" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="alainalberto03@gmail.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-switch.min.css'%}" rel="stylesheet">
+    <link href="{% static 'css/dataTables.min.css'%}" rel="stylesheet">
+    <link href="{% static 'css/datetimepicker.min.css'%}" rel="stylesheet">
+
+
+    <!-- JQuery UI Core CSS -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/sb-admin.css'%}" rel="stylesheet">
+
+
+    <link href="{% static 'css/app.css'%}" rel="stylesheet">
+
+
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'css/font-awesome/css/font-awesome.min.css'%}" rel="stylesheet" type="text/css">
+
+    <link rel="icon" type="image/ico" href="{% static '/img/icon/Icon.ico'%}">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="{% static 'lib/morris/morris.css'%}" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <![endif]-->
+    <script src="{% static 'js/jquery.js'%}"></script>
+    <script src="{% static 'js/jquery.chained.min.js'%}"></script>
+    <script src="{% static 'js/jq_app.js'%}"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{% static 'js/dataTables.min.js'%}"></script>
+    <script src="{% static 'js/chat.js' %}"></script>
+
+
+    <!-- Bootstrap Core JavaScript -->
+
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+     <script src="{% static 'js/bootstrap-switch.min.js'%}"></script>
+    <script src="{% static 'js/datetimepicker.min.js'%}"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    {% block extrastyle %}{% endblock %}
+    <!-- Morris Charts JavaScript -->
+
+
+
+{% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static 'css/rtl.css' %}{% endblock %}" />{% endif %}
+{% block extrahead %}{% endblock %}
+{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+</head>
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
+  data-admin-utc-offset="{% now 'Z' %}">
+
+<!-- Container -->
+
+<div {% if not is_popup %} id="wrapper" {% endif %}>
+
+    {% if not is_popup %}
+    {% block usertools %}
+    <!-- Header -->
+        <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'panel:panel' %}">
+                <img src="{% static 'img/logoFCI.png'%}" width="25%" height="180%">
+            </a>
+
+        </div>
+        <!-- Top Menu Items -->
+        <ul class="nav navbar-right top-nav">
+            <li>
+                <a tabindex="0" class="dropdown-toggle" role="button" data-toggle="dropdown" data-trigger="focus" title="Chat online">
+                    <i class="fa fa-comments"></i>
+                    Chat
+                </a>
+                <div class="dropdown-menu alert-dropdown panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-comments-o fa-4x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <h4>Chat on-line</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <iframe style="width=25% height=300%" src="{% url 'chat'%}" scrolling="no">
+
+                        </iframe>
+                    </div>
+                </div>
+            </li>
+           <!-- <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                <ul class="dropdown-menu message-dropdown">
+                    <li class="message-preview">
+                        <a href="#">
+                            <div class="media">
+                                <span class="pull-left">
+                                    <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                </span>
+                                <div class="media-body">
+                                    <h5 class="media-heading"><strong>John Smith</strong>
+                                    </h5>
+                                    <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="message-footer">
+                        <a href="#">Read All New Messages</a>
+                    </li>
+                </ul>
+            </li> -->
+            <li  role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown"><span class="badge badge-primary">{{all}}</span> <i class="fa fa-bell"></i> <b class="caret"></b></a>
+                <ul class="dropdown-menu alert-dropdown">
+
+                    <li>
+
+                        <a href="{% url 'panel:notification' %}">Notification <span class="label label-success">
+                        {{ notif}}
+
+                        </span></a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'panel:alert' %}">Alerts <span class="label label-warning"> {{alrt}} </span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'panel:urgent' %}">Urgents <span class="label label-danger"> {{urgent}} </span></a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="{% url 'panel:allalert' %}">View All</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{user.first_name}} <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="{% url 'panel:panel' %}"><i class="fa fa-fw fa-user"></i>My Panel</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="/logout/"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        {% endblock %}
+        {% block nav-global %}{% endblock %}
+    <!-- END Header -->
+    {% block breadcrumbs %}
+   <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li class="active">
+                    <a href="javascript:;" data-toggle="collapse" data-target="#panel"><i class="fa fa-area-chart"></i> My Panel <i class="right fa fa-fw fa-caret-down"></i></a>
+                    <ul id="panel" class="collapse">
+                        <li>
+                            <a href="{% url 'panel:directory' %}"> Telephone Directory</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'panel:calendar' %}"> Calendar</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'panel:password' %}"> Change my password</a>
+                        </li>
+                        {% if perms.tools %}
+                        <li>
+                            <a class="item" href="{% url 'services:forms' %}"> Forms</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </li>
+                {% if perms.accounting %}
+                <li class="active">
+                    <a href="javascript:;" data-toggle="collapse" data-target="#accon"><i class="fa fa-university"></i> Accounting<i class="right fa fa-fw fa-caret-down"></i></a>
+                    <ul id="accon" class="collapse">
+                        {% if perms.accounting.add_account %}
+                        <li>
+                            <a class="item" href="{% url 'accounting:accounts' %}"> Accounts</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.accounting.add_customer %}
+                        <li>
+                            <a class="item" href="{% url 'accounting:customers' %}"> Customers</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.services and perms.accounting.add_invoice %}
+                        <li>
+                            <a class="item" href="{% url 'accounting:invoices' %}"> Invoices Services</a>
+                        </li>
+                        {% endif %}
+
+                        {% if perms.logistic and perms.accounting.add_invoice %}
+                        <li>
+                            <a class="item" href="{% url 'accounting:invoices_log' %}"> Invoices Load</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.accounting.add_receipt %}
+                        <li>
+                            <a class="item" href="{% url 'accounting:receipts' %}"> Receipts</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.accounting.add_payment %}
+                        <li>
+                            <a class="item" href="{% url 'accounting:payments' %}"> Payments</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.accounting.add_employee %}
+                        <li>
+                            <a class="item" href="{% url 'accounting:employees' %}"> Employees</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.accounting.add_account %}
+                        <li>
+                            <a class="item" href="{% url 'accounting:panel_account' %}"> Statistic</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </li>
+                {% endif %}
+                {% if perms.services %}
+                <li class="active">
+                    <a href="javascript:;" data-toggle="collapse" data-target="#serv"><i class="fa fa-tasks"></i> Services <i class="right fa fa-fw fa-caret-down"></i></a>
+                    <ul id="serv" class="collapse">
+                        {% if perms.services.add_permit %}
+                        <li>
+                            <a class="item" href="{% url 'services:permit_create' %}"> Permit</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.services.add_driver %}
+                        <li>
+                            <a class="item" href="{% url 'services:driver_create' %}"> Driver</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.services.add_insurance %}
+                        <li>
+                            <a class="item" href="{% url 'services:insurance_create' %}"> Insurance</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.services.add_ifta %}
+                        <li>
+                            <a class="item" href="{% url 'services:ifta_create' %}"> IFTA</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.services.add_audit %}
+                        <li>
+                            <a class="item" href="{% url 'services:audit_create' %}"> Audits</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.services.add_contract %}
+                        <li>
+                            <a class="item" href="{% url 'services:contract_create' %}"> Contracts</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.services.add_equipment %}
+                        <li>
+                            <a class="item" href="{% url 'services:equipment_create' %}"> Equipment</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.tools.add_folder and perms.services %}
+                        <li>
+                            <a class="item" href="{% url 'services:folder' %}"> Folder</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.tools.add_folder and perms.services %}
+                        <li>
+                            <a class="item" href="{% url 'services:dispatch_select' %}"> Companies Dispatch</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </li>
+                {% endif %}
+                {% if perms.logistic %}
+                <li class="active">
+                    <a href="javascript:;" data-toggle="collapse" data-target="#logc"><i class="fa fa-truck"></i> Logistic <i class="right fa fa-fw fa-caret-down"></i></a>
+                    <ul id="logc" class="collapse">
+                        {% if perms.logistic.add_load %}
+                        <li>
+                            <a class="item" href="{% url 'logistic:loads' %}"> Loads</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.logistic.add_driverslogt %}
+                        <li>
+                            <a class="item" href="{% url 'logistic:drivers' %}"> Drivers</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.logistic.add_dispatchlogt %}
+                        <li>
+                            <a class="item" href="{% url 'logistic:dispatch' %}"> Dispatch</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.logistic %}
+                        <li>
+                            <a class="item" href="{% url 'logistic:diesel' %}"> Diesel Report</a>
+                        </li>
+                        {% endif %}
+                        <!-- {% if perms.logistic.add_truckslogt %}
+                        <li>
+                            <a class="item" href="{% url 'logistic:trucks' %}"> Trucks</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.logistic.add_travelexpense %}
+                        <li>
+                            <a class="item" href="{% url 'logistic:travel' %}"> Travel Expenses</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.logistic.add_insurancelogt %}
+                        <li>
+                            <a class="item" href="{% url 'logistic:infcompany' %}">Company Information</a>
+                        </li>
+                        {% endif %}-->
+                    </ul>
+                </li>
+                {% endif %}
+                {% if user.is_staff %}
+                <li class="active">
+                    <a href="javascript:;" data-toggle="collapse" data-target="#admin"><i class="fa fa-cog fa-spin"></i> Administration <i class="right fa fa-fw fa-caret-down"></i></a>
+                    <ul id="admin" class="collapse">
+                        <li>
+                            <a class="ui item" href="/admin"> Administration Panel</a>
+                        </li>
+                        {% if perms.services.change_application %}
+                        <li>
+                            <a class="item" href="{% url 'application:apply_views' %}"> Applicaton Drivers</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+    {% endblock %}
+    {% endif %}
+    {% block messages %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}}" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <i class="fa {% if message.tags == 'danger' %} fa-exclamation-triangle {% endif %} {% if message.tags == 'success' %} fa-smile-o {% endif %}" aria-hidden="true"></i>
+    <strong>{{message.tags|upper}} </strong>{{message}}
+</div>
+{% endfor %}
+{% endif %}
+{% endblock messages %}
+
+<!-- Content -->
+<div {% if not is_popup %} id="page-wrapper" {% endif %}>
+    <div {% if not is_popup %} class="container-fluid" {% endif %}>
+        <div {% if not is_popup %} id="content" class="{% block coltype %}colM{% endblock %}" {% endif %}>
+            {% block content %}
+            {% endblock %}
+            {% block sidebar %}{% endblock %}
+            <br class="clear" />
+        </div>
+    </div>
+</div>
+<!-- END Content -->
+
+{% block footer %}<div id="footer"></div>{% endblock %}
+</div>
+<!-- END Container -->
+<div id="popup" class="modal fade" role="dialog">
+       <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            {% block popup %}
+        {% endblock %}
+        </div>
+       </div>
+</div>
+</body>
+</html>

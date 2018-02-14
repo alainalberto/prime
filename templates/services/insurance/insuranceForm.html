@@ -1,0 +1,292 @@
+{% extends 'base.html' %}
+{% block extrastyle %}
+<script type="text/javascript">
+ function openpopup(url){
+   newwindow = window.open(url,'popup',' location=1, directories=0, resizable=0, width=500,height=700,Top=20,Left=490');
+   if (window.focus) {newwindow.focus()}
+   return false;
+ }
+ function closepopup(){
+   window.opener.location.href=window.opener.location.href;
+   window.close();
+   return false;
+ }
+ $(document).ready( function () {
+ $(".btn_add_cut").click(function() {
+      var column = $(this).closest('tr').children()[5].textContent;
+      $('#id_customers').val(column)
+      $('#customerList').modal('hide');
+    });
+    $('#btnliability').change(function(){
+        if (this.checked) {
+            $('#liability').attr("style", "display : initial;");
+        }
+        else {
+            $('#liability').attr("style", "display : none;");
+        }
+   });
+   $(function() {
+
+     var liability = $('#id_liability').val();
+     var cargo = $('#id_cargo').val();
+     var physical = $('#id_physical_damage').val();
+     var other = $('#id_other').val();
+
+
+     if (liability){
+      $('#liability').attr("style", "display : initial;");
+     }
+     if (cargo){
+      $('#cargo').attr("style", "display : initial;");
+     }
+     if (physical){
+      $('#physical').attr("style", "display : initial;");
+     }
+     if (other){
+      $('#other').attr("style", "display : initial;");
+     }
+
+   });
+
+$('#btncargo').change(function(){
+        if (this.checked) {
+            $('#cargo').attr("style", "display : initial;");
+        }
+        else {
+            $('#cargo').attr("style", "display : none;");
+        }
+   });
+
+$('#btnphysical').change(function(){
+        if (this.checked) {
+            $('#physical').attr("style", "display : initial;");
+        }
+        else {
+            $('#physical').attr("style", "display : none;");
+        }
+   });
+ $('#btnother').change(function(){
+        if (this.checked) {
+            $('#other').attr("style", "display : initial;");
+        }
+        else {
+            $('#other').attr("style", "display : none;");
+        }
+   });
+
+  });
+
+</script>
+{% endblock %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-building fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>{{ title }}</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <form name="form_company" method="post" class="form" role="form" id="form_company" validate>{% csrf_token %}
+                <fieldset>
+                    {% if not is_popup %}
+                    <div class="form-group col-md-5 col-md-offset-3">
+                        <label class="label-control">Select Customer:</label>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button type="button" id="addcustomer" class="btn btn-success test-tooltip" data-toggle="modal" data-target="#customerList" data-type="info" data-trigger="focus" title="Customer List" data-animation="am-flip-x">
+                                    <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </button>
+                            </span>
+                            {{ form.customers }}
+                            <span class="input-group-btn">
+                                <a type="button" id="newcustomer" class="btn btn-success test-tooltip" href="{% url 'accounting:customer_popup' 1 %}" target="popup" onclick="window.open('','popup',' location=1, directories=0, resizable=0, width=500,height=700,Top=20,Left=490')" data-trigger="focus" title="Add new Customer" data-animation="am-flip-x">
+                                    <i class="fa fa-plus"></i>
+                                    <tooltip md-direction="right"></tooltip>
+                                </a>
+                            </span>
+                        </div>
+
+                    </div>
+                    {% include 'accounting/customer/customerModal.html'%}
+                    {% endif %}
+                   <div class="form-group col-md-10 col-md-offset-1">
+                    <div>
+                        <strong>Select Coverage:</strong><br/>
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-primary">
+                                <input type="checkbox" id="btnliability" autocomplete="off"> Liability
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="checkbox" id="btncargo" autocomplete="off"> Cargo
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="checkbox" id="btnphysical" autocomplete="off"> Physical Damage
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="checkbox" id="btnother" autocomplete="off"> Other
+                            </label>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div id="liability"  style="display: none;" >
+                            <div class="form-group col-md-3 col-md-offset-1" >
+                                <label class="label-control">Liability Value:</label>
+                                {{form.liability}}
+                            </div>
+                            <div class="form-group col-md-3 col-md-offset-1" >
+                                <label class="label-control">Liability Policy Number:</label>
+                                {{form.policy_liability}}
+                            </div>
+                            <div class="form-group col-md-3 col-md-offset-1">
+                                <label class="label-control">Expire Date Policy:</label>
+                                <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                    {{form.policy_date_exp}}
+                                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                </div>
+                                <input type="checkbox"  aria-pressed="false" data-off-color="danger" class="switch" data-size="mini" data-on-text="Alert ON" data-off-text="Alert OFF" id="liability_alert" name="liability_alert" checked>
+                            </div>
+                        </div>
+                        <br/>
+                        <div id="cargo" style="display: none;" >
+                            <div class="form-group col-md-3 col-md-offset-1" >
+                                <label class="label-control">Cargo Value:</label>
+                                {{form.cargo}}
+                            </div>
+                            <div class="form-group col-md-3 col-md-offset-1" >
+                                <label class="label-control">Cargo Policy Number:</label>
+                                {{form.cargo_policy}}
+                            </div>
+                            <div class="form-group col-md-3 col-md-offset-1">
+                                <label class="label-control">Expire Date Policy:</label>
+                                <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                    {{form.policy_cargo_exp}}
+                                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                </div>
+                                <input type="checkbox"  aria-pressed="false" data-off-color="danger" class="switch" data-size="mini" data-on-text="Alert ON" data-off-text="Alert OFF" id="cargo_alert" name="cargo_alert" checked>
+                            </div>
+                        </div>
+                        <br/>
+                        <div id="physical" style="display: none;" >
+                            <div class="form-group col-md-3 col-md-offset-1" >
+                                <label class="label-control">Physical Damage Value:</label>
+                                    {{form.physical_damage}}
+                            </div>
+                            <div class="form-group col-md-3 col-md-offset-1" >
+                                <label class="label-control">Physical Policy Number:</label>
+                                {{form.physical_damg_policy}}
+                            </div>
+                            <div class="form-group col-md-3 col-md-offset-1">
+                                <label class="label-control">Expire Date Policy:</label>
+                                <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                    {{form.policy_physical_exp}}
+                                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                </div>
+                                <input type="checkbox"  aria-pressed="false" data-off-color="danger" class="switch" data-size="mini" data-on-text="Alert ON" data-off-text="Alert OFF" id="physical_alert" name="physical_alert" checked>
+                            </div>
+                        </div>
+                        <br/>
+                         <div id="other"  style="display: none;"  >
+                             <div class="row">
+                             <div class="form-group col-md-5 col-md-offset-1" >
+                                <label class="label-control">Other Description:</label>
+                                {{form.other_description}}
+                            </div>
+
+                             </div>
+                            <div class="form-group col-md-3 col-xs-5 col-md-offset-1" >
+                                <label class="label-control">Other Value:</label>
+                                {{form.other}}
+                            </div>
+                            <div class="form-group col-md-3 col-xs-5 col-md-offset-1" >
+                                <label class="label-control">Other Policy Number:</label>
+                                {{form.other_policy}}
+                            </div>
+                            <div class="form-group col-md-3 col-xs-5 col-md-offset-1">
+                                <label class="label-control">Expire Date Policy:</label>
+                                <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                    {{form.policy_other_exp}}
+                                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                </div>
+                                <input type="checkbox"  aria-pressed="false" data-off-color="danger" class="switch" data-size="mini" data-on-text="Alert ON" data-off-text="Alert OFF" id="other_alert" name="other_alert" checked>
+                            </div>
+                        </div>
+
+                    </div>
+                   </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Efective Date of Policy:</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{form.policy_efective_date}}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1" >
+                        <label class="label-control">Sale Type:</label>
+                        {{form.sale_type}}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1" >
+                        <label class="label-control">Sale Date Fee:</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{form.sale_date_fee}}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1" >
+                        <label class="label-control">Down Payment:</label>
+                        {{form.down_payment}}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1" >
+                        <label class="label-control">Paid Out:</label>
+                        {{form.paid_out}}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1" >
+                        <label class="label-control">Balance Due:</label>
+                        {{form.balance_due}}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1" >
+                        <label class="label-control">Comision:</label>
+                        {{form.comision}}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1" >
+                        <label class="label-control">Total:</label>
+                        {{form.total}}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Monthly Payments:</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{form.monthlypay}}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                        <input type="checkbox"  aria-pressed="false" data-off-color="danger" class="switch" data-size="mini" data-on-text="Alert ON" data-off-text="Alert OFF" id="policy_alert" name="policy_alert" checked>
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1" >
+                        <label class="label-control">Is Paid:</label>
+                        {{form.paid}}
+                    </div>
+                    <div class="form-group col-md-2 col-md-offset-1" >
+                        <label class="label-control">Service Process:</label>
+                        {{form.state}}
+                    </div>
+                     <div class="form-group col-md-11 col-md-offset-1" >
+                        <label class="label-control">Notes:</label>
+                        {{form.note}}
+                    </div>
+                    {% if not deactivate %}
+                    <div class="form-group col-md-5 col-md-offset-4">
+                        <input type="submit" class="btn btn-success" value="Save" {% if is_popup %} onclick="closepopup()" {% endif %}>
+                        <a type="button"  class="btn btn-danger" {% if is_popup %} onclick="closepopup()" {% else %} onclick="history.back(-1)" {% endif %}>Cancel </a>
+                    </div>
+                    {% endif %}
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

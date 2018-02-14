@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-list fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>List Receipts</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="navbar-button">
+                <a id="btnAdd" class="btn-primary btn col-md-offset-11" role="button" data-trigger="focus" title="Add User" href="{% url 'accounting:receipts_create' %}" {% if not perms.accounting.add_receipt %} disabled {% endif %}>
+                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                    <tooltip md-direction="left">New</tooltip>
+                </a>
+            </div>
+            <br/>
+            <div class="table-responsive">
+                <table id="listInvoices" class="table data-table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="col-md-1">Serial</th>
+                        <th class="col-md-2">Accounts</th>
+                        <th class="col-md-2">Business</th>
+                        <th class="col-md-2">Start Date</th>
+                        <th class="col-md-1">Payment Method</th>
+                        <th class="col-md-1">Paid</th>
+                        <th class="col-md-2">Action</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for r in object_list %}
+                    <tr>
+                        <td>{{r.serial}}</td>
+                        <td>{{r.accounts}}</td>
+                        <td>{{r.business}}</td>
+                        <td>{{r.start_date}}</td>
+                        <td>{{r.waytopay}}</td>
+                        <td class="text-center">{% if r.paid %}<i class="fa fa-check text-success" aria-hidden="true"></i>{% endif %}</td>
+                        <td>
+                            <toolbar class="md-accent">
+                                <a data-type="info" data-trigger="focus" title="Edit Receipt" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'accounting:receipts_edit' r.id_rec %}" {% if not perms.accounting.change_receipt %} disabled {% endif %}>
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </a>
+                            </toolbar>
+                            <toolbar class="md-accent">
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Receipt" type="button" class="btn btn-danger test-tooltip" href="{% url 'accounting:receipts_delete' r.id_rec %}" {% if not perms.accounting.delete_receipt %} disabled {% endif %}>
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </a>
+                            </toolbar>
+                            <toolbar class="md-accent">
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" target="_blank" title="Print Receipt" type="button" class="btn btn-primary test-tooltip" href="{% url 'accounting:receipts_pdf' r.id_rec %}">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </a>
+                            </toolbar>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+            </div>
+        <div class="panel-footer">
+            <a type="button" onclick="history.back(-1)">
+            <i class="fa fa-arrow-circle-left fa-3x"></i>
+            </a>
+        </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

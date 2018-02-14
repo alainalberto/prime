@@ -1,0 +1,36 @@
+<section>
+    <div class="table-responsive">
+                <table id="listIfta" class="data-table table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="col-md-2">Type</th>
+                        <th class="col-md-3">Period</th>
+                        <th class="col-md-3">Next Period</th>
+                        <th class="col-md-2">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in iftas %}
+                    <tr {% if i.state == "Initiated" %} class="warning" {% endif %}  {% if i.state == "Pending" %} class="danger" {% endif %} {% if i.state == "Finalized" %} class="success" {% endif %}>
+                        <td><a onclick="openpopup('{% url 'services:ifta' pk=i.id_ift popup=1%}')">{{i.type}}</a></td>
+                        <td>{{i.period}}</td>
+                        <td>{{i.nex_period}}</td>
+
+                        <td>
+                            {% if perms.services.change_ifta %}
+                            <toolbar class="md-accent">
+                                <a type="button" class="btn btn-info" href="{% url 'services:ifta_edit' i.id_ift %}"><span><i class="fa fa-pencil-square-o"></i></span></a>
+                            </toolbar>
+                            {% endif %}
+                            {% if perms.services.delete_ifta %}
+                            <toolbar class="md-accent">
+                                <a type="button" class="btn btn-danger" href="{% url 'services:ifta_delete' i.id_ift %}"><span><i class="fa fa-trash"></i></span></a>
+                            </toolbar>
+                            {% endif %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+</section>

@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block extrastyle %}
+<script type="text/javascript">
+ function closepopup(){
+   window.close();
+   return false;
+ }
+</script>
+{% endblock %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-building fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>{{ title }}</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            {% if insurance.liability %}
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Liability Value:</label>
+                {{insurance.liability}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Liability Policy Number:</label>
+                {{insurance.policy_liability}}
+            </div>
+
+            <br/>
+            {% endif %}
+            {% if insurance.cargo %}
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Cargo Value:</label>
+                {{insurance.cargo}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Cargo Policy Number:</label>
+                {{insurance.cargo_policy}}
+            </div>
+
+            <br/>
+            {% endif %}
+            {% if insurance.physical_damage %}
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Physical Damage Value:</label>
+                {{insurance.physical_damage}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Physical Policy Number:</label>
+                {{insurance.physical_damg_policy}}
+            </div>
+            {% endif %}
+        </div>
+        <div class="form-group col-md-5 col-md-offset-1">
+            <label class="label-control">Efective Date of Policy:</label>
+            {{insurance.policy_efective_date}}
+        </div>
+        <div class="form-group col-md-5 col-md-offset-1">
+            <label class="label-control">Expire Date Policy:</label>
+            {{insurance.policy_date_exp}}
+        </div>
+        <div class="form-group col-md-3 col-md-offset-1" >
+            <label class="label-control">Sale Type:</label>
+            {{insurance.sale_type}}
+        </div>
+        <div class="form-group col-md-3 col-md-offset-1" >
+            <label class="label-control">Sale Date Fee:</label>
+            {{insurance.sale_date_fee}}
+        </div>
+        <div class="form-group col-md-3 col-md-offset-1" >
+            <label class="label-control">Down Payment:</label>
+            {{insurance.down_payment}}
+        </div>
+        <div class="form-group col-md-3 col-md-offset-1" >
+            <label class="label-control">Paid Out:</label>
+            {{insurance.paid_out}}
+        </div>
+        <div class="form-group col-md-3 col-md-offset-1" >
+            <label class="label-control">Balance Due:</label>
+            {{insurance.balance_due}}
+        </div>
+        <div class="form-group col-md-3 col-md-offset-1" >
+            <label class="label-control">Comision:</label>
+            {{insurance.comision}}
+        </div>
+        <div class="form-group col-md-3 col-md-offset-1" >
+            <label class="label-control">Total:</label>
+            {{insurance.total}}
+        </div>
+        <div class="form-group col-md-3 col-md-offset-1" >
+            <label class="label-control">Is Paid:</label>
+            {{insurance.paid}}
+        </div>
+        <div class="form-group col-md-2 col-md-offset-1" >
+            <label class="label-control">Service Process:</label>
+            {{insurance.state}}
+        </div>
+        <div class="form-group col-md-5 col-md-offset-4">
+            <a type="button"  class="btn btn-danger" {% if is_popup %} onclick="closepopup()" {% else %} onclick="history.back(-1)" {% endif %}>OK </a>
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock %}

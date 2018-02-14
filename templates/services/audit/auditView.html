@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block extrastyle %}
+<script type="text/javascript">
+ function closepopup(){
+   window.close();
+   return false;
+ }
+</script>
+{% endblock %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-building fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>{{ title }}</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Date:</label>
+                {{audit.date}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Type:</label>
+                {{audit.type}}
+            </div>
+             <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Auditor Name:</label>
+                {{audit.auditor_name}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Contract:</label>
+                <a href="{% url 'services:contract' pk=audit.contracts.id_con popup=1%}">{{audit.contracts}}</a>
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Action Plant:</label>
+                {% if audit.action_plan %} YES {% else %} NO {% endif %}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Amount Paid:</label>
+                {{audit.amount_paid}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Results</label>
+                {{audit.results}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">State:</label>
+                {{audit.state}}
+            </div>
+        <div class="form-group col-md-5 col-md-offset-4">
+            <a type="button"  class="btn btn-danger" {% if is_popup %} onclick="closepopup()" {% else %} onclick="history.back(-1)" {% endif %}>OK </a>
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,39 @@
+<section>
+    <div class="table-responsive">
+                <table id="listInsurance" class="data-table table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="col-md-2">Liability</th>
+                        <th class="col-md-3">Cargo</th>
+                        <th class="col-md-3">Physical Damage</th>
+                        <th class="col-md-1">Paid</th>
+                        <th class="col-md-1">Expire Date Policy</th>
+                        <th class="col-md-2">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in insurances %}
+                    <tr {% if i.state == "Initiated" %} class="warning" {% endif %}  {% if i.state == "Pending" %} class="danger" {% endif %} {% if i.state == "Finalized" %} class="success" {% endif %}>
+                        <td><a onclick="openpopup('{% url 'services:insurance' pk=i.id_ins popup=1%}')">{{i.policy_liability}}</a></td>
+                        <td>{{i.cargo_policy}}</td>
+                        <td>{{i.physical_damg_policy}}</td>
+                        <td class="text-center">{% if i.paid %}<i class="fa fa-check text-success" aria-hidden="true"></i>{% endif %}</td>
+                        <td>{{i.policy_date_exp}} </td>
+                        <td>
+                            {% if perms.services.change_insurance %}
+                            <toolbar class="md-accent">
+                                <a type="button" class="btn btn-info" href="{% url 'services:insurance_edit' i.id_ins %}"><span><i class="fa fa-pencil-square-o"></i></span></a>
+                            </toolbar>
+                            {% endif %}
+                            {% if perms.services.delete_insurance %}
+                            <toolbar class="md-accent">
+                                <a type="button" class="btn btn-danger" href="{% url 'services:insurance_delete' i.id_ins %}"><span><i class="fa fa-trash"></i></span></a>
+                            </toolbar>
+                            {% endif %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+</section>

@@ -1,0 +1,112 @@
+{% extends 'base.html' %}{% load i18n static %}
+{% block extrastyle %}
+<link href="{% static 'lib/calendar/fullcalendar.min.css'%}" rel="stylesheet">
+<link href="{% static 'lib/calendar/fullcalendar.print.min.css'%}" rel="stylesheet" media="print">
+
+<script src="{% static 'lib/calendar/moment.min.js' %}"></script>
+<script src="{% static 'lib/calendar/fullcalendar.min.js' %}"></script>
+<script type="text/javascript">
+ $(document).ready( function () {
+     $('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay,listMonth'
+			},
+
+			defaultDate: new Date(),
+			navLinks: true, // can click day/week names to navigate views
+			businessHours: true, // display business hours
+			editable: true,
+			events: {
+                     url: '/panel/calendar/list/',
+                     data: function() { // a function that returns an object
+                            return {
+                            dynamic_value: Math.random()
+                            };
+                     }
+            }
+
+	});
+
+  });
+</script>
+{% endblock %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-3">
+          <i class="fa fa-calendar fa-4x"></i>
+      </div>
+      <div class="col-xs-9 text-left">
+          <div><h3>{{ title }} Event</h3></div>
+           <div class="col-xs-9 col-md-offset-10">
+           {% if event %} <a type="button" class="btn btn-danger" href="{% url 'panel:calendar_delete' event.id %}"><span><i class="fa fa-calendar-minus-o"></i> Delete </span></a>  {% endif %}
+           </div>
+      </div>
+    </div>
+  </div>
+        <div class="panel-body">
+            <form name="form_account" method="post" class="form" role="form" id="form_account" validate>{% csrf_token %}
+                <fieldset>
+                    <!-- Form Name -->
+                    <!-- Text input-->
+                    <div class="form-group col-md-6 col-md-offset-1" >
+                        <label class="label-control">{{form.title.label}} </label>
+                        {{form.title}}
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">{{ form.color.label }} </label>
+                        {{ form.color }}
+                    </div>
+                    <!-- Select Basic -->
+                    <div class="form-group col-md-5 col-md-offset-1">
+                        <label class="label-control">{{ form.start.label }} </label>
+                        <div class="input-group date form_date col-md-5" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{ form.start }}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-5 col-md-offset-1">
+                        <label class="label-control">{{ form.end.label }} </label>
+                        <div class="input-group date form_date col-md-5" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{ form.end }}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-5 col-md-offset-1">
+                        <label class="label-control">{{ form.startTimer.label }} </label>
+                        <div class="input-group date form_time col-md-5" data-date="" data-date-format="hh:ii" data-date-default="08:00"  data-link-field="dtp_input3" data-link-format="hh:ii">
+                             {{ form.startTimer}}
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					       <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-5 col-md-offset-1">
+                        <label class="label-control">{{ form.endTimer.label }} </label>
+                       <div class="input-group date form_time col-md-5" data-date="" data-date-format="hh:ii" data-date-default="23:00"data-link-field="dtp_input3" data-link-format="hh:ii">
+                             {{ form.endTimer}}
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					       <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">{{ form.allDay.label }} </label>
+                        {{ form.allDay}}
+                    </div>
+                    <!-- Button (Double) -->
+                    <div class="form-group col-md-4 col-md-offset-4">
+                        <button type="submit" class="btn btn-success" value="Save"><span><i class="fa fa-calendar-check-o" aria-hidden="true"></i></span>Save</button>
+                        <a type="button" href="{% url 'panel:calendar' %}" class="btn btn-danger">Cancel </a>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

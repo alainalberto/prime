@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-tasks fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>Diesel Report</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            {% if perms.logistic %}
+            <div class="navbar-button">
+                <a id="btnAdd" class="btn-primary btn col-md-offset-11" role="button" data-trigger="focus" title="Add Diesel" href="{% url 'logistic:diesel_create' %}">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    <tooltip md-direction="left">New</tooltip>
+                </a>
+            </div>
+            <br/>
+            {% endif %}
+            <div class="table-responsive">
+                <table id="listDiesel" class="data-table table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>Driver</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Total</th>
+                        <td>Action</td>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for d in object_list %}
+                    <tr>
+                        <td>{{d.driver}}</td>
+                        <td>{{d.date_start}}</td>
+                        <td>{{d.date_end}}</td>
+                        <td>{{d.total}}</td>
+
+                        <td>
+                            {% if perms.logistic%}
+                            <toolbar class="md-accent">
+                                <a data-type="info" data-trigger="focus" title="Edit Diesel" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'logistic:diesel_edit' d.id_dse %}">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </a>
+                            </toolbar>
+                            {% endif %}
+                            {% if perms.logistic %}
+                            <toolbar class="md-accent">
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Diesel" type="button" class="btn btn-danger test-tooltip" href="{% url 'logistic:diesel_delete' d.id_dse %}">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </a>
+                            </toolbar>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <a type="button" onclick="history.back(-1)">
+                <i class="fa fa-arrow-circle-left fa-3x"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

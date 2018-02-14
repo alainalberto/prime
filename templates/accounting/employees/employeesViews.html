@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-list fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>List Employees</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="navbar-button">
+                <a id="btnAdd" class="btn-primary btn col-md-offset-11" role="button" data-trigger="focus" title="Add User" href="{% url 'accounting:employees_create' %}" {% if not perms.accounting.add_employee %} disabled {% endif %}>
+                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                    <tooltip md-direction="left">New</tooltip>
+                </a>
+            </div>
+            <br/>
+            <div class="table-responsive">
+                <table id="listEmployees" class="table data-table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="col-md-2">Business</th>
+                        <th class="col-md-2">Name</th>
+                        <th class="col-md-2">Last Name</th>
+                        <th class="col-md-2">Phone</th>
+                        <th class="col-md-2">Email</th>
+                        <th class="col-md-2">Action</th>
+                    </tr>
+                    </thead>
+                    {% for e in object_list %}
+                    <tbody>
+                    <tr>
+                        <td>{{e.business}}</td>
+                        <td>{{e.name}}</td>
+                        <td>{{e.lastname}}</td>
+                        <td>{{e.phone}}</td>
+                        <td>{{e.email}}</td>
+                        <td>
+                            <toolbar class="md-accent">
+                                <a data-type="info" data-trigger="focus" title="Edit Employees" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'accounting:employees_edit' e.id_emp %}" {% if not perms.accounting.change_employee %} disabled {% endif %}>
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </a>
+                            </toolbar>
+                            <toolbar class="md-accent">
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Employees" type="button" class="btn btn-danger test-tooltip" href="{% url 'accounting:employees_delete' e.id_emp %}" {% if not perms.accounting.delete_employee %} disabled {% endif %}>
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </a>
+                            </toolbar>
+                        </td>
+                    </tr>
+                    </tbody>
+                     {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <a type="button" onclick="history.back(-1)">
+            <i class="fa fa-arrow-circle-left fa-3x"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

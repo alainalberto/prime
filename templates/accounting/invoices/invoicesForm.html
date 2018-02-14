@@ -1,0 +1,296 @@
+{% extends 'base.html' %}
+{% block extrastyle %}
+<script type="text/javascript">
+ function openpopup(url){
+   newwindow = window.open(url,'popup',' location=1, directories=0, resizable=0, width=500,height=700,Top=20,Left=490');
+   if (window.focus) {newwindow.focus()}
+   return false;
+ }
+ function closepopup(){
+   window.opener.location.href=window.opener.location.href;
+   window.close();
+   return false;
+ }
+
+ $(document).ready( function () {
+
+    $('#id_customers').val({{invoice.customers_id}});
+
+    $(".btn_add_cut").click(function() {
+      var column = $(this).closest('tr').children()[5].textContent;
+      $('#id_customers').val(column)
+      $('#customerList').modal('hide');
+    });
+
+    $(function() {
+        $("#id_customers").chained("#id_business");
+    });
+
+   $(".btn_add").click(function() {
+      var column1 = $(this).closest('tr').children()[0].textContent;
+      var column2 = $(this).closest('tr').children()[1].textContent;
+      var column3 = $(this).closest('tr').children()[2].textContent;
+      var column4 = $(this).closest('tr').children()[3].textContent;
+      $('#tbItem tr').each(function(index, element){
+          if($(element).find(".descript").val() == "" ){
+            $(element).find(".precie").val(column4);
+            $(element).find(".account").val(column1);
+            $(element).find(".descript").val(column2);
+             return false;
+          }
+
+       });
+       $(this).closest('tr').addClass('success');
+    });
+
+
+   $(".listitem").on("change", function() {
+      $('#valueunt').val();
+      });
+
+
+    $("#tbItem").on("input", "input", function() {
+       var input = $(this).parents("tr").find('.entrada').val();
+       var price = $(this).parents("tr").find('.precie').val();
+       var porc = $(this).parents("tr").find('.tax').val();
+       var total = input * price
+       var tax = (total*porc)/100
+       var calculated = total+tax;
+       $(this).parents("tr").find('.subtotal').val(calculated.toFixed(2));
+       sumar_columnas();
+    });
+    $(".btn_remove").click(function() {
+        $(this).parents("tr").find('.entrada').val("");
+        $(this).parents("tr").find('.precie').val("");
+        $(this).parents("tr").find('.tax').val("");
+        $(this).parents("tr").find('.descript').val("");
+        $(this).parents("tr").find('.account').val('');
+        $(this).parents("tr").find('.subtotal').val("")
+        sumar_columnas();
+    });
+
+    function sumar_columnas(){
+     var sum=0;
+     var disc=0;
+     if($('.discount').val() != 0){
+       var disc = parseFloat($('.discount').val());
+       }
+
+    $('.subtotal').each(function() {
+          v = 0;
+          v = $(this).val();
+         if (v != 0){
+           sum += parseFloat(v);
+           }
+    });
+
+    $('.servSutotal').val(sum.toFixed(2));
+    var subtotal = sum.toFixed(2);
+    var total = subtotal - disc
+    $('.serviTotal').val(total.toFixed(2));
+    }
+
+    $('.discount').keyup(function(){
+     if($('.discount').val() != 0){
+       var disc = parseFloat($('.discount').val());
+       var subtotal = parseFloat($('.servSutotal').val());
+       var total = subtotal - disc
+       $('.serviTotal').val(total.toFixed(2));
+       }
+    });
+
+  });
+</script>
+
+{% endblock %}
+{% block content %}
+
+         <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-indent fa-4x"></i>
+                    </div>
+                    <div class="col-xs-9 text-left">
+                        <div><h3>{{ title }}</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form name="form_invoices" method="post" class="form" role="form" id="form_invoices" validate>{% csrf_token %}
+                    <p class="bg-info"><strong>Invoice Header</strong></p>
+                <fieldset>
+                    <!-- Form Name -->
+                    <!-- Text input-->
+                    <div class="row">
+                     <div class="form-group col-md-1 col-md-offset-1">
+                        <label class="label-control">{{ form.prefix.label }}</label>
+                        {{ form.prefix }}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">{{ form.start_date.label }}</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{ form.start_date }}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">{{ form.end_date.label }}</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{form.end_date}}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">{{ form.business.label }} </label>
+                        {{ form.business }}
+                    </div>
+                    <!-- Select Basic -->
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">{{ form.waytopay.label }} </label>
+                        {{ form.waytopay }}
+                    </div>
+                    <div class="form-group col-md-5 col-md-offset-1">
+                        <label class="label-control">Select Customer:</label>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button type="button" id="addcustomer" class="btn btn-success test-tooltip" data-toggle="modal" data-target="#customerList"data-type="info" data-trigger="focus" title="Customer List" data-animation="am-flip-x">
+                                    <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </button>
+                            </span>
+                            <select id="id_customers" class="form-control input-md" name="customers" required="">
+                                <option value="" selected>---------</option>
+                                {% for c in customers %}
+                                <option value="{{c.id_cut}}" class="{{c.business.id_bus}}">{{c}}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="input-group-btn">
+                                <a type="button" id="newcustomer" class="btn btn-success test-tooltip" href="{% url 'accounting:customer_popup' 1 %}" target="popup" onclick="window.open('','popup',' location=1, directories=0, resizable=0, width=500,height=700,Top=20,Left=490')" data-trigger="focus" title="Add new Customer" data-animation="am-flip-x">
+                                    <i class="fa fa-plus"></i>
+                                    <tooltip md-direction="right"></tooltip>
+                                </a>
+                            </span>
+                        </div>
+
+                    </div>
+                    </div>
+                </fieldset>
+                    <div class="modal fade" id="itemList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title text-center" ><strong>Items Services List</strong></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table id="first_table" class="table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-center " style="display : none"></th>
+                                                <th class="text-center col-md-4">Item</th>
+                                                <th class="text-center col-md-4">Account</th>
+                                                <th class="text-center col-md-3">Value</th>
+                                                <th class="text-center col-md-1">Action</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for item in items %}
+                                            <tr>
+                                                <td style="display : none">{{item.accounts.id_acn}}</td>
+                                                <td>{{item.name}}</td>
+                                                <td>{{item.accounts}}</td>
+                                                <td>{{item.value}}</td>
+                                                <td>
+                                                    <a type="button" class="btn btn-info btn_add">Add</a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <fieldset>
+                        <p class="bg-info"><strong>Drescription to Invoice</strong></p>
+                        <div id="panelService">
+                            <div class="form-group col-md-offset-11">
+                                <a type="button" id="addService" class="btn btn-success test-tooltip" data-toggle="modal" data-target="#itemList"data-type="info" data-trigger="focus" title="Item List" data-animation="am-flip-x">
+                                    <i class="fa fa-list" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </a>
+                            </div>
+                            <br/>
+                            <table id="tbItem" name="tbItem" class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th class="text-center " style="display : none"></th>
+                                    <th class="text-center col-md-1">Quantity</th>
+                                    <th class="text-center col-md-3">Description</th>
+                                    <th class="col-md-3">Account</th>
+                                    <th class="col-md-1">Unit Price</th>
+                                    <th class="col-md-1">Tax</th>
+                                    <th class="col-md-1">SubTotal</th>
+                                    <th class="text-center col-md-1">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{ formset.management_form }}
+                                {% for form in formset %}
+                                <tr>
+                                    <td style="display : none">{{ form.id_ind }}</td>
+                                    <td>{{ form.quantity }}</td>
+                                    <td>{{ form.description }}</td>
+                                    <td>{{ form.accounts }}</td>
+                                    <td>{{ form.value }}</td>
+                                    <td>{{ form.tax }}</td>
+                                    <td>{{ form.subtotal}}</td>
+                                    <td>
+                                        <a type="button" class="btn btn-danger btn_remove" data-type="info" data-trigger="focus" title="Clear Item" data-animation="am-flip-x">
+                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                            <tooltip md-direction="left"></tooltip>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="form-group col-xs-9 col-md-2 col-md-offset-1">
+                            <label class="label-control">{{form.subtotal.label}}</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                {{form.subtotal}}
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-9 col-md-2 col-md-offset-1">
+                            <label class="label-control"> {{form.discount.label}} </label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                {{form.discount}}
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2 col-md-offset-1">
+                            <label class="label-control col-lg-9">{{form.total.label}}</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                {{form.total}}
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2 col-md-offset-1" >
+                            <label class="label-control">{{form.paid.label}} </label>
+                            {{form.paid}}
+                        </div>
+                    </fieldset>
+                    <!-- Button (Double) -->
+                    <div class="form-group col-md-5 col-md-offset-4">
+                        <input type="submit" class="btn btn-success" value="Save">
+                        <a type="button" onclick="history.back(-1)" class="btn btn-danger">Cancel </a>
+                    </div>
+                </form>
+            </div>
+         </div>
+ {% include 'accounting/customer/customerModal.html'%}
+{% endblock %}

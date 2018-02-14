@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% block extrastyle %}
+<script type="text/javascript">
+ $(document).ready( function () {
+    var show = false;
+    $("#view").click(function() {
+     if (!show){
+      show = true
+      $('#id_ssn').removeAttr("type", "password");
+      $("#id_ssn").prop("type", "text");
+      $("#view").removeClass("glyphicon glyphicon-eye-open");
+      $("#view").addClass("glyphicon glyphicon-eye-close");
+     }
+     else{
+      show = false
+      $('#id_ssn').removeAttr("type", "text");
+      $("#id_ssn").prop("type", "password");
+      $("#view").removeClass("glyphicon glyphicon-eye-close");
+      $("#view").addClass("glyphicon glyphicon-eye-open");
+     }
+    });
+    $("#id_type").on('change', function() {
+    if($(this).val() == "Owner Operation"){
+       $('#comercial').removeAttr("style", "display");
+    }
+    else{
+        $('#comercial').prop("style", "display : none");
+    }
+    });
+  });
+ </script>
+{% endblock %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-users fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>{{ title }}</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <form name="form_drivers" method="post" class="form" role="form" id="form_drivers" validate>{% csrf_token %}
+                <fieldset>
+                    <!-- Form Name -->
+                    <!-- Text input-->
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">{{form.name.label}} </label>
+                        {{form.name}}
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">{{ form.type.label }} </label>
+                        {{ form.type }}
+                    </div>
+                    <div id="comercial" style="display:none"  class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control"> {{ form.owner_name.label }}</label>
+                        {{ form.owner_name }}
+                    </div>
+                    <!-- Select Basic -->
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">{{ form.license_numb.label }} </label>
+                        {{ form.license_numb }}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">{{ form.address.label }} </label>
+                        {{ form.address }}
+                    </div>
+                     <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">{{ form.email.label }} </label>
+                        {{ form.email }}
+                    </div>
+                    <div class="form-group col-xs-9 col-md-4 col-md-offset-1">
+                        <label class="label-control">SSN:</label>
+                        <div class="input-group">
+                            {{form.ssn}}
+                            {% if perms.auth.add_user %}
+                            <span class="input-group-btn"><a id="view" name="view" class="view btn btn-success glyphicon glyphicon-eye-open" data-trigger="hola"></a></span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">{{ form.dob.label }}</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{ form.dob }}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">License Date Expiration:</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{form.lic_date_exp}}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                            <input type="checkbox"  aria-pressed="false" data-off-color="danger" class="switch" data-size="mini" data-on-text="Alert ON" data-off-text="Alert OFF" id="lic_alert" name="lic_alert" checked>
+                    </div>
+                     <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">Medicard Date Expiration:</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{form.medicard_date_exp}}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                            <input type="checkbox"  aria-pressed="false" data-off-color="danger" class="switch" data-size="mini" data-on-text="Alert ON" data-off-text="Alert OFF" id="medicard_alert" name="medicard_alert" checked>
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">{{ form.drugtest_date.label }}</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{ form.drugtest_date }}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">Drugtest Date Expiration:</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{form.drugtest_date_exp}}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                            <input type="checkbox"  aria-pressed="false" data-off-color="danger" class="switch" data-size="mini" data-on-text="Alert ON" data-off-text="Alert OFF" id="drugtest_alert" name="drugtest_alert" checked>
+                    </div>
+                     <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">{{ form.mbr_date.label }}</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{ form.mbr_date }}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">Mbr Date Expiration:</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{form.mbr_date_exp}}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                            <input type="checkbox"  aria-pressed="false" data-off-color="danger" class="switch" data-size="mini" data-on-text="Alert ON" data-off-text="Alert OFF" id="mbr_alert" name="mbr_alert" checked>
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">{{ form.begining_date.label }}</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{ form.begining_date }}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">{{ form.dow_payment.label }} </label>
+                        {{ form.dow_payment }}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">{{ form.escrow.label }} </label>
+                        {{ form.escrow }}
+                    </div>
+                     <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control"> {{ form.deactivate.label }}</label>
+                        {{ form.deactivate }}
+                    </div>
+                    <!-- Button (Double) -->
+                    <div class="form-group col-md-5 col-md-offset-4">
+                        <input type="submit" class="btn btn-success" value="Save" {% if is_popup %} onclick="closepopup()" {% endif %}>
+                        <a type="button"  class="btn btn-danger" {% if is_popup %} onclick="closepopup()" {% else %} onclick="history.back(-1)" {% endif %}>Cancel </a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

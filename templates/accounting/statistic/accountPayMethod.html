@@ -1,0 +1,71 @@
+
+        <div class="table-responsive">
+             <div class="col-lg-8 col-md-6">
+        <p class="bg-primary text-center">General Earning </p>
+
+            </div>
+    </div>
+            <div class="col-lg-6 col-md-6">
+            <p class="bg-primary text-center">INCOMES</p>
+            <table id="tbinc" class="table data-table table-bordered table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>Account</th>
+                    <th>Cash</th>
+                    <th>Check</th>
+                    <th>Credit Card</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for b in incomes %}
+                <tr>
+                    <td>{{b.account}}</td>
+                    <td>$ {{b.cash.total|default:'0'}}</td>
+                    <td>$ {{b.check.total|default:'0'}}</td>
+                    <td>$ {{b.credit.total|default:'0'}}</td>
+                    <td>$ <samp> {{ b.total }}</samp></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <td><strong> </strong></td>
+                <td><strong>$ <samp> {{ cash_i_total.total }}</samp></strong></td>
+                <td><strong>$ <samp> {{ check_i_total.total }}</samp></strong></td>
+                <td><strong>$ <samp> {{ credit_i_total.total }}</samp></strong></td>
+                <td><strong>$ <samp> {{ income_total.total }}</samp></strong></td>
+                </tfoot>
+            </table>
+            </div>
+                <div class="col-lg-6 col-md-6">
+            <p class="bg-primary text-center">EXPENSES</p>
+            <table id="tbexp" class="table data-table table-bordered table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>Account</th>
+                    <th>Cash</th>
+                    <th>Check</th>
+                    <th>Credit Card</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for b in expenses %}
+                <tr>
+                    <td>{{b.account}}</td>
+                    <td>$ {{b.cash.total|default:'0'}}</td>
+                    <td>$ {{b.check.total|default:'0'}}</td>
+                    <td>$ {{b.credit.total|default:'0'}}</td>
+                    <td>$ <samp> {{ b.total }}</samp></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <td><strong> </strong></td>
+                <td><strong>$ <samp> {{ cash_e_total.total }}</samp></strong></td>
+                <td><strong>$ <samp> {{ check_e_total.total }}</samp></strong></td>
+                <td><strong>$ <samp> {{ credit_e_total.total }}</samp></strong></td>
+                <td><strong>$ <samp> {{ expenses_total.total }}</samp></strong></td>
+                </tfoot>
+            </table>
+                </div>

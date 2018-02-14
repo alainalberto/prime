@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block extrastyle %}
+<script type="text/javascript">
+ function openpopup(url){
+   newwindow = window.open(url,'popup',' location=1, directories=0, resizable=0, width=500,height=700,Top=20,Left=490');
+   if (window.focus) {newwindow.focus()}
+   return false;
+ }
+ function closepopup(){
+   window.opener.location.href=window.opener.location.href;
+   window.close();
+   return false;
+ }
+</script>
+{% endblock %}
+{% block content %}
+<section>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-xs-3">
+          <i class="fa fa-list fa-4x"></i>
+        </div>
+        <div class="col-xs-9 text-left">
+          <div><h3>List Forms</h3></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="navbar-button">
+        <a id="btnAdd" class="btn-primary btn col-md-offset-11" role="button" data-trigger="focus" title="Add File" href="{% url 'services:file_create' %}" {% if not perms.accounting.add_account %} disabled {% endif %}>
+          <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+          <tooltip md-direction="left">New</tooltip>
+        </a>
+      </div>
+      <br/>
+
+       {% if forms %}
+       <table class="table table-striped">
+                            <thead>
+                            <th>Name</th>
+                            <th>Date Saved</th>
+                            <th>Action</th>
+
+                            </thead>
+                            <tbody>
+                             {% for file in forms %}
+                            <tr>
+                              <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="/static/media/{{ file.url }}" target="_blank">{{file.name}}</a></td>
+                              <td>{{ file.date_save }}</td>
+                              <td>
+                            <toolbar class="md-accent">
+                                <a data-type="info" onclick="openpopup('{% url 'services:file_edit_popup' pk=file.id_fil popup=1 %}')" data-trigger="focus"  data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </a>
+                            </toolbar>
+                            <toolbar class="md-accent">
+                                <a data-type="info" onclick="openpopup('{% url 'services:file_delete' file.id_fil %}')" data-animation="am-flip-x" data-trigger="focus"   type="button" class="btn btn-danger test-tooltip">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </a>
+                            </toolbar>
+                        </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+      {% else %}
+      <div class="alert alert-info"> <strong>Atention!</strong> No documents.</div>
+      {% endif %}
+      </div>
+      <nav class="col-md-offset-10" aria-label="Page navigation">
+                <ul class="pager">
+                    {% if forms.has_previous %}
+                    <li>
+                        <a  href="?page={{ forms.previous_page_number }}"><span>
+                            <span aria-hidden="true">&laquo;</span>
+                        </span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    <span class="current">
+                        Page {{ forms.number }} of {{ forms.paginator.num_pages }}.
+                    </span>
+                    {% if forms.has_next %}
+                    <li>
+                        <a href="?page={{ forms.next_page_number }}">
+                            <span>
+                                <span aria-hidden="true">&raquo;</span>
+                            </span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+  </div>
+</section>
+{% endblock %}

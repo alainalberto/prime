@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-tasks fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>Loads</h3></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            {% if perms.logistic.add_load %}
+            <div class="navbar-button">
+                <a id="btnAdd" class="btn-primary btn col-md-offset-11" role="button" data-trigger="focus" title="Add Load" href="{% url 'logistic:load_create' %}">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    <tooltip md-direction="left">New</tooltip>
+                </a>
+            </div>
+            <br/>
+            {% endif %}
+            <div class="row">
+            <p class="bg-info text-center"><strong>Company Loads</strong></p>
+            <div class="table-responsive">
+            <table id="listLoads" class="data-table table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Broker</th>
+                    <th>Driver</th>
+                    <th>Dispatch</th>
+                    <th>Pick up Date</th>
+                    <th>Pick up From</th>
+                    <th>Deliver to</th>
+                    <th>Value</th>
+                    <th>Paid</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for l in loads %}
+                <tr>
+                    <td>{{l.number}}</td>
+                    <td>{{l.broker}}</td>
+                     <td>{{l.driver}}</td>
+                     <td>{{l.dispatch}}</td>
+                    <td>{{l.pickup_date}}</td>
+                    <td>{{l.pickup_from}}</td>
+                    <td>{{l.deliver}}</td>
+                    <td>{{l.value}}</td>
+                    <td>{% if l.paid %}
+                       <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if perms.logistic.change_load %}
+                        <toolbar class="md-accent">
+                            <a data-type="info" data-trigger="focus" title="Edit Load" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'logistic:load_edit' l.id_lod %}">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                <tooltip md-direction="left"></tooltip>
+                            </a>
+                        </toolbar>
+                        {% endif %}
+                        {% if perms.logistic.delete_load %}
+                        <toolbar class="md-accent">
+                            <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Load" type="button" class="btn btn-danger test-tooltip" href="{% url 'logistic:load_delete' l.id_lod %}">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                <tooltip md-direction="left"></tooltip>
+                            </a>
+                        </toolbar>
+                        {% endif %}
+                        {% if perms.logistic.add_load %}
+                        <toolbar class="md-accent">
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Print to PDF" type="button" class="btn btn-primary test-tooltip" href="{% url 'logistic:load_pdf' l.id_lod%}">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </a>
+                        </toolbar>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+            </div>
+            <div class="row">
+            <p class="bg-info text-center"><strong>Othes Company Loads</strong></p>
+            <div class="table-responsive">
+            <table id="listloadsother" class="data-table table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Broker</th>
+                     <th>Company</th>
+                    <th>Driver</th>
+                    <th>Dispatch</th>
+                    <th>Pick up Date</th>
+                    <th>Pick up From</th>
+                    <th>Deliver to</th>
+                    <th>Value</th>
+                    <th>Paid</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for l in loads_other %}
+                <tr>
+                    <td>{{l.loads.number}}</td>
+                    <td>{{l.loads.broker}}</td>
+                    <td>{{l.customers.company_name}}</td>
+                    <td>{{l.driver}}</td>
+                    <td>{{l.loads.dispatch}}</td>
+                    <td>{{l.loads.pickup_date}}</td>
+                    <td>{{l.loads.pickup_from}}</td>
+                    <td>{{l.loads.deliver}}</td>
+                    <td>{{l.loads.value}}</td>
+                    <td>{% if l.loads.paid %}
+                       <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if perms.logistic.change_load %}
+                        <toolbar class="md-accent">
+                            <a data-type="info" data-trigger="focus" title="Edit Load" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'logistic:load_edit' l.loads.id_lod %}">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                <tooltip md-direction="left"></tooltip>
+                            </a>
+                        </toolbar>
+                        {% endif %}
+                        {% if perms.logistic.delete_load %}
+                        <toolbar class="md-accent">
+                            <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Load" type="button" class="btn btn-danger test-tooltip" href="{% url 'logistic:load_delete' l.loads.id_lod %}">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                <tooltip md-direction="left"></tooltip>
+                            </a>
+                        </toolbar>
+                        {% endif %}
+                        {% if perms.logistic.add_load %}
+                        <toolbar class="md-accent">
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Print to PDF" type="button" class="btn btn-primary test-tooltip" href="{% url 'logistic:load_pdf' l.loads.id_lod%}">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </a>
+                        </toolbar>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <a type="button" onclick="history.back(-1)">
+            <i class="fa fa-arrow-circle-left fa-3x"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

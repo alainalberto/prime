@@ -1,0 +1,37 @@
+ <div class="modal fade" id="customerList" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center"><strong>Customers List</strong></h4>
+                </div>
+                <div class="modal-body">
+                    <table id="customer_table" class="table data-table">
+                        <thead>
+                        <tr>
+                            <th class="col-md-3">Name</th>
+                            <th class="col-md-3">Company Name</th>
+                            <th class="col-md-4">Address</th>
+                            <th class="col-md-1">Phone</th>
+                            <th class="col-md-1">Action</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for c in customers %}
+                        <tr>
+                            <td>{{c.fullname}}</td>
+                            <td>{{c.company_name}}</td>
+                            <td>{{c.address}}</td>
+                            <td>{{c.phone}}</td>
+                            <td>
+                                <a type="button" class="btn btn-info btn_add_cut" data-dismiss="#customerList">Add</a>
+                            </td>
+                            <td style="display : none">{{c.id_cut}}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+ </div>

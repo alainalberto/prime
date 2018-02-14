@@ -1,0 +1,37 @@
+<section>
+    <div class="table-responsive">
+                <table id="listCustomer" class="data-table table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="col-md-2">Serial</th>
+                        <th class="col-md-3">Start Date</th>
+                        <th class="col-md-3">End Date</th>
+                        <th class="col-md-1">Type</th>
+                        <th class="col-md-2">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for p in contracts %}
+                    <tr {% if p.state == "Initiated" %} class="warning" {% endif %}  {% if p.state == "Pending" %} class="danger" {% endif %} {% if p.state == "Finalized" %} class="success" {% endif %}>
+                        <td><a onclick="openpopup('{% url 'services:contract' pk=p.id_con popup=1%}')">{{p.serial}}</a></td>
+                        <td>{{p.start_date}}</td>
+                        <td>{{p.end_date}}</td>
+                        <td>{{p.type}}</td>
+                        <td>
+                            {% if perms.services.change_contract %}
+                            <toolbar class="md-accent">
+                                <a type="button" class="btn btn-info" href="{% url 'services:contract_edit' p.id_con %}"><span><i class="fa fa-pencil-square-o"></i></span></a>
+                            </toolbar>
+                            {% endif %}
+                            {% if perms.services.add_contract %}
+                            <toolbar class="md-accent">
+                                <a type="button" class="btn btn-danger" href="{% url 'services:contract_delete' p.id_con %}"><span><i class="fa fa-trash"></i></span></a>
+                            </toolbar>
+                            {% endif %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+</section>

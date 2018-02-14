@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block extrastyle %}
+<script type="text/javascript">
+ function openpopup(url){
+   newwindow = window.open(url,'popup',' location=1, directories=0, resizable=0, width=500,height=700,Top=20,Left=490');
+   if (window.focus) {newwindow.focus()}
+   return false;
+ }
+ function closepopup(){
+   window.opener.location.href=window.opener.location.href;
+   window.close();
+   return false;
+ }
+</script>
+{% endblock %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+  <div class="panel-heading">
+      <div class="row">
+          <div class="col-xs-3">
+              <i class="fa fa-indent fa-4x"></i>
+          </div>
+          <div class="col-xs-9 text-left">
+              <div><h3>{{ title }}</h3></div>
+          </div>
+      </div>
+  </div>
+        <div class="panel-body">
+            <form name="form_account" method="post" enctype="multipart/form-data" class="form" role="form" id="form_account" validate>{% csrf_token %}
+                <fieldset>
+                    <!-- Form Name -->
+                    <!-- Text input-->
+                    {% if customers %}
+                    <div class="form-group col-md-5 col-md-offset-1">
+                        <label class="label-control">Select Customer:</label>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button type="button" id="addcustomer" class="btn btn-success test-tooltip" data-toggle="modal" data-target="#customerList"data-type="info" data-trigger="focus" title="Customer List" data-animation="am-flip-x">
+                                    <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </button>
+                            </span>
+                             <select id="id_customers" class="form-control input-md" name="customers" required="">
+                                <option value="" selected>---------</option>
+                                {% for c in customers %}
+                                <option value="{{c.id_cut}}">{{c}}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="input-group-btn">
+                                <a type="button" id="newcustomer" class="btn btn-success test-tooltip" href="{% url 'accounting:customer_popup' 1 %}" target="popup" onclick="window.open('','popup',' location=1, directories=0, resizable=0, width=500,height=700,Top=20,Left=490')" data-trigger="focus" title="Add new Customer" data-animation="am-flip-x">
+                                    <i class="fa fa-plus"></i>
+                                    <tooltip md-direction="right"></tooltip>
+                                </a>
+                            </span>
+                        </div>
+
+                    </div>
+                   {% include 'accounting/customer/customerModal.html'%}
+                    {% endif %}
+                    {% if form_files %}
+                    <table class="table table-striped">
+                        <thead>
+                        <th>File Name</th>
+                        <th>Category</th>
+                        <th>Select Files</th>
+                        </thead>
+                        <tbody>
+                        {{ form_files.management_form }}
+                        {% for f in form_files %}
+                        {{ f.errors }}
+                        {{ f.non_field_errors }}
+                        <tr>
+                            <td>{{ f.name }}</td>
+                            <td>{{ f.category }}</td>
+                            <td>{{ f.url }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <div class="form-group col-md-4 col-md-offset-4" >
+                        <label class="label-control">Name: </label>
+                        {{form.name}}
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group col-md-4 col-md-offset-4">
+                        <label class="label-control">Category: </label>
+                        {{ form.category }}
+                    </div>
+                    <!-- Select Basic -->
+                    <div class="form-group col-md-4 col-md-offset-4">
+                        <label class="label-control">Upload File: </label>
+                        {{ form.url }}
+                    </div>
+                    {% endif %}
+                    <!-- Button (Double) -->
+                    <div class="form-group col-md-4 col-md-offset-4">
+                        <input type="submit" class="btn btn-success" value="Save" {% if is_popup %} onclick="closepopup()" {% endif %}>
+                        <a type="button" class="btn btn-danger" {% if is_popup %} onclick="closepopup()" {% else %} onclick="history.back(-1)" {% endif %}>Cancel </a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

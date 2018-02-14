@@ -1,0 +1,39 @@
+<section>
+    <div class="table-responsive">
+                <table id="listEquipment" class="data-table table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="col-md-2">Type</th>
+                        <th class="col-md-3">Serial</th>
+                        <th class="col-md-3">Model</th>
+                         <th class="col-md-1">Year</th>
+                        <th class="col-md-1">Plate Number</th>
+                        <th class="col-md-2">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for e in equipments %}
+                    <tr {% if e.state == "Initiated" %} class="warning" {% endif %}  {% if e.state == "Pending" %} class="danger" {% endif %} {% if e.state == "Finalized" %} class="success" {% endif %}>
+                        <td><a onclick="openpopup('{% url 'services:equipment' pk=e.id_tru popup=1%}')">{{e.type}}</a></td>
+                        <td>{{e.serial}}</td>
+                        <td>{{e.model}}</td>
+                        <td>{{e.year}} </td>
+                        <td>{{e.plate_account_number}}</td>
+                        <td>
+                            {% if perms.services.change_equipment %}
+                            <toolbar class="md-accent">
+                                <a type="button" class="btn btn-info" href="{% url 'services:equipment_edit' e.id_tru %}"><span><i class="fa fa-pencil-square-o"></i></span></a>
+                            </toolbar>
+                            {% endif %}
+                            {% if perms.services.delete_equipment %}
+                            <toolbar class="md-accent">
+                                <a type="button" class="btn btn-danger"  target="popup" onclick="openpopup('{% url 'services:equipment_delete' e.id_tru %}')"><span><i class="fa fa-trash"></i></span></a>
+                            </toolbar>
+                            {% endif %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+</section>

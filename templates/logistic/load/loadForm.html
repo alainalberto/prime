@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% block extrastyle %}
+<script type="text/javascript">
+
+ $(document).ready( function () {
+    $(function() {
+        $("#id_drivers").chained("#id_customers");
+
+    });
+
+    $(".btn_add_cut").click(function() {
+      var column = $(this).closest('tr').children()[5].textContent;
+      $('#id_customers').val(column);
+      $('#customerList').modal('hide');
+    });
+    $("#id_other_company").change(function() {
+        if (this.checked) {
+            $('#driver_local').attr("style", "display : none;");
+            $('#id_driver').removeAttr("required");
+            $('#company_other').attr("style", "display : initial;");
+            $('#id_customers').attr("required", "true");
+            $('#id_drivers').attr("required", "true");
+        }
+        else {
+            $('#driver_local').attr("style", "display : initial;");
+            $('#id_driver').attr("required", "true");
+            $('#company_other').attr("style", "display : none;");
+            $('#id_customers').removeAttr("required");
+            $('#id_drivers').removeAttr("required");
+
+        }
+    });
+
+
+  });
+</script>
+
+{% endblock %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-users fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>{{ title }}</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <form name="form_customer" method="post" class="form" role="form" id="form_customer" validate>{% csrf_token %}
+                <fieldset>
+                    <!-- Form Name -->
+                    <!-- Text input-->
+                    <div class="form-group col-md-4 col-md-offset-8" >
+                     {{form.other_company}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">{{form.broker.label}} </label>
+                        {{form.broker}}
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control"> {{ form.number.label }}</label>
+                        {{ form.number }}
+                    </div>
+                    <!-- Select Basic -->
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">{{ form.pickup_from.label }} </label>
+                        {{ form.pickup_from }}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">{{ form.pickup_date.label }}</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{ form.pickup_date }}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control"> {{ form.deliver.label }} </label>
+                        {{ form.deliver }}
+                    </div>
+                    <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">{{ form.deliver_date.label }}</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{ form.deliver_date }}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4 col-md-offset-1" id="driver_local">
+                        <label class="label-control">{{ form.driver.label }} </label>
+                        {{ form.driver }}
+                    </div>
+                    <div id="company_other" style="display:none">
+                        <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">Select Customer:</label>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button type="button" id="addcustomer" class="btn btn-success test-tooltip" data-toggle="modal" data-target="#customerList" data-type="info" data-trigger="focus" title="Customer List" data-animation="am-flip-x">
+                                    <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </button>
+                            </span>
+                            <select id="id_customers" class="form-control input-md" name="customer">
+                            <option value="" selected>---------</option>
+                            {% for c in customers %}
+                            <option value="{{c.id_cut}}">{% if c.company_name %} {{c.company_name}} {% else %} {{c}} {% endif %}</option>
+                            {% endfor %}
+                        </select>
+                        </div>
+
+                    </div>
+                    {% include 'accounting/customer/customerModal.html'%}
+                       <div class="form-group col-md-3 col-md-offset-1">
+                        <label class="label-control">Select Driver:</label>
+
+                        <select id="id_drivers" class="form-control input-md" name="drivers">
+                            <option value="" selected>---------</option>
+                            {% for d in drivers %}
+                            <option value="{{d.id_drv}}" class="{{d.customers.id_cut}}">{{d}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">{{ form.dispatch.label }} </label>
+                        {{ form.dispatch }}
+                    </div>
+                     <div class="form-group col-md-3 col-md-offset-2">
+                        <label class="label-control"> {{ form.value.label }} </label>
+                        {{ form.value }}
+                    </div>
+                    <div class="form-group col-md-7 col-md-offset-3" >
+                        <label class="label-control text-up">{{form.note.label}}</label>
+                        {{form.note}}
+                    </div>
+
+                    <!-- Button (Double) -->
+                    <div class="form-group col-md-5 col-md-offset-4">
+                        <input type="submit" class="btn btn-success" value="Save">
+                        <a type="button" href="{% url 'logistic:loads' %}" class="btn btn-danger">Cancel </a>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

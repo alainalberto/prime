@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% block extrastyle %}
+<script type="text/javascript">
+ function closepopup(){
+   window.close();
+   return false;
+ }
+</script>
+{% endblock %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-building fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>{{ title }}</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-group col-md-4 col-md-offset-1" >
+                <label class="label-control">Company Name:</label>
+                <div>{{permit.name}}</div>
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+                <label class="label-control">Authorized Person:</label>
+                <div>{{permit.attorney}}</div>
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+                <label class="label-control">Other Authorized Person:</label>
+                <div>{{permit.otheattorney}}</div>
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+                <label class="label-control">Address:</label>
+                <div>{{permit.address}}</div>
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+                <label class="label-control">Phone Number:</label>
+                <div>{{permit.phone}}</div>
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+                <label class="label-control">other Phone Number:</label>
+                <div>{{permit.othephone}}</div>
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+                <label class="label-control">Fax Number:</label>
+                <div>{{permit.fax}}</div>
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1" >
+                <label class="label-control">EIN Number:</label>
+                <div>{{permit.ein}}</div>
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">USDOT Number:</label>
+                {{permit.usdot}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">USDOT Pin:</label>
+                {{permit.usdot_pin}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">TEXA DMV Number:</label>
+                {{permit.txdmv}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">TEXA DMV User:</label>
+                {{permit.txdmv_user}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">TEXA DMV Password:</label>
+                {{permit.txdmv_passd}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1">
+                <label class="label-control">TEXA DMV Date:</label>
+                {{permit.txdmv_date}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1">
+                <label class="label-control">TEXA DMV Expiration:</label>
+                {{permit.txdmv_date_exp}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">MC Number:</label>
+                {{permit.mc}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">MC Pin:</label>
+                {{permit.mc_pin}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">BOC 3 Number:</label>
+                {{permit.boc3}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1">
+                <label class="label-control">BOC 3 Date:</label>
+                {{permit.boc3_date}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">UCR:</label>
+                {{permit.ucr}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">UCR:</label>
+                {{permit.ucr_date_exp}}
+            </div>
+            <div class="form-group col-md-2 col-md-offset-1" >
+                <label class="label-control">Unity:  </label>
+                {{permit.unit}}
+            </div>
+            <div class="form-group col-md-2 col-md-offset-1" >
+                <label class="label-control">Service Process:  </label>
+                {{permit.state}}
+            </div>
+            {% if permit.deactivated %}
+            <div class="form-group col-md-3 col-md-offset-1" >
+                <label class="label-control">Is Deactivate:</label>
+                {{permit.deactivate}}
+            </div>
+            <div class="form-group col-md-3 col-md-offset-1" >
+                <label class="label-control">Deactivate Date:</label>
+                {{permit.deactivate_date}}
+            </div>
+            {% endif %}
+            <div class="form-group col-md-5 col-md-offset-4">
+                <a type="button"  class="btn btn-danger" {% if is_popup %} onclick="closepopup()" {% else %} onclick="history.back(-1)" {% endif %}>OK </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

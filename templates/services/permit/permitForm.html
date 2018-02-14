@@ -1,0 +1,229 @@
+{% extends 'base.html' %}
+{% block extrastyle %}
+<script type="text/javascript">
+ function openpopup(url){
+   newwindow = window.open(url,'popup',' location=1, directories=0, resizable=0, width=500,height=700,Top=20,Left=490');
+   if (window.focus) {newwindow.focus()}
+   return false;
+ }
+ function closepopup(){
+   window.opener.location.href=window.opener.location.href;
+   window.close();
+   return false;
+ }
+ $(document).ready( function () {
+   $(".btn_add_cut").click(function() {
+      var column = $(this).closest('tr').children()[5].textContent;
+      $('#id_customers').val(column)
+      $('#customerList').modal('hide');
+    });
+    $("#btninter").change(function() {
+        if (this.checked) {
+            $('#inter').attr("style", "display : initial;");
+        }
+        else {
+            $('#inter').attr("style", "display : none;");
+        }
+    });
+
+  });
+</script>
+{% endblock %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-building fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>{{ title }}</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <form name="form_company" method="post" class="form" role="form" id="form_company" validate>{% csrf_token %}
+
+                <fieldset>
+                    {% if not is_popup %}
+                    <div class="form-group col-md-5 col-md-offset-3">
+                        <label class="label-control">Select Customer:</label>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button type="button" id="addcustomer" class="btn btn-success test-tooltip" data-toggle="modal" data-target="#customerList" data-type="info" data-trigger="focus" title="Customer List" data-animation="am-flip-x">
+                                    <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                    <tooltip md-direction="left"></tooltip>
+                                </button>
+                            </span>
+                            {{ form.customers }}
+                            <span class="input-group-btn">
+                                <a type="button" id="newcustomer" class="btn btn-success test-tooltip" href="{% url 'accounting:customer_popup' 1 %}" target="popup" onclick="window.open('','popup',' location=1, directories=0, resizable=0, width=500,height=700,Top=20,Left=490')" data-trigger="focus" title="Add new Customer" data-animation="am-flip-x">
+                                    <i class="fa fa-plus"></i>
+                                    <tooltip md-direction="right"></tooltip>
+                                </a>
+                            </span>
+                        </div>
+
+                    </div>
+                    {% include 'accounting/customer/customerModal.html'%}
+                    {% endif %}
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">Is New Company:</label>
+                        {{form.is_new}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        {{form.inter}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">Company Name:</label>
+                        {{form.name}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">Legal Status:</label>
+                        {{form.legal_status}}
+                    </div>
+                     <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">Business Type:</label>
+                        {{form.gusiness_type}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">Authorized Person:</label>
+                        {{form.attorney}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">Other Authorized Person:</label>
+                        {{form.otheattorney}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">Address:</label>
+                        {{form.address}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">Phone Number:</label>
+                        {{form.phone}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">Other Phone Number:</label>
+                        {{form.othephone}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">Fax Number:</label>
+                        {{form.fax}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">EIN Number:</label>
+                        {{form.ein}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">USDOT Number:</label>
+                        {{form.usdot}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">USDOT Pin:</label>
+                        {{form.usdot_pin}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">TEXA DMV Number:</label>
+                        {{form.txdmv}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">TEXA DMV User:</label>
+                        {{form.txdmv_user}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1" >
+                        <label class="label-control">TEXA DMV Password:</label>
+                        {{form.txdmv_passd}}
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">TEXA DMV Date:</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{form.txdmv_date}}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4 col-md-offset-1">
+                        <label class="label-control">TEXA DMV Expiration:</label>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            {{form.txdmv_date_exp}}
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                        <input type="checkbox"  aria-pressed="false" data-off-color="danger" class="switch" data-size="mini" data-on-text="Alert ON" data-off-text="Alert OFF" id="txdmv_alert" name="txdmv_alert" checked>
+                    </div>
+
+
+                    <div id="inter" style="display : none">
+                        <div class="form-group col-md-4 col-md-offset-1" >
+                            <label class="label-control">Account Number:</label>
+                            {{form.account_number}}
+                        </div>
+                        <div class="form-group col-md-4 col-md-offset-1" >
+                            <label class="label-control">Account User:</label>
+                            {{form.account_user}}
+                        </div>
+                        <div class="form-group col-md-4 col-md-offset-1" >
+                            <label class="label-control">Account Password:</label>
+                            {{form.account_password}}
+                        </div>
+                        <div class="form-group col-md-4 col-md-offset-1" >
+                            <label class="label-control">BOC 3 Number:</label>
+                            {{form.boc3}}
+                        </div>
+                        <div class="form-group col-md-4 col-md-offset-1">
+                            <label class="label-control">BOC 3 Date:</label>
+                            <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                {{form.boc3_date}}
+                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4 col-md-offset-1" >
+                            <label class="label-control">MC Number:</label>
+                            {{form.mc}}
+                        </div>
+                        <div class="form-group col-md-4 col-md-offset-1" >
+                            <label class="label-control">MC Pin:</label>
+                            {{form.mc_pin}}
+                        </div>
+                        <div class="form-group col-md-4 col-md-offset-1" >
+                            <label class="label-control">UCR:</label>
+                            {{form.ucr}}
+                        </div>
+                        <div class="form-group col-md-4 col-md-offset-1">
+                            <label class="label-control">UCR Expiration:</label>
+                            <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                {{form.ucr_date_exp}}
+                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                            </div>
+                            <input type="checkbox" id="ucr_alert" name="ucr_alert" data-off-color="danger" class="switch" data-size="mini" data-on-text="Alert ON" data-off-text="Alert OFF" checked>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-2 col-md-offset-1" >
+                        <label class="label-control">Unit:</label>
+                        {{form.unit}}
+                    </div>
+                    <div class="form-group col-md-2 col-md-offset-1" >
+                        <label class="label-control">Service Process:</label>
+                        {{form.state}}
+                    </div>
+                    <div class="form-group col-md-2 col-md-offset-1" >
+                        <label class="label-control"> Is Deactivate: </label>
+                        {{form.deactivate}}
+                    </div>
+                    {% if form.deactivate and deactivate%}
+                    <div class="form-group col-md-2 col-md-offset-1" >
+                        <label class="label-control">Deactivate Date:</label>
+                        {{form.deactivate_date}}
+                    </div>
+                    {% endif %}
+                    {% if not deactivate %}
+                    <div class="form-group col-md-5 col-md-offset-4">
+                        <input type="submit" class="btn btn-success" value="Save" {% if is_popup %} onclick="closepopup()" {% endif %}>
+                        <a type="button"  class="btn btn-danger" {% if is_popup %} onclick="closepopup()" {% else %} onclick="history.back(-1)" {% endif %}>Cancel </a>
+                    </div>
+                    {% endif %}
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

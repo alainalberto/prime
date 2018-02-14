@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block extrastyle %}
+<script type="text/javascript">
+ function closepopup(){
+   window.close();
+   return false;
+ }
+</script>
+{% endblock %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-building fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>{{ title }}</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Serial:</label>
+                {{contract.serial}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Start Date:</label>
+                {{contract.start_date}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">End Date:</label>
+                {{contract.end_date}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Type:</label>
+                {{contract.type}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Description:</label>
+                {{contract.description}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">State:</label>
+                {{contract.state}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">File:</label>
+                <a href="/static/media/{{ contract.files.url }}" target="_blank">{{contract.files}}</br></a>
+            </div>
+        <div class="form-group col-md-5 col-md-offset-4">
+            <a type="button"  class="btn btn-danger" {% if is_popup %} onclick="closepopup()" {% else %} onclick="history.back(-1)" {% endif %}>OK </a>
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock %}

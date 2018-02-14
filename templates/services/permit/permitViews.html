@@ -1,0 +1,39 @@
+<section>
+    <div class="table-responsive">
+                <table id="listCustomer" class="data-table table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="col-md-2">Name</th>
+                        <th class="col-md-3">Authorize Person</th>
+                        <th class="col-md-3">Address</th>
+                        <th class="col-md-1">Phone</th>
+                        <th class="col-md-1">EIN</th>
+                        <th class="col-md-2">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for p in permits %}
+                    <tr {% if p.state == "Initiated" %} class="warning" {% endif %}  {% if p.state == "Pending" %} class="danger" {% endif %} {% if p.state == "Finalized" %} class="success" {% endif %}>
+                        <td><a onclick="openpopup('{% url 'services:permit' pk=p.id_com popup=1%}')">{{p.name}}</a></td>
+                        <td>{{p.attorney}}</td>
+                        <td>{{p.address}}</td>
+                        <td>{{p.phone}}</td>
+                        <td>{{p.ein}} </td>
+                        <td>
+                            {% if perms.services.change_permit %}
+                            <toolbar class="md-accent">
+                                <a type="button" class="btn btn-info" href="{% url 'services:permit_edit' p.id_com %}"><span><i class="fa fa-pencil-square-o"></i></span></a>
+                            </toolbar>
+                            {% endif %}
+                            {% if perms.services.add_permit %}
+                            <toolbar class="md-accent">
+                                <a type="button" class="btn btn-danger" href="{% url 'services:permit_delete' p.id_com %}"><span><i class="fa fa-trash"></i></span></a>
+                            </toolbar>
+                            {% endif %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+</section>

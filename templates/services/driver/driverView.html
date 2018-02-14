@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block extrastyle %}
+<script type="text/javascript">
+ function closepopup(){
+   window.close();
+   return false;
+ }
+</script>
+{% endblock %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-building fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>{{ title }}</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Name:</label>
+                {{driver.name}}
+            </div>
+             <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">License Number:</label>
+                {{driver.license_numb}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Address:</label>
+                {{driver.address}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Dob:</label>
+                {{driver.dob}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">License Date Expiration:</label>
+                {{driver.lic_date_exp}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Medicard Date Expiration:</label>
+                {{driver.medicard_date_exp}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Drugtest Date:</label>
+                {{driver.drugtest_date}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Drugtest Date Expiration:</label>
+                {{driver.drugtest_date_exp}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Mbr Date:</label>
+                {{driver.mbr_date}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Mbr Date Expiration:</label>
+                {{driver.mbr_date_exp}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Begining Date:</label>
+                {{driver.begining_date}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Deactivate:</label>
+                {{driver.deactivate}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">Deactivate Date:</label>
+                {{driver.deactivate_date}}
+            </div>
+            <div class="form-group col-md-5 col-md-offset-1" >
+                <label class="label-control">State:</label>
+                {{driver.state}}
+            </div>
+
+        <div class="form-group col-md-5 col-md-offset-4">
+            <a type="button"  class="btn btn-danger" {% if is_popup %} onclick="closepopup()" {% else %} onclick="history.back(-1)" {% endif %}>OK </a>
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock %}

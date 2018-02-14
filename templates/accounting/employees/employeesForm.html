@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-indent fa-4x"></i>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div><h3>{{ title }}</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <form name="form_employees" method="post" class="form" role="form" id="form_employees" validate>{% csrf_token %}
+
+                <!-- Form Name -->
+                <!-- Text input-->
+
+                <!-- Text input-->
+
+                <div class="form-group col-md-4 col-md-offset-1">
+                    <label class="label-control">{{ form.name.label }} </label>
+                    {{ form.name }}
+                </div>
+                <!-- Select Basic -->
+                <div class="form-group col-md-4 col-md-offset-1">
+                    <label class="label-control">{{ form.lastname.label }} </label>
+                    {{ form.lastname }}
+                </div>
+                <div class="form-group col-md-4 col-md-offset-1">
+                    <label class="label-control">{{ form.address.label }} </label>
+                    {{ form.address }}
+                </div>
+
+                <div class="form-group col-md-4 col-md-offset-1">
+                    <label class="label-control">{{ form.phone.label }}</label>
+                    {{ form.phone }}
+                </div>
+                <div class="form-group col-md-4 col-md-offset-1">
+                    <label class="label-control">{{ form.email.label }}</label>
+                    {{ form.email }}
+                </div>
+                <div class="form-group col-md-4 col-md-offset-1">
+                    <label class="label-control">{{ form.social_no.label }} </label>
+                    {{ form.social_no }}
+                </div>
+                <div class="form-group col-md-4 col-md-offset-1" >
+                    <label class="label-control">{{form.business.label}} </label>
+                    {{form.business}}
+                </div>
+                <div class="form-group col-md-4 col-md-offset-1">
+                    <label class="label-control">{{ form.date_admis.label }}</label>
+                    <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                        {{ form.date_admis }}
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                    </div>
+                </div>
+                <div class="form-group col-md-4 col-md-offset-1">
+                    <label class="label-control">{{ form.type_salary.label }}</label>
+                    {{ form.type_salary }}
+                </div>
+                <div class="form-group col-md-4 col-md-offset-1">
+                    <label class="label-control">{{ form.value.label }}</label>
+                    {{ form.value }}
+                </div>
+                <div class="form-group col-md-4 col-md-offset-1">
+                    <label class="label-control">{{ form.position.label }} </label>
+                    {{ form.position }}
+                </div>
+                <!-- Button (Double) -->
+                <div class="form-group col-md-5 col-md-offset-4">
+                    <input type="submit" class="btn btn-success" value="Save">
+                    <a type="button" href="{% url 'accounting:employees' %}" class="btn btn-danger">Cancel </a>
+                </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+
