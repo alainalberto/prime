@@ -73,7 +73,7 @@
                 </thead>
                 <tbody>
                 {% for c in object_list %}
-                <tr>
+                <tr {% if c.deactivated %} class="danger" {% endif %}>
                      <td>{{c.company_name}}</td>
                     <td><a href="{% url 'accounting:customer_view' c.id_cut %}">{{c.fullname}}</a></td>
                     <td>{{c.address}}</td>
