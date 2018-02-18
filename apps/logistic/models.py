@@ -2,9 +2,9 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
-from apps.accounting.models import Account, Invoice, InvoiceLoad, Fee, Payment
+from apps.accounting.models import Account, Invoice, Fee, Payment
 
-from apps.services.models import Customer, Driver
+from apps.services.models import Customer, Driver, DispatchLoad
 
 from apps.tools.models import Busines
 
@@ -31,7 +31,6 @@ class TrucksLogt(models.Model):
 class DriversLogt(models.Model):
     id_dr = models.AutoField(primary_key=True)
     users = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
-    business = models.ForeignKey(Busines, blank=True, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=45, blank=True, null=True)
     ssn = models.CharField(max_length=10, blank=True, null=True)
     owner_name = models.CharField(max_length=75, blank=True, null=True)
@@ -58,7 +57,6 @@ class DriversLogt(models.Model):
 class DispatchLogt(models.Model):
     id_dsp = models.AutoField(primary_key=True)
     users = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
-    business = models.ForeignKey(Busines, blank=True, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=45, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)
     comission = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
@@ -174,11 +172,6 @@ class InvoicesHasLoad(models.Model):
     loads = models.ForeignKey(Load, on_delete=models.CASCADE)  # Field name made lowercase.
 
 
-class InvoicesLoadHasLoad(models.Model):
-    id_inl = models.AutoField(primary_key=True)
-    invoices = models.ForeignKey(InvoiceLoad, on_delete=models.CASCADE)  # Field name made lowercase.
-    loads = models.ForeignKey(Load, on_delete=models.CASCADE)  # Field name made lowercase.
-
 class DriversHasPayment(models.Model):
     id_pym = models.AutoField(primary_key=True)
     payments = models.ForeignKey(Payment, on_delete=models.CASCADE)  # Field name made lowercase.
@@ -210,6 +203,11 @@ class CustomerHasLoad(models.Model):
     customers = models.ForeignKey(Customer, on_delete=models.CASCADE)  # Field name made lowercase.
     loads = models.ForeignKey(Load, on_delete=models.CASCADE)
     driver = models.ForeignKey(Driver, on_delete=models.CASCADE)
+
+class DispatchLoadHasLoad(models.Model):
+    id_inl = models.AutoField(primary_key=True)
+    invoices = models.ForeignKey(DispatchLoad, on_delete=models.CASCADE)  # Field name made lowercase.
+    loads = models.ForeignKey(Load, on_delete=models.CASCADE)  # Field name made lowercase.
 
 class BusinessHasLoad(models.Model):
     id_bsl = models.AutoField(primary_key=True)

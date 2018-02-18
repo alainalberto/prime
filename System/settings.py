@@ -32,7 +32,7 @@ if socket.gethostname() == 'Ransel-PC' or socket.gethostname() == 'alain-HP-Note
     ALLOWED_HOSTS = []
 else:
     DEBUG = True
-    ALLOWED_HOSTS = ['www.fcintermodal.com','fcintermodal.com','138.68.17.117']
+    ALLOWED_HOSTS = ['www.prime1agency.com','prime1agency.com']
 
 
 # Application definition
@@ -114,7 +114,7 @@ if socket.gethostname() == 'Ransel-PC' or socket.gethostname() == 'alain-HP-Note
    DATABASES = {
       'default': {
          'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': 'first_call_db',
+         'NAME': 'db_muestra',
          'USER': 'administrator',
          'PASSWORD': 'admin*2017',
          'HOST': 'localhost',
