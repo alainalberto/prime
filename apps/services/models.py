@@ -215,7 +215,7 @@ class DispatchLoad(models.Model):
     wire_fee = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     ach_fee = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     paid = models.BooleanField(default=False)
-    prefix = models.CharField(max_length=4, default='inlog')
+    prefix = models.CharField(max_length=4, default='invl')
     end_date = models.DateField(blank=True, null=True)
 
     def __str__(self):

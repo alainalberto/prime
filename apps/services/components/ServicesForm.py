@@ -319,6 +319,59 @@ class AuditForm(forms.ModelForm):
             'results': forms.TextInput(attrs={'placeholder': 'Results', 'class': 'form-control input-md upper'}),
         }
 
+class CompanesDispatchForm(forms.ModelForm):
+        class Meta:
+            model = DispatchLoad
+
+            fields = [
+                'biller',
+                'biller_address',
+                'biller_email',
+                'start_date',
+                'waytopay',
+                'discount',
+                'paid',
+                'prefix',
+                'end_date',
+                'subtotal',
+                'total',
+                'comission_fee',
+                'wire_fee',
+                'ach_fee',
+
+            ]
+            labels = {
+                'start_date': 'Start Date:',
+                'waytopay': 'Payment Method:',
+                'discount': 'Discount:',
+                'paid': 'Paid:',
+                'prefix': 'Prefix:',
+                'end_date': 'End Date:',
+                'subtotal': 'Subtotal:',
+                'total': 'Total:',
+            }
+            widgets = {
+                'start_date': forms.DateInput(attrs={'placeholder': 'Start Date', 'class': 'form-control input-md', 'readonly': ''}),
+                'waytopay': forms.Select(attrs={'class': 'form-control input-md'}, choices=(
+                ('Cash', 'Cash'), ('Check', 'Check'), ('Credit Card', 'Credit Card'))),
+                'paid': forms.CheckboxInput(
+                    attrs={'data-off-color': "danger", 'class': "switch", 'data-size': "mini", 'data-on-text': "YES",
+                           'data-off-text': "NO"}),
+                'prefix': forms.TextInput(attrs={'placeholder': 'Prefix', 'class': 'form-control input-md upper'}),
+                'end_date': forms.DateInput(attrs={'placeholder': 'End Date', 'class': 'form-control input-md', 'readonly': ''}),
+                'discount': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control discount fee'}),
+                'subtotal': forms.NumberInput(
+                    attrs={'placeholder': '0.00', 'class': 'form-control servSutotal', 'readonly': ''}),
+                'total': forms.NumberInput(
+                    attrs={'placeholder': '0.00', 'class': 'form-control serviTotal', 'readonly': ''}),
+                'comission_fee': forms.NumberInput(
+                    attrs={'placeholder': '0.00', 'class': 'form-control comission fee'}),
+                'wire_fee': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control wire fee'}),
+                'ach_fee': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control ach fee'}),
+
+            }
+
+
 class EmailForm(forms.Form):
       topic = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control input-md upper topic', 'name':'topic'}), max_length=100)
       email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control input-md lower email', 'name':'email'}))

@@ -68,8 +68,6 @@ urlpatterns = [
     url(r'^invoices/load/print/(?P<pk>\d+)/$', login_required(permission_required('accounting.add_invoice')(InvoicesLod_pdf)), name='invoiceslog_pdf'),
 
 
-
-
     #Customer Note
     url(r'^customer/note/create/(?P<pk>\d+)/$', login_required(permission_required('accounting.add_note')(NoteCreate.as_view())), name='note_create'),
     url(r'^customer/note/edit/(?P<pk>\d+)/$', login_required(permission_required('accounting.change_note')(NoteEdit.as_view())), name='note_edit'),

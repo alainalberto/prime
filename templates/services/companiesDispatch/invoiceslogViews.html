@@ -1,0 +1,51 @@
+<section>
+            <div class="table-responsive">
+                <table id="listInvoices" class="table data-table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="col-md-1">Prefix</th>
+                        <th class="col-md-1">Serial</th>
+                        <th class="col-md-1">Start Date</th>
+                        <th class="col-md-1">End Date</th>
+                        <th class="col-md-1">Payment Method</th>
+                        <th class="col-md-1">Paid</th>
+                        <th class="col-md-3">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in dispatch %}
+                    <tr>
+                        <td>{{i.prefix}}</td>
+                        <td><a href="{% url 'accounting:invoices_view' i.id_inv %}">{{i.serial}}</a></td>
+                        <td>{{i.start_date}}</td>
+                        <td>{{i.end_date}}</td>
+                        <td>{{i.waytopay}}</td>
+                        <td class="text-center">{% if i.paid %}<i class="fa fa-check text-success" aria-hidden="true"></i>{% endif %}</td>
+                        <td>
+                            {% if perms.accounting.change_invoice %}
+                            <toolbar class="md-accent">
+                                <a data-type="info" data-trigger="focus" title="Edit Invoices" data-animation="am-flip-x" type="button" class="text-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'services:dispatch_invoice_edit' i.id_inv 0%}" ></a>
+                            </toolbar>
+                            {% endif %}
+                            {% if perms.accounting.change_invoice %}
+                            <toolbar class="md-accent">
+                                <a data-type="info" data-trigger="focus" title="Adjust Invoices" data-animation="am-flip-x" type="button" class="text-primary test-tooltip  glyphicon glyphicon-duplicate" href="{% url 'services:dispatch_invoice_edit' i.id_inv 1%}" ></a>
+                            </toolbar>
+                            {% endif %}
+                            {% if perms.accounting.delete_invoice %}
+                            <toolbar class="md-accent">
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Invoices" type="button" class="text-danger test-tooltip glyphicon glyphicon-trash" href="{% url 'services:dispatch_invoice_delete' i.id_inv %}"></a>
+                            </toolbar>
+                            {% endif %}
+                             <toolbar class="md-accent">
+                                <a data-type="info" data-animation="am-flip-x" target="_blank" data-trigger="focus" title="Print Invoice" type="button" class="text-primary test-tooltip glyphicon glyphicon-print" href="{% url 'services:dispatch_invoice_pdf' i.id_inv %}"></a>
+                            </toolbar>
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+</section>

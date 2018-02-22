@@ -127,6 +127,9 @@
                             {% if driver %}
                             <li id="tabDriver" role="presentation"><a href="#driver" aria-controls="driver" role="tab" data-toggle="tab">Driver <span class="badge text-danger">{{driver_pending}}</span></a></li>
                             {% endif %}
+                            {% if driver %}
+                            <li id="tabDispatch" role="presentation"><a href="#dispatch" aria-controls="dispatch" role="tab" data-toggle="tab">Dispatcher Invoices<span class="badge text-danger">{{dispatch_pending}}</span></a></li>
+                            {% endif %}
                         </ul>
                     </div>
                     <div class="panel-body">
@@ -173,7 +176,11 @@
                                 {% include 'services/driver/driverViews.html'%}
                                 {% endif %}
                             </div>
-
+                            <div role="tabpanel" class="tab-pane fade" id="dispatch">
+                                {% if dispatch %}
+                                {% include 'services/companiesDispatch/invoiceslogViews.html'%}
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>

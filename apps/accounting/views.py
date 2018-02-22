@@ -215,7 +215,7 @@ def CustomerView(request, pk):
        ifta = Ifta.objects.filter(customers=customer)
        contract = Contract.objects.filter(customers=customer)
        audit = Audit.objects.filter(customers=customer)
-       dispatch = CustomerHasLoad.objects.filter(customers=customer)
+       dispatch = DispatchLoad.objects.filter(customers=customer)
        driver = Driver.objects.filter(customers=customer)
        files = File.objects.filter(folders=customer.folders).order_by('category')
        alert = CustomerHasAlert.objects.filter(customers=customer)
@@ -231,7 +231,7 @@ def CustomerView(request, pk):
            'iftas': ifta,
            'driver': driver,
            'audits': audit,
-           'dispatchs': dispatch,
+           'dispatch': dispatch,
            'notes': note,
            'alert': alert,
            'permit_pending': Permit.objects.is_state('Pending', customer),
@@ -241,6 +241,7 @@ def CustomerView(request, pk):
            'contract_pending': Contract.objects.is_state('Pending', customer),
            'audit_pending': Audit.objects.is_state('Pending', customer),
            'driver_pending': Driver.objects.is_state('Pending', customer),
+           'dispatch_pending': DispatchLoad.objects.filter(customers=customer, paid=False).count(),
            'title': 'Customer Folder'
        }
        return render(request, 'accounting/customer/customerView.html', context)
