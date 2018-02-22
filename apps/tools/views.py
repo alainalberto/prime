@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, View, TemplateView
 from django.contrib.admin.models import ADDITION, CHANGE, DELETION
-from System.util import accion_user
+from Prime.util import accion_user
 from apps.accounting.models import AccountDescrip, Account
 from apps.tools.models import *
 from apps.tools.components import CalendarForm, AlertForm
@@ -364,7 +364,7 @@ class AlertsCreate(CreateView):
              accion_user(alert, ADDITION, request.user)
              messages.success(request, "Alert save with an extension")
 
-             #send_mail('System Alert',
+             #send_mail('Prime Alert',
              #   'Usted tiene una alerta:',
              #   'administrator@fcintermodal.com',
              #    ['ranselr@gmail.com'],

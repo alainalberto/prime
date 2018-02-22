@@ -3,7 +3,7 @@ from django.contrib.auth.views import logout_then_login
 from django.utils.encoding import force_text
 from django.contrib.contenttypes.models import ContentType
 from datetime import datetime, timedelta
-from System import settings
+from Prime import settings
 from django.contrib import auth
 
 def accion_user(object, action_flag, user):

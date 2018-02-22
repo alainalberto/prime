@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.forms import modelform_factory, inlineformset_factory, formset_factory, BaseModelFormSet
 from django.contrib import messages
-from System.util import accion_user
+from Prime.util import accion_user
 from apps.accounting.components.AccountingForm import *
 from apps.accounting.models import *
 from apps.accounting.components.AccountingPDF import PayDriverPDF, PayDispatchPDF, PayEmployeePDF
