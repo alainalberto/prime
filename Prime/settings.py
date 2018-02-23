@@ -32,7 +32,7 @@ if socket.gethostname() == 'Ransel-PC' or socket.gethostname() == 'alain-HP-Note
     ALLOWED_HOSTS = []
 else:
     DEBUG = False
-    ALLOWED_HOSTS = ['www.prime1agency.com','prime1agency.com', '66.198.240.35']
+    ALLOWED_HOSTS = ['www.prime1agency.com','prime1agency.com', '159.65.250.237']
 
 
 # Application definition
@@ -85,7 +85,34 @@ ROOT_URLCONF = 'Prime.urls'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
-TEMPLATES = [
+if not DEBUG:
+    STATIC_URL = '/static/'
+    MEDIA_URL = '/media/'
+    STATIC_ROOT = '/home/root/prime/static_pro'
+    MEDIA_ROOT =  '/home/root/prime/static/media'
+
+    STATICFILES_DIRS = (
+        '/home/root/prime/static',
+    )
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': '/home/root/prime/templates',
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                    'Prime.context_processors.base',
+                ],
+            },
+        },
+    ]
+else:
+
+    TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
@@ -100,7 +127,19 @@ TEMPLATES = [
             ],
         },
     },
-]
+    ]
+    STATIC_URL = '/static/'
+
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static"),
+        # '/var/www/static',
+    ]
+
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static_pro')
+
+    MEDIA_URL = '/media/'
+
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
 
 WSGI_APPLICATION = 'Prime.wsgi.application'
 
@@ -125,8 +164,8 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'aacubcom_prime_db',
-            'USER': 'aacubcom_administrator',
+            'NAME': 'aacub_prime_db',
+            'USER': 'aacub_administrator',
             'PASSWORD': 'admin*2017',
             'HOST': 'localhost',
             'PORT': '5432',
@@ -170,19 +209,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    #'/var/www/static',
-]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_pro')
-
-
-MEDIA_URL = '/media/'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
 
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
@@ -207,7 +233,7 @@ EMAIL_HOST_PASSWORD = 'Morton160'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_SUBJECT_PREFIX = 'ERROR-FIRSTCALL'
+EMAIL_SUBJECT_PREFIX = 'ERROR-PRIME'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
