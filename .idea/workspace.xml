@@ -29,8 +29,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Prime/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2970">
-              <caret line="169" column="32" lean-forward="true" selection-start-line="169" selection-start-column="32" selection-end-line="169" selection-end-column="32" />
+            <state relative-caret-position="-378">
+              <caret line="91" column="19" lean-forward="true" selection-start-line="91" selection-start-column="19" selection-end-line="91" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -287,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519273030453</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Alain: Configuracion para deploy">
+      <created>1519359063026</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1519359063026</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -343,7 +350,8 @@
     <MESSAGE value="Alain: Nuesva estructura de Base Dato" />
     <MESSAGE value="Alain: configuracion Servidor" />
     <MESSAGE value="Alain: Servicio Companes Dispatch" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alain: Servicio Companes Dispatch" />
+    <MESSAGE value="Alain: Configuracion para deploy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alain: Configuracion para deploy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -594,8 +602,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Prime/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2970">
-          <caret line="169" column="32" lean-forward="true" selection-start-line="169" selection-start-column="32" selection-end-line="169" selection-end-column="32" />
+        <state relative-caret-position="-378">
+          <caret line="91" column="19" lean-forward="true" selection-start-line="91" selection-start-column="19" selection-end-line="91" selection-end-column="19" />
           <folding />
         </state>
       </provider>

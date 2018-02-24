@@ -32,7 +32,7 @@ if socket.gethostname() == 'Ransel-PC' or socket.gethostname() == 'alain-HP-Note
     ALLOWED_HOSTS = []
 else:
     DEBUG = False
-    ALLOWED_HOSTS = ['www.prime1agency.com','prime1agency.com', '159.65.250.237']
+    ALLOWED_HOSTS = ['159.65.250.237', 'www.prime1agency.com','prime1agency.com' ]
 
 
 # Application definition
@@ -88,8 +88,8 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 if not DEBUG:
     STATIC_URL = '/static/'
     MEDIA_URL = '/media/'
-    STATIC_ROOT = '/home/root/prime/static_pro'
-    MEDIA_ROOT =  '/home/root/prime/static/media'
+    STATIC_ROOT = '/root/prime/static_pro'
+    MEDIA_ROOT =  '/root/prime/static/media'
 
     STATICFILES_DIRS = (
         '/home/root/prime/static',
@@ -97,7 +97,7 @@ if not DEBUG:
     TEMPLATES = [
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': '/home/root/prime/templates',
+            'DIRS': '/root/prime/templates',
             'APP_DIRS': True,
             'OPTIONS': {
                 'context_processors': [
