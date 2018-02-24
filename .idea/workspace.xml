@@ -29,8 +29,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Prime/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="155" column="27" lean-forward="true" selection-start-line="155" selection-start-column="27" selection-end-line="155" selection-end-column="27" />
+            <state relative-caret-position="126">
+              <caret line="152" column="21" lean-forward="false" selection-start-line="152" selection-start-column="21" selection-end-line="152" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -361,7 +361,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519441782993</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Alain: Configuracion para deploy">
+      <created>1519443478749</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1519443478749</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -687,8 +694,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Prime/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="155" column="27" lean-forward="true" selection-start-line="155" selection-start-column="27" selection-end-line="155" selection-end-column="27" />
+        <state relative-caret-position="126">
+          <caret line="152" column="21" lean-forward="false" selection-start-line="152" selection-start-column="21" selection-end-line="152" selection-end-column="21" />
           <folding />
         </state>
       </provider>
