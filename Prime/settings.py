@@ -87,7 +87,7 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 if not DEBUG:
     STATIC_URL = '/static/'
-    MEDIA_URL = '/static/media'
+    MEDIA_URL = '/media/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'static_pro')
     MEDIA_ROOT =  os.path.join(BASE_DIR, 'static/media')
 
