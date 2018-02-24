@@ -85,29 +85,18 @@ ROOT_URLCONF = 'Prime.urls'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
-if not DEBUG:
-    STATIC_URL = '/static/'
-    MEDIA_URL = '/media/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static_pro')
-    MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+STATIC_URL = '/static/'
 
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static_pro'),
-    )
-else:
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/var/www/prime1agency.com/static/',
+]
 
-    STATIC_URL = '/static/'
+STATIC_ROOT = "/var/www/prime1agency.com/static/"
 
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, "static"),
-        # '/var/www/static',
-    ]
+MEDIA_URL = '/media/'
 
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static_pro')
-
-    MEDIA_URL = '/media/'
-
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = "/var/www/prime1agency.com/static/media"
 
 TEMPLATES = [
     {
