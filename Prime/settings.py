@@ -89,7 +89,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    '/var/www/prime1agency.com/static/',
+    #'/var/www/prime1agency.com/static/',
 ]
 
 STATIC_ROOT = "/var/www/prime1agency.com/static/"
