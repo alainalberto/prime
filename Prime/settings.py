@@ -94,25 +94,22 @@ if not DEBUG:
     STATICFILES_DIRS = (
         '/home/root/prime/static',
     )
-    TEMPLATES = [
-        {
-            'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': '/root/prime/templates',
-            'APP_DIRS': True,
-            'OPTIONS': {
-                'context_processors': [
-                    'django.template.context_processors.debug',
-                    'django.template.context_processors.request',
-                    'django.contrib.auth.context_processors.auth',
-                    'django.contrib.messages.context_processors.messages',
-                    'Prime.context_processors.base',
-                ],
-            },
-        },
-    ]
 else:
 
-    TEMPLATES = [
+    STATIC_URL = '/static/'
+
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static"),
+        # '/var/www/static',
+    ]
+
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static_pro')
+
+    MEDIA_URL = '/media/'
+
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
+
+TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
@@ -128,18 +125,6 @@ else:
         },
     },
     ]
-    STATIC_URL = '/static/'
-
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, "static"),
-        # '/var/www/static',
-    ]
-
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static_pro')
-
-    MEDIA_URL = '/media/'
-
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
 
 WSGI_APPLICATION = 'Prime.wsgi.application'
 
