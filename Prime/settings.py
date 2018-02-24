@@ -149,8 +149,8 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'aacub_prime_db',
-            'USER': 'aacub_administrator',
+            'NAME': 'aacubcom_prime_db',
+            'USER': 'aacubcom_administrator',
             'PASSWORD': 'admin*2017',
             'HOST': 'localhost',
             'PORT': '5432',
