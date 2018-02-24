@@ -88,11 +88,11 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 if not DEBUG:
     STATIC_URL = '/static/'
     MEDIA_URL = '/media/'
-    STATIC_ROOT = '/root/prime/static_pro'
-    MEDIA_ROOT =  '/root/prime/static/media'
+    STATIC_ROOT = [os.path.join(BASE_DIR, 'static_pro')]
+    MEDIA_ROOT =  [os.path.join(BASE_DIR, 'static/media')]
 
     STATICFILES_DIRS = (
-        '/home/root/prime/static',
+        [os.path.join(BASE_DIR, 'static')]
     )
 else:
 
