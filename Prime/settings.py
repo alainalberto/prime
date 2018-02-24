@@ -31,7 +31,7 @@ if socket.gethostname() == 'Ransel-PC' or socket.gethostname() == 'alain-HP-Note
     DEBUG = True
     ALLOWED_HOSTS = []
 else:
-    DEBUG = False
+    DEBUG = True
     ALLOWED_HOSTS = ['159.65.250.237', 'www.prime1agency.com','prime1agency.com', 'http://prime1agency.com/']
 
 
