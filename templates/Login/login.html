@@ -5,11 +5,21 @@
 {{ form.media }}
 {% endblock %}
 
-{% block bodyclass %}{{ block.super }} login{% endblock %}
+{% block bodyclass %}
 
-{% block usertools %}{% endblock %}
+{{ block.super }} login{% endblock %}
+<div>
+<a class="col-md-offset-4" href="#">
+                <img src="{% static 'img/logo.jpg'%}">
+</a>
+  </div>
+{% block usertools %}
 
-{% block nav-global %}{% endblock %}
+{% endblock %}
+
+{% block nav-global %}
+
+{% endblock %}
 
 {% block content_title %}
 {% endblock %}

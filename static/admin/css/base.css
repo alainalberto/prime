@@ -30,6 +30,7 @@ a:focus {
 
 a img {
     border: none;
+    padding: 0px;
 }
 
 a.section:link, a.section:visited {
