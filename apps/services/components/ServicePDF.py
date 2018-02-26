@@ -158,6 +158,7 @@ def InvoicesLog(request, pk, start, end):
     p.drawString(200, 60, 'THANK YOU FOR YOUR BUSSINESS!')
 
     # Boby
+
     p.setFillColor('#020000')
     p.setFont('Helvetica', 11)
     p.drawString(450, 150, "Subtotal: $" + str(invoice.subtotal))

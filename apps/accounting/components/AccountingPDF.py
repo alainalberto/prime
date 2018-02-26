@@ -19,28 +19,49 @@ def Receipt_pdf(request, pk):
     p = canvas.Canvas(buffer, pagesize=A4)
 
     #Header
-    p.setFillColor('#2471A3')
-    p.roundRect(0, 750, 694, 120, 20, fill=1)
-    p.drawImage('static/media/'+str(recpt.business.logo), 250, 760, width=150, height=70)
+    p.setFillColor('#B40404')
+    p.roundRect(0, 720, 694, 10, 5, fill=1)
+
+    if recpt.business.logo:
+        p.drawImage('static/media/' + str(recpt.business.logo), 250, 735, width=100, height=100)
 
     p.setFont('Helvetica', 28)
+    p.setFillColor('#000')
+    p.drawCentredString(70, 785, "INVOICE")
+
     p.setFillColor('#34495E')
-    p.drawCentredString(70, 700, "RECEIPT")
-
-
     p.setFont('Helvetica-Bold', 12)
-    p.drawString(50, 680, 'No. '+str(recpt.serial))
+    p.drawString(50, 760, 'No. ' + recpt.prefix + "-" + str(recpt.serial))
 
-    p.setFont('Helvetica',12)
-    p.setFillColorRGB(0,0,0)
-    p.drawString(460, 700, 'Date: '+str(recpt.start_date))
-    p.line(450, 697, 562, 697)
+    p.setFont('Helvetica', 10)
+    p.drawImage('static/img/icon/address-o.png', 50, 700, width=10, height=10)
+    p.drawString(65, 700, recpt.business.address)
+    p.drawImage('static/img/icon/phone-o.png', 50, 680, width=10, height=10)
+    p.drawString(65, 680, recpt.business.phone)
+    if recpt.business.fax:
+        p.drawImage('static/img/icon/fax-o.png', 50, 660, width=10, height=10)
+        p.drawString(65, 660, recpt.business.fax)
+
+    p.setFont('Helvetica', 12)
+    p.setFillColorRGB(0, 0, 0)
+    p.drawString(50, 745, 'Date: ' + str(recpt.invoice.start_date))
 
     #Footer
+    p.setFillColor('#B40404')
+    p.roundRect(0, 40, 694, 10, 5, fill=1)
     p.setFont('Helvetica', 9)
     p.setFillColorRGB(0, 0, 0)
     p.line(0, 50, 800, 50)
-    p.drawString(30, 20, 'Date of printing '+time.strftime("%m/%d/%y %H:%M:%S")+' by %s' % request.user.first_name)
+    user_print = ""
+    if request.user.first_name:
+        user_print = request.user.first_name + " " + request.user.last_name
+    else:
+        user_print = request.user.username
+    p.drawString(30, 20, 'Date of printing ' + time.strftime("%m/%d/%y %H:%M:%S") + ' by %s' % user_print)
+    p.setFillColor('#34495E')
+    p.setFont('Helvetica', 10)
+    if recpt.business.messager:
+        p.drawString(200, 60, str(recpt.business.messager))
 
     #Boby
     styles = getSampleStyleSheet()
@@ -88,17 +109,20 @@ def Invoices_pdf(request, pk):
     p = canvas.Canvas(buffer, pagesize=A4)
 
     #Header
-    p.setFillColor('#2471A3')
-    p.roundRect(0, 750, 694, 120, 20, fill=1)
-    p.drawImage('static/media/'+str(invoice.business.logo), 250, 760, width=150, height=70)
+
+    p.setFillColor('#B40404')
+    p.roundRect(0, 720, 694, 10, 5, fill=1)
+
+    if invoice.business.logo:
+       p.drawImage('static/media/'+str(invoice.business.logo), 250, 735, width=100, height=100)
 
     p.setFont('Helvetica', 28)
-    p.setFillColor('#E5E7E9')
+    p.setFillColor('#000')
     p.drawCentredString(70, 785, "INVOICE")
 
     p.setFillColor('#34495E')
     p.setFont('Helvetica-Bold', 12)
-    p.drawString(50, 730, 'No. '+invoice.prefix+"-"+str(invoice.serial))
+    p.drawString(50, 760, 'No. '+invoice.prefix+"-"+str(invoice.serial))
 
     p.setFont('Helvetica', 10)
     p.drawImage('static/img/icon/address-o.png', 50, 700, width=10, height=10)
@@ -112,8 +136,7 @@ def Invoices_pdf(request, pk):
 
     p.setFont('Helvetica',12)
     p.setFillColorRGB(0,0,0)
-    p.drawString(460, 700, 'Date: '+str(invoice.start_date))
-    p.line(450, 697, 562, 697)
+    p.drawString(50, 745, 'Date: '+str(invoice.start_date))
 
     #Customer
     if customer.company_name:
@@ -133,8 +156,8 @@ def Invoices_pdf(request, pk):
 
 
     #Footer
-    p.setFillColor('#2471A3')
-    p.roundRect(0, 0, 694, 50, 0, fill=1)
+    p.setFillColor('#B40404')
+    p.roundRect(0, 40, 694, 10, 5, fill=1)
     p.setFont('Helvetica', 9)
     p.setFillColorRGB(0, 0, 0)
     p.line(0, 50, 800, 50)
@@ -146,7 +169,8 @@ def Invoices_pdf(request, pk):
     p.drawString(30, 20, 'Date of printing '+time.strftime("%m/%d/%y %H:%M:%S")+' by %s' % user_print)
     p.setFillColor('#34495E')
     p.setFont('Helvetica', 10)
-    p.drawString(200, 60, 'THANK YOU FOR YOUR BUSSINESS!')
+    if invoice.business.messager:
+       p.drawString(200, 60, str(invoice.business.messager ))
 
 
     #Boby
@@ -210,25 +234,19 @@ def InvoicesLod_pdf(request, pk):
     p = canvas.Canvas(buffer, pagesize=A4)
 
     #Header
-    p.setFillColor('#2471A3')
-    p.roundRect(0, 750, 694, 120, 20, fill=1)
-    p.drawImage('static/media/'+str(business.logo), 440, 760, width=150, height=70)
+    p.setFillColor('#B40404')
+    p.roundRect(0, 720, 694, 10, 5, fill=1)
 
-    p.setFont('Helvetica', 16)
-    p.setFillColor('#E5E7E9')
-    p.drawCentredString(300, 785, business.name)
-    if business.messager:
-      p.setFont('Helvetica', 12)
-      p.setFillColor('#E5E7E9')
-      p.drawCentredString(300, 740, business.messager)
+    if invoice.business.logo:
+        p.drawImage('static/media/' + str(invoice.business.logo), 250, 735, width=100, height=100)
 
     p.setFont('Helvetica', 28)
-    p.setFillColor('#E5E7E9')
+    p.setFillColor('#000')
     p.drawCentredString(70, 785, "INVOICE")
 
     p.setFillColor('#34495E')
     p.setFont('Helvetica-Bold', 12)
-    p.drawString(410, 720, 'No: '+invoice.prefix+"-"+str(invoice.serial))
+    p.drawString(50, 760, 'No. ' + invoice.prefix + "-" + str(invoice.serial))
 
     p.setFont('Helvetica', 10)
     p.drawImage('static/img/icon/address-o.png', 50, 700, width=10, height=10)
@@ -236,9 +254,8 @@ def InvoicesLod_pdf(request, pk):
     p.drawImage('static/img/icon/phone-o.png', 50, 680, width=10, height=10)
     p.drawString(65, 680, business.phone)
     if business.fax:
-      p.drawImage('static/img/icon/fax-o.png', 50, 660, width=10, height=10)
-      p.drawString(65, 660, business.fax)
-
+        p.drawImage('static/img/icon/fax-o.png', 50, 660, width=10, height=10)
+        p.drawString(65, 660, business.fax)
 
     p.setFont('Helvetica',11)
     p.setFillColorRGB(0,0,0)
@@ -358,34 +375,29 @@ def PayDriverPDF(request, pk):
     p = canvas.Canvas(buffer, pagesize=A4)
 
     # Header
-    p.setFillColor('#2471A3')
-    p.roundRect(0, 750, 694, 120, 20, fill=1)
-    p.drawImage('static/media/'+str(business.logo), 440, 760, width=150, height=70)
+    p.setFillColor('#B40404')
+    p.roundRect(0, 720, 694, 10, 5, fill=1)
 
-    p.setFont('Helvetica', 16)
-    p.setFillColor('#E5E7E9')
-    p.drawCentredString(300, 785, business.name)
-    if business.messager:
-        p.setFont('Helvetica', 12)
-        p.setFillColor('#E5E7E9')
-        p.drawCentredString(300, 740, business.messager)
+    if business.logo:
+        p.drawImage('static/media/' + str(business.logo), 250, 735, width=100, height=100)
 
     p.setFont('Helvetica', 28)
-    p.setFillColor('#E5E7E9')
+    p.setFillColor('#000')
     p.drawCentredString(70, 785, "INVOICE")
 
     p.setFillColor('#34495E')
     p.setFont('Helvetica-Bold', 12)
-    p.drawString(410, 720, 'No: ' + str(payment.serial))
+    p.drawString(50, 760, 'No. ' + str(payment.serial))
 
     p.setFont('Helvetica', 10)
-    p.drawImage('static/img/icon/address-o.png', 50, 720, width=10, height=10)
-    p.drawString(65, 720, business.address)
-    p.drawImage('static/img/icon/phone-o.png', 50, 700, width=10, height=10)
-    p.drawString(65, 700, business.phone)
+    p.drawImage('static/img/icon/address-o.png', 50, 700, width=10, height=10)
+    p.drawString(65, 700, business.address)
+    p.drawImage('static/img/icon/phone-o.png', 50, 680, width=10, height=10)
+    p.drawString(65, 680, business.phone)
     if business.fax:
-        p.drawImage('static/img/icon/fax-o.png', 50, 680, width=10, height=10)
-        p.drawString(65, 680, business.fax)
+        p.drawImage('static/img/icon/fax-o.png', 50, 660, width=10, height=10)
+        p.drawString(65, 660, business.fax)
+
 
     p.setFont('Helvetica', 11)
     p.setFillColorRGB(0, 0, 0)
@@ -423,18 +435,21 @@ def PayDriverPDF(request, pk):
 
 
     #Footer
-    p.setFillColor('#2471A3')
-    p.roundRect(0, 0, 694, 50, 0, fill=1)
+    p.setFillColor('#B40404')
+    p.roundRect(0, 40, 694, 10, 5, fill=1)
     p.setFont('Helvetica', 9)
     p.setFillColorRGB(0, 0, 0)
     p.line(0, 50, 800, 50)
     user_print = ""
     if request.user.first_name:
-        user_print = request.user.first_name+" "+request.user.last_name
+        user_print = request.user.first_name + " " + request.user.last_name
     else:
-        user_print= request.user.username
-    p.drawString(30, 20, 'Date of printing '+time.strftime("%m/%d/%y %H:%M:%S")+' by %s' % user_print)
+        user_print = request.user.username
+    p.drawString(30, 20, 'Date of printing ' + time.strftime("%m/%d/%y %H:%M:%S") + ' by %s' % user_print)
     p.setFillColor('#34495E')
+    p.setFont('Helvetica', 10)
+    if business.messager:
+        p.drawString(200, 60, str(business.messager))
 
     # Boby
 
@@ -526,34 +541,28 @@ def PayDispatchPDF(request, pk):
     p = canvas.Canvas(buffer, pagesize=A4)
 
     # Header
-    p.setFillColor('#2471A3')
-    p.roundRect(0, 750, 694, 120, 20, fill=1)
-    p.drawImage('static/media/'+str(business.logo), 440, 760, width=150, height=70)
+    p.setFillColor('#B40404')
+    p.roundRect(0, 720, 694, 10, 5, fill=1)
 
-    p.setFont('Helvetica', 16)
-    p.setFillColor('#E5E7E9')
-    p.drawCentredString(300, 785, business.name)
-    if business.messager:
-        p.setFont('Helvetica', 12)
-        p.setFillColor('#E5E7E9')
-        p.drawCentredString(300, 740, business.messager)
+    if business.logo:
+        p.drawImage('static/media/' + str(business.logo), 250, 735, width=100, height=100)
 
     p.setFont('Helvetica', 28)
-    p.setFillColor('#E5E7E9')
+    p.setFillColor('#000')
     p.drawCentredString(70, 785, "INVOICE")
 
     p.setFillColor('#34495E')
     p.setFont('Helvetica-Bold', 12)
-    p.drawString(410, 720, 'No: ' + str(payment.serial))
+    p.drawString(50, 760, 'No. ' + str(payment.serial))
 
     p.setFont('Helvetica', 10)
-    p.drawImage('static/img/icon/address-o.png', 50, 720, width=10, height=10)
-    p.drawString(65, 720, business.address)
-    p.drawImage('static/img/icon/phone-o.png', 50, 700, width=10, height=10)
-    p.drawString(65, 700, business.phone)
+    p.drawImage('static/img/icon/address-o.png', 50, 700, width=10, height=10)
+    p.drawString(65, 700, business.address)
+    p.drawImage('static/img/icon/phone-o.png', 50, 680, width=10, height=10)
+    p.drawString(65, 680, business.phone)
     if business.fax:
-        p.drawImage('static/img/icon/fax-o.png', 50, 680, width=10, height=10)
-        p.drawString(65, 680, business.fax)
+        p.drawImage('static/img/icon/fax-o.png', 50, 660, width=10, height=10)
+        p.drawString(65, 660, business.fax)
 
     p.setFont('Helvetica', 11)
     p.setFillColorRGB(0, 0, 0)
@@ -568,8 +577,8 @@ def PayDispatchPDF(request, pk):
     p.drawString(140, 620, dispatch.name)
 
     # Footer
-    p.setFillColor('#2471A3')
-    p.roundRect(0, 0, 694, 50, 0, fill=1)
+    p.setFillColor('#B40404')
+    p.roundRect(0, 40, 694, 10, 5, fill=1)
     p.setFont('Helvetica', 9)
     p.setFillColorRGB(0, 0, 0)
     p.line(0, 50, 800, 50)
@@ -580,6 +589,9 @@ def PayDispatchPDF(request, pk):
         user_print = request.user.username
     p.drawString(30, 20, 'Date of printing ' + time.strftime("%m/%d/%y %H:%M:%S") + ' by %s' % user_print)
     p.setFillColor('#34495E')
+    p.setFont('Helvetica', 10)
+    if business.messager:
+        p.drawString(200, 60, str(business.messager))
 
 
     # Boby
@@ -660,31 +672,28 @@ def PayEmployeePDF(request, pk):
     p = canvas.Canvas(buffer, pagesize=A4)
 
     #Header
-    p.setFillColor('#2471A3')
-    p.roundRect(0, 750, 694, 120, 20, fill=1)
-    p.drawImage('static/media/'+str(payment.business.logo), 250, 760, width=150, height=70)
+    p.setFillColor('#B40404')
+    p.roundRect(0, 720, 694, 10, 5, fill=1)
 
-    p.setFont('Helvetica', 16)
+    if recpt.business.logo:
+        p.drawImage('static/media/' + str(recpt.business.logo), 250, 735, width=100, height=100)
+
+    p.setFont('Helvetica', 28)
+    p.setFillColor('#000')
+    p.drawCentredString(70, 785, "INVOICE")
+
     p.setFillColor('#34495E')
-    p.drawCentredString(90, 700, "PAY STATEMENT ")
-
-
     p.setFont('Helvetica-Bold', 12)
-    p.drawString(50, 680, 'No. '+str(payment.serial))
-
-    p.setFont('Helvetica',12)
-    p.setFillColorRGB(0,0,0)
-    p.drawString(450, 700, 'Pay Date: '+str(payment.pay_date))
-    p.line(450, 697, 562, 697)
+    p.drawString(50, 760, 'No. ' + str(payment.serial))
 
     p.setFont('Helvetica', 10)
-    p.drawImage('static/img/icon/address-o.png', 50, 650, width=10, height=10)
-    p.drawString(65, 650, payment.business.address)
-    p.drawImage('static/img/icon/phone-o.png', 50, 630, width=10, height=10)
-    p.drawString(65, 630, payment.business.phone)
+    p.drawImage('static/img/icon/address-o.png', 50, 700, width=10, height=10)
+    p.drawString(65, 700, payment.business.address)
+    p.drawImage('static/img/icon/phone-o.png', 50, 680, width=10, height=10)
+    p.drawString(65, 680, payment.business.phone)
     if payment.business.fax:
-        p.drawImage('static/img/icon/fax-o.png', 50, 610, width=10, height=10)
-        p.drawString(65, 610, payment.business.fax)
+        p.drawImage('static/img/icon/fax-o.png', 50, 660, width=10, height=10)
+        p.drawString(65, 660, payment.business.fax)
 
     p.setFont('Helvetica', 11)
     p.setFillColorRGB(0, 0, 0)
@@ -699,11 +708,21 @@ def PayEmployeePDF(request, pk):
     p.drawString(150, 580, employee.name+' '+employee.lastname)
 
     #Footer
+    p.setFillColor('#B40404')
+    p.roundRect(0, 40, 694, 10, 5, fill=1)
     p.setFont('Helvetica', 9)
     p.setFillColorRGB(0, 0, 0)
     p.line(0, 50, 800, 50)
-    p.drawString(30, 20, 'Date of printing '+time.strftime("%m/%d/%y %H:%M:%S")+' by %s' % request.user.first_name)
-
+    user_print = ""
+    if request.user.first_name:
+        user_print = request.user.first_name + " " + request.user.last_name
+    else:
+        user_print = request.user.username
+    p.drawString(30, 20, 'Date of printing ' + time.strftime("%m/%d/%y %H:%M:%S") + ' by %s' % user_print)
+    p.setFillColor('#34495E')
+    p.setFont('Helvetica', 10)
+    if payment.business.messager:
+        p.drawString(200, 60, str(payment.business.messager))
     #Boby
     # Employee
     if employee.type_salary == 'commission':
