@@ -97,7 +97,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_pro')
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static_pro', 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
 
 TEMPLATES = [
     {
