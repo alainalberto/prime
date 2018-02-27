@@ -41,6 +41,9 @@ def Receipt_pdf(request, pk):
     if recpt.business.fax:
         p.drawImage('static/img/icon/fax-o.png', 50, 660, width=10, height=10)
         p.drawString(65, 660, recpt.business.fax)
+    if recpt.business.email:
+        p.drawImage('static/img/icon/Email-o.png', 50, 640, width=10, height=10)
+        p.drawString(65, 640, recpt.business.email)
 
     p.setFont('Helvetica', 12)
     p.setFillColorRGB(0, 0, 0)
@@ -132,6 +135,9 @@ def Invoices_pdf(request, pk):
     if business.fax:
       p.drawImage('static/img/icon/fax-o.png', 50, 660, width=10, height=10)
       p.drawString(65, 660, business.fax)
+    if business.email:
+        p.drawImage('static/img/icon/Email-o.png', 50, 640, width=10, height=10)
+        p.drawString(65, 640, business.email)
 
 
     p.setFont('Helvetica',12)
@@ -256,6 +262,9 @@ def InvoicesLod_pdf(request, pk):
     if business.fax:
         p.drawImage('static/img/icon/fax-o.png', 50, 660, width=10, height=10)
         p.drawString(65, 660, business.fax)
+    if business.email:
+        p.drawImage('static/img/icon/Email-o.png', 50, 640, width=10, height=10)
+        p.drawString(65, 640, business.email)
 
     p.setFont('Helvetica',11)
     p.setFillColorRGB(0,0,0)
@@ -397,6 +406,9 @@ def PayDriverPDF(request, pk):
     if business.fax:
         p.drawImage('static/img/icon/fax-o.png', 50, 660, width=10, height=10)
         p.drawString(65, 660, business.fax)
+    if business.email:
+        p.drawImage('static/img/icon/Email-o.png', 50, 640, width=10, height=10)
+        p.drawString(65, 640, business.email)
 
 
     p.setFont('Helvetica', 11)
@@ -563,6 +575,9 @@ def PayDispatchPDF(request, pk):
     if business.fax:
         p.drawImage('static/img/icon/fax-o.png', 50, 660, width=10, height=10)
         p.drawString(65, 660, business.fax)
+    if business.email:
+        p.drawImage('static/img/icon/Email-o.png', 50, 640, width=10, height=10)
+        p.drawString(65, 640, business.email)
 
     p.setFont('Helvetica', 11)
     p.setFillColorRGB(0, 0, 0)
@@ -675,8 +690,8 @@ def PayEmployeePDF(request, pk):
     p.setFillColor('#B40404')
     p.roundRect(0, 720, 694, 10, 5, fill=1)
 
-    if recpt.business.logo:
-        p.drawImage('static/media/' + str(recpt.business.logo), 250, 735, width=100, height=100)
+    if payment.business.logo:
+        p.drawImage('static/media/' + str(payment.business.logo), 250, 735, width=100, height=100)
 
     p.setFont('Helvetica', 28)
     p.setFillColor('#000')
@@ -694,6 +709,9 @@ def PayEmployeePDF(request, pk):
     if payment.business.fax:
         p.drawImage('static/img/icon/fax-o.png', 50, 660, width=10, height=10)
         p.drawString(65, 660, payment.business.fax)
+    if payment.business.email:
+        p.drawImage('static/img/icon/Email-o.png', 50, 640, width=10, height=10)
+        p.drawString(65, 640, payment.business.email)
 
     p.setFont('Helvetica', 11)
     p.setFillColorRGB(0, 0, 0)

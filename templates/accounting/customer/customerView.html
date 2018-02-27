@@ -29,11 +29,11 @@
         <div class="col-md-offset-10">
             {% if perms.accounting.change_customer %}
             <toolbar class="md-accent">
-                <a type="button" class="btn btn-info" href="{% url 'accounting:customer_edit' customer.id_cut %}"><span><i class="fa fa-pencil-square-o"></i> Edit </span></a>
+                <a type="button" class="btn btn-warning" href="{% url 'accounting:customer_edit' customer.id_cut %}"><span><i class="fa fa-pencil-square-o"></i> Edit </span></a>
             </toolbar>
             {% endif %}
             <toolbar class="md-accent">
-                <a data-type="info"  data-animation="am-flip-x" data-trigger="focus"   type="button" class="btn btn-info test-tooltip" href="{% url 'services:email_send' customer.id_cut None %}">
+                <a data-type="info"  data-animation="am-flip-x" data-trigger="focus"   type="button" class="btn btn-warning test-tooltip" href="{% url 'services:email_send' customer.id_cut None %}">
                     <samp><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> Email</samp>
                 </a>
             </toolbar>
@@ -102,33 +102,33 @@
             {% endif %}
 
             <div class="form-group col-md-12">
-                <p class="bg-primary text-center">CUSTOMER SERVICES</p>
+                <p class="bg-danger text-center">CUSTOMER SERVICES</p>
                 <div class="panel panel-success">
                     <div class="panel-heading">
                         <ul class="nav nav-tabs " role="tablist">
                             {% if permits %}
-                            <li id="tabPermit" role="presentation"><a href="#permit" aria-controls="permite" role="tab" data-toggle="tab">Permits <span class="badge text-danger">{{ permit_pending }}</span></a></li>
+                            <li id="tabPermit" role="presentation"><a href="#permit" aria-controls="permite" role="tab" class="text-warning" data-toggle="tab">Permits <span class="badge text-danger">{{ permit_pending }}</span></a></li>
                             {% endif %}
                             {% if equipments %}
-                            <li id="tabEquipment" role="presentation"><a href="#equipment" aria-controls="equipment" role="tab" data-toggle="tab">Equipment <span class="badge text-danger">{{ equipment_pending }}</span></a></li>
+                            <li id="tabEquipment" role="presentation"><a href="#equipment" aria-controls="equipment" role="tab" class="text-warning" data-toggle="tab">Equipment <span class="badge text-danger">{{ equipment_pending }}</span></a></li>
                             {% endif %}
                             {% if insurances %}
-                            <li id="tabInsurance" role="presentation"><a href="#insurance" aria-controls="insurance" role="tab" data-toggle="tab">Insurance <span class="badge text-danger">{{insurance_pending}}</span></a></li>
+                            <li id="tabInsurance" role="presentation"><a href="#insurance" aria-controls="insurance" role="tab" class="text-warning" data-toggle="tab">Insurance <span class="badge text-danger">{{insurance_pending}}</span></a></li>
                             {% endif %}
                             {% if contracts %}
-                            <li id="tabContract" role="presentation"><a href="#contract" aria-controls="contract" role="tab" data-toggle="tab">Contract <span class="badge text-danger">{{contract_pending}}</span></a></li>
+                            <li id="tabContract" role="presentation"><a href="#contract" aria-controls="contract" role="tab" class="text-warning" data-toggle="tab">Contract <span class="badge text-danger">{{contract_pending}}</span></a></li>
                             {% endif %}
                             {% if iftas %}
-                            <li id="tabIfta" role="presentation"><a href="#ifta" aria-controls="ifta" role="tab" data-toggle="tab">IFTA <span class="badge text-danger">{{ifta_pending}}</span></a></li>
+                            <li id="tabIfta" role="presentation"><a href="#ifta" aria-controls="ifta" role="tab" class="text-warning" data-toggle="tab">IFTA <span class="badge text-danger">{{ifta_pending}}</span></a></li>
                             {% endif %}
                             {% if audits %}
-                            <li id="tabAudit" role="presentation"><a href="#audit" aria-controls="audit" role="tab" data-toggle="tab">Audit <span class="badge text-danger">{{audit_pending}}</span></a></li>
+                            <li id="tabAudit" role="presentation"><a href="#audit" aria-controls="audit" role="tab" class="text-warning" data-toggle="tab">Audit <span class="badge text-danger">{{audit_pending}}</span></a></li>
                             {% endif %}
                             {% if driver %}
-                            <li id="tabDriver" role="presentation"><a href="#driver" aria-controls="driver" role="tab" data-toggle="tab">Driver <span class="badge text-danger">{{driver_pending}}</span></a></li>
+                            <li id="tabDriver" role="presentation"><a href="#driver" aria-controls="driver" role="tab" class="text-warning" data-toggle="tab">Driver <span class="badge text-danger">{{driver_pending}}</span></a></li>
                             {% endif %}
-                            {% if driver %}
-                            <li id="tabDispatch" role="presentation"><a href="#dispatch" aria-controls="dispatch" role="tab" data-toggle="tab">Dispatcher Invoices<span class="badge text-danger">{{dispatch_pending}}</span></a></li>
+                            {% if dispatch %}
+                            <li id="tabDispatch" role="presentation"><a href="#dispatch" aria-controls="dispatch" role="tab" class="text-warning" data-toggle="tab">Dispatcher Invoices<span class="badge text-danger">{{dispatch_pending}}</span></a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -192,7 +192,7 @@
             </div>
 
             <div class="form-group col-md-12">
-                <p class="bg-primary text-center">CUSTOMER FILES</p>
+                <p class="bg-danger text-center">CUSTOMER FILES</p>
                 {% if perms.tools.add_file %}
                 <div class="col-md-offset-11">
                     <a type="button" class="btn btn-success" href="{% url 'services:folder_create_popup' customer.id_cut %}"><span><i class="fa fa-plus"></i></span></a>
@@ -265,7 +265,7 @@
                 </div>
             </div>
             <div class="form-group col-md-12">
-                <p class="bg-primary text-center">NOTES</p>
+                <p class="bg-danger text-center">NOTES</p>
                 <div class="col-md-offset-11">
                     <a type="button" class="btn btn-success" href="{% url 'accounting:note_create' customer.id_cut %}"><span><i class="fa fa-plus"></i></span></a>
                 </div>

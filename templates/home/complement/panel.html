@@ -107,9 +107,9 @@
 
     <div class="row">
         {% if perms.accounting.add_customer %}
-        <a class="" href="{% url 'accounting:customer_create' %}">
+        <a href="{% url 'accounting:customer_create' %}">
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-primary zoom-mouse">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -134,7 +134,7 @@
         {% if perms.accounting.add_customer %}
         <a href="{% url 'accounting:customers' %}">
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-green zoom-mouse">
+                <div class="panel panel-green">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -159,7 +159,7 @@
         {% if perms.accounting.add_invoice %}
         <a href="{% url 'accounting:invoices' %}">
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-yellow zoom-mouse">
+                <div class="panel panel-yellow">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -185,7 +185,7 @@
         {% if perms.services.add_insurance %}
         <a href="{% url 'services:forms' %}">
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-red zoom-mouse">
+                <div class="panel panel-red">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -208,12 +208,116 @@
             </div>
         </a>
         {% endif %}
+        {% if perms.logistics.add_driverslogt %}
+        <a href="{% url 'logistic:drivers_create' %}">
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-shopping-cart fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <h3>Driver</h3>
+                                <div>New Driver!</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-footer">
+                        <span class="pull-left">Go to</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+            </div>
+        </a>
+        {% endif %}
+        {% if perms.logistics.add_load %}
+        <a href="{% url 'logistic:load_create' %}">
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-shopping-cart fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <h3>Load</h3>
+                                <div>New Load!</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-footer">
+                        <span class="pull-left">Go to</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+            </div>
+        </a>
+        {% endif %}
+        {% if perms.service.add_dispatch %}
+        <a href="{% url 'services:dispatch_select' %}">
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-shopping-cart fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <h3>Third Party</h3>
+                                <div>New Invoice Load other Company!</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-footer">
+                        <span class="pull-left">Go to</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+            </div>
+        </a>
+        {% endif %}
+        {% if perms.accounting.add_invoice %}
+        <a href="{% url 'accounting:invoiceslog_create' %}">
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-shopping-cart fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <h3>Billing</h3>
+                                <div>New Invoice Load!</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-footer">
+                        <span class="pull-left">Go to</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+            </div>
+        </a>
+        {% endif %}
     </div>
     <!-- /.row -->
 
     <div class="row">
         <div class="col-lg-8">
-            <div class="panel panel-info">
+            <div class="panel panel-danger">
                 <div class="panel-heading">
                     <h3 class="panel-title"><i class="fa fa-calendar-o"></i> Events for Today</h3>
                 </div>
@@ -241,7 +345,7 @@
     {% if perms.services %}
     <div class="row">
         <div class="col-md-12">
-            <p class="bg-primary text-center">SERVICES PENDING</p>
+            <p class="bg-danger text-center">SERVICES PENDING</p>
             {% if equipments or permits or iftas or titles or contracts or insurances or audits %}
 
             <table class="table data-table table-striped">

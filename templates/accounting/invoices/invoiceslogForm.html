@@ -206,7 +206,7 @@
     </div>
     <div class="panel-body">
         <form name="form_invoices" method="post" class="form" role="form" id="form_invoices" validate>{% csrf_token %}
-            <p class="bg-info"><strong>Invoice Header</strong></p>
+            <p class="bg-danger"><strong>Invoice Header</strong></p>
             <fieldset>
                 <!-- Form Name -->
                 <!-- Text input-->
@@ -314,7 +314,7 @@
                 </div>
             </div>
             <fieldset>
-                <p class="bg-info"><strong>Drescription to Invoice</strong></p>
+                <p class="bg-danger"><strong>Drescription to Invoice</strong></p>
                 <div id="panelLoad">
                     {% if not adjust == '1'%}
                     <div class="form-group col-md-offset-11">

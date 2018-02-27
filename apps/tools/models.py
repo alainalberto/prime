@@ -29,6 +29,7 @@ class Busines(models.Model):
     phone = models.CharField(max_length=10, blank=True, null=True)
     fax = models.CharField(max_length=10, blank=True, null=True)
     website = models.CharField(max_length=255, blank=True, null=True)
+    email = models.CharField(max_length=45, blank=True, null=True)
     logo = models.ImageField(upload_to='img/', blank=True, null=True)
     date_created = models.DateField()
     deactivated = models.BooleanField(default=False)

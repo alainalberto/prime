@@ -25,10 +25,10 @@ def PendingListPDF(request):
     #Header
     p.setFillColor('#2471A3')
     p.roundRect(0, 790, 694, 60, 10, fill=1)
-    p.drawImage('static/img/logoFCI.png', 520, 795, width=70, height=45)
+    p.drawImage('static/img/LOGO.png', 520, 795, width=70, height=45)
 
     p.setFont('Helvetica', 14)
-    p.setFillColor('#BDBDBD')
+    p.setFillColor('#B40404')
     p.drawCentredString(200, 810, "List of pending services")
 
     #Footer
@@ -135,10 +135,13 @@ def InvoicesLog(request, pk, start, end):
     p.drawString(410, 720, 'No: ' + invoice.prefix + "-" + str(invoice.serial))
 
     p.setFont('Helvetica', 10)
-    p.drawImage('static/img/icon/address-o.png', 50, 700, width=10, height=10)
+    p.drawImage('static/img/icon/address.png', 50, 700, width=10, height=10)
     p.drawString(65, 700, customer.address)
-    p.drawImage('static/img/icon/phone-o.png', 50, 680, width=10, height=10)
+    p.drawImage('static/img/icon/phone.png', 50, 680, width=10, height=10)
     p.drawString(65, 680, customer.phone)
+    if customer.email:
+        p.drawImage('static/img/icon/Email.png', 50, 660, width=10, height=10)
+        p.drawString(65, 660, customer.email)
 
 
     p.setFont('Helvetica', 11)
