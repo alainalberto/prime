@@ -23,9 +23,9 @@ def PendingListPDF(request):
     p = canvas.Canvas(buffer, pagesize=A4)
 
     #Header
-    p.setFillColor('#2471A3')
-    p.roundRect(0, 790, 694, 60, 10, fill=1)
-    p.drawImage('static/img/LOGO.png', 520, 795, width=70, height=45)
+    p.setFillColor('#B40404')
+    p.roundRect(0, 780, 695, 10, 10, fill=1)
+    p.drawImage('static/img/LOGO.jpg', 520, 795, width=70, height=45)
 
     p.setFont('Helvetica', 14)
     p.setFillColor('#B40404')

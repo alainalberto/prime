@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="Alain: Estilos de la Aplicacion Panel">
+    <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/img/logo.jpg" afterPath="$PROJECT_DIR$/static/img/LOGO.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/sb-admin.css" afterPath="$PROJECT_DIR$/static/css/sb-admin.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/accounting/customer/customerView.html" afterPath="$PROJECT_DIR$/templates/accounting/customer/customerView.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home/complement/panel.html" afterPath="$PROJECT_DIR$/templates/home/complement/panel.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/services/components/ServicePDF.py" afterPath="$PROJECT_DIR$/apps/services/components/ServicePDF.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,17 +37,17 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ServicePDF.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="ServicePDF.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/apps/services/components/ServicePDF.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="108">
-                  <caret line="142" column="42" lean-forward="false" selection-start-line="142" selection-start-column="42" selection-end-line="142" selection-end-column="42" />
+                <state relative-caret-position="36">
+                  <caret line="2" column="14" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="14" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="customerView.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="customerView.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/accounting/customer/customerView.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="238">
@@ -147,7 +146,7 @@
           <file leaf-file-name="sb-admin.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/css/sb-admin.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="234">
+                <state relative-caret-position="612">
                   <caret line="308" column="20" lean-forward="false" selection-start-line="308" selection-start-column="20" selection-end-line="308" selection-end-column="20" />
                   <folding />
                 </state>
@@ -218,7 +217,6 @@
         <option value="$PROJECT_DIR$/templates/admin/base.html" />
         <option value="$PROJECT_DIR$/apps/tools/models.py" />
         <option value="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" />
-        <option value="$PROJECT_DIR$/apps/services/components/ServicePDF.py" />
         <option value="$PROJECT_DIR$/templates/accounting/invoices/invoicesForm.html" />
         <option value="$PROJECT_DIR$/templates/accounting/invoices/invoiceslogForm.html" />
         <option value="$PROJECT_DIR$/templates/accounting/payments/paymentsViews.html" />
@@ -227,6 +225,7 @@
         <option value="$PROJECT_DIR$/templates/home/complement/panel.html" />
         <option value="$PROJECT_DIR$/static/css/sb-admin.css" />
         <option value="$PROJECT_DIR$/templates/accounting/customer/customerView.html" />
+        <option value="$PROJECT_DIR$/apps/services/components/ServicePDF.py" />
       </list>
     </option>
   </component>
@@ -310,12 +309,6 @@
               <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
               <item name="Prime" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Prime" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
@@ -666,7 +659,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519707315632</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Alain: Estilos de la Aplicacion Panel">
+      <created>1519757105717</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1519757105717</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -726,20 +726,14 @@
     <MESSAGE value="Alain: Estilos de la Aplicacion" />
     <MESSAGE value="Alain: Estilos de la Aplicacion Invoices Print" />
     <MESSAGE value="Alain: Estilos de la Aplicacion y Agrego de Email en Business" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alain: Estilos de la Aplicacion y Agrego de Email en Business" />
+    <MESSAGE value="Alain: Estilos de la Aplicacion Panel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alain: Estilos de la Aplicacion Panel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/accounting/customer/customerViews.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="74" column="39" lean-forward="false" selection-start-line="74" selection-start-column="39" selection-end-line="74" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/accounting/customer/customerModal.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -1007,14 +1001,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/services/components/ServicePDF.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="142" column="42" lean-forward="false" selection-start-line="142" selection-start-column="42" selection-end-line="142" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/accounting/payments/paymentsViews.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1728">
@@ -1057,16 +1043,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/sb-admin.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
+        <state relative-caret-position="612">
           <caret line="308" column="20" lean-forward="false" selection-start-line="308" selection-start-column="20" selection-end-line="308" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="103" column="10" lean-forward="true" selection-start-line="57" selection-start-column="6" selection-end-line="103" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -1083,6 +1061,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="259" column="87" lean-forward="false" selection-start-line="259" selection-start-column="87" selection-end-line="259" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="103" column="10" lean-forward="true" selection-start-line="57" selection-start-column="6" selection-end-line="103" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/LOGO.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/services/components/ServicePDF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="14" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="14" />
           <folding />
         </state>
       </provider>
