@@ -276,7 +276,7 @@
                                     <tbody>
                                     {% for f in category.list %}
                                     <tr>
-                                        <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="//static/media/{{ f.url }}" target="_blank">{{f.name}}</br></a></td>
+                                        <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="/static/media/{{ f.url }}" target="_blank">{{f.name}}</br></a></td>
                                         <td>{% if f.users.first_name %} {{ f.users.first_name }} {% else %} {{ f.users }} {% endif %}</td>
                                         <td>{{ f.date_save }}</td>
                                         <td>{{ f.category }}</td>
