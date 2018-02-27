@@ -244,12 +244,24 @@ ul.alert-dropdown {
     color: #000;
 }
 
-.panel-red .panel-heading{
-    background-color:  #FE2E2E !important;
+.panel-red {
+    border-color: #FE2E2E;
 }
 
-.panel- .panel-heading{
-    background-color:  #FE2E2E !important;
+.panel-red .panel-heading{
+    border-color: #FE2E2E;
+    color: #fff;
+    background-color:  #FE2E2E;
+}
+
+.panel-pink .panel-heading{
+    border-color: #F7819F;
+    color: #fff;
+    background-color:  #F7819F;
+}
+
+.panel-pink{
+    border-color:  #F7819F !important;
 }
 
 .huge {
@@ -266,11 +278,54 @@ ul.alert-dropdown {
     background-color: #5cb85c;
 }
 
-.panel-green > a {
-    color: #5cb85c;
+.panel-green-dark {
+    border-color: #088A08;
 }
 
-.panel-green > a:hover {
+.panel-pink-dark {
+    border-color: #FE2E64;
+}
+
+.panel-pink-dark > .panel-heading {
+    border-color: #FE2E64;
+    color: #fff;
+    background-color: #FE2E64;
+}
+
+.panel-blue {
+    border-color: #A9D0F5;
+}
+
+.panel-blue > .panel-heading {
+    border-color: #A9D0F5;
+    color: #fff;
+    background-color: #A9D0F5;
+}
+
+.panel-blue-dark {
+    border-color: #086A87;
+}
+
+.panel-blue-dark     > .panel-heading {
+    border-color: #086A87;
+    color: #fff;
+    background-color: #086A87;
+}
+
+.panel-green-dark > .panel-heading {
+    border-color: #088A08;
+    color: #fff;
+    background-color: #088A08;
+}
+
+.panel-icon > a {
+    color: #8A0808;
+}
+
+.panel-icon > a:hover {
+
+    background-color: #fff;
+    border-color: #000;
     color: #3d8b3d;
 }
 

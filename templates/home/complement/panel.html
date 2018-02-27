@@ -105,11 +105,11 @@
 
     <!-- /.row -->
 
-    <div class="row">
+    <div class="row panel-icon">
         {% if perms.accounting.add_customer %}
         <a href="{% url 'accounting:customer_create' %}">
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-primary">
+                <div class="panel panel-pink">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -182,7 +182,7 @@
             </div>
         </a>
         {% endif %}
-        {% if perms.services.add_insurance %}
+        {% if perms.tools.add_files %}
         <a href="{% url 'services:forms' %}">
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-red">
@@ -211,11 +211,11 @@
         {% if perms.logistics.add_driverslogt %}
         <a href="{% url 'logistic:drivers_create' %}">
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-yellow">
+                <div class="panel panel-green-dark">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-shopping-cart fa-5x"></i>
+                                <i class="fa fa-truck fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
                                 <h3>Driver</h3>
@@ -237,11 +237,11 @@
         {% if perms.logistics.add_load %}
         <a href="{% url 'logistic:load_create' %}">
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-yellow">
+                <div class="panel panel-pink-dark">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-shopping-cart fa-5x"></i>
+                                <i class="fa fa-archive fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
                                 <h3>Load</h3>
@@ -263,15 +263,15 @@
         {% if perms.service.add_dispatch %}
         <a href="{% url 'services:dispatch_select' %}">
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-yellow">
+                <div class="panel panel-blue">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-shopping-cart fa-5x"></i>
+                                <i class="fa fa-table fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
                                 <h3>Third Party</h3>
-                                <div>New Invoice Load other Company!</div>
+                                <div>New Companies Dispatch!</div>
                             </div>
                         </div>
                     </div>
@@ -289,11 +289,11 @@
         {% if perms.accounting.add_invoice %}
         <a href="{% url 'accounting:invoiceslog_create' %}">
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-yellow">
+                <div class="panel panel-blue-dark">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-shopping-cart fa-5x"></i>
+                                <i class="fa fa-clipboard fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
                                 <h3>Billing</h3>

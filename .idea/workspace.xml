@@ -1,23 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/icon/web-o.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/media/img/LOGO.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/img/icon/Email-o.png" afterPath="$PROJECT_DIR$/static/img/icon/Email-o.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/img/icon/address-o.png" afterPath="$PROJECT_DIR$/static/img/icon/address-o.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/img/icon/fax-o.png" afterPath="$PROJECT_DIR$/static/img/icon/fax-o.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/img/icon/phone-o.png" afterPath="$PROJECT_DIR$/static/img/icon/phone-o.png" />
+    <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="Alain: Estilos de la Aplicacion Panel">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" afterPath="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/services/components/ServicePDF.py" afterPath="$PROJECT_DIR$/apps/services/components/ServicePDF.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/tools/models.py" afterPath="$PROJECT_DIR$/apps/tools/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/sb-admin.css" afterPath="$PROJECT_DIR$/static/css/sb-admin.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/accounting/customer/customerView.html" afterPath="$PROJECT_DIR$/templates/accounting/customer/customerView.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/accounting/invoices/invoicesForm.html" afterPath="$PROJECT_DIR$/templates/accounting/invoices/invoicesForm.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/accounting/invoices/invoiceslogForm.html" afterPath="$PROJECT_DIR$/templates/accounting/invoices/invoiceslogForm.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/accounting/payments/paymentsViews.html" afterPath="$PROJECT_DIR$/templates/accounting/payments/paymentsViews.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/accounting/statistic/accountPayMethod.html" afterPath="$PROJECT_DIR$/templates/accounting/statistic/accountPayMethod.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/accounting/statistic/principalPanel.html" afterPath="$PROJECT_DIR$/templates/accounting/statistic/principalPanel.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home/complement/panel.html" afterPath="$PROJECT_DIR$/templates/home/complement/panel.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,6 +28,16 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="panel.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="234">
+                  <caret line="103" column="10" lean-forward="true" selection-start-line="57" selection-start-column="6" selection-end-line="103" selection-end-column="10" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="ServicePDF.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/apps/services/components/ServicePDF.py">
               <provider selected="true" editor-type-id="text-editor">
@@ -51,20 +48,30 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="customerView.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="customerView.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/accounting/customer/customerView.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-811">
-                  <caret line="129" column="42" lean-forward="false" selection-start-line="129" selection-start-column="42" selection-end-line="129" selection-end-column="42" />
+                <state relative-caret-position="238">
+                  <caret line="259" column="87" lean-forward="false" selection-start-line="259" selection-start-column="87" selection-end-line="259" selection-end-column="87" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="paymentsViews.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/accounting/views.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="576">
+                  <caret line="233" column="20" lean-forward="false" selection-start-line="233" selection-start-column="20" selection-end-line="233" selection-end-column="20" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="paymentsViews.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/accounting/payments/paymentsViews.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1512">
+                <state relative-caret-position="1728">
                   <caret line="114" column="32" lean-forward="false" selection-start-line="114" selection-start-column="32" selection-end-line="114" selection-end-column="32" />
                   <folding />
                 </state>
@@ -117,16 +124,6 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="panel.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2463">
-                  <caret line="347" column="31" lean-forward="false" selection-start-line="347" selection-start-column="31" selection-end-line="347" selection-end-column="31" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="principalPanel.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/accounting/statistic/principalPanel.html">
               <provider selected="true" editor-type-id="text-editor">
@@ -137,11 +134,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="accountPayMethod.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="accountPayMethod.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/accounting/statistic/accountPayMethod.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="36">
                   <caret line="2" column="34" lean-forward="false" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="sb-admin.css" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/static/css/sb-admin.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="234">
+                  <caret line="308" column="20" lean-forward="false" selection-start-line="308" selection-start-column="20" selection-end-line="308" selection-end-column="20" />
                   <folding />
                 </state>
               </provider>
@@ -209,17 +216,17 @@
         <option value="$PROJECT_DIR$/templates/Login/login.html" />
         <option value="$PROJECT_DIR$/templates/admin/base_site.html" />
         <option value="$PROJECT_DIR$/templates/admin/base.html" />
-        <option value="$PROJECT_DIR$/static/css/sb-admin.css" />
         <option value="$PROJECT_DIR$/apps/tools/models.py" />
         <option value="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" />
         <option value="$PROJECT_DIR$/apps/services/components/ServicePDF.py" />
         <option value="$PROJECT_DIR$/templates/accounting/invoices/invoicesForm.html" />
         <option value="$PROJECT_DIR$/templates/accounting/invoices/invoiceslogForm.html" />
-        <option value="$PROJECT_DIR$/templates/accounting/customer/customerView.html" />
         <option value="$PROJECT_DIR$/templates/accounting/payments/paymentsViews.html" />
-        <option value="$PROJECT_DIR$/templates/home/complement/panel.html" />
         <option value="$PROJECT_DIR$/templates/accounting/statistic/principalPanel.html" />
         <option value="$PROJECT_DIR$/templates/accounting/statistic/accountPayMethod.html" />
+        <option value="$PROJECT_DIR$/templates/home/complement/panel.html" />
+        <option value="$PROJECT_DIR$/static/css/sb-admin.css" />
+        <option value="$PROJECT_DIR$/templates/accounting/customer/customerView.html" />
       </list>
     </option>
   </component>
@@ -308,33 +315,18 @@
               <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
               <item name="Prime" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
               <item name="Prime" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="img" type="462c0819:PsiDirectoryNode" />
-              <item name="icon" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
               <item name="Prime" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Prime" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Prime" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
               <item name="img" type="462c0819:PsiDirectoryNode" />
               <item name="icon" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -667,7 +659,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519647511682</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Alain: Estilos de la Aplicacion y Agrego de Email en Business">
+      <created>1519707315632</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1519707315632</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -677,7 +676,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24983902" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32957393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32957393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -726,20 +725,14 @@
     <MESSAGE value="Alain: Configuracion para deploy" />
     <MESSAGE value="Alain: Estilos de la Aplicacion" />
     <MESSAGE value="Alain: Estilos de la Aplicacion Invoices Print" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alain: Estilos de la Aplicacion Invoices Print" />
+    <MESSAGE value="Alain: Estilos de la Aplicacion y Agrego de Email en Business" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alain: Estilos de la Aplicacion y Agrego de Email en Business" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Prime/context_processors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/accounting/customer/customerViews.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -796,13 +789,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="683">
           <caret line="353" column="130" lean-forward="false" selection-start-line="353" selection-start-column="130" selection-end-line="353" selection-end-column="130" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/accounting/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="233" column="20" lean-forward="false" selection-start-line="233" selection-start-column="20" selection-end-line="233" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -951,13 +937,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/sb-admin.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="687">
-          <caret line="67" column="6" lean-forward="true" selection-start-line="67" selection-start-column="6" selection-end-line="67" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -1036,17 +1015,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/accounting/customer/customerView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-811">
-          <caret line="129" column="42" lean-forward="false" selection-start-line="129" selection-start-column="42" selection-end-line="129" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/accounting/payments/paymentsViews.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1512">
+        <state relative-caret-position="1728">
           <caret line="114" column="32" lean-forward="false" selection-start-line="114" selection-start-column="32" selection-end-line="114" selection-end-column="32" />
           <folding />
         </state>
@@ -1054,16 +1025,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="712" column="18" lean-forward="false" selection-start-line="712" selection-start-column="18" selection-end-line="712" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2463">
-          <caret line="347" column="31" lean-forward="false" selection-start-line="347" selection-start-column="31" selection-end-line="347" selection-end-column="31" />
+        <state relative-caret-position="53">
+          <caret line="594" column="27" lean-forward="false" selection-start-line="594" selection-start-column="20" selection-end-line="594" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1080,6 +1043,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="34" lean-forward="false" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-636">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/sb-admin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="308" column="20" lean-forward="false" selection-start-line="308" selection-start-column="20" selection-end-line="308" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="103" column="10" lean-forward="true" selection-start-line="57" selection-start-column="6" selection-end-line="103" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/accounting/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="233" column="20" lean-forward="false" selection-start-line="233" selection-start-column="20" selection-end-line="233" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/accounting/customer/customerView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="259" column="87" lean-forward="false" selection-start-line="259" selection-start-column="87" selection-end-line="259" selection-end-column="87" />
           <folding />
         </state>
       </provider>
