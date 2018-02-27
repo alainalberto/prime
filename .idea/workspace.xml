@@ -4,6 +4,7 @@
     <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prime/settings.py" afterPath="$PROJECT_DIR$/Prime/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/accounting/customer/customerView.html" afterPath="$PROJECT_DIR$/templates/accounting/customer/customerView.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,17 +59,17 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="customerView.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="customerView.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/accounting/customer/customerView.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4172">
-                  <caret line="259" column="87" lean-forward="false" selection-start-line="259" selection-start-column="87" selection-end-line="259" selection-end-column="87" />
+                <state relative-caret-position="129">
+                  <caret line="278" column="106" lean-forward="false" selection-start-line="278" selection-start-column="106" selection-end-line="278" selection-end-column="106" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/apps/accounting/views.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="576">
@@ -177,8 +178,8 @@
           <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Prime/settings.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="131">
-                  <caret line="99" column="43" lean-forward="true" selection-start-line="99" selection-start-column="43" selection-end-line="99" selection-end-column="43" />
+                <state relative-caret-position="288">
+                  <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -243,9 +244,9 @@
         <option value="$PROJECT_DIR$/templates/accounting/statistic/accountPayMethod.html" />
         <option value="$PROJECT_DIR$/templates/home/complement/panel.html" />
         <option value="$PROJECT_DIR$/static/css/sb-admin.css" />
-        <option value="$PROJECT_DIR$/templates/accounting/customer/customerView.html" />
         <option value="$PROJECT_DIR$/apps/services/components/ServicePDF.py" />
         <option value="$PROJECT_DIR$/apps/tools/models.py" />
+        <option value="$PROJECT_DIR$/templates/accounting/customer/customerView.html" />
         <option value="$PROJECT_DIR$/Prime/settings.py" />
       </list>
     </option>
@@ -681,7 +682,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519770916996</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Alain: Arreglos archivos">
+      <created>1519771052715</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1519771052715</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1074,14 +1082,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/accounting/customer/customerView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4172">
-          <caret line="259" column="87" lean-forward="false" selection-start-line="259" selection-start-column="87" selection-end-line="259" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounting/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1674">
@@ -1098,10 +1098,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/accounting/customer/customerView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="278" column="106" lean-forward="false" selection-start-line="278" selection-start-column="106" selection-end-line="278" selection-end-column="106" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Prime/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="99" column="43" lean-forward="true" selection-start-line="99" selection-start-column="43" selection-end-line="99" selection-end-column="43" />
+        <state relative-caret-position="288">
+          <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding />
         </state>
       </provider>
