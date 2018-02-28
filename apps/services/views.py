@@ -95,8 +95,8 @@ class PermitCreate(CreateView):
                   customer.ein = permit.ein
                   customer.save()
                   if request.POST.get('txdmv_alert', False) and len(request.POST['txdmv_date_exp']) != 0:
-                        group_admin = Group.objects.get(name='Prime Administrator')
-                        group_manag = Group.objects.get(name= 'Prime Manager')
+                        group_admin = Group.objects.get(name='System Administrator')
+                        group_manag = Group.objects.get(name= 'System Manager')
                         group_offic = Group.objects.get(name= 'Office Specialist')
                         dateExp = permit.txdmv_date_exp
                         dateShow = dateExp - timedelta(days=30)
@@ -110,8 +110,8 @@ class PermitCreate(CreateView):
                         alert.group.add(group_admin, group_manag, group_offic)
                         CustomerHasAlert.objects.create(customers=customer, alert=alert)
                   if request.POST.get('ucr_alert', False) and len(request.POST['ucr_date_exp']) != 0:
-                        group_admin = Group.objects.get(name='Prime Administrator')
-                        group_manag = Group.objects.get(name='Prime Manager')
+                        group_admin = Group.objects.get(name='System Administrator')
+                        group_manag = Group.objects.get(name='System Manager')
                         group_offic = Group.objects.get(name='Office Specialist')
                         dateExp = permit.ucr_date_exp
                         dateShow = dateExp - timedelta(days=30)
@@ -186,8 +186,8 @@ class PermitEdit(UpdateView):
                           if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                               CustomerHasAlert.objects.create(customers=customer, alert=a)
                    else:
-                       group_admin = Group.objects.get(name='Prime Administrator')
-                       group_manag = Group.objects.get(name='Prime Manager')
+                       group_admin = Group.objects.get(name='System Administrator')
+                       group_manag = Group.objects.get(name='System Manager')
                        group_offic = Group.objects.get(name='Office Specialist')
                        alert = Alert.objects.create(
                            category="Urgents",
@@ -217,8 +217,8 @@ class PermitEdit(UpdateView):
                            if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                                CustomerHasAlert.objects.create(customers=customer, alert=a)
                    else:
-                       group_admin = Group.objects.get(name='Prime Administrator')
-                       group_manag = Group.objects.get(name='Prime Manager')
+                       group_admin = Group.objects.get(name='System Administrator')
+                       group_manag = Group.objects.get(name='System Manager')
                        group_offic = Group.objects.get(name='Office Specialist')
                        alert = Alert.objects.create(
                            category="Urgents",
@@ -530,8 +530,8 @@ class EquipmentCreate(CreateView):
                     equipment.deactivate_date = None
                 equipment.save()
                 if request.POST.get('plate_alert', False) and len(request.POST['plate_date_exp']) != 0:
-                    group_admin = Group.objects.get(name='Prime Administrator')
-                    group_manag = Group.objects.get(name='Prime Manager')
+                    group_admin = Group.objects.get(name='System Administrator')
+                    group_manag = Group.objects.get(name='System Manager')
                     group_offic = Group.objects.get(name='Office Specialist')
                     dateExp = equipment.plate_date_exp
                     dateShow = dateExp - timedelta(days=30)
@@ -545,8 +545,8 @@ class EquipmentCreate(CreateView):
                     alert.group.add(group_admin, group_manag, group_offic)
                     CustomerHasAlert.objects.create(customers=customer, alert=alert)
                 if request.POST.get('reg_alert', False) and len(request.POST['title_date_exp_reg']) != 0:
-                    group_admin = Group.objects.get(name='Prime Administrator')
-                    group_manag = Group.objects.get(name='Prime Manager')
+                    group_admin = Group.objects.get(name='System Administrator')
+                    group_manag = Group.objects.get(name='System Manager')
                     group_offic = Group.objects.get(name='Office Specialist')
                     dateExp = equipment.title_date_exp_reg
                     dateShow = dateExp - timedelta(days=30)
@@ -560,8 +560,8 @@ class EquipmentCreate(CreateView):
                     alert.group.add(group_admin, group_manag, group_offic)
                     CustomerHasAlert.objects.create(customers=customer, alert=alert)
                 if request.POST.get('insp_alert', False) and len(request.POST['title_date_exp_insp']) != 0:
-                    group_admin = Group.objects.get(name='Prime Administrator')
-                    group_manag = Group.objects.get(name='Prime Manager')
+                    group_admin = Group.objects.get(name='System Administrator')
+                    group_manag = Group.objects.get(name='System Manager')
                     group_offic = Group.objects.get(name='Office Specialist')
                     dateExp = equipment.title_date_exp_insp
                     dateShow = dateExp - timedelta(days=30)
@@ -635,8 +635,8 @@ class EquipmentEdit(UpdateView):
                         if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                            CustomerHasAlert.objects.create(customers=customer, alert=a)
                 else:
-                    group_admin = Group.objects.get(name='Prime Administrator')
-                    group_manag = Group.objects.get(name='Prime Manager')
+                    group_admin = Group.objects.get(name='System Administrator')
+                    group_manag = Group.objects.get(name='System Manager')
                     group_offic = Group.objects.get(name='Office Specialist')
                     alert = Alert.objects.create(
                         category="Urgents",
@@ -668,8 +668,8 @@ class EquipmentEdit(UpdateView):
                         if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                            CustomerHasAlert.objects.create(customers=customer, alert=a)
                 else:
-                    group_admin = Group.objects.get(name='Prime Administrator')
-                    group_manag = Group.objects.get(name='Prime Manager')
+                    group_admin = Group.objects.get(name='System Administrator')
+                    group_manag = Group.objects.get(name='System Manager')
                     group_offic = Group.objects.get(name='Office Specialist')
                     alert = Alert.objects.create(
                         category="Urgents",
@@ -703,8 +703,8 @@ class EquipmentEdit(UpdateView):
                         if not CustomerHasAlert.objects.filter(customers=equipment.customers, alert=a):
                            CustomerHasAlert.objects.create(customers=equipment.customers, alert=a)
                 else:
-                    group_admin = Group.objects.get(name='Prime Administrator')
-                    group_manag = Group.objects.get(name='Prime Manager')
+                    group_admin = Group.objects.get(name='System Administrator')
+                    group_manag = Group.objects.get(name='System Manager')
                     group_offic = Group.objects.get(name='Office Specialist')
                     alert = Alert.objects.create(
                         category="Urgents",
@@ -817,8 +817,8 @@ class InsuranceCreate(CreateView):
                   insurance.update = datetime.now().strftime("%Y-%m-%d")
                   insurance.save()
                   if request.POST.get('liability_alert', False) and len(request.POST['policy_date_exp']) != 0:
-                        group_admin = Group.objects.get(name='Prime Administrator')
-                        group_manag = Group.objects.get(name= 'Prime Manager')
+                        group_admin = Group.objects.get(name='System Administrator')
+                        group_manag = Group.objects.get(name= 'System Manager')
                         group_offic = Group.objects.get(name= 'Office Specialist')
                         dateExp = insurance.policy_date_exp
                         dateShow = dateExp - timedelta(days=30)
@@ -832,8 +832,8 @@ class InsuranceCreate(CreateView):
                         alert.group.add(group_admin, group_manag, group_offic)
                         CustomerHasAlert.objects.create(customers=customer, alert=alert)
                   if request.POST.get('cargo_alert', False) and len(request.POST['policy_cargo_exp']) != 0:
-                        group_admin = Group.objects.get(name='Prime Administrator')
-                        group_manag = Group.objects.get(name= 'Prime Manager')
+                        group_admin = Group.objects.get(name='System Administrator')
+                        group_manag = Group.objects.get(name= 'System Manager')
                         group_offic = Group.objects.get(name= 'Office Specialist')
                         dateExp = insurance.policy_cargo_exp
                         dateShow = dateExp - timedelta(days=30)
@@ -847,8 +847,8 @@ class InsuranceCreate(CreateView):
                         alert.group.add(group_admin, group_manag, group_offic)
                         CustomerHasAlert.objects.create(customers=customer, alert=alert)
                   if request.POST.get('physical_alert', False) and len(request.POST['policy_physical_exp']) != 0:
-                        group_admin = Group.objects.get(name='Prime Administrator')
-                        group_manag = Group.objects.get(name= 'Prime Manager')
+                        group_admin = Group.objects.get(name='System Administrator')
+                        group_manag = Group.objects.get(name= 'System Manager')
                         group_offic = Group.objects.get(name= 'Office Specialist')
                         dateExp = insurance.policy_physical_exp
                         dateShow = dateExp - timedelta(days=30)
@@ -862,8 +862,8 @@ class InsuranceCreate(CreateView):
                         alert.group.add(group_admin, group_manag, group_offic)
                         CustomerHasAlert.objects.create(customers=customer, alert=alert)
                   if request.POST.get('other_alert', False) and len(request.POST['policy_other_exp']) != 0:
-                        group_admin = Group.objects.get(name='Prime Administrator')
-                        group_manag = Group.objects.get(name= 'Prime Manager')
+                        group_admin = Group.objects.get(name='System Administrator')
+                        group_manag = Group.objects.get(name= 'System Manager')
                         group_offic = Group.objects.get(name= 'Office Specialist')
                         dateExp = insurance.policy_other_exp
                         dateShow = dateExp - timedelta(days=30)
@@ -877,8 +877,8 @@ class InsuranceCreate(CreateView):
                         alert.group.add(group_admin, group_manag, group_offic)
                         CustomerHasAlert.objects.create(customers=customer, alert=alert)
                   if request.POST.get('monthly_alert', False) and len(request.POST['monthlypay']) != 0:
-                        group_admin = Group.objects.get(name='Prime Administrator')
-                        group_manag = Group.objects.get(name= 'Prime Manager')
+                        group_admin = Group.objects.get(name='System Administrator')
+                        group_manag = Group.objects.get(name= 'System Manager')
                         group_offic = Group.objects.get(name= 'Office Specialist')
                         dateExp = insurance.monthlypay
                         dateShow = dateExp - timedelta(days=7)
@@ -946,8 +946,8 @@ class InsuranceEdit(UpdateView):
                           if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                               CustomerHasAlert.objects.create(customers=customer, alert=a)
                    else:
-                       group_admin = Group.objects.get(name='Prime Administrator')
-                       group_manag = Group.objects.get(name='Prime Manager')
+                       group_admin = Group.objects.get(name='System Administrator')
+                       group_manag = Group.objects.get(name='System Manager')
                        group_offic = Group.objects.get(name='Office Specialist')
                        alert = Alert.objects.create(
                            category="Urgents",
@@ -977,8 +977,8 @@ class InsuranceEdit(UpdateView):
                           if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                               CustomerHasAlert.objects.create(customers=customer, alert=a)
                    else:
-                       group_admin = Group.objects.get(name='Prime Administrator')
-                       group_manag = Group.objects.get(name='Prime Manager')
+                       group_admin = Group.objects.get(name='System Administrator')
+                       group_manag = Group.objects.get(name='System Manager')
                        group_offic = Group.objects.get(name='Office Specialist')
                        alert = Alert.objects.create(
                            category="Urgents",
@@ -1010,8 +1010,8 @@ class InsuranceEdit(UpdateView):
                             if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                                 CustomerHasAlert.objects.create(customers=customer, alert=a)
                     else:
-                        group_admin = Group.objects.get(name='Prime Administrator')
-                        group_manag = Group.objects.get(name='Prime Manager')
+                        group_admin = Group.objects.get(name='System Administrator')
+                        group_manag = Group.objects.get(name='System Manager')
                         group_offic = Group.objects.get(name='Office Specialist')
                         alert = Alert.objects.create(
                             category="Urgents",
@@ -1043,8 +1043,8 @@ class InsuranceEdit(UpdateView):
                             if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                                 CustomerHasAlert.objects.create(customers=customer, alert=a)
                     else:
-                        group_admin = Group.objects.get(name='Prime Administrator')
-                        group_manag = Group.objects.get(name='Prime Manager')
+                        group_admin = Group.objects.get(name='System Administrator')
+                        group_manag = Group.objects.get(name='System Manager')
                         group_offic = Group.objects.get(name='Office Specialist')
                         alert = Alert.objects.create(
                             category="Urgents",
@@ -1075,8 +1075,8 @@ class InsuranceEdit(UpdateView):
                           if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                               CustomerHasAlert.objects.create(customers=customer, alert=a)
                    else:
-                       group_admin = Group.objects.get(name='Prime Administrator')
-                       group_manag = Group.objects.get(name='Prime Manager')
+                       group_admin = Group.objects.get(name='System Administrator')
+                       group_manag = Group.objects.get(name='System Manager')
                        group_offic = Group.objects.get(name='Office Specialist')
                        alert = Alert.objects.create(
                            category="Urgents",
@@ -1205,8 +1205,8 @@ class DriverCreate(CreateView):
                       driver.deactivate_date = None
                   driver.save()
                   if request.POST.get('lic_alert', False) and len(request.POST['lic_date_exp']) != 0:
-                        group_admin = Group.objects.get(name='Prime Administrator')
-                        group_manag = Group.objects.get(name= 'Prime Manager')
+                        group_admin = Group.objects.get(name='System Administrator')
+                        group_manag = Group.objects.get(name= 'System Manager')
                         group_offic = Group.objects.get(name= 'Office Specialist')
                         dateExp = driver.lic_date_exp
                         dateShow = dateExp - timedelta(days=30)
@@ -1220,8 +1220,8 @@ class DriverCreate(CreateView):
                         alert.group.add(group_admin, group_manag, group_offic)
                         CustomerHasAlert.objects.create(customers=customer, alert=alert)
                   if request.POST.get('medicard_alert', False) and len(request.POST['medicard_date_exp']) != 0:
-                        group_admin = Group.objects.get(name='Prime Administrator')
-                        group_manag = Group.objects.get(name='Prime Manager')
+                        group_admin = Group.objects.get(name='System Administrator')
+                        group_manag = Group.objects.get(name='System Manager')
                         group_offic = Group.objects.get(name='Office Specialist')
                         dateExp = driver.medicard_date_exp
                         dateShow = dateExp - timedelta(days=30)
@@ -1235,8 +1235,8 @@ class DriverCreate(CreateView):
                         alert.group.add(group_admin, group_manag, group_offic)
                         CustomerHasAlert.objects.create(customers=customer, alert=alert)
                   if request.POST.get('drugtest_alert', False) and len(request.POST['drugtest_date_exp']) != 0:
-                      group_admin = Group.objects.get(name='Prime Administrator')
-                      group_manag = Group.objects.get(name='Prime Manager')
+                      group_admin = Group.objects.get(name='System Administrator')
+                      group_manag = Group.objects.get(name='System Manager')
                       group_offic = Group.objects.get(name='Office Specialist')
                       dateExp = driver.drugtest_date_exp
                       dateShow = dateExp - timedelta(days=30)
@@ -1250,8 +1250,8 @@ class DriverCreate(CreateView):
                       alert.group.add(group_admin, group_manag, group_offic)
                       CustomerHasAlert.objects.create(customers=customer, alert=alert)
                   if request.POST.get('mbr_alert', False) and len(request.POST['mbr_date_exp']) != 0:
-                      group_admin = Group.objects.get(name='Prime Administrator')
-                      group_manag = Group.objects.get(name='Prime Manager')
+                      group_admin = Group.objects.get(name='System Administrator')
+                      group_manag = Group.objects.get(name='System Manager')
                       group_offic = Group.objects.get(name='Office Specialist')
                       dateExp = driver.mbr_date_exp
                       dateShow = dateExp - timedelta(days=30)
@@ -1319,8 +1319,8 @@ class DriverEdit(UpdateView):
                           if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                               CustomerHasAlert.objects.create(customers=customer, alert=a)
                    else:
-                       group_admin = Group.objects.get(name='Prime Administrator')
-                       group_manag = Group.objects.get(name='Prime Manager')
+                       group_admin = Group.objects.get(name='System Administrator')
+                       group_manag = Group.objects.get(name='SystemManager')
                        group_offic = Group.objects.get(name='Office Specialist')
                        alert = Alert.objects.create(
                            category="Urgents",
@@ -1350,8 +1350,8 @@ class DriverEdit(UpdateView):
                            if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                                CustomerHasAlert.objects.create(customers=customer, alert=a)
                    else:
-                       group_admin = Group.objects.get(name='Prime Administrator')
-                       group_manag = Group.objects.get(name='Prime Manager')
+                       group_admin = Group.objects.get(name='System Administrator')
+                       group_manag = Group.objects.get(name='System Manager')
                        group_offic = Group.objects.get(name='Office Specialist')
                        alert = Alert.objects.create(
                            category="Urgents",
@@ -1379,8 +1379,8 @@ class DriverEdit(UpdateView):
                            if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                                CustomerHasAlert.objects.create(customers=customer, alert=a)
                    else:
-                       group_admin = Group.objects.get(name='Prime Administrator')
-                       group_manag = Group.objects.get(name='Prime Manager')
+                       group_admin = Group.objects.get(name='System Administrator')
+                       group_manag = Group.objects.get(name='System Manager')
                        group_offic = Group.objects.get(name='Office Specialist')
                        alert = Alert.objects.create(
                            category="Urgents",
@@ -1408,8 +1408,8 @@ class DriverEdit(UpdateView):
                            if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                                CustomerHasAlert.objects.create(customers=customer, alert=a)
                    else:
-                       group_admin = Group.objects.get(name='Prime Administrator')
-                       group_manag = Group.objects.get(name='Prime Manager')
+                       group_admin = Group.objects.get(name='System Administrator')
+                       group_manag = Group.objects.get(name='System Manager')
                        group_offic = Group.objects.get(name='Office Specialist')
                        alert = Alert.objects.create(
                            category="Urgents",
@@ -1519,8 +1519,8 @@ class IftaCreate(CreateView):
                     ifta.update = datetime.now().strftime("%Y-%m-%d")
                     ifta.save()
                     if request.POST.get('nex_period_alert', False) and len(request.POST['nex_period']) != 0:
-                        group_admin = Group.objects.get(name='Prime Administrator')
-                        group_manag = Group.objects.get(name='Prime Manager')
+                        group_admin = Group.objects.get(name='System Administrator')
+                        group_manag = Group.objects.get(name='System Manager')
                         group_offic = Group.objects.get(name='Office Specialist')
                         dateExp = ifta.nex_period
                         dateShow = dateExp - timedelta(days=30)
@@ -1534,8 +1534,8 @@ class IftaCreate(CreateView):
                         alert.group.add(group_admin, group_manag, group_offic)
                         CustomerHasAlert.objects.create(customers=customer, alert=alert)
                     if request.POST.get('payment_alert', False) and len(request.POST['payment_due']) != 0:
-                        group_admin = Group.objects.get(name='Prime Administrator')
-                        group_manag = Group.objects.get(name='Prime Manager')
+                        group_admin = Group.objects.get(name='System Administrator')
+                        group_manag = Group.objects.get(name='System Manager')
                         group_offic = Group.objects.get(name='Office Specialist')
                         dateExp = ifta.payment_due
                         dateShow = dateExp - timedelta(days=30)
@@ -1602,8 +1602,8 @@ class IftaEdit(UpdateView):
                             if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                                 CustomerHasAlert.objects.create(customers=customer, alert=a)
                     else:
-                        group_admin = Group.objects.get(name='Prime Administrator')
-                        group_manag = Group.objects.get(name='Prime Manager')
+                        group_admin = Group.objects.get(name='System Administrator')
+                        group_manag = Group.objects.get(name='System Manager')
                         group_offic = Group.objects.get(name='Office Specialist')
                         alert = Alert.objects.create(
                             category="Urgents",
@@ -1634,8 +1634,8 @@ class IftaEdit(UpdateView):
                             if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                                 CustomerHasAlert.objects.create(customers=customer, alert=a)
                     else:
-                        group_admin = Group.objects.get(name='Prime Administrator')
-                        group_manag = Group.objects.get(name='Prime Manager')
+                        group_admin = Group.objects.get(name='System Administrator')
+                        group_manag = Group.objects.get(name='System Manager')
                         group_offic = Group.objects.get(name='Office Specialist')
                         alert = Alert.objects.create(
                             category="Urgents",
@@ -1849,8 +1849,8 @@ class ContractCreate(CreateView):
             contract.update = datetime.now().strftime("%Y-%m-%d")
             contract.save()
             if request.POST.get('end_alert', False) and len(request.POST['end_date']) != 0:
-                group_admin = Group.objects.get(name='Prime Administrator')
-                group_manag = Group.objects.get(name='Prime Manager')
+                group_admin = Group.objects.get(name='System Administrator')
+                group_manag = Group.objects.get(name='System Manager')
                 group_offic = Group.objects.get(name='Office Specialist')
                 dateExp = contract.end_date
                 dateShow = dateExp - timedelta(days=30)
@@ -1934,8 +1934,8 @@ class ContractEdit(UpdateView):
                         if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                             CustomerHasAlert.objects.create(customers=customer, alert=a)
                 else:
-                    group_admin = Group.objects.get(name='Prime Administrator')
-                    group_manag = Group.objects.get(name='Prime Manager')
+                    group_admin = Group.objects.get(name='System Administrator')
+                    group_manag = Group.objects.get(name='System Manager')
                     group_offic = Group.objects.get(name='Office Specialist')
                     alert = Alert.objects.create(
                         category="Urgents",

@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/accounting/customer/customerView.html" afterPath="$PROJECT_DIR$/templates/accounting/customer/customerView.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/logistic/views.py" afterPath="$PROJECT_DIR$/apps/logistic/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/services/views.py" afterPath="$PROJECT_DIR$/apps/services/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,11 +59,41 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="customerView.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="customerView.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/accounting/customer/customerView.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="129">
+                <state relative-caret-position="237">
                   <caret line="278" column="106" lean-forward="false" selection-start-line="278" selection-start-column="106" selection-end-line="278" selection-end-column="106" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/base.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="164">
+                  <caret line="82" column="16" lean-forward="false" selection-start-line="80" selection-start-column="12" selection-end-line="82" selection-end-column="16" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/services/views.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-4672">
+                  <caret line="1937" column="64" lean-forward="false" selection-start-line="1937" selection-start-column="64" selection-end-line="1937" selection-end-column="64" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/apps/logistic/views.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-4852">
+                  <caret line="308" column="64" lean-forward="false" selection-start-line="308" selection-start-column="64" selection-end-line="308" selection-end-column="64" />
                   <folding />
                 </state>
               </provider>
@@ -83,38 +114,6 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="1728">
                   <caret line="114" column="32" lean-forward="false" selection-start-line="114" selection-start-column="32" selection-end-line="114" selection-end-column="32" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Prime/urls.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-168">
-                  <caret line="9" column="37" lean-forward="false" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/apps/logistic/urls.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-69">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#0#30#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/apps/services/urls.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="40">
-                  <caret line="80" column="131" lean-forward="false" selection-start-line="80" selection-start-column="116" selection-end-line="80" selection-end-column="131" />
                   <folding />
                 </state>
               </provider>
@@ -218,7 +217,6 @@
         <option value="$PROJECT_DIR$/System/settings.py" />
         <option value="$PROJECT_DIR$/apps/services/components/ServicesForm.py" />
         <option value="$PROJECT_DIR$/apps/services/models.py" />
-        <option value="$PROJECT_DIR$/apps/services/views.py" />
         <option value="$PROJECT_DIR$/apps/accounting/views.py" />
         <option value="$PROJECT_DIR$/templates/services/companiesDispatch/invoiceslogViews.html" />
         <option value="$PROJECT_DIR$/apps/services/urls.py" />
@@ -247,6 +245,8 @@
         <option value="$PROJECT_DIR$/apps/tools/models.py" />
         <option value="$PROJECT_DIR$/Prime/settings.py" />
         <option value="$PROJECT_DIR$/templates/accounting/customer/customerView.html" />
+        <option value="$PROJECT_DIR$/apps/services/views.py" />
+        <option value="$PROJECT_DIR$/apps/logistic/views.py" />
       </list>
     </option>
   </component>
@@ -287,6 +287,18 @@
               <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
               <item name="Prime" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Prime" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="logistic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Prime" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
@@ -708,7 +720,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519772129824</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Alain: Arreglos archivos">
+      <created>1519772719853</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1519772719853</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -850,20 +869,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/logistic/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1944">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/services/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-827">
-          <caret line="2044" column="40" lean-forward="false" selection-start-line="2044" selection-start-column="40" selection-end-line="2044" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/logistic/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1980">
@@ -960,13 +965,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="82" column="16" lean-forward="false" selection-start-line="80" selection-start-column="12" selection-end-line="82" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Prime/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-168">
@@ -988,7 +986,7 @@
         <state relative-caret-position="-69">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#30#0" expanded="true" />
+            <element signature="e#0#30#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1125,10 +1123,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="82" column="16" lean-forward="false" selection-start-line="80" selection-start-column="12" selection-end-line="82" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/accounting/customer/customerView.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
+        <state relative-caret-position="237">
           <caret line="278" column="106" lean-forward="false" selection-start-line="278" selection-start-column="106" selection-end-line="278" selection-end-column="106" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/services/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4672">
+          <caret line="1937" column="64" lean-forward="false" selection-start-line="1937" selection-start-column="64" selection-end-line="1937" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/logistic/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4852">
+          <caret line="308" column="64" lean-forward="false" selection-start-line="308" selection-start-column="64" selection-end-line="308" selection-end-column="64" />
           <folding />
         </state>
       </provider>

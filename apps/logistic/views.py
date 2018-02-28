@@ -145,8 +145,8 @@ class DriversCreate(CreateView):
                  driver.users_id = user.id
                  driver.save()
                  if request.POST.get('lic_alert', False) and len(request.POST['lic_date_exp']) != 0:
-                     group_admin = Group.objects.get(name='Prime Administrator')
-                     group_manag = Group.objects.get(name='Prime Manager')
+                     group_admin = Group.objects.get(name='System Administrator')
+                     group_manag = Group.objects.get(name='System Manager')
                      group_offic = Group.objects.get(name='Logistic Specialist')
                      dateExp = driver.lic_date_exp
                      dateShow = dateExp - timedelta(days=30)
@@ -159,8 +159,8 @@ class DriversCreate(CreateView):
                          users=request.user)
                      alert.group.add(group_admin, group_manag, group_offic)
                  if request.POST.get('medicard_alert', False) and len(request.POST['medicard_date_exp']) != 0:
-                     group_admin = Group.objects.get(name='Prime Administrator')
-                     group_manag = Group.objects.get(name='Prime Manager')
+                     group_admin = Group.objects.get(name='System Administrator')
+                     group_manag = Group.objects.get(name='System Manager')
                      group_offic = Group.objects.get(name='Logistic Specialist')
                      dateExp = driver.medicard_date_exp
                      dateShow = dateExp - timedelta(days=30)
@@ -173,8 +173,8 @@ class DriversCreate(CreateView):
                          users=request.user)
                      alert.group.add(group_admin, group_manag, group_offic)
                  if request.POST.get('drugtest_alert', False) and len(request.POST['drugtest_date_exp']) != 0:
-                     group_admin = Group.objects.get(name='Prime Administrator')
-                     group_manag = Group.objects.get(name='Prime Manager')
+                     group_admin = Group.objects.get(name='System Administrator')
+                     group_manag = Group.objects.get(name='System Manager')
                      group_offic = Group.objects.get(name='Logistic Specialist')
                      dateExp = driver.drugtest_date_exp
                      dateShow = dateExp - timedelta(days=30)
@@ -187,8 +187,8 @@ class DriversCreate(CreateView):
                          users=request.user)
                      alert.group.add(group_admin, group_manag, group_offic)
                  if request.POST.get('mbr_alert', False) and len(request.POST['mbr_date_exp']) != 0:
-                     group_admin = Group.objects.get(name='Prime Administrator')
-                     group_manag = Group.objects.get(name='Prime Manager')
+                     group_admin = Group.objects.get(name='System Administrator')
+                     group_manag = Group.objects.get(name='System Manager')
                      group_offic = Group.objects.get(name='Logistic Specialist')
                      dateExp = driver.mbr_date_exp
                      dateShow = dateExp - timedelta(days=30)
@@ -229,8 +229,8 @@ class DriversEdit(UpdateView):
                 if alert:
                     alert.update(show_date=dateShow.strftime("%Y-%m-%d"), end_date=dateExp.strftime("%Y-%m-%d"))
                 else:
-                    group_admin = Group.objects.get(name='Prime Administrator')
-                    group_manag = Group.objects.get(name='Prime Manager')
+                    group_admin = Group.objects.get(name='System Administrator')
+                    group_manag = Group.objects.get(name='System Manager')
                     group_offic = Group.objects.get(name='Logistic Specialist')
                     alert = Alert.objects.create(
                         category="Urgents",
@@ -255,8 +255,8 @@ class DriversEdit(UpdateView):
                 if alert:
                     alert.update(show_date=dateShow.strftime("%Y-%m-%d"), end_date=dateExp.strftime("%Y-%m-%d"))
                 else:
-                    group_admin = Group.objects.get(name='Prime Administrator')
-                    group_manag = Group.objects.get(name='Prime Manager')
+                    group_admin = Group.objects.get(name='System Administrator')
+                    group_manag = Group.objects.get(name='System Manager')
                     group_offic = Group.objects.get(name='Logistic Specialist')
                     alert = Alert.objects.create(
                         category="Urgents",
@@ -280,8 +280,8 @@ class DriversEdit(UpdateView):
                 if alert:
                     alert.update(show_date=dateShow.strftime("%Y-%m-%d"), end_date=dateExp.strftime("%Y-%m-%d"))
                 else:
-                    group_admin = Group.objects.get(name='Prime Administrator')
-                    group_manag = Group.objects.get(name='Prime Manager')
+                    group_admin = Group.objects.get(name='System Administrator')
+                    group_manag = Group.objects.get(name='System Manager')
                     group_offic = Group.objects.get(name='Logistic Specialist')
                     alert = Alert.objects.create(
                         category="Urgents",
@@ -305,8 +305,8 @@ class DriversEdit(UpdateView):
                 if alert:
                     alert.update(show_date=dateShow.strftime("%Y-%m-%d"), end_date=dateExp.strftime("%Y-%m-%d"))
                 else:
-                    group_admin = Group.objects.get(name='Prime Administrator')
-                    group_manag = Group.objects.get(name='Prime Manager')
+                    group_admin = Group.objects.get(name='System Administrator')
+                    group_manag = Group.objects.get(name='System Manager')
                     group_offic = Group.objects.get(name='Logistic Specialist')
                     alert = Alert.objects.create(
                         category="Urgents",
