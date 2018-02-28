@@ -32,10 +32,10 @@ urlpatterns = [
     url(r'^dispatch/(?P<pk>\d+)/$', login_required(permission_required('logistic.delete_dispatchlogt')(DispatchDelete.as_view())), name='dispatch_delete'),
 
     #Diesel
-    url(r'^diesel/$', login_required(permission_required('logistic')(DieselView.as_view())), name='diesel'),
-    url(r'^diesel/create$', login_required(permission_required('logistic')(DieselCreate.as_view())), name='diesel_create'),
-    url(r'^diesel/edit/(?P<pk>\d+)/$', login_required(permission_required('logistic')(DieselEdit.as_view())), name='diesel_edit'),
-    url(r'^diesel/(?P<pk>\d+)/$', login_required(permission_required('logistic')(DieselDelete.as_view())), name='diesel_delete'),
+    url(r'^diesel/$', login_required(permission_required('logistic.add_diesel')(DieselView.as_view())), name='diesel'),
+    url(r'^diesel/create$', login_required(permission_required('logistic.add_diesel')(DieselCreate.as_view())), name='diesel_create'),
+    url(r'^diesel/edit/(?P<pk>\d+)/$', login_required(permission_required('logistic.change_diesel')(DieselEdit.as_view())), name='diesel_edit'),
+    url(r'^diesel/(?P<pk>\d+)/$', login_required(permission_required('logistic.delete_diesel')(DieselDelete.as_view())), name='diesel_delete'),
 
     url(r'^trucks/$', login_required(), name='trucks'),
     url(r'^travel/$', login_required(), name='travel'),
