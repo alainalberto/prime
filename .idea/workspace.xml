@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home/complement/panel.html" afterPath="$PROJECT_DIR$/templates/home/complement/panel.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +29,8 @@
           <file leaf-file-name="panel.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="108">
-                  <caret line="288" column="64" lean-forward="false" selection-start-line="288" selection-start-column="64" selection-end-line="288" selection-end-column="64" />
+                <state relative-caret-position="18">
+                  <caret line="262" column="32" lean-forward="false" selection-start-line="262" selection-start-column="32" selection-end-line="262" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
@@ -746,7 +745,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519832600849</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Alain: Arreglos1 Permisos">
+      <created>1519843750075</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1519843750075</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1172,8 +1178,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="288" column="64" lean-forward="false" selection-start-line="288" selection-start-column="64" selection-end-line="288" selection-end-column="64" />
+        <state relative-caret-position="18">
+          <caret line="262" column="32" lean-forward="false" selection-start-line="262" selection-start-column="32" selection-end-line="262" selection-end-column="32" />
           <folding />
         </state>
       </provider>

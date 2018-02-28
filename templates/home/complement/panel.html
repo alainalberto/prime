@@ -260,7 +260,7 @@
             </div>
         </a>
         {% endif %}
-        {% if perms.services.add_dispatchload %}
+        {% if perms.logistic and perms.services.add_dispatchload %}
         <a href="{% url 'services:dispatch_select' %}">
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-blue">
