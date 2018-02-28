@@ -246,12 +246,19 @@ ul.alert-dropdown {
 
 .panel-heading>ul>li>a{
     border-color: #fff;
+    background-color: #B40404;
     color:  #fff !important;
 }
 
 .panel-heading>ul>li>a:hover{
     border-color: #fff;
-    background-color:  #FA5858;
+    background-color: #FA5858;
+    color:  #000 !important;
+}
+
+.panel-heading>ul>li>a:focus{
+    border-color: #fff;
+    background-color: #FA5858 !important;
     color:  #000 !important;
 }
 
