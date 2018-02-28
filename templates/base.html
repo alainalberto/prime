@@ -343,6 +343,9 @@
     </nav>
     {% endblock %}
     {% endif %}
+
+<!-- Content -->
+<div {% if not is_popup %} id="page-wrapper" {% endif %}>
     {% block messages %}
     {% if messages %}
     {% for message in messages %}
@@ -354,9 +357,6 @@
 {% endfor %}
 {% endif %}
 {% endblock messages %}
-
-<!-- Content -->
-<div {% if not is_popup %} id="page-wrapper" {% endif %}>
     <div {% if not is_popup %} class="container-fluid" {% endif %}>
         <div {% if not is_popup %} id="content" class="{% block coltype %}colM{% endblock %}" {% endif %}>
             {% block content %}
