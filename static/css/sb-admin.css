@@ -244,6 +244,17 @@ ul.alert-dropdown {
     color: #000;
 }
 
+.panel-heading>ul>li>a{
+    border-color: #fff;
+    color:  #fff !important;
+}
+
+.panel-heading>ul>li>a:hover{
+    border-color: #fff;
+    background-color:  #FA5858;
+    color:  #000 !important;
+}
+
 .panel-red {
     border-color: #FE2E2E;
 }

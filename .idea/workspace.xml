@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home/complement/panel.html" afterPath="$PROJECT_DIR$/templates/home/complement/panel.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/sb-admin.css" afterPath="$PROJECT_DIR$/static/css/sb-admin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/accounting/customer/customerView.html" afterPath="$PROJECT_DIR$/templates/accounting/customer/customerView.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,7 +27,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="panel.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="panel.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="18">
@@ -58,11 +59,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="customerView.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="customerView.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/accounting/customer/customerView.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="237">
-                  <caret line="278" column="106" lean-forward="false" selection-start-line="278" selection-start-column="106" selection-end-line="278" selection-end-column="106" />
+                <state relative-caret-position="75">
+                  <caret line="155" column="47" lean-forward="true" selection-start-line="155" selection-start-column="47" selection-end-line="155" selection-end-column="47" />
                   <folding />
                 </state>
               </provider>
@@ -142,11 +143,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="sb-admin.css" pinned="false" current-in-tab="false">
+          <file leaf-file-name="sb-admin.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/css/sb-admin.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="612">
-                  <caret line="308" column="20" lean-forward="false" selection-start-line="308" selection-start-column="20" selection-end-line="308" selection-end-column="20" />
+                <state relative-caret-position="162">
+                  <caret line="247" column="23" lean-forward="false" selection-start-line="247" selection-start-column="23" selection-end-line="247" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
@@ -172,7 +173,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/apps/logistic/urls.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="99">
@@ -227,16 +228,16 @@
         <option value="$PROJECT_DIR$/templates/accounting/payments/paymentsViews.html" />
         <option value="$PROJECT_DIR$/templates/accounting/statistic/principalPanel.html" />
         <option value="$PROJECT_DIR$/templates/accounting/statistic/accountPayMethod.html" />
-        <option value="$PROJECT_DIR$/static/css/sb-admin.css" />
         <option value="$PROJECT_DIR$/apps/services/components/ServicePDF.py" />
         <option value="$PROJECT_DIR$/apps/tools/models.py" />
         <option value="$PROJECT_DIR$/Prime/settings.py" />
-        <option value="$PROJECT_DIR$/templates/accounting/customer/customerView.html" />
         <option value="$PROJECT_DIR$/apps/services/views.py" />
         <option value="$PROJECT_DIR$/apps/logistic/views.py" />
         <option value="$PROJECT_DIR$/apps/logistic/urls.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/home/complement/panel.html" />
+        <option value="$PROJECT_DIR$/templates/accounting/customer/customerView.html" />
+        <option value="$PROJECT_DIR$/static/css/sb-admin.css" />
       </list>
     </option>
   </component>
@@ -752,7 +753,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519843750075</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Alain: Arreglos1 Permisos">
+      <created>1519843900150</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1519843900150</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1033,8 +1041,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="594" column="27" lean-forward="false" selection-start-line="594" selection-start-column="20" selection-end-line="594" selection-end-column="27" />
+        <state relative-caret-position="593">
+          <caret line="712" column="18" lean-forward="false" selection-start-line="712" selection-start-column="18" selection-end-line="712" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1078,14 +1086,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/sb-admin.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="308" column="20" lean-forward="false" selection-start-line="308" selection-start-column="20" selection-end-line="308" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/tools/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1198">
@@ -1106,14 +1106,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
           <caret line="233" column="20" lean-forward="false" selection-start-line="233" selection-start-column="20" selection-end-line="233" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/accounting/customer/customerView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="278" column="106" lean-forward="false" selection-start-line="278" selection-start-column="106" selection-end-line="278" selection-end-column="106" />
           <folding />
         </state>
       </provider>
@@ -1180,6 +1172,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="262" column="32" lean-forward="false" selection-start-line="262" selection-start-column="32" selection-end-line="262" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/accounting/customer/customerView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="155" column="47" lean-forward="true" selection-start-line="155" selection-start-column="47" selection-end-line="155" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/sb-admin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="247" column="23" lean-forward="false" selection-start-line="247" selection-start-column="23" selection-end-line="247" selection-end-column="23" />
           <folding />
         </state>
       </provider>
