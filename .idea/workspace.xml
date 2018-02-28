@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/logistic/views.py" afterPath="$PROJECT_DIR$/apps/logistic/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/services/views.py" afterPath="$PROJECT_DIR$/apps/services/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home/complement/panel.html" afterPath="$PROJECT_DIR$/templates/home/complement/panel.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,11 +26,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="panel.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="panel.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="234">
-                  <caret line="103" column="10" lean-forward="false" selection-start-line="57" selection-start-column="6" selection-end-line="103" selection-end-column="10" />
+                <state relative-caret-position="-414">
+                  <caret line="262" column="45" lean-forward="false" selection-start-line="262" selection-start-column="45" selection-end-line="262" selection-end-column="45" />
                   <folding />
                 </state>
               </provider>
@@ -89,7 +88,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/apps/logistic/views.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="-4852">
@@ -239,7 +238,6 @@
         <option value="$PROJECT_DIR$/templates/accounting/payments/paymentsViews.html" />
         <option value="$PROJECT_DIR$/templates/accounting/statistic/principalPanel.html" />
         <option value="$PROJECT_DIR$/templates/accounting/statistic/accountPayMethod.html" />
-        <option value="$PROJECT_DIR$/templates/home/complement/panel.html" />
         <option value="$PROJECT_DIR$/static/css/sb-admin.css" />
         <option value="$PROJECT_DIR$/apps/services/components/ServicePDF.py" />
         <option value="$PROJECT_DIR$/apps/tools/models.py" />
@@ -247,6 +245,7 @@
         <option value="$PROJECT_DIR$/templates/accounting/customer/customerView.html" />
         <option value="$PROJECT_DIR$/apps/services/views.py" />
         <option value="$PROJECT_DIR$/apps/logistic/views.py" />
+        <option value="$PROJECT_DIR$/templates/home/complement/panel.html" />
       </list>
     </option>
   </component>
@@ -727,7 +726,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519772719853</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Alain: Arreglos Grupos de Alertas">
+      <created>1519779591541</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1519779591541</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -789,7 +795,8 @@
     <MESSAGE value="Alain: Estilos de la Aplicacion y Agrego de Email en Business" />
     <MESSAGE value="Alain: Estilos de la Aplicacion Panel" />
     <MESSAGE value="Alain: Arreglos archivos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alain: Arreglos archivos" />
+    <MESSAGE value="Alain: Arreglos Grupos de Alertas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alain: Arreglos Grupos de Alertas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1060,14 +1067,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="103" column="10" lean-forward="false" selection-start-line="57" selection-start-column="6" selection-end-line="103" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/img/LOGO.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1151,6 +1150,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4852">
           <caret line="308" column="64" lean-forward="false" selection-start-line="308" selection-start-column="64" selection-end-line="308" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-414">
+          <caret line="262" column="45" lean-forward="false" selection-start-line="262" selection-start-column="45" selection-end-line="262" selection-end-column="45" />
           <folding />
         </state>
       </provider>

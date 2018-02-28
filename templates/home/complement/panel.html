@@ -182,7 +182,7 @@
             </div>
         </a>
         {% endif %}
-        {% if perms.tools.add_files %}
+        {% if perms.tools.add_file %}
         <a href="{% url 'services:forms' %}">
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-red">
@@ -208,7 +208,7 @@
             </div>
         </a>
         {% endif %}
-        {% if perms.logistics.add_driverslogt %}
+        {% if perms.logistic.add_driverslogt %}
         <a href="{% url 'logistic:drivers_create' %}">
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-green-dark">
@@ -234,7 +234,7 @@
             </div>
         </a>
         {% endif %}
-        {% if perms.logistics.add_load %}
+        {% if perms.logistic.add_load %}
         <a href="{% url 'logistic:load_create' %}">
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-pink-dark">
@@ -260,7 +260,7 @@
             </div>
         </a>
         {% endif %}
-        {% if perms.service.add_dispatch %}
+        {% if perms.services.add_dispatchload %}
         <a href="{% url 'services:dispatch_select' %}">
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-blue">
