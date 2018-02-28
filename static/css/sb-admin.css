@@ -246,7 +246,7 @@ ul.alert-dropdown {
 
 .panel-heading>ul>li>a{
     border-color: #fff;
-    background-color: #B40404;
+    background-color: #B40404 !important;
     color:  #fff !important;
 }
 
