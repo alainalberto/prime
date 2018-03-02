@@ -66,6 +66,7 @@ body {
      padding: 5px;
      margin-left: -25%;
      }
+
     .navbar-header>a>img{
        width: 25%;
        height: 25%;
@@ -118,6 +119,7 @@ navbar-header{
 navbar-header a img{
   padding: 5px !important;
 }
+
 .top-nav>li {
     display: inline-block;
     float: left;
