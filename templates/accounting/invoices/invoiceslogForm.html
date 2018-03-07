@@ -15,7 +15,7 @@
  $(document).ready( function () {
     $('#id_load_TOTAL_FORMS').val($('#tbLoad tr').length - 1);
     $('#id_customers').val({{invoice.customers_id}});
-    $('#id_accounts').val({{account}});
+    $('#id_accounts').val({{invoice.accounts_id}});
     $(function() {
         $("#id_customers").chained("#id_business");
         $("#id_accounts").chained("#id_business");
