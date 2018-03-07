@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/accounting/views.py" afterPath="$PROJECT_DIR$/apps/accounting/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/accounting/invoices/invoiceslogForm.html" afterPath="$PROJECT_DIR$/templates/accounting/invoices/invoiceslogForm.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" afterPath="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,11 +14,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="invoiceslogForm.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="invoiceslogForm.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/accounting/invoices/invoiceslogForm.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="17" column="47" lean-forward="false" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+            <state relative-caret-position="306">
+              <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountingPDF.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="356" column="23" lean-forward="false" selection-start-line="356" selection-start-column="23" selection-end-line="356" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -28,7 +37,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/accounting/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
+            <state relative-caret-position="1855">
               <caret line="841" column="40" lean-forward="false" selection-start-line="841" selection-start-column="40" selection-end-line="841" selection-end-column="40" />
               <folding>
                 <element signature="e#0#66#0" expanded="true" />
@@ -83,7 +92,6 @@
         <option value="$PROJECT_DIR$/templates/Login/login.html" />
         <option value="$PROJECT_DIR$/templates/admin/base_site.html" />
         <option value="$PROJECT_DIR$/templates/admin/base.html" />
-        <option value="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" />
         <option value="$PROJECT_DIR$/templates/accounting/invoices/invoicesForm.html" />
         <option value="$PROJECT_DIR$/templates/accounting/payments/paymentsViews.html" />
         <option value="$PROJECT_DIR$/templates/accounting/statistic/principalPanel.html" />
@@ -100,6 +108,7 @@
         <option value="$PROJECT_DIR$/static/css/sb-admin.css" />
         <option value="$PROJECT_DIR$/templates/accounting/invoices/invoiceslogForm.html" />
         <option value="$PROJECT_DIR$/apps/accounting/views.py" />
+        <option value="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" />
       </list>
     </option>
   </component>
@@ -678,7 +687,14 @@
       <option name="project" value="LOCAL" />
       <updated>1520390541745</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Alain: Invoice Load">
+      <created>1520390858318</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1520390858318</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1013,13 +1029,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12618">
-          <caret line="712" column="18" lean-forward="false" selection-start-line="712" selection-start-column="18" selection-end-line="712" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Prime/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -1077,7 +1086,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounting/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
+        <state relative-caret-position="1855">
           <caret line="841" column="40" lean-forward="false" selection-start-line="841" selection-start-column="40" selection-end-line="841" selection-end-column="40" />
           <folding>
             <element signature="e#0#66#0" expanded="true" />
@@ -1087,8 +1096,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/accounting/invoices/invoiceslogForm.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="17" column="47" lean-forward="false" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+        <state relative-caret-position="306">
+          <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="356" column="23" lean-forward="false" selection-start-line="356" selection-start-column="23" selection-end-line="356" selection-end-column="23" />
           <folding />
         </state>
       </provider>

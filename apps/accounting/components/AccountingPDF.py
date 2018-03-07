@@ -286,27 +286,30 @@ def InvoicesLod_pdf(request, pk):
         p.drawString(75, 580, customer.address)
     if customer.phone:
         p.setFont('Helvetica', 12)
-        p.drawString(75, 560, customer.phone)
+        p.drawString(75, 560, customer.phone)'''
 
-
-    #Footer
-    p.setFillColor('#2471A3')
-    p.roundRect(0, 0, 694, 50, 0, fill=1)
+    # Footer
+    p.setFillColor('#B40404')
+    p.roundRect(0, 30, 694, 10, 5, fill=1)
     p.setFont('Helvetica', 9)
     p.setFillColorRGB(0, 0, 0)
-    p.line(0, 50, 800, 50)
-    user_print = ""
     if request.user.first_name:
-        user_print = request.user.first_name+" "+request.user.last_name
+        user_print = request.user.first_name + " " + request.user.last_name
     else:
-        user_print= request.user.username
-    p.drawString(30, 20, 'Date of printing '+time.strftime("%m/%d/%y %H:%M:%S")+' by %s' % user_print)
+        user_print = request.user.username
+    p.drawString(30, 20, 'Date of printing ' + time.strftime("%m/%d/%y %H:%M:%S") + ' by %s' % user_print)
     p.setFillColor('#34495E')
     p.setFont('Helvetica', 10)
-    p.drawString(200, 60, 'THANK YOU FOR YOUR BUSSINESS!')'''
-
+    if invoice.business.messager:
+        p.drawString(200, 60, str(invoice.business.messager))
 
     #Boby
+    p.setFillColor('#58D3F7')
+    p.roundRect(445, 145, 120, 20, 0, fill=1)
+    p.setFillColor('#FAFAFA')
+    p.roundRect(445, 65,120, 80, 0, fill=1)
+    p.setFillColor('#A9F5A9')
+    p.roundRect(445, 44, 120, 22, 0, fill=1)
     p.setFillColor('#020000')
     p.setFont('Helvetica', 11)
     p.drawString(450, 150, "Subtotal: $" + str(invoice.subtotal))
@@ -351,7 +354,7 @@ def InvoicesLod_pdf(request, pk):
         colum7 = Paragraph(str(l.value), stylesBD)
         this_descrip = [colum1, colum2 , colum3 , colum4 , colum5 , colum6 , colum7]
         data.append(this_descrip)
-        high = high - 18
+        high = high - 36
 
     width, height = A4
     table = Table(data, colWidths=[3 * cm, 3 * cm, 2 * cm, 3 * cm, 3 * cm, 2 * cm, 2 * cm])
