@@ -16,17 +16,17 @@ def LoadPDF(request, pk):
     p = canvas.Canvas(buffer, pagesize=A4)
 
     #Header
-    p.setFillColor('#2471A3')
-    p.roundRect(0, 750, 694, 120, 20, fill=1)
-    p.drawImage('static/img/logoFCI.png', 250, 760, width=150, height=70)
+    p.setFillColor('#B40404')
+    p.roundRect(0, 720, 694, 10, 5, fill=1)
+
 
     p.setFont('Helvetica', 28)
-    p.setFillColor('#E5E7E9')
+    p.setFillColor('#000')
     p.drawCentredString(70, 785, "LOAD")
 
     p.setFillColor('#34495E')
     p.setFont('Helvetica-Bold', 12)
-    p.drawString(50, 730, 'No. '+str(load.number))
+    p.drawString(50, 760, 'No. ' + str(load.number))
 
     p.setFont('Helvetica',12)
     p.setFillColorRGB(0,0,0)
@@ -58,7 +58,7 @@ def LoadPDF(request, pk):
     p.setFont('Helvetica', 9)
     p.setFillColorRGB(0, 0, 0)
     p.line(0, 50, 800, 50)
-   # p.drawString(30, 20, 'Date of printing '+time.strftime("%m/%d/%y %H:%M:%S")+' by %s' % request.user.first_name)
+    p.drawString(30, 20, 'Date of printing '+time.strftime("%m/%d/%y %H:%M:%S")+' by %s' % request.user.first_name)
 
     #Boby
 
@@ -74,27 +74,36 @@ def LoadPDF(request, pk):
     stylesBH.alignment = TA_CENTER
     stylesBH.fontSize = 10
     stylesBH.fill = '#34495E'
-    quantity = Paragraph('''Quantity''', stylesBH)
-    description = Paragraph('''Description''', stylesBH)
-    value = Paragraph('''Unit Price''',stylesBH)
-    tax = Paragraph('''Tax %''', stylesBH)
-    subtotal = Paragraph('''Subtotal''', stylesBH)
+    broker = Paragraph('''Customer Name''', stylesBH)
+    driver = Paragraph('''Driver''', stylesBH)
+    pickupdate = Paragraph('''Pick Up Date''', stylesBH)
+    pickupfrom = Paragraph('''Pick Up From''', stylesBH)
+    deliver = Paragraph('''Deliver To''', stylesBH)
+    loadno = Paragraph('''Load No.''', stylesBH)
+    value = Paragraph('''Agreed Amount''', stylesBH)
     data = []
-    data.append([quantity, description, value, tax, subtotal])
+    data.append([broker, driver, pickupdate, pickupfrom, deliver, loadno, value])
 
     stylesBD = styles["BodyText"]
     stylesBD.alignment = TA_CENTER
     stylesBD.fontSize = 7
-    high = 510
-   # for item in descrip:
-   #     this_descrip = [item.quantity, item.description, item.value, item.tax, item.subtotal]
-  #      data.append(this_descrip)
-   #     high = high - 18
+    high = 600
+    driver = DriversLogt.objects.get(id_dr=load.driver_id)
+    colum1 = Paragraph(load.broker, stylesBD)
+    colum2 = Paragraph(driver.name, stylesBD)
+    colum3 = Paragraph(str(load.pickup_date), stylesBD)
+    colum4 = Paragraph(load.pickup_from, stylesBD)
+    colum5 = Paragraph(load.deliver, stylesBD)
+    colum6 = Paragraph(load.number, stylesBD)
+    colum7 = Paragraph(str(load.value), stylesBD)
+    this_descrip = [colum1, colum2, colum3, colum4, colum5, colum6, colum7]
+    data.append(this_descrip)
+    high = high - 36
 
     width, height = A4
-    table = Table(data, colWidths=[2 * cm, 8 * cm, 4 * cm, 2 * cm])
+    table = Table(data, colWidths=[3 * cm, 3 * cm, 2 * cm, 3 * cm, 3 * cm, 2 * cm, 2 * cm])
     table.setStyle(TableStyle([
-        ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
+        ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.black),
         ('BOX', (0, 0), (-1, -1), 0.25, colors.black),
     ]))
     table.wrapOn(p, width, height)

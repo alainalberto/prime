@@ -4,6 +4,7 @@
     <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" afterPath="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/logistic/components/LogisticPDF.py" afterPath="$PROJECT_DIR$/apps/logistic/components/LogisticPDF.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,12 +25,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccountingPDF.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AccountingPDF.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="356" column="23" lean-forward="false" selection-start-line="356" selection-start-column="23" selection-end-line="356" selection-end-column="23" />
+            <state relative-caret-position="303">
+              <caret line="381" column="29" lean-forward="true" selection-start-line="342" selection-start-column="4" selection-end-line="381" selection-end-column="29" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogisticPDF.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/apps/logistic/components/LogisticPDF.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1080">
+              <caret line="60" column="4" lean-forward="false" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -49,7 +62,7 @@
       <file leaf-file-name="AccountingForm.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/accounting/components/AccountingForm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-270">
+            <state relative-caret-position="-216">
               <caret line="162" column="27" lean-forward="true" selection-start-line="162" selection-start-column="27" selection-end-line="162" selection-end-column="27" />
               <folding />
             </state>
@@ -109,6 +122,7 @@
         <option value="$PROJECT_DIR$/templates/accounting/invoices/invoiceslogForm.html" />
         <option value="$PROJECT_DIR$/apps/accounting/views.py" />
         <option value="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" />
+        <option value="$PROJECT_DIR$/apps/logistic/components/LogisticPDF.py" />
       </list>
     </option>
   </component>
@@ -159,7 +173,13 @@
               <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
               <item name="Prime" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="accounting" type="462c0819:PsiDirectoryNode" />
+              <item name="logistic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Prime" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="logistic" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -694,7 +714,14 @@
       <option name="project" value="LOCAL" />
       <updated>1520390858318</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Alain: Invoice Load">
+      <created>1520393821341</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1520393821341</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -770,13 +797,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/services/permit/permitForm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-648">
-          <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounting/migrations/0002_auto_20180214_0329.py" />
     <entry file="file://$PROJECT_DIR$/apps/accounting/migrations/0003_auto_20180218_1730.py" />
     <entry file="file://$PROJECT_DIR$/../backup/system_db.backup">
@@ -1019,6 +1039,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
           <caret line="100" column="1" lean-forward="false" selection-start-line="100" selection-start-column="1" selection-end-line="100" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1076,14 +1097,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/accounting/components/AccountingForm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-270">
-          <caret line="162" column="27" lean-forward="true" selection-start-line="162" selection-start-column="27" selection-end-line="162" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounting/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1855">
@@ -1102,11 +1115,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/apps/accounting/components/AccountingForm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-216">
+          <caret line="162" column="27" lean-forward="true" selection-start-line="162" selection-start-column="27" selection-end-line="162" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="356" column="23" lean-forward="false" selection-start-line="356" selection-start-column="23" selection-end-line="356" selection-end-column="23" />
+        <state relative-caret-position="303">
+          <caret line="381" column="29" lean-forward="true" selection-start-line="342" selection-start-column="4" selection-end-line="381" selection-end-column="29" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/logistic/components/LogisticPDF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="60" column="4" lean-forward="false" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

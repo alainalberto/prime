@@ -313,14 +313,30 @@ def InvoicesLod_pdf(request, pk):
     p.setFillColor('#020000')
     p.setFont('Helvetica', 11)
     p.drawString(450, 150, "Subtotal: $" + str(invoice.subtotal))
+    if invoice.comission_fee:
+        comission_fee = invoice.comission_fee
+    else:
+        comission_fee = 0
     p.setFont('Helvetica', 11)
-    p.drawString(450, 130, "7% FEE: $" + str(invoice.comission_fee))
+    p.drawString(450, 130, "7% FEE: $" + str(comission_fee))
+    if invoice.wire_fee:
+        wire_fee = invoice.wire_fee
+    else:
+        wire_fee = 0
     p.setFont('Helvetica', 11)
-    p.drawString(450, 110, "WIRE FEE: $" + str(invoice.wire_fee))
+    p.drawString(450, 110, "WIRE FEE: $" + str(wire_fee))
+    if invoice.ach_fee:
+        ach_fee = invoice.ach_fee
+    else:
+        ach_fee = 0
     p.setFont('Helvetica', 11)
-    p.drawString(450, 90, "ACH FEE: $" + str(invoice.ach_fee))
+    p.drawString(450, 90, "ACH FEE: $" + str(ach_fee))
+    if invoice.discount:
+        discount = invoice.discount
+    else:
+        discount = 0
     p.setFont('Helvetica', 11)
-    p.drawString(450, 70, "Others FEE: $" + str(invoice.discount))
+    p.drawString(450, 70, "Others FEE: $" + str(discount))
     p.setFont('Helvetica-Bold', 12)
     p.drawString(450, 50, "Total: $" + str(invoice.total))
 
@@ -523,14 +539,42 @@ def PayDriverPDF(request, pk):
     p.setFont('Helvetica', 10)
     p.drawString(50, high - 25, "NOTE:")
     p.drawString(50, high - 35, str(payment.note))
-    p.drawString(390, high - 45, str(payDriver.porc_company) + "% COMPANY FEE: $" + str(payDriver.company_fee))
+    if payDriver.company_fee:
+        company_fee = payDriver.company_fee
+    else:
+        company_fee = 0
+    p.drawString(390, high - 45, str(payDriver.porc_company) + "% COMPANY FEE: $" + str(company_fee))
     p.drawString(390, high - 65, "GROSS: $" + str(payment.gross - payDriver.company_fee))
-    p.drawString(390, high - 85, "PRE PASS: $" + str(payDriver.pre_pass))
-    p.drawString(390, high - 105, "ESCROW: $" + str(payDriver.escrow))
-    p.drawString(390, high - 125, "DOWN PAYMENT: $" + str(payDriver.down_payment))
-    p.drawString(390, high - 145, "INSURANCE: $" + str(payDriver.insurance))
-    p.drawString(390, high - 165, "DIESEL: $" + str(payDriver.diesel))
-    p.drawString(390, high - 185, "Micellaneous: $" + str(payDriver.other))
+    if payDriver.pre_pass:
+       pre_pass = payDriver.pre_pass
+    else:
+        pre_pass = 0
+    p.drawString(390, high - 85, "PRE PASS: $" + str(pre_pass))
+    if payDriver.escrow:
+        escrow = payDriver.escrow
+    else:
+        escrow = 0
+    p.drawString(390, high - 105, "ESCROW: $" + str(escrow))
+    if payDriver.down_payment:
+        down_payment = payDriver.down_payment
+    else:
+        down_payment = 0
+    p.drawString(390, high - 125, "DOWN PAYMENT: $" + str(down_payment))
+    if payDriver.insurance:
+        insurance = payDriver.insurance
+    else:
+        insurence = 0
+    p.drawString(390, high - 145, "INSURANCE: $" + str(insurance))
+    if payDriver.diesel:
+        diesel = payDriver.diesel
+    else:
+        diesel = 0
+    p.drawString(390, high - 165, "DIESEL: $" + str(diesel))
+    if payDriver.other:
+        other = payDriver.other
+    else:
+        other = 0
+    p.drawString(390, high - 185, "Micellaneous: $" + str(other))
     p.setFont('Helvetica-Bold', 12)
     p.drawString(390, high - 210, "Total: $" + str(payment.value))
 
@@ -662,7 +706,11 @@ def PayDispatchPDF(request, pk):
     p.drawString(50, high - 25, "NOTE:")
     p.drawString(50, high - 35, str(payment.note))
     p.drawString(390, high-45, str(dispatch.comission) + "% COMMISSION: $" + str(value_comission))
-    p.drawString(390, high-65, "DISCOUNTS: $" + str(payment.discount))
+    if payment.discount:
+        discount = payment.discount
+    else:
+        discount = 0
+    p.drawString(390, high-65, "DISCOUNTS: $" + str(discount))
     p.setFont('Helvetica-Bold', 12)
     p.drawString(390, high-85, "Total: $" + str(payment.value))
     width, height = A4
@@ -781,7 +829,7 @@ def PayEmployeePDF(request, pk):
     p.setFont('Helvetica', 10)
     p.drawString(390, 485, "DISCOUNTS: $" + str(payment.discount))
     p.setFont('Helvetica-Bold', 12)
-    p.drawString(390,465, "Total: $" + str(payment.value))
+    p.drawString(390, 465, "Total: $" + str(payment.value))
     p.showPage()
     p.save()
     pdf = buffer.getvalue()
