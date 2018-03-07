@@ -821,7 +821,6 @@ class InvoicesLogEdit(UpdateView):
             invoice = self.model.objects.get(id_inv=pk)
             loads = Load.objects.filter(paid='False').order_by('-pickup_date')
             customer = Customer.objects.filter(deactivated=False)
-            acountDescp = AccountDescrip.objects.get(type='Invoices', document=int(invoice.id_inv))
             accounts = []
             inv = Account.objects.get(primary=True, name='Income')
             inv_acconts = Account.objects.filter(accounts_id_id=inv.id_acn)
@@ -841,7 +840,7 @@ class InvoicesLogEdit(UpdateView):
             context['title'] = 'Create new Invoice'
             context['loads'] = loads
             context['customers'] = customer
-            context['account'] = acountDescp.accounts_id
+            context['account'] = invoice.accounts_id
             context['description'] = description
             context['adjust'] = adjust
             return context
