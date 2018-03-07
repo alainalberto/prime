@@ -48,11 +48,11 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 {% for a in alert %}
-                                {% if a.show_date <= date_now and a.end_date >= date_now  %}
-                                <a class="text-danger" href="{% url 'panel:alert_view' a.id_alt  %}" data-toggle="modal" data-target="#popup">
+                                {% if a.alert.show_date <= date_now and a.alert.end_date >= date_now  %}
+                                <a class="text-danger" href="{% url 'panel:alert_view' a.alert.id_alt  %}" data-toggle="modal" data-target="#popup">
                                     <div class="alert alert-danger alert-dismissable">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        <i class="fa fa-exclamation-triangle"></i><strong> {{a.category}} (Exp: {{a.end_date}}): </strong> {{a.description}}
+                                        <i class="fa fa-exclamation-triangle"></i><strong> {{a.alert.category}} (Exp: {{a.alert.end_date}}): </strong> {{a.alert.description}}
                                     </div>
                                 </a>
                                 {% endif %}

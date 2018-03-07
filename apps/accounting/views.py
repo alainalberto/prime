@@ -218,6 +218,7 @@ def CustomerView(request, pk):
        dispatch = DispatchLoad.objects.filter(customers=customer)
        driver = Driver.objects.filter(customers=customer)
        files = File.objects.filter(folders=customer.folders).order_by('category')
+       date_now = datetime.now().date()
        alert = CustomerHasAlert.objects.filter(customers=customer)
        note = Note.objects.filter(customers=customer)
        context = {
@@ -233,7 +234,7 @@ def CustomerView(request, pk):
            'audits': audit,
            'dispatch': dispatch,
            'notes': note,
-           'alert': alert,
+           'alert': pagination(request, alert),
            'permit_pending': Permit.objects.is_state('Pending', customer),
            'equipment_pending': Equipment.objects.is_state('Pending', customer),
            'insurance_pending': Insurance.objects.is_state('Pending', customer),
@@ -242,7 +243,8 @@ def CustomerView(request, pk):
            'audit_pending': Audit.objects.is_state('Pending', customer),
            'driver_pending': Driver.objects.is_state('Pending', customer),
            'dispatch_pending': DispatchLoad.objects.filter(customers=customer, paid=False).count(),
-           'title': 'Customer Folder'
+           'title': 'Customer Folder',
+           'date_now': date_now
        }
        return render(request, 'accounting/customer/customerView.html', context)
 
@@ -1350,7 +1352,7 @@ class PaymentDriverCreate(View):
             id = self.kwargs.get('pk', 0)
             driver = DriversLogt.objects.get(id_dr=id)
             diesels = Diesel.objects.filter(driver=driver)
-            loads = Load.objects.filter(driver=driver, paid=True)
+            loads = Load.objects.filter(driver=driver)
             load_driver = []
             diesel_total = 0
             start = datetime.strptime(str(kwargs.get('start')),'%Y-%m-%d')
@@ -1787,7 +1789,7 @@ class PaymentDispatchCreate(CreateView):
     def get(self, request, *args, **kwargs):
         id = self.kwargs.get('pk', 0)
         dispatch = DispatchLogt.objects.get(id_dsp=id)
-        loads = Load.objects.filter(dispatch=dispatch, paid=True)
+        loads = Load.objects.filter(dispatch=dispatch)
         load_dispatch = []
         start = datetime.strptime(str(kwargs.get('start')), '%Y-%m-%d')
         end = datetime.strptime(str(kwargs.get('end')), '%Y-%m-%d')
