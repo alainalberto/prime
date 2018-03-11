@@ -125,6 +125,7 @@ class Driver(models.Model):
     users = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, blank=True, null=True)
     license_numb = models.CharField(max_length=45, blank=True, null=True)
+    phone = models.CharField(max_length=25, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)
     dob = models.DateField(blank=True, null=True)
     lic_date_exp = models.DateField(blank=True, null=True)

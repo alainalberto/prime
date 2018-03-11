@@ -37,6 +37,7 @@ class DriversLogt(models.Model):
     license_numb = models.CharField(max_length=45)
     address = models.CharField(max_length=255, blank=True, null=True)
     email = models.EmailField(max_length=100)
+    phone = models.TextField(max_length=25, blank=True, null=True)
     dob = models.DateField(blank=True, null=True)
     lic_date_exp = models.DateField(blank=True, null=True)
     medicard_date_exp = models.DateField(blank=True, null=True)

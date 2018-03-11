@@ -3,7 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/accounting/views.py" afterPath="$PROJECT_DIR$/apps/accounting/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/logistic/components/LogisticForm.py" afterPath="$PROJECT_DIR$/apps/logistic/components/LogisticForm.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/logistic/models.py" afterPath="$PROJECT_DIR$/apps/logistic/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/services/components/ServicesForm.py" afterPath="$PROJECT_DIR$/apps/services/components/ServicesForm.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/services/models.py" afterPath="$PROJECT_DIR$/apps/services/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/logistic/drivers/driversForm.html" afterPath="$PROJECT_DIR$/templates/logistic/drivers/driversForm.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/logistic/drivers/driversViews.html" afterPath="$PROJECT_DIR$/templates/logistic/drivers/driversViews.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/services/driver/driverForm.html" afterPath="$PROJECT_DIR$/templates/services/driver/driverForm.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/services/driver/driverView.html" afterPath="$PROJECT_DIR$/templates/services/driver/driverView.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,20 +20,110 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/apps/accounting/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="892" column="38" lean-forward="true" selection-start-line="892" selection-start-column="38" selection-end-line="892" selection-end-column="38" />
-              <folding>
-                <element signature="e#0#66#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/accounting/views.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="865">
+                  <caret line="892" column="38" lean-forward="true" selection-start-line="892" selection-start-column="38" selection-end-line="892" selection-end-column="38" />
+                  <folding>
+                    <element signature="e#0#66#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/logistic/models.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="270">
+                  <caret line="39" column="66" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="66" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="driversForm.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/templates/logistic/drivers/driversForm.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="612">
+                  <caret line="79" column="26" lean-forward="true" selection-start-line="76" selection-start-column="21" selection-end-line="79" selection-end-column="26" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="driversViews.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/logistic/drivers/driversViews.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="792">
+                  <caret line="44" column="37" lean-forward="false" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="LogisticForm.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/logistic/components/LogisticForm.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="450">
+                  <caret line="109" column="112" lean-forward="true" selection-start-line="109" selection-start-column="12" selection-end-line="109" selection-end-column="112" />
+                  <folding>
+                    <element signature="e#0#24#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/apps/services/models.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="228">
+                  <caret line="127" column="9" lean-forward="false" selection-start-line="127" selection-start-column="9" selection-end-line="127" selection-end-column="9" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ServicesForm.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/services/components/ServicesForm.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="467">
+                  <caret line="254" column="112" lean-forward="false" selection-start-line="254" selection-start-column="112" selection-end-line="254" selection-end-column="112" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="driverForm.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/services/driver/driverForm.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="360">
+                  <caret line="74" column="59" lean-forward="false" selection-start-line="74" selection-start-column="59" selection-end-line="74" selection-end-column="59" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="driverView.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/services/driver/driverView.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="468">
+                  <caret line="38" column="30" lean-forward="false" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -44,10 +141,7 @@
         <option value="$PROJECT_DIR$/templates/accounting/customer/customerViews.html" />
         <option value="$PROJECT_DIR$/templates/services/permit/permitForm.html" />
         <option value="$PROJECT_DIR$/apps/accounting/models.py" />
-        <option value="$PROJECT_DIR$/apps/logistic/models.py" />
         <option value="$PROJECT_DIR$/System/settings.py" />
-        <option value="$PROJECT_DIR$/apps/services/components/ServicesForm.py" />
-        <option value="$PROJECT_DIR$/apps/services/models.py" />
         <option value="$PROJECT_DIR$/templates/services/companiesDispatch/invoiceslogViews.html" />
         <option value="$PROJECT_DIR$/apps/services/urls.py" />
         <option value="$PROJECT_DIR$/templates/services/companiesDispatch/invoiceslogForm.html" />
@@ -56,7 +150,6 @@
         <option value="$PROJECT_DIR$/Prime/urls.py" />
         <option value="$PROJECT_DIR$/static/admin/css/base.css" />
         <option value="$PROJECT_DIR$/static/css/sb-admin-rtl.css" />
-        <option value="$PROJECT_DIR$/templates/services/driver/driverForm.html" />
         <option value="$PROJECT_DIR$/templates/home/complement/chat.html" />
         <option value="$PROJECT_DIR$/static/admin/css/login.css" />
         <option value="$PROJECT_DIR$/templates/Login/login.html" />
@@ -80,6 +173,14 @@
         <option value="$PROJECT_DIR$/apps/logistic/components/LogisticPDF.py" />
         <option value="$PROJECT_DIR$/templates/accounting/customer/customerView.html" />
         <option value="$PROJECT_DIR$/apps/accounting/views.py" />
+        <option value="$PROJECT_DIR$/apps/logistic/models.py" />
+        <option value="$PROJECT_DIR$/templates/logistic/drivers/driversForm.html" />
+        <option value="$PROJECT_DIR$/templates/logistic/drivers/driversViews.html" />
+        <option value="$PROJECT_DIR$/apps/services/models.py" />
+        <option value="$PROJECT_DIR$/apps/logistic/components/LogisticForm.py" />
+        <option value="$PROJECT_DIR$/apps/services/components/ServicesForm.py" />
+        <option value="$PROJECT_DIR$/templates/services/driver/driverForm.html" />
+        <option value="$PROJECT_DIR$/templates/services/driver/driverView.html" />
       </list>
     </option>
   </component>
@@ -123,26 +224,14 @@
               <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
               <item name="Prime" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="accounting" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Prime" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="logistic" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Prime" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="logistic" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
               <item name="Prime" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
@@ -194,40 +283,6 @@
               <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
               <item name="Prime" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="accounting" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Prime" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="accounting" type="462c0819:PsiDirectoryNode" />
-              <item name="customer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Prime" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="accounting" type="462c0819:PsiDirectoryNode" />
-              <item name="invoices" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Prime" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="accounting" type="462c0819:PsiDirectoryNode" />
-              <item name="payments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Prime" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="accounting" type="462c0819:PsiDirectoryNode" />
-              <item name="statistic" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Prime" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="home" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -236,6 +291,32 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="home" type="462c0819:PsiDirectoryNode" />
               <item name="complement" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Prime" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="logistic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Prime" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="logistic" type="462c0819:PsiDirectoryNode" />
+              <item name="drivers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Prime" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Prime" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="driver" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Prime" type="b2602c69:ProjectViewProjectNode" />
@@ -347,13 +428,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518580326498</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Alain: configuracion Servidor">
-      <created>1519095793266</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1519095793266</updated>
     </task>
     <task id="LOCAL-00005" summary="Alain: Servicio Companes Dispatch">
       <created>1519261601417</created>
@@ -691,7 +765,14 @@
       <option name="project" value="LOCAL" />
       <updated>1520456103329</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Alain: Arreglos Recipt">
+      <created>1520569144009</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1520569144009</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -759,7 +840,8 @@
     <MESSAGE value="Alain: Arreglos1 Estilo" />
     <MESSAGE value="Alain: Invoice Load" />
     <MESSAGE value="Alain: Arreglos en las Alerta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alain: Arreglos en las Alerta" />
+    <MESSAGE value="Alain: Arreglos Recipt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alain: Arreglos Recipt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -768,35 +850,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../backup/system_db.backup">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/services/companiesDispatch/invoiceslogForm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="90" column="7" lean-forward="false" selection-start-line="90" selection-start-column="7" selection-end-line="90" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html" />
-    <entry file="file://$PROJECT_DIR$/templates/services/companiesDispatch/invoiceslogViews.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="40" column="251" lean-forward="false" selection-start-line="40" selection-start-column="251" selection-end-line="40" selection-end-column="251" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/services/components/ServicesForm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="683">
-          <caret line="353" column="130" lean-forward="false" selection-start-line="353" selection-start-column="130" selection-end-line="353" selection-end-column="130" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -815,13 +868,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/logistic/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1980">
-          <caret line="82" column="17" lean-forward="false" selection-start-line="82" selection-start-column="4" selection-end-line="82" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -850,13 +896,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="3" column="33" lean-forward="false" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/services/driver/driverForm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="24" column="34" lean-forward="false" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1093,21 +1132,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/services/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="217" column="57" lean-forward="false" selection-start-line="217" selection-start-column="57" selection-end-line="217" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounting/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
+        <state relative-caret-position="865">
           <caret line="892" column="38" lean-forward="true" selection-start-line="892" selection-start-column="38" selection-end-line="892" selection-end-column="38" />
           <folding>
             <element signature="e#0#66#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/logistic/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="39" column="66" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/services/components/ServicesForm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="254" column="112" lean-forward="false" selection-start-line="254" selection-start-column="112" selection-end-line="254" selection-end-column="112" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/logistic/drivers/driversViews.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="44" column="37" lean-forward="false" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/logistic/components/LogisticForm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="109" column="112" lean-forward="true" selection-start-line="109" selection-start-column="12" selection-end-line="109" selection-end-column="112" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/logistic/drivers/driversForm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="79" column="26" lean-forward="true" selection-start-line="76" selection-start-column="21" selection-end-line="79" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/services/driver/driverForm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="74" column="59" lean-forward="false" selection-start-line="74" selection-start-column="59" selection-end-line="74" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/services/driver/driverView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="38" column="30" lean-forward="false" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/services/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="127" column="9" lean-forward="false" selection-start-line="127" selection-start-column="9" selection-end-line="127" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
