@@ -1989,10 +1989,35 @@ class ContractDelete(DeleteView):
         return HttpResponseRedirect('/accounting/customers/view/' + str(customer.id_cut))
 
 
+
+def Email(request, pk):
+
+    customer = Customer.objects.get(id_cut=pk)
+    if request.method == 'POST':
+        form = EmailForm(request.POST, request.FILES)
+        if form.is_valid():
+             att = form.cleaned_data['file']
+             mail = EmailMessage(form.cleaned_data['topic'],form.cleaned_data['message'],to=[form.cleaned_data['email']])
+             mail.attach_file(att)
+             mail.send()
+             accion_user(customer, CHANGE, request.user)
+             messages.success(request, "Mail sent with success")
+             return HttpResponseRedirect('/accounting/customers/view/' + str(customer.id_cut))
+        else:
+            for er in form.errors:
+                messages.error(request, "ERROR: " + er)
+            return render(request, 'home/Email/sendEmail.html', {'form': form, 'customer': customer})
+    else:
+        sms = 'HELLO DEAR '+customer.fullname
+        form = EmailForm(initial={'topic': str(customer.business.name)+' Information!', 'email': customer.email, 'message': sms})
+    return render(request, 'home/Email/sendEmail.html', {'form': form, 'customer': customer})
+
 def EmailSend(request, pk, fl):
 
-    if fl:
+    if not fl == 0:
        file = File.objects.get(id_fil=fl)
+    else:
+       file = None
 
     customer = Customer.objects.get(id_cut=pk)
     if request.method == 'POST':
@@ -2014,7 +2039,7 @@ def EmailSend(request, pk, fl):
             return render(request, 'home/Email/sendEmail.html', {'form': form, 'customer': customer, 'file': file})
     else:
         sms = 'HELLO DEAR '+customer.fullname+', THIS EMAIL HAS BEEN GENERATED FROM THE AUTOMATED FIRST CALL INTERMODAL SYSTEM WITH INFORMATION THAT MAY BE OF INTEREST TO YOU, PLEASE DO NOT FORWARD THIS EMAIL, THANKS FIRST CALL INTERMODAL TEAM'
-        form = EmailForm(initial={'topic': 'First Call Intermodal Information!', 'email': customer.email, 'message': sms, 'file':file})
+        form = EmailForm(initial={'topic': str(customer.business.name)+' Information!', 'email': customer.email, 'message': sms, 'file':file})
     return render(request, 'home/Email/sendEmail.html', {'form': form, 'customer': customer, 'file': file})
 
 def CompanyLoadSelect(request):

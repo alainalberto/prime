@@ -33,7 +33,7 @@
             </toolbar>
             {% endif %}
             <toolbar class="md-accent">
-                <a data-type="info"  data-animation="am-flip-x" data-trigger="focus"   type="button" class="btn btn-warning test-tooltip" href="{% url 'services:email_send' customer.id_cut None %}">
+                <a data-type="info"  data-animation="am-flip-x" data-trigger="focus"   type="button" class="btn btn-warning test-tooltip" href="{% url 'services:email_send' customer.id_cut %}">
                     <samp><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> Email</samp>
                 </a>
             </toolbar>
