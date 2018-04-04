@@ -50,7 +50,7 @@
             <form name="form_company" method="post" class="form" role="form" id="form_company" validate>{% csrf_token %}
 
                 <fieldset>
-                    {% if not is_popup %}
+                    {% if not id %}
                     <div class="form-group col-md-5 col-md-offset-3">
                         <label class="label-control">Select Customer:</label>
                         <div class="input-group">

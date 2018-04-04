@@ -42,17 +42,13 @@
                     <td>
                         {% if perms.logistic.change_dispatchlogt %}
                         <toolbar class="md-accent">
-                            <a data-type="info" data-trigger="focus" title="Edit Drivers" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'logistic:dispatch_edit' l.id_dsp %}">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                <tooltip md-direction="left"></tooltip>
+                            <a data-type="info" data-trigger="focus" title="Edit Drivers" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'logistic:dispatch_edit' l.id_dsp %}">
                             </a>
                         </toolbar>
                         {% endif %}
                         {% if perms.logistic.delete_dispatchlogt %}
                         <toolbar class="md-accent">
-                            <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Dispatch" type="button" class="btn btn-danger test-tooltip" href="{% url 'logistic:dispatch_delete' l.id_dsp %}">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                <tooltip md-direction="left"></tooltip>
+                            <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Dispatch" type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash" href="{% url 'logistic:dispatch_delete' l.id_dsp %}">
                             </a>
                         </toolbar>
                         {% endif %}

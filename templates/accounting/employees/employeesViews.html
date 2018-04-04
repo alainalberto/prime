@@ -41,18 +41,18 @@
                         <td>{{e.phone}}</td>
                         <td>{{e.email}}</td>
                         <td>
+                            {% if perms.accounting.change_employee %}
                             <toolbar class="md-accent">
-                                <a data-type="info" data-trigger="focus" title="Edit Employees" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'accounting:employees_edit' e.id_emp %}" {% if not perms.accounting.change_employee %} disabled {% endif %}>
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-trigger="focus" title="Edit Employees" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'accounting:employees_edit' e.id_emp %}" {% if not perms.accounting.change_employee %} disabled {% endif %}>
                                 </a>
                             </toolbar>
+                            {% endif %}
+                            {% if perms.accounting.delete_employee %}
                             <toolbar class="md-accent">
-                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Employees" type="button" class="btn btn-danger test-tooltip" href="{% url 'accounting:employees_delete' e.id_emp %}" {% if not perms.accounting.delete_employee %} disabled {% endif %}>
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Employees" type="button" class="btn btn-danger test-tooltip glyphicon-trash" href="{% url 'accounting:employees_delete' e.id_emp %}" {% if not perms.accounting.delete_employee %} disabled {% endif %}>
                                 </a>
                             </toolbar>
+                            {% endif %}
                         </td>
                     </tr>
                     </tbody>

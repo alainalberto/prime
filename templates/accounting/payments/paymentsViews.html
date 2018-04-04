@@ -20,7 +20,7 @@
                 </a>
             </div>
             <br/>
-            <p class="bg-danger text-center"><strong>Employee</strong></p>
+            <p class="bg-info text-center"><strong>Employee</strong></p>
             <div class="table-responsive">
                 <table id="listEmployee" class="table data-table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                     <thead>
@@ -47,15 +47,11 @@
                         <td>{{p.payments.value}}</td>
                         <td>
                             <toolbar class="md-accent">
-                                <a data-type="info" data-trigger="focus" title="Edit Payment" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'accounting:payment_employee_edit' p.payments.id_sal %}">
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-trigger="focus" title="Edit Payment" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'accounting:payment_employee_edit' p.payments.id_sal %}">
                                 </a>
                             </toolbar>
                             <toolbar class="md-accent">
-                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Payment" type="button" class="btn btn-danger test-tooltip" href="{% url 'accounting:payment_employee_delete' p.payments.id_sal %}">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Payment" type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash" href="{% url 'accounting:payment_employee_delete' p.payments.id_sal %}">
                                 </a>
                             </toolbar>
                         </td>
@@ -66,7 +62,7 @@
                 </table>
             </div>
             <br/>
-             <p class="bg-danger text-center"><strong>Driver</strong></p>
+             <p class="bg-info text-center"><strong>Driver</strong></p>
             <div class="table-responsive">
                 <table id="listDriver" class="table data-table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                    <thead>
@@ -92,18 +88,18 @@
                         <td>{{p.payments.waytopay}}</td>
                         <td>{{p.payments.value}}</td>
                         <td>
+                            {% if perms.accounting.change_payment %}
                             <toolbar class="md-accent">
-                                <a data-type="info" data-trigger="focus" title="Edit Payment" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'accounting:payment_driver_edit' p.payments.id_sal %}">
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-trigger="focus" title="Edit Payment" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'accounting:payment_driver_edit' p.payments.id_sal %}">
                                 </a>
                             </toolbar>
+                            {% endif %}
+                            {% if perms.accounting.delete_payment %}
                             <toolbar class="md-accent">
-                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Payment" type="button" class="btn btn-danger test-tooltip" href="{% url 'accounting:payment_driver_delete' p.payments.id_sal %}">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Payment" type="button" class="btn btn-danger test-tooltip glyphicon-trash" href="{% url 'accounting:payment_driver_delete' p.payments.id_sal %}">
                                 </a>
                             </toolbar>
+                            {% endif %}
                         </td>
 
                     </tr>
@@ -112,7 +108,7 @@
                 </table>
             </div>
             <br/>
-             <p class="bg-danger text-center"><strong>Dispatch</strong></p>
+             <p class="bg-info text-center"><strong>Dispatch</strong></p>
             <div class="table-responsive">
                 <table id="listDispatch" class="table data-table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                     <thead>
@@ -139,15 +135,11 @@
                         <td>{{p.payments.value}}</td>
                         <td>
                             <toolbar class="md-accent">
-                                <a data-type="info" data-trigger="focus" title="Edit Payment" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'accounting:payment_dispatch_edit' p.payments.id_sal %}">
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-trigger="focus" title="Edit Payment" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'accounting:payment_dispatch_edit' p.payments.id_sal %}">
                                 </a>
                             </toolbar>
                             <toolbar class="md-accent">
-                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Payment" type="button" class="btn btn-danger test-tooltip" href="{% url 'accounting:payment_dispatch_delete' p.payments.id_sal %}">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Payment" type="button" class="btn btn-danger test-tooltip glyphicon-trash" href="{% url 'accounting:payment_dispatch_delete' p.payments.id_sal %}">
                                 </a>
                             </toolbar>
                         </td>

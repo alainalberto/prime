@@ -19,12 +19,12 @@
                         <td>
                             {% if perms.services.change_audit %}
                             <toolbar class="md-accent">
-                                <a type="button" class="btn btn-info" href="{% url 'services:driver_edit' i.id_drv %}"><span><i class="fa fa-pencil-square-o"></i></span></a>
+                                <a type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'services:driver_edit' i.id_drv %}"></a>
                             </toolbar>
                             {% endif %}
                             {% if perms.services.delete_audit %}
                             <toolbar class="md-accent">
-                                <a type="button" class="btn btn-danger" href="{% url 'services:driver_delete' i.id_drv %}"><span><i class="fa fa-trash"></i></span></a>
+                                <a type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash" href="{% url 'services:driver_delete' i.id_drv %}"></a>
                             </toolbar>
                             {% endif %}
                         </td>

@@ -30,7 +30,6 @@
                         <th>Commercial Name</th>
                         <th>License Number</th>
                         <th>Address</th>
-                         <th>Phone</th>
                         <td>Action</td>
 
                     </tr>
@@ -42,22 +41,17 @@
                         <td>{{l.comercial_name}}</td>
                         <td>{{l.license_numb}}</td>
                         <td>{{l.address}}</td>
-                        <td>{{l.phone}}</td>
 
                         <td>
                             {% if perms.logistic.change_driverslogt %}
                             <toolbar class="md-accent">
-                                <a data-type="info" data-trigger="focus" title="Edit Drivers" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'logistic:drivers_edit' l.id_dr %}">
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-trigger="focus" title="Edit Drivers" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'logistic:drivers_edit' l.id_dr %}">
                                 </a>
                             </toolbar>
                             {% endif %}
                             {% if perms.logistic.delete_driverslogt %}
                             <toolbar class="md-accent">
-                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Drivers" type="button" class="btn btn-danger test-tooltip" href="{% url 'logistic:drivers_delete' l.id_dr %}">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Drivers" type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash" href="{% url 'logistic:drivers_delete' l.id_dr %}">
                                 </a>
                             </toolbar>
                             {% endif %}

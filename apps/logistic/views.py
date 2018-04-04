@@ -194,7 +194,7 @@ class DriversCreate(CreateView):
                      dateShow = dateExp - timedelta(days=30)
                      alert = Alert.objects.create(
                          category="Urgents",
-                         description="Expires the Mbr Driver of " + str(driver),
+                         description="Expires the MVR Driver of " + str(driver),
                          create_date=datetime.now().strftime("%Y-%m-%d"),
                          show_date=dateShow.strftime("%Y-%m-%d"),
                          end_date=dateExp.strftime("%Y-%m-%d"),

@@ -26,17 +26,13 @@
                             };
                      }
             }
-
 		});
-
      $(".zoom-mouse").mouseenter(function(evento){
        $(this).animate({borderSpacing: "2px"}, "fast");
     });
-
     $(".zoom-mouse").mouseleave(function(evento){
       $(this).animate({borderSpacing: "1px"},"fast");
     });
-
   });
 </script>
 {% endblock %}
@@ -461,7 +457,6 @@
                         </a>
                         {% endif %}
                         {% endfor %}
-
                     </div>
                     {% endif %}
                 </div>

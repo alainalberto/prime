@@ -29,11 +29,11 @@
         <div class="col-md-offset-10">
             {% if perms.accounting.change_customer %}
             <toolbar class="md-accent">
-                <a type="button" class="btn btn-warning" href="{% url 'accounting:customer_edit' customer.id_cut %}"><span><i class="fa fa-pencil-square-o"></i> Edit </span></a>
+                <a type="button" class="btn btn-info" href="{% url 'accounting:customer_edit' customer.id_cut %}"><span><i class="fa fa-pencil-square-o"></i> Edit </span></a>
             </toolbar>
             {% endif %}
             <toolbar class="md-accent">
-                <a data-type="info"  data-animation="am-flip-x" data-trigger="focus"   type="button" class="btn btn-warning test-tooltip" href="{% url 'services:email_send' customer.id_cut %}">
+                <a data-type="info"  data-animation="am-flip-x" data-trigger="focus"   type="button" class="btn btn-info test-tooltip" href="{% url 'services:email_send' customer.id_cut %}">
                     <samp><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> Email</samp>
                 </a>
             </toolbar>
@@ -41,54 +41,6 @@
     </div>
   </div>
         <div class="panel-body">
-            {% if alert %}
-            <div class="container" >
-                <div class="col-lg-11 col-md-6">
-                    <div class="animate">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                {% for a in alert %}
-                                {% if a.alert.show_date <= date_now and a.alert.end_date >= date_now  %}
-                                <a class="text-danger" href="{% url 'panel:alert_view' a.alert.id_alt  %}" data-toggle="modal" data-target="#popup">
-                                    <div class="alert alert-danger alert-dismissable">
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        <i class="fa fa-exclamation-triangle"></i><strong> {{a.alert.category}} (Exp: {{a.alert.end_date}}): </strong> {{a.alert.description}}
-                                    </div>
-                                </a>
-                                {% endif %}
-                                {% endfor %}
-
-                            </div>
-                            <nav class="col-md-offset-9" aria-label="Page navigation">
-                                <ul class="pager">
-                                    {% if alert.has_previous %}
-                                    <li>
-                                        <a  href="?page={{ alert.previous_page_number }}"><span>
-                                            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-                                        </span>
-                                        </a>
-                                    </li>
-                                    {% endif %}
-                                    <span class="current">
-                                        Page {{ alert.number }} of {{ alert.paginator.num_pages }}.
-                                    </span>
-                                    {% if alert.has_next %}
-                                    <li>
-                                        <a href="?page={{ alert.next_page_number }}">
-                                            <span>
-                                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    {% endif %}
-                                </ul>
-                            </nav>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            {% endif %}
             <!-- Form Name -->
             <!-- Text input-->
             <div class="form-group col-md-3 col-md-offset-1" >
@@ -150,34 +102,90 @@
             {% endif %}
 
             <div class="form-group col-md-12">
-                <p class="bg-danger text-center">CUSTOMER SERVICES</p>
-                {% if permits or equipments or insurances or contracts or iftas or audits or driver or dispatch %}
-                <div class="panel panel-primary">
+                <p class="bg-primary text-center">CUSTOMER SERVICES</p>
+                {% if perms.services %}
+                <div class="col-md-offset-11">
+                    <a type="button" class="btn btn-success" data-toggle="modal" data-target="#select"><span><i class="fa fa-plus"></i></span></a>
+                </div>
+                <br/>
+                <div class="modal fade" id="select" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Select Service</h4>
+                            </div>
+                            <form name="form_customer" method="post" action="{% url 'services:service_select' customer.id_cut %}" class="form" role="form" id="form_customer" validate>{% csrf_token %}
+                            <div class="modal-body">
+                                <fieldset>
+                                  <div class="row">
+                                      <div class="col-md-offset-4">
+                                          <div class="btn-group" data-toggle="buttons">
+                                              <label class="btn btn-primary col-md-7">
+                                                  <input type="radio" name="permit" id="btnpermit" autocomplete="off"> Permit
+                                              </label>
+                                              <label class="btn btn-primary col-md-7">
+                                                  <input type="radio" name="equipment" id="btnequipment" autocomplete="off"> Equipment
+                                              </label>
+                                              <label class="btn btn-primary col-md-7">
+                                                  <input type="radio" name="insurance" id="btninsurance" autocomplete="off"> Insurance
+                                              </label>
+                                              <label class="btn btn-primary col-md-7">
+                                                  <input type="radio" name="driver" id="btndriver" autocomplete="off"> Diver
+                                              </label>
+                                              <label class="btn btn-primary col-md-7">
+                                                  <input type="radio" name="ifta" id="btnifta" autocomplete="off"> IFTA
+                                              </label>
+                                              <label class="btn btn-primary col-md-7">
+                                                  <input type="radio" name="audit" id="btnaudit" autocomplete="off"> Audit
+                                              </label>
+                                              <label class="btn btn-primary col-md-7">
+                                                  <input type="radio" name="contract" id="btncontract" autocomplete="off"> Contract
+                                              </label>
+                                              <label class="btn btn-primary col-md-7">
+                                                  <input type="radio" name="dispatch" id="btndispatch" autocomplete="off"> Company Dispatch
+                                              </label>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                </fieldset>
+                            </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <input type="submit" class="btn btn-primary" value="Continue">
+                                </div>
+                            </form>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+                {% endif %}
+                <div class="panel panel-success">
                     <div class="panel-heading">
                         <ul class="nav nav-tabs " role="tablist">
                             {% if permits %}
-                            <li id="tabPermit" role="presentation"><a href="#permit" aria-controls="permite" role="tab" class="text-warning" data-toggle="tab">Permits <span class="badge text-danger">{{ permit_pending }}</span></a></li>
+                            <li id="tabPermit" role="presentation"><a href="#permit" aria-controls="permite" role="tab" data-toggle="tab">Permits <span class="badge text-danger">{{ permit_pending }}</span></a></li>
                             {% endif %}
                             {% if equipments %}
-                            <li id="tabEquipment" role="presentation"><a href="#equipment" aria-controls="equipment" role="tab" class="text-warning" data-toggle="tab">Equipment <span class="badge text-danger">{{ equipment_pending }}</span></a></li>
+                            <li id="tabEquipment" role="presentation"><a href="#equipment" aria-controls="equipment" role="tab" data-toggle="tab">Equipment <span class="badge text-danger">{{ equipment_pending }}</span></a></li>
                             {% endif %}
                             {% if insurances %}
-                            <li id="tabInsurance" role="presentation"><a href="#insurance" aria-controls="insurance" role="tab" class="text-warning" data-toggle="tab">Insurance <span class="badge text-danger">{{insurance_pending}}</span></a></li>
+                            <li id="tabInsurance" role="presentation"><a href="#insurance" aria-controls="insurance" role="tab" data-toggle="tab">Insurance <span class="badge text-danger">{{insurance_pending}}</span></a></li>
                             {% endif %}
                             {% if contracts %}
-                            <li id="tabContract" role="presentation"><a href="#contract" aria-controls="contract" role="tab" class="text-warning" data-toggle="tab">Contract <span class="badge text-danger">{{contract_pending}}</span></a></li>
+                            <li id="tabContract" role="presentation"><a href="#contract" aria-controls="contract" role="tab" data-toggle="tab">Contract <span class="badge text-danger">{{contract_pending}}</span></a></li>
                             {% endif %}
                             {% if iftas %}
-                            <li id="tabIfta" role="presentation"><a href="#ifta" aria-controls="ifta" role="tab" class="text-warning" data-toggle="tab">IFTA <span class="badge text-danger">{{ifta_pending}}</span></a></li>
+                            <li id="tabIfta" role="presentation"><a href="#ifta" aria-controls="ifta" role="tab" data-toggle="tab">IFTA <span class="badge text-danger">{{ifta_pending}}</span></a></li>
                             {% endif %}
                             {% if audits %}
-                            <li id="tabAudit" role="presentation"><a href="#audit" aria-controls="audit" role="tab" class="text-warning" data-toggle="tab">Audit <span class="badge text-danger">{{audit_pending}}</span></a></li>
+                            <li id="tabAudit" role="presentation"><a href="#audit" aria-controls="audit" role="tab" data-toggle="tab">Audit <span class="badge text-danger">{{audit_pending}}</span></a></li>
                             {% endif %}
                             {% if driver %}
-                            <li id="tabDriver" role="presentation"><a href="#driver" aria-controls="driver" role="tab" class="text-warning" data-toggle="tab">Driver <span class="badge text-danger">{{driver_pending}}</span></a></li>
+                            <li id="tabDriver" role="presentation"><a href="#driver" aria-controls="driver" role="tab" data-toggle="tab">Driver <span class="badge text-danger">{{driver_pending}}</span></a></li>
                             {% endif %}
                             {% if dispatch %}
-                            <li id="tabDispatch" role="presentation"><a href="#dispatch" aria-controls="dispatch" role="tab" class="text-warning" data-toggle="tab">Dispatcher Invoices<span class="badge text-danger">{{dispatch_pending}}</span></a></li>
+                            <li id="tabDispatch" role="presentation"><a href="#dispatch" aria-controls="dispatch" role="tab" data-toggle="tab">Dispatcher Invoices<span class="badge text-danger">{{dispatch_pending}}</span></a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -238,16 +246,13 @@
                     <p class="bg-warning col-md-1">Initiated</p>
                     <p class="bg-danger col-md-1">Pending</p>
                 </div>
-                {% else %}
-                <p class="col-md-7">Not have any service register!</p>
-                {% endif %}
             </div>
 
             <div class="form-group col-md-12">
-                <p class="bg-danger text-center">CUSTOMER FILES</p>
+                <p class="bg-primary text-center">CUSTOMER FILES</p>
                 {% if perms.tools.add_file %}
                 <div class="col-md-offset-11">
-                    <a type="button" class="btn btn-success" href="{% url 'services:folder_create_popup' customer.id_cut %}"><span><i class="fa fa-plus"></i></span></a>
+                    <a type="button" class="btn btn-success" href="{% url 'services:folder_create' customer.id_cut %}"><span><i class="fa fa-plus"></i></span></a>
                 </div>
                 {% endif %}
                 <br/>
@@ -257,14 +262,14 @@
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="H-{{category.grouper}}">
                             <h4 class="panel-title">
-                                <a role="button" class="glyphicon glyphicon-folder-open" data-toggle="collapse" data-parent="#accordion" href="#{{category.grouper}}" aria-controls="collapseOne">
-
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{category.grouper}}" aria-controls="collapseOne">
                                     {{category.grouper}}
                                 </a>
                             </h4>
                         </div>
                         <div id="{{category.grouper}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="H-{{category.grouper}}">
                             <div class="panel-body">
+                                <div class="table-responsive">
                                 <table class="table table-striped data-table">
                                     <thead>
                                     <th>Name</th>
@@ -283,25 +288,19 @@
                                         <td>
                                             {% if perms.tools.change_file %}
                                             <toolbar class="md-accent">
-                                                <a data-type="info"  data-trigger="focus"  data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'services:folder_edit' f.id_fil %}">
-                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                    <tooltip md-direction="left"></tooltip>
+                                                <a data-type="info"  data-trigger="focus"  data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'services:folder_edit' f.id_fil %}">
                                                 </a>
                                             </toolbar>
                                             {% endif %}
                                             {% if perms.tools.delete_file %}
                                             <toolbar class="md-accent">
-                                                <a data-type="info"  data-animation="am-flip-x" data-trigger="focus"   type="button" class="btn btn-danger test-tooltip" href="{% url 'services:folder_delete' f.id_fil %}">
-                                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                                    <tooltip md-direction="left"></tooltip>
+                                                <a data-type="info"  data-animation="am-flip-x" data-trigger="focus"   type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash" href="{% url 'services:folder_delete' f.id_fil %}">
                                                 </a>
                                             </toolbar>
                                             {% endif %}
                                             {% if perms.services %}
                                             <toolbar class="md-accent">
-                                                <a data-type="info"  data-animation="am-flip-x" data-trigger="focus"   type="button" class="btn btn-info test-tooltip" href="{% url 'services:email_send' customer.id_cut f.id_fil %}">
-                                                    <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
-                                                    <tooltip md-direction="left"></tooltip>
+                                                <a data-type="info"  data-animation="am-flip-x" data-trigger="focus"   type="button" class="btn btn-info test-tooltip glyphicon glyphicon-envelope" href="{% url 'services:email_send' customer.id_cut f.id_fil %}">
                                                 </a>
                                             </toolbar>
                                             {% endif %}
@@ -310,7 +309,7 @@
                                     {% endfor %}
                                     </tbody>
                                 </table>
-
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -318,11 +317,12 @@
                 </div>
             </div>
             <div class="form-group col-md-12">
-                <p class="bg-danger text-center">NOTES</p>
+                <p class="bg-primary text-center">NOTES</p>
                 <div class="col-md-offset-11">
                     <a type="button" class="btn btn-success" href="{% url 'accounting:note_create' customer.id_cut %}"><span><i class="fa fa-plus"></i></span></a>
                 </div>
                 <br/>
+                 <div class="table-responsive">
                 <table id="tb-note" class="table table-striped data-table">
                     <thead>
                     <th>User</th>
@@ -339,17 +339,13 @@
                         <td>
                             {% if perms.accounting.change_note %}
                             <toolbar class="md-accent">
-                                <a data-type="info" data-trigger="focus"  data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'accounting:note_edit' n.id %}">
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-trigger="focus"  data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'accounting:note_edit' n.id %}">
                                 </a>
                             </toolbar>
                             {% endif %}
                             {% if perms.accounting.delete_note %}
                             <toolbar class="md-accent">
-                                <a data-type="info"  data-animation="am-flip-x" data-trigger="focus"   type="button" class="btn btn-danger test-tooltip" href="{% url 'accounting:note_delete' n.id %}">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info"  data-animation="am-flip-x" data-trigger="focus"   type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash" href="{% url 'accounting:note_delete' n.id %}">
                                 </a>
                             </toolbar>
                             {% endif %}
@@ -358,6 +354,7 @@
                     {% endfor %}
                     </tbody>
                 </table>
+                 </div>
             </div>
         </div>
         <div class="panel-footer">

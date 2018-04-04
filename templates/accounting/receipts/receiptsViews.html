@@ -45,21 +45,15 @@
                         <td class="text-center">{% if r.paid %}<i class="fa fa-check text-success" aria-hidden="true"></i>{% endif %}</td>
                         <td>
                             <toolbar class="md-accent">
-                                <a data-type="info" data-trigger="focus" title="Edit Receipt" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'accounting:receipts_edit' r.id_rec %}" {% if not perms.accounting.change_receipt %} disabled {% endif %}>
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-trigger="focus" title="Edit Receipt" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'accounting:receipts_edit' r.id_rec %}" {% if not perms.accounting.change_receipt %} disabled {% endif %}>
                                 </a>
                             </toolbar>
                             <toolbar class="md-accent">
-                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Receipt" type="button" class="btn btn-danger test-tooltip" href="{% url 'accounting:receipts_delete' r.id_rec %}" {% if not perms.accounting.delete_receipt %} disabled {% endif %}>
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Receipt" type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash" href="{% url 'accounting:receipts_delete' r.id_rec %}" {% if not perms.accounting.delete_receipt %} disabled {% endif %}>
                                 </a>
                             </toolbar>
                             <toolbar class="md-accent">
-                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" target="_blank" title="Print Receipt" type="button" class="btn btn-primary test-tooltip" href="{% url 'accounting:receipts_pdf' r.id_rec %}">
-                                    <i class="fa fa-print" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" target="_blank" title="Print Receipt" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-print" href="{% url 'accounting:receipts_pdf' r.id_rec %}">
                                 </a>
                             </toolbar>
                         </td>

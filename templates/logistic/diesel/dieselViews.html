@@ -43,19 +43,15 @@
                         <td>{{d.total}}</td>
 
                         <td>
-                            {% if perms.logistic%}
+                            {% if perms.logistic.change_diesel %}
                             <toolbar class="md-accent">
-                                <a data-type="info" data-trigger="focus" title="Edit Diesel" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'logistic:diesel_edit' d.id_dse %}">
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-trigger="focus" title="Edit Diesel" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'logistic:diesel_edit' d.id_dse %}">
                                 </a>
                             </toolbar>
                             {% endif %}
-                            {% if perms.logistic %}
+                            {% if perms.logistic.delete_diesel %}
                             <toolbar class="md-accent">
-                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Diesel" type="button" class="btn btn-danger test-tooltip" href="{% url 'logistic:diesel_delete' d.id_dse %}">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Diesel" type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash" href="{% url 'logistic:diesel_delete' d.id_dse %}">
                                 </a>
                             </toolbar>
                             {% endif %}

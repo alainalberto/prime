@@ -82,17 +82,13 @@
                     <td>
                         {% if perms.accounting.change_customer %}
                         <toolbar class="md-accent">
-                            <a data-type="info" data-trigger="focus" title="Edit Customer" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'accounting:customer_edit' c.id_cut %}" {% if not perms.accounting.change_customer %} disabled {% endif %}>
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                <tooltip md-direction="left"></tooltip>
+                            <a data-type="info" data-trigger="focus" title="Edit Customer" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'accounting:customer_edit' c.id_cut %}" {% if not perms.accounting.change_customer %} disabled {% endif %}>
                             </a>
                         </toolbar>
                         {% endif %}
                         {% if perms.accounting.delete_customer %}
                         <toolbar class="md-accent">
-                            <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Customer" type="button" class="btn btn-danger test-tooltip" href="{% url 'accounting:customer_delete' c.id_cut %}" {% if not perms.accounting.delete_customer %} disabled {% endif %}>
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                <tooltip md-direction="left"></tooltip>
+                            <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Customer" type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash" href="{% url 'accounting:customer_delete' c.id_cut %}" {% if not perms.accounting.delete_customer %} disabled {% endif %}>
                             </a>
                         </toolbar>
                         {% endif %}

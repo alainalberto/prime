@@ -42,6 +42,7 @@
                 <fieldset>
                     <!-- Form Name -->
                     <!-- Text input-->
+                    {% if not id %}
                     {% if customers %}
                     <div class="form-group col-md-5 col-md-offset-4">
                         <label class="label-control">Select Customer:</label>
@@ -68,6 +69,7 @@
 
                     </div>
                    {% include 'accounting/customer/customerModal.html'%}
+                    {% endif %}
                     {% endif %}
                     <div class="form-group col-md-3 col-md-offset-1">
                         <label class="label-control">Start Date:</label>

@@ -44,14 +44,13 @@
                           <strong>{{a.end_date}} </strong>
                       </td>
                       <td>
+                          {
                           <toolbar class="md-accent">
-                              <a data-type="info" href="{% url 'panel:alert_edit' a.id_alt %}" data-trigger="focus" {% if not user == a.users %} disabled="true" {% endif %} data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip">
-                                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                  <tooltip md-direction="left"></tooltip>
+                              <a data-type="info" href="{% url 'panel:alert_edit' a.id_alt %}" data-trigger="focus" {% if not user == a.users %} disabled="true" {% endif %} data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit">
                               </a>
                           </toolbar>
                           <toolbar class="md-accent">
-                              <a data-type="info" href="{% url 'panel:alert_delete' a.id_alt %}" data-animation="am-flip-x" data-trigger="focus" {% if not user == a.users %} disabled="true" {% endif %}   type="button" class="btn btn-danger test-tooltip">
+                              <a data-type="info" href="{% url 'panel:alert_delete' a.id_alt %}" data-animation="am-flip-x" data-trigger="focus" {% if not user == a.users %} disabled="true" {% endif %}   type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash">
                                   <i class="fa fa-trash" aria-hidden="true"></i>
                                   <tooltip md-direction="left"></tooltip>
                               </a>

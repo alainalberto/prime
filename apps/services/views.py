@@ -49,40 +49,57 @@ def PermitView(request, pk, popup):
     return render(request, 'services/permit/permitView.html', {'permit': permit, 'is_popup':popup, 'title':'Permit', 'deactivate':True})
 
 
+def SelectView(request, pk):
+
+    if request.method == 'POST':
+       if request.POST.get('permit', False):
+          return HttpResponseRedirect('/services/permit/create/'+ pk)
+       elif request.POST.get('equipment', False):
+          return HttpResponseRedirect('/services/equipment/create/' + pk)
+       elif request.POST.get('insurance', False):
+          return HttpResponseRedirect('/services/insurance/create/' + pk)
+       elif request.POST.get('driver', False):
+          return HttpResponseRedirect('/services/driver/create/' + pk)
+       elif request.POST.get('ifta', False):
+          return HttpResponseRedirect('/services/ifta/create/' + pk)
+       elif request.POST.get('audit', False):
+          return HttpResponseRedirect('/services/audit/create/' + pk)
+       elif request.POST.get('contract', False):
+          return HttpResponseRedirect('/services/contract/create/' + pk)
+       elif request.POST.get('dispatch', False):
+          return HttpResponseRedirect('/services/dispatch/select/' + pk)
+       else:
+           return HttpResponseRedirect('/accounting/customers/view/' + pk)
+
+
 class PermitCreate(CreateView):
       model = Permit
       template_name = 'services/permit/permitForm.html'
       form_class = PermitForm
 
       def get(self, request, *args, **kwargs):
-          if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
+          if kwargs.__contains__('pk'):
             id = kwargs['pk']
           else:
-              popup = 0
+            id = None
           customer = Customer.objects.filter(deactivated=False).order_by('company_name')
           form = self.form_class(initial=self.initial)
-          return render(request, self.template_name, {'form': form, 'customers':customer, 'is_popup': popup, 'title': 'Create Permit'})
+          return render(request, self.template_name, {'id': id, 'form': form, 'customers':customer, 'title': 'Create Permit'})
 
       def post(self, request, *args, **kwargs):
-          if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
-            id = kwargs['pk']
-          else:
-              popup = 0
           form = self.form_class(request.POST)
           if form.is_valid():
               permit_exist = Permit.objects.filter(name=request.POST['name'], ein=request.POST['ein'])
               if permit_exist:
                   messages.error(request, 'The Company already exists')
                   form = self.form_class(initial=self.initial)
-                  return render(request, self.template_name, {'form': form, 'is_popup': popup, 'title': 'Create Permit'})
+                  return self.get(request)
               else:
                   permit = form.save(commit=False)
-                  if popup:
-                    customer = Customer.objects.get(id_cut=id)
+                  if kwargs.__contains__('pk'):
+                    customer = Customer.objects.get(id_cut=kwargs['pk'])
                   else:
-                      customer = Customer.objects.get(id_cut=request.POST['customers'])
+                    customer = Customer.objects.get(id_cut=request.POST['customers'])
                   permit.customers = customer
                   permit.users_id = request.user.id
                   permit.update = datetime.now().strftime("%Y-%m-%d")
@@ -140,16 +157,11 @@ class PermitEdit(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(PermitEdit, self).get_context_data(**kwargs)
-        if self.kwargs.__contains__('popup'):
-            popup = self.kwargs.get('popup')
-        else:
-            popup = 0
         pk = self.kwargs.get('pk', 0)
         permit = self.model.objects.get(id_com=pk)
         if 'form' not in context:
             context['form'] = self.form_class(instance=permit)
         context['id'] = pk
-        context['is_popup'] = popup
         context['title'] = 'Edit Permit'
         return context
 
@@ -492,33 +504,26 @@ class EquipmentCreate(CreateView):
     form_class = EquipmentForm
 
     def get(self, request, *args, **kwargs):
-        if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
+        if kwargs.__contains__('pk'):
             id = kwargs['pk']
         else:
-            popup = 0
-            customer = Customer.objects.filter(deactivated=False).order_by('company_name')
+            id = None
+        customer = Customer.objects.filter(deactivated=False).order_by('company_name')
         form = self.form_class(initial=self.initial)
         return render(request, self.template_name,
-                      {'form': form, 'customers': customer, 'is_popup': popup, 'title': 'Create Equipment'})
+                      {'form': form, 'customers': customer, 'id': id, 'title': 'Create Equipment'})
 
     def post(self, request, *args, **kwargs):
-        if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
-            id = kwargs['pk']
-        else:
-            popup = 0
         form = self.form_class(request.POST)
         if form.is_valid():
             equipment_exist = Equipment.objects.filter(type=form.data['type'], serial=form.data['serial'])
             if equipment_exist:
                 messages.error(request, 'The Equipment already exists')
-                form = self.form_class(initial=self.initial)
-                return render(request, self.template_name, {'form': form, 'is_popup': popup, 'title': 'Create Equipment'})
+                return self.get(request)
             else:
                 equipment = form.save(commit=False)
-                if popup:
-                    customer = Customer.objects.get(id_cut=id)
+                if kwargs.__contains__('pk'):
+                    customer = Customer.objects.get(id_cut=kwargs['pk'])
                 else:
                     customer = Customer.objects.get(id_cut=request.POST['customers'])
                 equipment.customers = customer
@@ -590,26 +595,17 @@ class EquipmentEdit(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(EquipmentEdit, self).get_context_data(**kwargs)
-        if self.kwargs.__contains__('popup'):
-            popup = self.kwargs.get('popup')
-        else:
-            popup = 0
         pk = self.kwargs.get('pk', 0)
         equipment = self.model.objects.get(id_tru=pk)
         if 'form' not in context:
             context['form'] = self.form_class(instance=equipment)
         context['id'] = pk
-        context['is_popup'] = popup
         context['title'] = 'Edit Equipment'
         return context
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object
         pk = kwargs['pk']
-        if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
-        else:
-            popup = 0
         equipment = self.model.objects.get(id_tru=pk)
         form = self.form_class(request.POST, instance=equipment)
         if form.is_valid():
@@ -732,9 +728,7 @@ class EquipmentEdit(UpdateView):
         else:
             for er in form.errors:
                 messages.error(request, "ERROR: " + er)
-            return render(request, self.template_name,
-                          {'form': form, 'is_popup': popup, 'title': 'Edit Equipment'})
-
+            return self.get_context_data()
 
 class EquipmentDelete(DeleteView):
     model = Permit
@@ -790,28 +784,22 @@ class InsuranceCreate(CreateView):
       form_class = InsuranceForm
 
       def get(self, request, *args, **kwargs):
-          if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
+          if kwargs.__contains__('pk'):
             id = kwargs['pk']
           else:
-              popup = 0
+              id = None
           customer = Customer.objects.filter(deactivated=False).order_by('company_name')
           form = self.form_class(initial=self.initial)
-          return render(request, self.template_name, {'form': form, 'customers':customer, 'is_popup': popup, 'title': 'Create Insurance'})
+          return render(request, self.template_name, {'form': form, 'customers':customer, 'id': id, 'title': 'Create Insurance'})
 
       def post(self, request, *args, **kwargs):
-          if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
-            id = kwargs['pk']
-          else:
-              popup = 0
           form = self.form_class(request.POST)
           if form.is_valid():
                   insurance = form.save(commit=False)
-                  if popup:
-                    customer = Customer.objects.get(id_cut=id)
+                  if kwargs.__contains__('pk'):
+                    customer = Customer.objects.get(id_cut=kwargs['pk'])
                   else:
-                      customer = Customer.objects.get(id_cut=request.POST['customers'])
+                    customer = Customer.objects.get(id_cut=request.POST['customers'])
                   insurance.customers = customer
                   insurance.users = request.user
                   insurance.update = datetime.now().strftime("%Y-%m-%d")
@@ -907,26 +895,17 @@ class InsuranceEdit(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(InsuranceEdit, self).get_context_data(**kwargs)
-        if self.kwargs.__contains__('popup'):
-            popup = self.kwargs.get('popup')
-        else:
-            popup = 0
         pk = self.kwargs.get('pk', 0)
         insurance = self.model.objects.get(id_ins=pk)
         if 'form' not in context:
             context['form'] = self.form_class(instance=insurance)
         context['id'] = pk
-        context['is_popup'] = popup
         context['title'] = 'Edit Insurance'
         return context
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object
         pk = kwargs['pk']
-        if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
-        else:
-            popup = 0
         insurance = self.model.objects.get(id_ins=pk)
         form = self.form_class(request.POST, instance=insurance)
         if form.is_valid():
@@ -1168,34 +1147,27 @@ class DriverCreate(CreateView):
       form_class = DriverForm
 
       def get(self, request, *args, **kwargs):
-          if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
+          if kwargs.__contains__('pk'):
             id = kwargs['pk']
           else:
-              popup = 0
+              id = None
           customer = Customer.objects.filter(deactivated=False).order_by('company_name')
           form = self.form_class(initial=self.initial)
-          return render(request, self.template_name, {'form': form, 'customers':customer, 'is_popup': popup, 'title': 'Create Driver'})
+          return render(request, self.template_name, {'form': form, 'customers':customer, 'id': id, 'title': 'Create Driver'})
 
       def post(self, request, *args, **kwargs):
-          if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
-            id = kwargs['pk']
-          else:
-              popup = 0
           form = self.form_class(request.POST)
           if form.is_valid():
               driver_exist = Driver.objects.filter(name=request.POST['name'], license_numb=request.POST['license_numb'])
               if driver_exist:
                   messages.error(request, 'The driver already exists')
-                  form = self.form_class(initial=self.initial)
-                  return render(request, self.template_name, {'form': form, 'is_popup': popup, 'title': 'Create Driver'})
+                  return self.get(request)
               else:
                   driver = form.save(commit=False)
-                  if popup:
-                    customer = Customer.objects.get(id_cut=id)
+                  if kwargs.__contains__('pk'):
+                    customer = Customer.objects.get(id_cut=kwargs['pk'])
                   else:
-                      customer = Customer.objects.get(id_cut=request.POST['customers'])
+                    customer = Customer.objects.get(id_cut=request.POST['customers'])
                   driver.customers = customer
                   driver.users = request.user
                   driver.update = datetime.now().strftime("%Y-%m-%d")
@@ -1280,26 +1252,17 @@ class DriverEdit(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(DriverEdit, self).get_context_data(**kwargs)
-        if self.kwargs.__contains__('popup'):
-            popup = self.kwargs.get('popup')
-        else:
-            popup = 0
         pk = self.kwargs.get('pk', 0)
         driver = self.model.objects.get(id_drv=pk)
         if 'form' not in context:
             context['form'] = self.form_class(instance=driver)
         context['id'] = pk
-        context['is_popup'] = popup
         context['title'] = 'Edit Driver'
         return context
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object
         pk = kwargs['pk']
-        if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
-        else:
-            popup = 0
         driver = self.model.objects.get(id_drv=pk)
         form = self.form_class(request.POST, instance=driver)
         if form.is_valid():
@@ -1433,8 +1396,7 @@ class DriverEdit(UpdateView):
         else:
             for er in form.errors:
                 messages.error(request, "ERROR: " + er)
-            return render(request, self.template_name,
-                          {'form': form,  'is_popup': popup, 'title': 'Edit Driver'})
+            return self.get_context_data()
 
 class DriverDelete(DeleteView):
     model = Driver
@@ -1491,27 +1453,21 @@ class IftaCreate(CreateView):
         form_class = IftaForm
 
         def get(self, request, *args, **kwargs):
-            if kwargs.__contains__('popup'):
-                popup = kwargs['popup']
+            if kwargs.__contains__('pk'):
                 id = kwargs['pk']
             else:
-                popup = 0
+                id = None
             customer = Customer.objects.filter(deactivated=False).order_by('company_name')
             form = self.form_class(initial=self.initial)
             return render(request, self.template_name,
-                          {'form': form, 'customers': customer, 'is_popup': popup, 'title': 'Create Ifta'})
+                          {'form': form, 'customers': customer, 'id': id, 'title': 'Create Ifta'})
 
         def post(self, request, *args, **kwargs):
-            if kwargs.__contains__('popup'):
-                popup = kwargs['popup']
-                id = kwargs['pk']
-            else:
-                popup = 0
             form = self.form_class(request.POST)
             if form.is_valid():
                     ifta = form.save(commit=False)
-                    if popup:
-                        customer = Customer.objects.get(id_cut=id)
+                    if kwargs.__contains__('pk'):
+                        customer = Customer.objects.get(id_cut=kwargs['pk'])
                     else:
                         customer = Customer.objects.get(id_cut=request.POST['customers'])
                     ifta.customers = customer
@@ -1554,7 +1510,7 @@ class IftaCreate(CreateView):
             else:
                 for er in form.errors:
                     messages.error(request, "ERROR: " + er)
-                return render(request, self.template_name, {'form': form, 'is_popup': popup, 'title': 'Create Ifta'})
+                return self.get(request)
 
 class IftaEdit(UpdateView):
         model = Ifta
@@ -1579,10 +1535,6 @@ class IftaEdit(UpdateView):
         def post(self, request, *args, **kwargs):
             self.object = self.get_object
             pk = kwargs['pk']
-            if kwargs.__contains__('popup'):
-                popup = kwargs['popup']
-            else:
-                popup = 0
             ifta = self.model.objects.get(id_ift=pk)
             form = self.form_class(request.POST, instance=ifta)
             if form.is_valid():
@@ -1661,8 +1613,7 @@ class IftaEdit(UpdateView):
             else:
                 for er in form.errors:
                     messages.error(request, "ERROR: " + er)
-                return render(request, self.template_name,
-                              {'form': form, 'is_popup': popup, 'title': 'Edit Ifta'})
+                return self.get_context_data()
 
 class IftaDelete(DeleteView):
         model = Ifta
@@ -1707,27 +1658,21 @@ class AuditCreate(CreateView):
     form_class = AuditForm
 
     def get(self, request, *args, **kwargs):
-        if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
+        if kwargs.__contains__('pk'):
             id = kwargs['pk']
         else:
-            popup = 0
+            id = None
         customer = Customer.objects.filter(deactivated=False).order_by('company_name')
         form = self.form_class(initial=self.initial)
         return render(request, self.template_name,
-                      {'form': form, 'customers': customer, 'is_popup': popup, 'title': 'Create Audit'})
+                      {'form': form, 'customers': customer, 'id': id, 'title': 'Create Audit'})
 
     def post(self, request, *args, **kwargs):
-        if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
-            id = kwargs['pk']
-        else:
-            popup = 0
         form = self.form_class(request.POST)
         if form.is_valid():
             audit = form.save(commit=False)
-            if popup:
-                customer = Customer.objects.get(id_cut=id)
+            if kwargs.__contains__('pk'):
+                customer = Customer.objects.get(id_cut=kwargs['pk'])
             else:
                 customer = Customer.objects.get(id_cut=request.POST['customers'])
             audit.customers = customer
@@ -1740,7 +1685,7 @@ class AuditCreate(CreateView):
         else:
             for er in form.errors:
                 messages.error(request, "ERROR: " + er)
-            return render(request, self.template_name, {'form': form, 'is_popup': popup, 'title': 'Create Audit'})
+            return self.get(request)
 
 
 class AuditEdit(UpdateView):
@@ -1750,26 +1695,17 @@ class AuditEdit(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(AuditEdit, self).get_context_data(**kwargs)
-        if self.kwargs.__contains__('popup'):
-            popup = self.kwargs.get('popup')
-        else:
-            popup = 0
         pk = self.kwargs.get('pk', 0)
         audit = self.model.objects.get(id_aud=pk)
         if 'form' not in context:
             context['form'] = self.form_class(instance=audit)
         context['id'] = pk
-        context['is_popup'] = popup
         context['title'] = 'Edit Audit'
         return context
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object
         pk = kwargs['pk']
-        if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
-        else:
-            popup = 0
         audit = self.model.objects.get(id_aud=pk)
         form = self.form_class(request.POST, instance=audit)
         if form.is_valid():
@@ -1784,7 +1720,7 @@ class AuditEdit(UpdateView):
             for er in form.errors:
                 messages.error(request, "ERROR: " + er)
             return render(request, self.template_name,
-                          {'form': form, 'is_popup': popup, 'title': 'Edit Audit'})
+                          {'form': form, 'title': 'Edit Audit'})
 
 
 class AuditDelete(DeleteView):
@@ -1814,30 +1750,24 @@ class ContractCreate(CreateView):
     form_file_class = FileForm
 
     def get(self, request, *args, **kwargs):
-        if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
+        if kwargs.__contains__('pk'):
             id = kwargs['pk']
         else:
-            popup = 0
+            id = None
         customer = Customer.objects.filter(deactivated=False).order_by('company_name')
         form = self.form_class()
         form_file = self.form_file_class()
         return render(request, self.template_name,
-                      {'form': form, 'customers': customer, 'is_popup': popup, 'title': 'Create Contract', 'form2':form_file})
+                      {'form': form, 'customers': customer, 'id': id, 'title': 'Create Contract', 'form2':form_file})
 
     def post(self, request, *args, **kwargs):
-        if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
-            id = kwargs['pk']
-        else:
-            popup = 0
         form = self.form_class(request.POST)
         form_file = self.form_file_class(request.POST, request.FILES)
         if form.is_valid() and form_file.is_valid():
             contract = form.save(commit=False)
             file = form_file.save(commit=False)
-            if popup:
-                customer = Customer.objects.get(id_cut=id)
+            if kwargs.__contains__('pk'):
+                customer = Customer.objects.get(id_cut=kwargs['pk'])
             else:
                 customer = Customer.objects.get(id_cut=request.POST['customers'])
             file.folders = customer.folders
@@ -1881,10 +1811,6 @@ class ContractEdit(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(ContractEdit, self).get_context_data(**kwargs)
-        if self.kwargs.__contains__('popup'):
-            popup = self.kwargs.get('popup')
-        else:
-            popup = 0
         pk = self.kwargs.get('pk', 0)
         contract = self.model.objects.get(id_con=pk)
         file = File.objects.get(id_fil=contract.files_id)
@@ -1893,17 +1819,12 @@ class ContractEdit(UpdateView):
         if 'form2' not in context:
             context['form2'] = self.form_file_class(instance=file)
         context['id'] = pk
-        context['is_popup'] = popup
         context['title'] = 'Edit Contract'
         return context
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object
         pk = kwargs['pk']
-        if kwargs.__contains__('popup'):
-            popup = kwargs['popup']
-        else:
-            popup = 0
         contract = self.model.objects.get(id_con=pk)
         file = File.objects.get(id_fil=contract.files_id)
         form = self.form_class(request.POST, instance=contract)
@@ -1911,8 +1832,8 @@ class ContractEdit(UpdateView):
         if form.is_valid() and form_file.is_valid():
             contract = form.save(commit=False)
             file = form_file.save(commit=False)
-            if popup:
-                customer = Customer.objects.get(id_cut=id)
+            if kwargs.__contains__('pk'):
+                customer = Customer.objects.get(id_cut=kwargs['pk'])
             else:
                 customer = Customer.objects.get(id_cut=request.POST['customers'])
             file.folders = customer.folders
@@ -1961,8 +1882,7 @@ class ContractEdit(UpdateView):
         else:
             for er in form.errors:
                 messages.error(request, "ERROR: " + er)
-            return render(request, self.template_name,
-                          {'form': form, 'is_popup': popup, 'title': 'Edit Audit'})
+            return self.get_context_data()
 
 
 class ContractDelete(DeleteView):
@@ -1987,7 +1907,6 @@ class ContractDelete(DeleteView):
         contract.delete()
         messages.success(request, "Audit delete with an extension")
         return HttpResponseRedirect('/accounting/customers/view/' + str(customer.id_cut))
-
 
 
 def Email(request, pk):
@@ -2042,6 +1961,7 @@ def EmailSend(request, pk, fl):
         form = EmailForm(initial={'topic': str(customer.business.name)+' Information!', 'email': customer.email, 'message': sms, 'file':file})
     return render(request, 'home/Email/sendEmail.html', {'form': form, 'customer': customer, 'file': file})
 
+
 def CompanyLoadSelect(request):
 
      customerLoad = []
@@ -2061,6 +1981,21 @@ def CompanyLoadSelect(request):
           return HttpResponseRedirect('/services/dispatch/invoice/create/'+id+'&'+start+'&'+end)
 
      return render(request, 'services/companiesDispatch/selectLoadsForm.html', context)
+
+
+def CompanyLoadSelect(request, pk):
+
+    context = {
+        'id':pk,
+        'title': 'Selected Customer'
+    }
+    if request.method == 'POST':
+        start = request.POST.get('start', None)
+        end = request.POST.get('end', None)
+        return HttpResponseRedirect('/services/dispatch/invoice/create/' + pk + '&' + start + '&' + end)
+
+    return render(request, 'services/companiesDispatch/selectLoadsForm.html', context)
+
 
 class InvoicesLogViews(ListView):
     model = Invoice

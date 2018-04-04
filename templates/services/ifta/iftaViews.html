@@ -19,12 +19,12 @@
                         <td>
                             {% if perms.services.change_ifta %}
                             <toolbar class="md-accent">
-                                <a type="button" class="btn btn-info" href="{% url 'services:ifta_edit' i.id_ift %}"><span><i class="fa fa-pencil-square-o"></i></span></a>
+                                <a type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'services:ifta_edit' i.id_ift %}"></a>
                             </toolbar>
                             {% endif %}
                             {% if perms.services.delete_ifta %}
                             <toolbar class="md-accent">
-                                <a type="button" class="btn btn-danger" href="{% url 'services:ifta_delete' i.id_ift %}"><span><i class="fa fa-trash"></i></span></a>
+                                <a type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash" href="{% url 'services:ifta_delete' i.id_ift %}"></a>
                             </toolbar>
                             {% endif %}
                         </td>

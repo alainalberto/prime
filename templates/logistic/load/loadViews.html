@@ -59,25 +59,19 @@
                     <td>
                         {% if perms.logistic.change_load %}
                         <toolbar class="md-accent">
-                            <a data-type="info" data-trigger="focus" title="Edit Load" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'logistic:load_edit' l.id_lod %}">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                <tooltip md-direction="left"></tooltip>
+                            <a data-type="info" data-trigger="focus" title="Edit Load" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'logistic:load_edit' l.id_lod %}">
                             </a>
                         </toolbar>
                         {% endif %}
                         {% if perms.logistic.delete_load %}
                         <toolbar class="md-accent">
-                            <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Load" type="button" class="btn btn-danger test-tooltip" href="{% url 'logistic:load_delete' l.id_lod %}">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                <tooltip md-direction="left"></tooltip>
+                            <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Load" type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash" href="{% url 'logistic:load_delete' l.id_lod %}">
                             </a>
                         </toolbar>
                         {% endif %}
                         {% if perms.logistic.add_load %}
                         <toolbar class="md-accent">
-                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Print to PDF" type="button" class="btn btn-primary test-tooltip" href="{% url 'logistic:load_pdf' l.id_lod%}">
-                                    <i class="fa fa-print" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Print to PDF" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-print" href="{% url 'logistic:load_pdf' l.id_lod%}">
                                 </a>
                         </toolbar>
                         {% endif %}

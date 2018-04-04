@@ -38,17 +38,13 @@
                         <td>
                             {% if perms.services.change_application %}
                             <toolbar class="md-accent">
-                                <a data-type="info" data-trigger="focus" title="Review Application" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip" href="{% url 'application:apply_edit' l.id_apl %}">
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-trigger="focus" title="Review Application" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'application:apply_edit' l.id_apl %}">
                                 </a>
                             </toolbar>
                             {% endif %}
                             {% if perms.services.delete_application %}
                             <toolbar class="md-accent">
-                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Application" type="button" class="btn btn-danger test-tooltip" href="{% url 'application:apply_delete' l.id_apl %}">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                    <tooltip md-direction="left"></tooltip>
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Application" type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash" href="{% url 'application:apply_delete' l.id_apl %}">
                                 </a>
                             </toolbar>
                             {% endif %}

@@ -18,36 +18,36 @@
             </div>
         </div>
         <div class="panel-body">
-
-            <table id="" class="table data-table table-hover table-bordered" cellspacing="0" width="100%">
-                <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Account</th>
-                    <th>Business</th>
-                     <th>Payment Method</th>
-                    <th>Document</th>
-                    <th>Value</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for account in accounts %}
-                <tr>
-                    <td>{{ account.date}}</td>
-                    <td>{{ account.accounts.name }}</td>
-                    <td>{{ account.accounts.business }}</td>
-                    <td>{{ account.waytopay }}</td>
-                    <td><a href="{% url 'accounting:account_document' account.id_acd %}">{{ account.type}}</a></td>
-                    <td>${{ account.value}}</td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
+            <div class="table-responsive">
+                <table id="" class="table data-table table-hover table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Account</th>
+                        <th>Business</th>
+                        <th>Payment Method</th>
+                        <th>Document</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for account in accounts %}
+                    <tr>
+                        <td>{{ account.date}}</td>
+                        <td>{{ account.accounts.name }}</td>
+                        <td>{{ account.accounts.business }}</td>
+                        <td>{{ account.waytopay }}</td>
+                        <td><a href="{% url 'accounting:account_document' account.id_acd %}">{{ account.type}}</a></td>
+                        <td>${{ account.value}}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="panel-footer">
             <a type="button" onclick="history.back(-1)">
-            <i class="fa fa-arrow-circle-left fa-3x"></i>
+                <i class="fa fa-arrow-circle-left fa-3x"></i>
             </a>
         </div>
     </div>
