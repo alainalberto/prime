@@ -865,20 +865,37 @@ class InsuranceCreate(CreateView):
                         alert.group.add(group_admin, group_manag, group_offic)
                         CustomerHasAlert.objects.create(customers=customer, alert=alert)
                   if request.POST.get('monthly_alert', False) and len(request.POST['monthlypay']) != 0:
-                        group_admin = Group.objects.get(name='System Administrator')
-                        group_manag = Group.objects.get(name= 'System Manager')
-                        group_offic = Group.objects.get(name= 'Office Specialist')
-                        dateExp = insurance.monthlypay
-                        dateShow = dateExp - timedelta(days=7)
-                        alert = Alert.objects.create(
-                            category = "Urgents",
-                            description = "The next "+str(dateExp)+" is the monthly insurance payment day of the customer" + str(customer),
-                            create_date = datetime.now().strftime("%Y-%m-%d"),
-                            show_date = dateShow.strftime("%Y-%m-%d"),
-                            end_date = dateExp.strftime("%Y-%m-%d"),
-                            users = request.user)
-                        alert.group.add(group_admin, group_manag, group_offic)
-                        CustomerHasAlert.objects.create(customers=customer, alert=alert)
+                      group_admin = Group.objects.get(name='System Administrator')
+                      group_manag = Group.objects.get(name='System Manager')
+                      group_offic = Group.objects.get(name='Office Specialist')
+                      monthpay = int(insurance.months)
+                      day = insurance.monthlypay
+                      today = datetime.now()
+                      cont = 0
+                      while cont < monthpay:
+
+                          if today.month + cont > 12:
+                              month = (today.month + cont) - 12
+                          else:
+                              month = today.month + cont
+                          if month < today.month:
+                              year = today.year + 1
+                          else:
+                              year = today.year
+                          dateExp = datetime.strptime("%s-%s-%s" % (year, month, day), "%Y-%m-%d")
+                          dateShow = dateExp - timedelta(days=15)
+                          alert = Alert.objects.create(
+                              category="Urgents",
+                              description="The next " + str(
+                                  insurance.monthlypay) + " is the monthly insurance payment day of the customer" + str(
+                                  customer),
+                              create_date=today.strftime("%Y-%m-%d"),
+                              show_date=dateShow.strftime("%Y-%m-%d"),
+                              end_date=dateExp.strftime("%Y-%m-%d"),
+                              users=request.user)
+                          alert.group.add(group_admin, group_manag, group_offic)
+                          CustomerHasAlert.objects.create(customers=customer, alert=alert)
+                          cont += 1
                   accion_user(insurance, ADDITION, request.user)
                   messages.success(request, 'The Insurance was saved successfully')
                   return HttpResponseRedirect('/accounting/customers/view/'+str(insurance.customers_id))
@@ -922,7 +939,7 @@ class InsuranceEdit(UpdateView):
                    if alert:
                       alert.update(show_date = dateShow.strftime("%Y-%m-%d"), end_date = dateExp.strftime("%Y-%m-%d"))
                       for a in alert:
-                          if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
+                          if not a in alerCust:
                               CustomerHasAlert.objects.create(customers=customer, alert=a)
                    else:
                        group_admin = Group.objects.get(name='System Administrator')
@@ -943,9 +960,8 @@ class InsuranceEdit(UpdateView):
                         category="Urgents")
                     if alert:
                         for a in alert:
-                            if CustomerHasAlert.objects.filter(customers=customer, alert=a):
-                                CustomerHasAlert.objects.filter(customers=customer, alert=a).delete()
-                            a.delete()
+                            if not a in alerCust:
+                                a.delete()
                 if request.POST.get('cargo_alert', False) and len(request.POST['policy_cargo_exp']) != 0:
                    dateExp = insurance.policy_cargo_exp
                    dateShow = dateExp - timedelta(days=30)
@@ -1045,30 +1061,65 @@ class InsuranceEdit(UpdateView):
                                 CustomerHasAlert.objects.filter(customers=customer, alert=a).delete()
                             a.delete()
                 if request.POST.get('monthly_alert', False) and len(request.POST['monthlypay']) != 0:
-                   dateExp = insurance.monthlypay
-                   dateShow = dateExp - timedelta(days=7)
-                   alert = Alert.objects.filter(description = "The next "+str(dateExp)+" is the monthly insurance payment day of the customer" + str(customer), category="Urgents")
+                   alert = Alert.objects.filter(description = "The next "+str(insurance.monthlypay)+" is the monthly insurance payment day of the customer" + str(customer), category="Urgents")
                    if alert:
-                      alert.update(show_date = dateShow.strftime("%Y-%m-%d"), end_date = dateExp.strftime("%Y-%m-%d"))
-                      for a in alert:
+                       monthpay = int(insurance.months)
+                       day = insurance.monthlypay
+                       today = datetime.now()
+                       cont = 0
+                       while cont < monthpay:
+
+                           if today.month + cont > 12:
+                               month = (today.month + cont) - 12
+                           else:
+                               month = today.month + cont
+                           if month < today.month:
+                               year = today.year + 1
+                           else:
+                               year = today.year
+                           dateExp = datetime.strptime("%s-%s-%s" % (year, month, day), "%Y-%m-%d")
+                           dateShow = dateExp - timedelta(days=15)
+
+                           alert.update(show_date = dateShow.strftime("%Y-%m-%d"), end_date = dateExp.strftime("%Y-%m-%d"))
+                           cont += 1
+                       for a in alert:
                           if not CustomerHasAlert.objects.filter(customers=customer, alert=a):
                               CustomerHasAlert.objects.create(customers=customer, alert=a)
                    else:
                        group_admin = Group.objects.get(name='System Administrator')
                        group_manag = Group.objects.get(name='System Manager')
                        group_offic = Group.objects.get(name='Office Specialist')
-                       alert = Alert.objects.create(
-                           category="Urgents",
-                           description="The next "+str(dateExp)+" is the monthly insurance payment day of the customer" + str(customer),
-                           create_date=datetime.now().strftime("%Y-%m-%d"),
-                           show_date=dateShow.strftime("%Y-%m-%d"),
-                           end_date=dateExp.strftime("%Y-%m-%d"),
-                           users=request.user)
-                       alert.group.add(group_admin, group_manag, group_offic)
-                       CustomerHasAlert.objects.create(customers=customer, alert=alert)
+                       monthpay = int(insurance.months)
+                       day = insurance.monthlypay
+                       today = datetime.now()
+                       cont = 0
+                       while cont < monthpay:
+
+                           if today.month + cont > 12:
+                               month = (today.month + cont) - 12
+                           else:
+                               month = today.month + cont
+                           if month < today.month:
+                               year = today.year + 1
+                           else:
+                               year = today.year
+                           dateExp = datetime.strptime("%s-%s-%s" % (year, month, day), "%Y-%m-%d")
+                           dateShow = dateExp - timedelta(days=15)
+                           alert = Alert.objects.create(
+                               category="Urgents",
+                               description="The next " + str(
+                                   insurance.monthlypay) + " is the monthly insurance payment day of the customer" + str(
+                                   customer),
+                               create_date=today.strftime("%Y-%m-%d"),
+                               show_date=dateShow.strftime("%Y-%m-%d"),
+                               end_date=dateExp.strftime("%Y-%m-%d"),
+                               users=request.user)
+                           alert.group.add(group_admin, group_manag, group_offic)
+                           CustomerHasAlert.objects.create(customers=customer, alert=alert)
+                           cont += 1
                 else:
                     alert = Alert.objects.filter(
-                        description="The next "+str(dateExp)+" is the monthly insurance payment day of the customer" + str(customer),
+                        description="The next "+str(insurance.monthlypay)+" is the monthly insurance payment day of the customer" + str(customer),
                         category="Urgents")
                     if alert:
                         for a in alert:
@@ -1105,7 +1156,7 @@ class InsuranceDelete(DeleteView):
             description="Expires the Insurance "+str(insurance.other_description)+" Policy  of the customer " + str(insurance.customers),
             end_date=insurance.policy_other_exp)
         alert_monthly = Alert.objects.filter(
-            description="The next "+str(dateExp)+" is the monthly insurance payment day of the customer" + str(insurance.customers),
+            description="The next "+str(insurance.monthlypay)+" is the monthly insurance payment day of the customer" + str(insurance.customers),
             end_date=insurance.monthlypay)
         accion_user(insurance, DELETION, request.user)
         if alert_liability:

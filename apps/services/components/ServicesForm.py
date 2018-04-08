@@ -41,7 +41,6 @@ class PermitForm(forms.ModelForm):
                   'inter',
                   'deactivate',
                   'state',
-                  'customers',
         ]
 
         widgets = {
@@ -76,7 +75,6 @@ class PermitForm(forms.ModelForm):
             'inter': forms.CheckboxInput(attrs={'id':"btninter", 'data-toggle':"toggle", 'type':"checkbox", 'data-on':"Inter-State", 'data-off':"Intra-State"}),
             'deactivate': forms.CheckboxInput(attrs={'data-off-color':"danger", 'class':"switch", 'data-size':"mini", 'data-on-text':"YES", 'data-off-text': "NO"}),
             'state': forms.Select(attrs={'class': 'form-control input-md'}, choices=(('Initiated', 'Initiated'), ('Pending', 'Pending'), ('Finalized', 'Finalized'))),
-            'customers': forms.Select(attrs={'class': 'form-control input-md', 'required':'true', 'title':'Select one'}),
         }
 
 
@@ -107,11 +105,11 @@ class InsuranceForm(forms.ModelForm):
             'comision',
             'paid',
             'state',
-            'customers',
             'paid_out',
             'balance_due',
             'monthlypay',
             'note',
+            'months',
         ]
         widgets = {
             'down_payment': forms.NumberInput(attrs={'placeholder': 'value Down', 'class': 'form-control input-md'}),
@@ -135,11 +133,11 @@ class InsuranceForm(forms.ModelForm):
             'comision': forms.NumberInput(attrs={'placeholder': 'value', 'class': 'form-control input-md'}),
             'paid': forms.CheckboxInput(attrs={'data-off-color':"danger", 'class':"switch", 'data-size':"mini", 'data-on-text':"YES", 'data-off-text': "NO"}),
             'state': forms.Select(attrs={'class': 'form-control input-md'}, choices=(('Initiated', 'Initiated'), ('Pending', 'Pending'), ('Finalized', 'Finalized'))),
-            'customers': forms.Select(attrs={'class': 'form-control input-md', 'required':'true', 'title':'Select one'}),
             'paid_out': forms.NumberInput(attrs={'placeholder': 'value', 'class': 'form-control input-md'}),
             'balance_due': forms.NumberInput(attrs={'placeholder': 'value', 'class': 'form-control input-md'}),
-            'monthlypay': forms.DateInput(attrs={'placeholder': 'Select date', 'class': 'form-control input-md'}),
+            'monthlypay': forms.NumberInput(attrs={'placeholder': 'Number of day', 'class': 'form-control input-md'}),
             'note': forms.Textarea(attrs={'class': 'form-control fee-value upper'}),
+            'monthls': forms.NumberInput(attrs={'placeholder': 'Many Month', 'class': 'form-control input-md'}),
         }
 
 class ContractForm(forms.ModelForm):
@@ -154,7 +152,6 @@ class ContractForm(forms.ModelForm):
             'end_date',
             'type',
             'state',
-            'customers',
 
 
         ]
@@ -166,8 +163,6 @@ class ContractForm(forms.ModelForm):
             'type': forms.TextInput(attrs={'placeholder': 'State', 'class': 'form-control input-md'}),
             'state': forms.Select(attrs={'class': 'form-control input-md'}, choices=(
             ('Initiated', 'Initiated'), ('Pending', 'Pending'), ('Finalized', 'Finalized'))),
-            'customers': forms.Select(
-                attrs={'class': 'form-control input-md', 'required': 'true', 'title': 'Select one'}),
         }
 
 class EquipmentForm(forms.ModelForm):
@@ -176,7 +171,6 @@ class EquipmentForm(forms.ModelForm):
         model = Equipment
 
         fields = [
-            'customers',
             'state',
             'update',
             'type',
@@ -193,7 +187,6 @@ class EquipmentForm(forms.ModelForm):
 
         ]
         widgets = {
-            'customers': forms.Select(attrs={'class': 'form-control input-md','required': 'true', 'title': 'Select one'}),
             'state': forms.Select(attrs={'class': 'form-control input-md'}, choices=(('Initiated', 'Initiated'), ('Pending', 'Pending'), ('Finalized', 'Finalized'))),
             'type': forms.Select(attrs={'class': 'form-control input-md'}, choices=(('Truck', 'Truck'), ('Trailer', 'Trailer'), ('Other', 'Other'))),
             'year': forms.NumberInput(attrs={'placeholder': 'year', 'class': 'form-control input-md'}),
@@ -230,7 +223,6 @@ class DriverForm(forms.ModelForm):
         model = Driver
 
         fields = [
-            'customers',
             'name',
             'license_numb',
             'address',
@@ -248,7 +240,6 @@ class DriverForm(forms.ModelForm):
             'state',
         ]
         widgets = {
-            'customers': forms.Select(attrs={'class': 'form-control input-md', 'required': 'true', 'title': 'Select one'}),
             'name': forms.TextInput(attrs={'placeholder': 'Name', 'class': 'form-control input-md upper'}),
             'license_numb': forms.TextInput(attrs={'placeholder': 'License Number', 'class': 'form-control input-md upper'}),
             'address': forms.TextInput(attrs={'placeholder': 'Address', 'class': 'form-control input-md upper'}),
@@ -272,7 +263,6 @@ class IftaForm(forms.ModelForm):
         model = Ifta
 
         fields = [
-            'customers',
             'type',
             'period',
             'nex_period',
@@ -281,7 +271,6 @@ class IftaForm(forms.ModelForm):
             'state',
         ]
         widgets = {
-            'customers': forms.Select(attrs={'class': 'form-control input-md', 'required': 'true', 'title': 'Select one'}),
             'type': forms.Select(attrs={'class': 'form-control input-md'}, choices=(('Anual', 'Anual'), ('Quarter', 'Quarter'))),
             'period': forms.Select(attrs={'class': 'form-control input-md'}, choices=(('Anual', 'Anual'), ('1st Quarter', '1st Quarter'), ('2nd Quarter', '2nd Quarter'), ('3rd Quarter', '3rd Quarter'), ('4th Quarter', '4th Quarter'))),
             'nex_period': forms.DateInput(attrs={'placeholder': 'Select date', 'class': 'form-control input-md'}),
@@ -298,7 +287,6 @@ class AuditForm(forms.ModelForm):
         model = Audit
 
         fields = [
-            'customers',
             'contracts',
             'type',
             'auditor_name',
@@ -309,7 +297,6 @@ class AuditForm(forms.ModelForm):
             'results',
         ]
         widgets = {
-            'customers': forms.Select(attrs={'class': 'form-control input-md', 'required': 'true', 'title': 'Select one'}),
             'contracts': forms.Select(attrs={'class': 'form-control input-md', 'required': 'true', 'title': 'Select one'}),
             'type': forms.TextInput(attrs={'placeholder': 'Type', 'class': 'form-control input-md upper'}),
             'auditor_name': forms.TextInput(attrs={'placeholder': 'Auditor Name', 'class': 'form-control input-md upper'}),

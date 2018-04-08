@@ -104,7 +104,12 @@ $('#btnphysical').change(function(){
                                     <tooltip md-direction="left"></tooltip>
                                 </button>
                             </span>
-                            {{ form.customers }}
+                            <select id="id_customers" class="form-control input-md" name="customers" required="">
+                                <option value="" selected>---------</option>
+                                {% for c in customers %}
+                                <option value="{{c.id_cut}}" class="{{c.business.id_bus}}">{{c}}</option>
+                                {% endfor %}
+                            </select>
                             <span class="input-group-btn">
                                 <a type="button" id="newcustomer" class="btn btn-success test-tooltip" href="{% url 'accounting:customer_popup' 1 %}" target="popup" onclick="window.open('','popup',' location=1, directories=0, resizable=0, width=500,height=700,Top=20,Left=490')" data-trigger="focus" title="Add new Customer" data-animation="am-flip-x">
                                     <i class="fa fa-plus"></i>
@@ -259,12 +264,14 @@ $('#btnphysical').change(function(){
                         {{form.total}}
                     </div>
                     <div class="form-group col-md-3 col-md-offset-1">
-                        <label class="label-control">Monthly Payments:</label>
-                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                            {{form.monthlypay}}
-                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <label class="label-control">Day for Monthly Payments:</label>
+                        <div class="input-group">
+                              {{form.monthlypay}}
+                            <samp class="input-group-addon">
+                                {{form.months}}
+                            </samp>
                         </div>
-                        <input type="checkbox"  aria-pressed="false" data-off-color="danger" class="switch" data-size="mini" data-on-text="Alert ON" data-off-text="Alert OFF" id="policy_alert" name="policy_alert" checked>
+                        <input type="checkbox"  aria-pressed="false" data-off-color="danger" class="switch" data-size="mini" data-on-text="Alert ON" data-off-text="Alert OFF" id="monthly_alert" name="monthly_alert" checked>
                     </div>
                     <div class="form-group col-md-3 col-md-offset-1" >
                         <label class="label-control">Is Paid:</label>
@@ -274,7 +281,7 @@ $('#btnphysical').change(function(){
                         <label class="label-control">Service Process:</label>
                         {{form.state}}
                     </div>
-                     <div class="form-group col-md-11 col-md-offset-1" >
+                    <div class="form-group col-md-11 col-md-offset-1" >
                         <label class="label-control">Notes:</label>
                         {{form.note}}
                     </div>
