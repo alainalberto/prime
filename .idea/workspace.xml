@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/logistic/invoiceslog/selectLoadsForm.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/accounting/invoices/invoiceslogForm.html" afterPath="$PROJECT_DIR$/templates/logistic/invoiceslog/invoiceslogForm.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/accounting/invoices/invoiceslogView.html" afterPath="$PROJECT_DIR$/templates/logistic/invoiceslog/invoiceslogView.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/accounting/invoices/invoiceslogViews.html" afterPath="$PROJECT_DIR$/templates/logistic/invoiceslog/invoiceslogViews.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" afterPath="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/accounting/urls.py" afterPath="$PROJECT_DIR$/apps/accounting/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/accounting/views.py" afterPath="$PROJECT_DIR$/apps/accounting/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/logistic/components/LogisticPDF.py" afterPath="$PROJECT_DIR$/apps/logistic/components/LogisticPDF.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/logistic/urls.py" afterPath="$PROJECT_DIR$/apps/logistic/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/logistic/views.py" afterPath="$PROJECT_DIR$/apps/logistic/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/accounting/invoices/invoicesForm.html" afterPath="$PROJECT_DIR$/templates/accounting/invoices/invoicesForm.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home/complement/panel.html" afterPath="$PROJECT_DIR$/templates/home/complement/panel.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/apps/logistic/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="72" column="43" lean-forward="false" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
+            <state relative-caret-position="271">
+              <caret line="69" column="45" lean-forward="true" selection-start-line="69" selection-start-column="45" selection-end-line="69" selection-end-column="45" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -50,27 +38,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="panel.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5130">
-              <caret line="285" column="44" lean-forward="false" selection-start-line="285" selection-start-column="44" selection-end-line="285" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/accounting/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-382">
-              <caret line="512" column="57" lean-forward="false" selection-start-line="512" selection-start-column="4" selection-end-line="512" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="invoicesForm.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="invoicesForm.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/accounting/invoices/invoicesForm.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="447">
@@ -184,8 +152,8 @@
         <option value="$PROJECT_DIR$/templates/logistic/invoiceslog/invoiceslogViews.html" />
         <option value="$PROJECT_DIR$/apps/logistic/urls.py" />
         <option value="$PROJECT_DIR$/templates/home/complement/panel.html" />
-        <option value="$PROJECT_DIR$/apps/logistic/views.py" />
         <option value="$PROJECT_DIR$/templates/accounting/invoices/invoicesForm.html" />
+        <option value="$PROJECT_DIR$/apps/logistic/views.py" />
       </list>
     </option>
   </component>
@@ -502,13 +470,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518580326498</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Alain: Configuracion para deploy">
-      <created>1519439879933</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1519439879933</updated>
     </task>
     <task id="LOCAL-00011" summary="Alain: Configuracion para deploy">
       <created>1519440332324</created>
@@ -846,7 +807,14 @@
       <option name="project" value="LOCAL" />
       <updated>1523159053116</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Alain: Modificacion en Invoicesde Cargas">
+      <created>1524273631977</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1524273631981</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -920,7 +888,8 @@
     <MESSAGE value="Alain: Arreglos Envio Email" />
     <MESSAGE value="Alain: Agrego de Boton de servicios y tablas responsive" />
     <MESSAGE value="Alain: Modificaciones en las alertas de insuranse se agrego el campo 'months' se modifico el tipo de dato de monthlypay" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alain: Modificaciones en las alertas de insuranse se agrego el campo 'months' se modifico el tipo de dato de monthlypay" />
+    <MESSAGE value="Alain: Modificacion en Invoicesde Cargas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alain: Modificacion en Invoicesde Cargas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1171,6 +1140,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="227" column="0" lean-forward="false" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1248,32 +1218,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5130">
-          <caret line="285" column="44" lean-forward="false" selection-start-line="285" selection-start-column="44" selection-end-line="285" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/logistic/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="72" column="43" lean-forward="false" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/accounting/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-382">
-          <caret line="512" column="57" lean-forward="false" selection-start-line="512" selection-start-column="4" selection-end-line="512" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/jq_app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1287,6 +1231,32 @@
         <state relative-caret-position="447">
           <caret line="26" column="9" lean-forward="false" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/accounting/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-382">
+          <caret line="512" column="57" lean-forward="false" selection-start-line="512" selection-start-column="4" selection-end-line="512" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="285" column="44" lean-forward="false" selection-start-line="285" selection-start-column="44" selection-end-line="285" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/logistic/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="69" column="45" lean-forward="true" selection-start-line="69" selection-start-column="45" selection-end-line="69" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
