@@ -63,8 +63,8 @@ class InvoicesLogCreate(CreateView):
         def get(self, request, *args, **kwargs):
             load_customer = []
             loads = Load.objects.filter(paid=False)
-            start = datetime.strptime(str(kwargs.get('start')), '%Y-%m-%d')
-            end = datetime.strptime(str(kwargs.get('end')), '%Y-%m-%d')
+            start = datetime.strptime(str(kwargs.get('start')), '%Y-%m-%d').date()
+            end = datetime.strptime(str(kwargs.get('end')), '%Y-%m-%d').date()
             for l in loads:
                 pickup_date = l.pickup_date
                 deliver_date = l.deliver_date
