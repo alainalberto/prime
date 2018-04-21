@@ -2,7 +2,7 @@ from django.conf.urls import *
 from django.contrib.auth.decorators import login_required, permission_required
 from apps.accounting.views import *
 from django.views.generic.dates import ArchiveIndexView
-from apps.accounting.components.AccountingPDF import Receipt_pdf, Invoices_pdf, InvoicesLod_pdf
+from apps.accounting.components.AccountingPDF import Receipt_pdf, Invoices_pdf
 
 urlpatterns = [
     url(r'^accounts/statistic/$', login_required(AccountingPanel), name='panel_account'),
@@ -61,11 +61,6 @@ urlpatterns = [
     url(r'^invoices/(?P<pk>\d+)/$', login_required(permission_required('accounting.delete_invoice')(InvoicesDelete.as_view())), name='invoices_delete'),
     url(r'^invoices/print/(?P<pk>\d+)/$', login_required(permission_required('accounting.add_invoice')(Invoices_pdf)), name='invoices_pdf'),
     url(r'^invoices/view/(?P<pk>\d+)/$', login_required(permission_required('accounting.add_invoice')(InvoiceView)), name='invoices_view'),
-    url(r'^invoices/load$', login_required(permission_required('accounting.add_invoice')(InvoicesLogView.as_view())), name='invoices_log'),
-    url(r'^invoices/load/create$', login_required(permission_required('accounting.add_invoice')(InvoicesLogCreate.as_view())), name='invoiceslog_create'),
-    url(r'^invoices/load/edit/(?P<pk>\d+)&(?P<bill>[^/]+)/$', login_required(permission_required('accounting.change_invoice')(InvoicesLogEdit.as_view())), name='invoiceslog_edit'),
-    url(r'^invoices/load/(?P<pk>\d+)/$', login_required(permission_required('accounting.delete_invoice')(InvoicesLogDelete.as_view())), name='invoiceslog_delete'),
-    url(r'^invoices/load/print/(?P<pk>\d+)/$', login_required(permission_required('accounting.add_invoice')(InvoicesLod_pdf)), name='invoiceslog_pdf'),
 
 
     #Customer Note

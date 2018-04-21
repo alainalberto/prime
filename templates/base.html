@@ -184,12 +184,6 @@
                             <a class="item" href="{% url 'accounting:invoices' %}"> Invoices Services</a>
                         </li>
                         {% endif %}
-
-                        {% if perms.logistic and perms.accounting.add_invoice %}
-                        <li>
-                            <a class="item" href="{% url 'accounting:invoices_log' %}"> Invoices Load</a>
-                        </li>
-                        {% endif %}
                         {% if perms.accounting.add_receipt %}
                         <li>
                             <a class="item" href="{% url 'accounting:receipts' %}"> Receipts</a>
@@ -272,6 +266,11 @@
                         {% if perms.logistic.add_load %}
                         <li>
                             <a class="item" href="{% url 'logistic:loads' %}"> Loads</a>
+                        </li>
+                        {% endif %}
+                        {% if perms.logistic and perms.accounting.add_invoice %}
+                        <li>
+                            <a class="item" href="{% url 'logistic:invoices_log' %}"> Invoices Load</a>
                         </li>
                         {% endif %}
                         {% if perms.logistic.add_driverslogt %}

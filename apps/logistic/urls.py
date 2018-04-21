@@ -11,6 +11,19 @@ urlpatterns = [
     url(r'^edit/(?P<pk>\d+)/$', login_required(permission_required('services.change_application')(ApplicationEdit.as_view())), name='apply_edit'),
     url(r'^delete/(?P<pk>\d+)/$', login_required(permission_required('services.delete_application')(ApplicationDelete.as_view())), name='apply_delete'),
 
+    #Invoices
+    url(r'^invoices/select$', login_required(permission_required('services.add_dispatchload')(InvoicesLoadSelect)), name='create_select'),
+    url(r'^invoices/load$', login_required(permission_required('accounting.add_invoice')(InvoicesLogView.as_view())), name='invoices_log'),
+    url(r'^invoices/load/create/(?P<start>[^/]+)&(?P<end>[^/]+)/$', login_required(permission_required('accounting.add_invoice')(InvoicesLogCreate.as_view())),
+        name='invoiceslog_create'),
+    url(r'^invoices/load/edit/(?P<pk>\d+)&(?P<bill>[^/]+)/$',
+        login_required(permission_required('accounting.change_invoice')(InvoicesLogEdit.as_view())),
+        name='invoiceslog_edit'),
+    url(r'^invoices/load/(?P<pk>\d+)/$',
+        login_required(permission_required('accounting.delete_invoice')(InvoicesLogDelete.as_view())),
+        name='invoiceslog_delete'),
+    url(r'^invoices/load/print/(?P<pk>\d+)/$',
+        login_required(permission_required('accounting.add_invoice')(InvoicesLod_pdf)), name='invoiceslog_pdf'),
 
     # Load
     url(r'^loads/$', login_required(permission_required('logistic.add_load')(LoadsView.as_view())), name='loads'),

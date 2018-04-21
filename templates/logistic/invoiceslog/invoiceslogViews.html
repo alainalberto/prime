@@ -14,7 +14,7 @@
         </div>
         <div class="panel-body">
             <div class="navbar-button">
-                <a id="btnAdd" class="btn-primary btn col-md-offset-11" role="button" data-trigger="focus" title="Add User" href="{% url 'accounting:invoiceslog_create' %}" {% if not perms.accounting.add_invoice %} disabled {% endif %}>
+                <a id="btnAdd" class="btn-primary btn col-md-offset-11" role="button" data-trigger="focus" title="Add Invoices" href="{% url 'logistic:create_select' %}" {% if not perms.accounting.add_invoice %} disabled {% endif %}>
                     <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
                     <tooltip md-direction="left">New</tooltip>
                 </a>
@@ -47,24 +47,24 @@
                         <td>
                             {% if perms.accounting.change_invoice %}
                             <toolbar class="md-accent">
-                                <a data-type="info" data-trigger="focus" title="Edit Invoices" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'accounting:invoiceslog_edit' i.id_inv 0%}" >
+                                <a data-type="info" data-trigger="focus" title="Edit Invoices" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'logistic:invoiceslog_edit' i.id_inv 0%}" >
                                 </a>
                             </toolbar>
                             {% endif %}
                             {% if perms.accounting.change_invoice %}
                             <toolbar class="md-accent">
-                                <a data-type="info" data-trigger="focus" title="Adjust Invoices" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip  glyphicon glyphicon-duplicate" href="{% url 'accounting:invoiceslog_edit' i.id_inv 1%}" >
+                                <a data-type="info" data-trigger="focus" title="Adjust Invoices" data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip  glyphicon glyphicon-duplicate" href="{% url 'logistic:invoiceslog_edit' i.id_inv 1%}" >
                                 </a>
                             </toolbar>
                             {% endif %}
                             {% if perms.accounting.delete_invoice %}
                             <toolbar class="md-accent">
-                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Invoices" type="button" class="btn btn-danger test-tooltip glyphicon-trash" href="{% url 'accounting:invoiceslog_delete' i.id_inv %}">
+                                <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Delete Invoices" type="button" class="btn btn-danger test-tooltip glyphicon-trash" href="{% url 'logistic:invoiceslog_delete' i.id_inv %}">
                                 </a>
                             </toolbar>
                             {% endif %}
                              <toolbar class="md-accent">
-                                <a data-type="info" data-animation="am-flip-x" target="_blank" data-trigger="focus" title="Print Invoice" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-print" href="{% url 'accounting:invoiceslog_pdf' i.id_inv %}">
+                                <a data-type="info" data-animation="am-flip-x" target="_blank" data-trigger="focus" title="Print Invoice" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-print" href="{% url 'logistic:invoiceslog_pdf' i.id_inv %}">
                                 </a>
                             </toolbar>
                         </td>
