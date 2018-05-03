@@ -161,49 +161,52 @@
                     </div>
 
 
-                    <div id="inter" style="display : none">
-                        <div class="form-group col-md-4 col-md-offset-1" >
-                            <label class="label-control">Account Number:</label>
-                            {{form.account_number}}
-                        </div>
-                        <div class="form-group col-md-4 col-md-offset-1" >
-                            <label class="label-control">Account User:</label>
-                            {{form.account_user}}
-                        </div>
-                        <div class="form-group col-md-4 col-md-offset-1" >
-                            <label class="label-control">Account Password:</label>
-                            {{form.account_password}}
-                        </div>
-                        <div class="form-group col-md-4 col-md-offset-1" >
-                            <label class="label-control">BOC 3 Number:</label>
-                            {{form.boc3}}
-                        </div>
-                        <div class="form-group col-md-4 col-md-offset-1">
-                            <label class="label-control">BOC 3 Date:</label>
-                            <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                                {{form.boc3_date}}
-                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                    <div class="panel panel-default" id="inter" style="display : none">
+                        <div class="panel-body">
+
+                            <div class="form-group col-md-4 col-md-offset-1" >
+                                <label class="label-control">Account Number:</label>
+                                {{form.account_number}}
                             </div>
-                        </div>
-                        <div class="form-group col-md-4 col-md-offset-1" >
-                            <label class="label-control">MC Number:</label>
-                            {{form.mc}}
-                        </div>
-                        <div class="form-group col-md-4 col-md-offset-1" >
-                            <label class="label-control">MC Pin:</label>
-                            {{form.mc_pin}}
-                        </div>
-                        <div class="form-group col-md-4 col-md-offset-1" >
-                            <label class="label-control">UCR:</label>
-                            {{form.ucr}}
-                        </div>
-                        <div class="form-group col-md-4 col-md-offset-1">
-                            <label class="label-control">UCR Expiration:</label>
-                            <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                                {{form.ucr_date_exp}}
-                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                            <div class="form-group col-md-4 col-md-offset-1" >
+                                <label class="label-control">Account User:</label>
+                                {{form.account_user}}
                             </div>
-                            <input type="checkbox" id="ucr_alert" name="ucr_alert" data-off-color="danger" class="switch" data-size="mini" data-on-text="Alert ON" data-off-text="Alert OFF" checked>
+                            <div class="form-group col-md-4 col-md-offset-1" >
+                                <label class="label-control">Account Password:</label>
+                                {{form.account_password}}
+                            </div>
+                             <div class="form-group col-md-4 col-md-offset-1" >
+                                <label class="label-control">MC Number:</label>
+                                {{form.mc}}
+                            </div>
+                            <div class="form-group col-md-4 col-md-offset-1" >
+                                <label class="label-control">MC Pin:</label>
+                                {{form.mc_pin}}
+                            </div>
+                            <div class="form-group col-md-4 col-md-offset-1" >
+                                <label class="label-control">BOC 3 Number:</label>
+                                {{form.boc3}}
+                            </div>
+                            <div class="form-group col-md-4 col-md-offset-1">
+                                <label class="label-control">BOC 3 Date:</label>
+                                <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                    {{form.boc3_date}}
+                                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4 col-md-offset-1" >
+                                <label class="label-control">UCR:</label>
+                                {{form.ucr}}
+                            </div>
+                            <div class="form-group col-md-4 col-md-offset-1">
+                                <label class="label-control">UCR Expiration:</label>
+                                <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                    {{form.ucr_date_exp}}
+                                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                </div>
+                                <input type="checkbox" id="ucr_alert" name="ucr_alert" data-off-color="danger" class="switch" data-size="mini" data-on-text="Alert ON" data-off-text="Alert OFF" checked>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group col-md-2 col-md-offset-1" >

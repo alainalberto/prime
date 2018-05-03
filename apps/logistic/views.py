@@ -86,7 +86,7 @@ class InvoicesLogCreate(CreateView):
                       'accounts':accounts,
                       'title':'Create new Invoice',
                       'loads':load_customer,
-                      'customer':customer
+                      'customers':customer
                       }
             return render(request, self.template_name, context)
 
