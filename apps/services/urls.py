@@ -74,7 +74,7 @@ urlpatterns = [
 
     #Companies Dispatch
     url(r'^dispatch/select$', login_required(permission_required('services.add_dispatchload')(CompanyLoadSelect)),name='dispatch_select'),
-    url(r'^dispatch/select/(?P<pk>\d+)/$', login_required(permission_required('services.add_dispatchload')(CompanyLoadSelect)),name='dispatch_select'),
+    url(r'^dispatch/select/(?P<pk>\d+)/$', login_required(permission_required('services.add_dispatchload')(CompanyLoadSelectCoust)),name='dispatch_select_coust'),
     url(r'^dispatch/invoice/create/(?P<pk>\d+)&(?P<start>[^/]+)&(?P<end>[^/]+)/$', login_required(permission_required('services.add_dispatchload')(InvoicesLogCreate.as_view())), name='dispatch_invoice_create'),
     url(r'^dispatch/invoice/create/(?P<pk>\d+)&(?P<start>[^/]+)&(?P<end>[^/]+)/$', login_required(permission_required('services.add_dispatchload')(InvoicesLogCreate.as_view())), name='dispatch_invoice_create'),
     url(r'^dispatch/invoice/edit/(?P<pk>\d+)&(?P<bill>[^/]+)/$', login_required(permission_required('services.change_dispatchload')(InvoicesLogEdit.as_view())), name='dispatch_invoice_edit'),

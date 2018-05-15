@@ -2034,7 +2034,7 @@ def CompanyLoadSelect(request):
      return render(request, 'services/companiesDispatch/selectLoadsForm.html', context)
 
 
-def CompanyLoadSelect(request, pk):
+def CompanyLoadSelectCoust(request, pk):
 
     context = {
         'id':pk,
