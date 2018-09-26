@@ -102,7 +102,7 @@ class Invoice(models.Model):
     users = models.ForeignKey(User,  on_delete=models.CASCADE)  # Field name made lowercase.
     serial = models.IntegerField()
     type = models.CharField(max_length=20, blank=True, null=True)
-    start_date = models.DateField(default=datetime.now().strftime("%Y-%m-%d"))
+    start_date = models.DateField()
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     waytopay = models.CharField(max_length=20)
