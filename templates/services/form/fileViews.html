@@ -50,11 +50,11 @@
                               <td>{{ file.date_save }}</td>
                               <td>
                             <toolbar class="md-accent">
-                                <a data-type="info" onclick="openpopup('{% url 'services:file_edit_popup' pk=file.id_fil popup=1 %}')" data-trigger="focus"  data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit">
+                                <a data-type="info" href="{% url 'services:file_edit' file.id_fil%}" data-trigger="focus"  data-animation="am-flip-x" type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit">
                                 </a>
                             </toolbar>
                             <toolbar class="md-accent">
-                                <a data-type="info" onclick="openpopup('{% url 'services:file_delete' file.id_fil %}')" data-animation="am-flip-x" data-trigger="focus"   type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash">
+                                <a data-type="info" href="{% url 'services:file_delete' file.id_fil %}" data-animation="am-flip-x" data-trigger="focus"   type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash">
                                 </a>
                             </toolbar>
                         </td>
