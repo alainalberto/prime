@@ -99,6 +99,7 @@ class Migration(migrations.Migration):
                 ('type', models.CharField(max_length=45)),
                 ('dow_payment', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
                 ('escrow', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+                ('phone', models.TextField(blank=True, max_length=25, null=True)),
             ],
         ),
         migrations.CreateModel(

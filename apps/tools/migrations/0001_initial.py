@@ -45,6 +45,7 @@ class Migration(migrations.Migration):
                 ('deactivated', models.BooleanField(default=False)),
                 ('date_deactivated', models.DateField(blank=True, null=True)),
                 ('messager', models.CharField(blank=True, max_length=255, null=True)),
+                ('email', models.CharField(blank=True, max_length=45, null=True)),
             ],
         ),
         migrations.CreateModel(

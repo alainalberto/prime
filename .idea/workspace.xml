@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="Alain: Cambios en las Alretas y mas catecorias de files">
-      <change afterPath="$PROJECT_DIR$/apps/logistic/migrations/0003_driverslogt_phone.py" afterDir="false" />
+    <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="Alain: modificacion en las migraciones">
+      <change afterPath="$PROJECT_DIR$/apps/tools/migrations/0002_busines_email.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/logistic/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/logistic/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/services/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/services/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/services/migrations/0003_auto_20181101_1525.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/services/migrations/0003_auto_20181101_1525.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/logistic/migrations/0003_driverslogt_phone.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/logistic/migrations/0003_driverslogt_phone.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/tools/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/tools/migrations/0001_initial.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,14 +30,14 @@
         <counts>
           <entry key="html" value="16" />
           <entry key="js" value="1" />
-          <entry key="py" value="36" />
+          <entry key="py" value="39" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="16" />
           <entry key="JavaScript" value="1" />
-          <entry key="Python" value="35" />
+          <entry key="Python" value="38" />
           <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
@@ -45,16 +45,16 @@
         <counts>
           <entry key="html" value="735" />
           <entry key="js" value="5" />
-          <entry key="py" value="1136" />
-          <entry key="txt" value="95" />
+          <entry key="py" value="1182" />
+          <entry key="txt" value="126" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="735" />
           <entry key="JavaScript" value="5" />
-          <entry key="PLAIN_TEXT" value="95" />
-          <entry key="Python" value="1136" />
+          <entry key="PLAIN_TEXT" value="126" />
+          <entry key="Python" value="1182" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -94,17 +94,26 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/apps/logistic/migrations/0001_initial.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-620">
-                  <caret line="59" column="71" selection-start-line="59" selection-start-column="71" selection-end-line="59" selection-end-column="71" />
+                <state relative-caret-position="335">
+                  <caret line="101" column="82" selection-start-line="101" selection-start-column="82" selection-end-line="101" selection-end-column="82" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/services/migrations/0001_initial.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="204">
+                  <caret line="191" column="71" selection-start-line="191" selection-start-column="71" selection-end-line="191" selection-end-column="71" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/apps/services/migrations/0001_initial.py">
+            <entry file="file://$PROJECT_DIR$/apps/tools/migrations/0001_initial.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="190" column="9" lean-forward="true" selection-start-line="190" selection-start-column="9" selection-end-line="190" selection-end-column="9" />
+                <state relative-caret-position="272">
+                  <caret line="47" column="82" selection-start-line="47" selection-start-column="82" selection-end-line="47" selection-end-column="82" />
                 </state>
               </provider>
             </entry>
@@ -143,11 +152,20 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/apps/services/migrations/0003_auto_20181101_1525.py">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/logistic/migrations/0003_driverslogt_phone.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="204">
                   <caret line="14" selection-start-line="14" selection-end-line="14" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/apps/tools/migrations/0002_busines_email.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="204">
+                  <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
                 </state>
               </provider>
             </entry>
@@ -169,9 +187,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/Login/login.html" />
-        <option value="$PROJECT_DIR$/templates/admin/base_site.html" />
-        <option value="$PROJECT_DIR$/templates/admin/base.html" />
         <option value="$PROJECT_DIR$/templates/accounting/payments/paymentsViews.html" />
         <option value="$PROJECT_DIR$/templates/accounting/statistic/principalPanel.html" />
         <option value="$PROJECT_DIR$/apps/tools/models.py" />
@@ -217,9 +232,12 @@
         <option value="$PROJECT_DIR$/templates/home/complement/panel.html" />
         <option value="$PROJECT_DIR$/templates/confirm_deact.html" />
         <option value="$PROJECT_DIR$/apps/services/components/ServicesForm.py" />
-        <option value="$PROJECT_DIR$/apps/logistic/migrations/0001_initial.py" />
-        <option value="$PROJECT_DIR$/apps/services/migrations/0001_initial.py" />
         <option value="$PROJECT_DIR$/apps/services/migrations/0003_auto_20181101_1525.py" />
+        <option value="$PROJECT_DIR$/apps/services/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/apps/logistic/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/apps/logistic/migrations/0003_driverslogt_phone.py" />
+        <option value="$PROJECT_DIR$/apps/tools/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/apps/tools/migrations/0002_busines_email.py" />
       </list>
     </option>
   </component>
@@ -314,6 +332,13 @@
               <item name="prime" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
               <item name="tools" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prime" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prime" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="prime" type="b2602c69:ProjectViewProjectNode" />
@@ -499,20 +524,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518580326498</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Alain: Configuracion para deploy">
-      <created>1519443478749</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1519443478749</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Alain: Configuracion para deploy">
-      <created>1519445474429</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1519445474429</updated>
     </task>
     <task id="LOCAL-00019" summary="Alain: Configuracion para deploy">
       <created>1519446451056</created>
@@ -843,7 +854,21 @@
       <option name="project" value="LOCAL" />
       <updated>1541381405613</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Alain: modificacion en las migraciones">
+      <created>1541382494810</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1541382494810</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Alain: modificacion en las migraciones">
+      <created>1541382694855</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1541382694855</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -901,7 +926,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Alain: Nuesva estructura de Base Dato" />
     <MESSAGE value="Alain: configuracion Servidor" />
     <MESSAGE value="Alain: Servicio Companes Dispatch" />
     <MESSAGE value="Alain: Configuracion para deploy" />
@@ -926,26 +950,10 @@
     <MESSAGE value="Alain: Modificacion en Form Permit y Equip" />
     <MESSAGE value="Alain: Modificacion Template Form" />
     <MESSAGE value="Alain: Cambios en las Alretas y mas catecorias de files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alain: Cambios en las Alretas y mas catecorias de files" />
+    <MESSAGE value="Alain: modificacion en las migraciones" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alain: modificacion en las migraciones" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/services/driver/driverForm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="54" column="37" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/services/contract/contractForm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-594" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/services/companiesDispatch/invoiceslogForm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3888" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/services/ifta/iftaForm.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="972">
@@ -1239,13 +1247,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/services/components/ServicesForm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="216" column="639" selection-start-line="216" selection-start-column="639" selection-end-line="216" selection-end-column="639" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/accounting/customer/customerView.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2410">
@@ -1256,14 +1257,28 @@
     <entry file="file://$PROJECT_DIR$/apps/services/migrations/0002_auto_20180218_1904.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/logistic/migrations/0001_initial.py">
+    <entry file="file://$PROJECT_DIR$/apps/services/migrations/0003_auto_20181101_1525.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-620">
-          <caret line="59" column="71" selection-start-line="59" selection-start-column="71" selection-end-line="59" selection-end-column="71" />
+        <state relative-caret-position="238">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/services/migrations/0003_auto_20181101_1525.py">
+    <entry file="file://$PROJECT_DIR$/apps/services/components/ServicesForm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="216" column="639" selection-start-line="216" selection-start-column="639" selection-end-line="216" selection-end-column="639" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/logistic/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="101" column="82" selection-start-line="101" selection-start-column="82" selection-end-line="101" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/logistic/migrations/0003_driverslogt_phone.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
@@ -1272,8 +1287,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/services/migrations/0001_initial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="190" column="9" lean-forward="true" selection-start-line="190" selection-start-column="9" selection-end-line="190" selection-end-column="9" />
+        <state relative-caret-position="204">
+          <caret line="191" column="71" selection-start-line="191" selection-start-column="71" selection-end-line="191" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/tools/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="47" column="82" selection-start-line="47" selection-start-column="82" selection-end-line="47" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/tools/migrations/0002_busines_email.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
         </state>
       </provider>
     </entry>
