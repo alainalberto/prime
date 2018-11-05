@@ -57,7 +57,7 @@ class Account(models.Model):
 
 class Customer(models.Model):
     id_cut = models.AutoField(primary_key=True)
-    business = models.ForeignKey(Busines, on_delete=models.CASCADE)  # Field name made lowercase.
+    business = models.ManyToManyField(Busines)  # Field name made lowercase.
     users = models.ForeignKey(User,  on_delete=models.CASCADE)  # Field name made lowercase.
     folders = models.ForeignKey(Folder,  on_delete=models.CASCADE)  # Field name made lowercase.
     fullname = models.CharField(max_length=50)
