@@ -190,7 +190,6 @@ class Migration(migrations.Migration):
                 ('other_policy', models.CharField(blank=True, max_length=100, null=True)),
                 ('policy_other_exp', models.DateField(blank=True, null=True)),
                 ('months', models.IntegerField(blank=True, null=True)),
-                ('monthlypay', models.IntegerField(blank=True, null=True)),
                 ('customers', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='accounting.Customer')),
                 ('users', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
