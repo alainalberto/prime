@@ -8,9 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('services', '0002_auto_20180218_1904'),
+        ('logistic', '0002_auto_20180218_1904'),
     ]
 
     operations = [
-
+        migrations.AddField(
+            model_name='driverslogt',
+            name='phone',
+            field=models.TextField(blank=True, max_length=25, null=True),
+        ),
     ]

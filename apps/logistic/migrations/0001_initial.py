@@ -56,6 +56,8 @@ class Migration(migrations.Migration):
                 ('comission', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
                 ('deactivate', models.BooleanField(default=False)),
                 ('date_deactivated', models.DateTimeField(blank=True, null=True)),
+                ('prefix', models.CharField(default='invl', max_length=4)),
+                ('start_date', models.DateField(default='2018-11-01')),
             ],
         ),
         migrations.CreateModel(
