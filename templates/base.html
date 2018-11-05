@@ -48,6 +48,17 @@
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static 'css/rtl.css' %}{% endblock %}" />{% endif %}
 {% block extrahead %}{% endblock %}
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+<script type="text/javascript">
+ $(document).ready( function () {
+
+ $(".modalview").on('hidden.bs.modal', function () {
+
+            location.reload();
+    });
+
+ });
+</script>
+
 </head>
 <body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
   data-admin-utc-offset="{% now 'Z' %}">
@@ -362,6 +373,13 @@
         {% endblock %}
         </div>
        </div>
+</div>
+ <div class="modal fade modalview" id="modalview" tabindex="-1" role="dialog" aria-labelledby="modalview" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+
+    </div>
+  </div>
 </div>
  <script src="{% static 'js/jquery.js'%}"></script>
     <script src="{% static 'js/jquery.chained.min.js'%}"></script>

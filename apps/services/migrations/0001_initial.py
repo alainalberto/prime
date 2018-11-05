@@ -182,7 +182,7 @@ class Migration(migrations.Migration):
                 ('balance_due', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
                 ('state', models.CharField(blank=True, max_length=20, null=True)),
                 ('update', models.DateField(blank=True, null=True)),
-                ('monthlypay', models.DateField(blank=True, null=True)),
+                ('monthlypay', models.IntegerField(blank=True, null=True)),
                 ('note', models.CharField(blank=True, max_length=250, null=True)),
                 ('other_description', models.CharField(blank=True, max_length=45, null=True)),
                 ('other', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),

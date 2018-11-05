@@ -214,7 +214,7 @@ class FileForm(forms.ModelForm):
         ]
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'name', 'class': 'form-control input-md upper'}),
-            'category': forms.Select(attrs={'class': 'form-control input-md'}, choices=(('', '---------'),('Company', 'Company'),('Accidents', 'Accidents'), ('COI', 'COI'),('Insurance', 'Insurance'), ('Endorsments', 'Endorsments'), ('Misselenious', 'Misselenious'), ('Permit', 'Permit'), ('Quote', 'Quote'), ('Audit', 'Audit'), ('Contract', 'Contract'))),
+            'category': forms.Select(attrs={'class': 'form-control input-md'}, choices=(('', '---------'),('Company', 'Company'),('Accidents', 'Accidents'), ('COI', 'COI'),('Insurance', 'Insurance'), ('Endorsments', 'Endorsements'), ('Misselenious', 'Miscellameous'), ('Permit', 'Permit'), ('Quote', 'Quote'), ('Audit', 'Audit'), ('Contract', 'Contract'), ('Accounting', 'Accounting'), ('ID_Card', 'ID Card'), ('Binders_&_Confirmation', 'Binders & Confirmation'), ('Bor', 'Bor'), ('Client_Proposals', 'Client Proposals'), ('Correspondece', 'Correspondece'), ('Exposure_Data_&_Marketing', 'Exposure Data & Marketing'), ('Licenses_&_Permits', 'Licenses & Permits'), ('Policies', 'Policies'))),
             'url': forms.FileInput(),
         }
 

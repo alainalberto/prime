@@ -654,6 +654,7 @@ class InvoicesEdit(UpdateView):
         form = self.form_class(request.POST, instance=invoice)
         if form.is_valid():
                 form.save()
+                InvoicesHasItem.objects.filter(invoice=invoice).delete()
                 itemhasInv = formset.save(commit=False)
 
                 for itinv in itemhasInv:

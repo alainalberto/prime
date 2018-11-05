@@ -170,12 +170,12 @@ def panel_view(request):
         expenses_total['total'] = (cash_e_total['total']) + (credit_e_total['total']) + (check_e__total['total'])
     date_now = datetime.now().date()
     user_group = request.user.groups.all()
-    alertUrg = Alert.objects.filter(category='Urgents').order_by('end_date')
-    for u in alertUrg:
-        for g in user_group:
-            if u.group.filter(name=g.name).exists():
-               if u.show_date <= date_now and u.end_date >= date_now:
-                  alert.append(u)
+    cutAlrt = CustomerHasAlert.objects.all()
+    for al in cutAlrt:
+        if not al.alert.deactivated:
+            for g in user_group:
+                if al.alert.group.filter(name=g.name).exists():
+                    alert.append(al)
     permit = Permit.objects.all()
     insurance = Insurance.objects.all()
     equipment = Equipment.objects.all()
@@ -294,6 +294,15 @@ def AlertsView(request, pk):
     alert = Alert.objects.get(id_alt=pk)
     contexto = {'form': alert, 'title':'Alert', 'style': 'primary', 'deactivate':True, 'is_popup':True}
     return render(request, 'alert/alertForm.html', contexto)
+
+
+def AlertsNot(request, pk):
+    contexto = {'contn': 'alert'}
+    alert = Alert.objects.get(id_alt=pk)
+    alert.deactivated = True
+    alert.save()
+    accion_user(alert, CHANGE, request.user)
+    return render(request, 'confirm_deact.html', contexto)
 
 
 def NotificationView(request):
