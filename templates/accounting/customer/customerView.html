@@ -72,7 +72,9 @@
             </div>
             <div class="form-group col-md-3 col-md-offset-1">
                 <label class="label-control">Busines:</label>
-                <div>{{ customer.business }}</div>
+                {% for b in customer.business.all %}
+                   <div>{{ b }}</div>
+                {% endfor %}
             </div>
             <div class="form-group col-md-3 col-md-offset-1">
                 <label class="label-control">USDOT:</label>

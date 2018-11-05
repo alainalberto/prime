@@ -1,3 +1,12 @@
+{% block extrastyle %}
+<script type="text/javascript">
+ $(document).ready(function() {
+  $('.mdb-select').materialSelect();
+});
+
+</script>
+
+{% endblock %}
       <form name="form_customer" method="post" class="form" role="form" id="form_customer" validate>{% csrf_token %}
       <fieldset>
       <!-- Form Name -->

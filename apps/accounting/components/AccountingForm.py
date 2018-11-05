@@ -54,6 +54,7 @@ class AccountForm(forms.ModelForm):
 
 
 class CustomerForm(forms.ModelForm):
+
     class Meta:
         model = Customer
 
@@ -93,6 +94,7 @@ class CustomerForm(forms.ModelForm):
             'phone': forms.NumberInput(attrs={'placeholder': 'Telepone Number', 'class': 'form-control input-md'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Email', 'class': 'form-control input-md lower'}),
             'deactivated': forms.CheckboxInput(attrs={'data-off-color':"danger", 'class':"switch", 'data-size':"mini", 'data-on-text':"YES", 'data-off-text': "NO"}),
+            'business': forms.SelectMultiple(attrs={'class': ' selectpicker',  'multiple':'true'}),
             'usdot': forms.NumberInput(attrs={'placeholder': 'USDOT Number', 'class': 'form-control input-md'}),
             'mc': forms.NumberInput(attrs={'placeholder': 'MC Number', 'class': 'form-control input-md'}),
             'txdmv': forms.TextInput(attrs={'placeholder': 'TXDMV Number', 'class': 'form-control input-md upper'}),

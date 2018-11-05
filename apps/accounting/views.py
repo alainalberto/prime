@@ -292,7 +292,8 @@ class CustomersCreate(CreateView):
                  folder = Folder.objects.create(name=form.data['fullname'] + "_Customer",
                                                 description=form.data['fullname'] + "_Customer",
                                                 )
-                 customer = form.save(commit=False)
+                 customer = form .save(commit=False)
+                 customer.business = request.POST['business']
                  customer.folders_id = folder.id_fld
                  customer.users_id = request.user.id
                  if customer.deactivated:
@@ -339,6 +340,8 @@ class CustomersEdit(UpdateView):
                 customer.date_deactivated = datetime.today().strftime("%Y-%m-%d")
             else:
                 customer.date_deactivated = None
+            for b in self.request.POST['business'].split():
+                customer.business = b
             customer.save()
             accion_user(customer, CHANGE, request.user)
             messages.success(request, 'The customer was update successfully')
