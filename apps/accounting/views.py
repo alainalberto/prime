@@ -292,13 +292,13 @@ class CustomersCreate(CreateView):
                  folder = Folder.objects.create(name=form.data['fullname'] + "_Customer",
                                                 description=form.data['fullname'] + "_Customer",
                                                 )
-                 customer = form .save(commit=False)
-                 customer.business = request.POST['business']
+                 customer = form.save(commit=False)
                  customer.folders_id = folder.id_fld
                  customer.users_id = request.user.id
                  if customer.deactivated:
                      customer.date_deactivated = datetime.now().strftime("%Y-%m-%d")
                  customer.save()
+                 customer.business = self.request.POST.getlist('business')
                  accion_user(customer, ADDITION, request.user)
                  messages.success(request,'The customer was saved successfully')
                  return HttpResponseRedirect(self.success_url)
@@ -340,9 +340,8 @@ class CustomersEdit(UpdateView):
                 customer.date_deactivated = datetime.today().strftime("%Y-%m-%d")
             else:
                 customer.date_deactivated = None
-            for b in self.request.POST['business'].split():
-                customer.business = b
             customer.save()
+            customer.business = self.request.POST.getlist('business')
             accion_user(customer, CHANGE, request.user)
             messages.success(request, 'The customer was update successfully')
             return HttpResponseRedirect(self.success_url)
@@ -377,7 +376,6 @@ class CustomersDelete(DeleteView):
         for a in alerts:
             Alert.objects.filter(id_alr=a.alert.id_alt).delete()
             a.delete()
-        folder.delete()
         accion_user(customer, DELETION, request.user)
         customer.delete()
         messages.success(request, 'The customer was delete successfully')
