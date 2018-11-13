@@ -1,0 +1,599 @@
+{% load i18n static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-icon.png'%}">
+	<link rel="icon" type="image/png" href="{% static '/img/icon/Icon.ico'%}">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Prime 1 Services</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+	<!--     Fonts and icons     -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
+
+    <!-- CSS Files -->
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet" />
+    <link href="{% static 'css/gsdk-bootstrap-wizard.css'%}" rel="stylesheet" />
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="{% static 'css/demo.css'%}" rel="stylesheet" />
+    <link href="{% static 'css/datetimepicker.min.css'%}" rel="stylesheet">
+
+</head>
+
+<body>
+<div class="image-container set-full-height" style="background-image: url({% static 'img/autoback.jpg'%})">
+    <!--   Creative Tim Branding   -->
+    <a href="{% url 'panel:panel' %}">
+
+        <div class="logo-container">
+            <div class="logo">
+                <img src="{% static '/img/LOGO.jpg'%}">
+            </div>
+        </div>
+    </a>
+    <div class="col-sm-3 col-sm-offset-10">
+        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}" />
+            <select name="language">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                    {{ language.name_local }} ({{ language.code }})
+                </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Go" />
+        </form>
+
+    </div>
+    <!--   Big container   -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <!--      Wizard container        -->
+                <div class="wizard-container">
+
+                    <div class="card wizard-card form" data-color="green" id="wizard">
+                        <form action="" method="post" role="form"> {% csrf_token %}
+                            <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
+
+                            <div class="wizard-header">
+                                <h3>
+                                    <b>{% trans "SERVICES " %}</b>{% trans "CUSTOMER INFORMATION" %} <br>
+                                    <small>{% trans "This information will allow us to process your request for services." %}</small>
+                                </h3>
+                            </div>
+
+                            <div class="wizard-navigation">
+                                <ul>
+                                    <li><a href="#general" data-toggle="tab">{% trans "General Information" %}</a></li>
+                                    <li><a href="#services" data-toggle="tab">{% trans "Services" %}</a></li>
+                                    <li><a href="#infserv" data-toggle="tab">{% trans "Data of Services" %}</a></li>
+                                    <li><a href="#files" data-toggle="tab">{% trans "Required Files" %}</a></li>
+                                    <li><a href="#payment" data-toggle="tab">{% trans "Payment Information" %}</a></li>
+                                </ul>
+
+                            </div>
+
+                            <div class="tab-content">
+                                <div class="tab-pane" id="general">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4 class="info-text">{% trans "Customer General Information" %}</h4>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>{% trans "Full Name" %} <small>({% trans "required" %})</small></label>
+                                                {{form_customer.fullname}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>{% trans "Company Name" %}</label>
+                                                {{form_customer.company_name}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>{% trans "Phone" %}<small>({% trans "required" %})</small></label>
+                                                {{form_customer.phone}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>{% trans "Address" %} <small>({% trans "required" %})</small></label>
+                                                {{form_customer.address}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>{% trans "Email" %} <small>({% trans "required" %})</small></label>
+                                                {{form_customer.email}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col-sm-offset-1">
+                                        <div class="form-group">
+                                            <label>{% trans "USDOT" %} </label>
+                                            {{form_customer.usdot}}
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col-sm-offset-1">
+                                        <div class="form-group">
+                                            <label>{% trans "MC" %} </label>
+                                            {{form_customer.mc}}
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col-sm-offset-1">
+                                        <div class="form-group">
+                                            <label>{% trans "TXDMV" %} </label>
+                                            {{form_customer.txdmv}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="services">
+                                    <h4 class="info-text">{% trans "Select the services you want to perform"%}</h4>
+                                    <div class="row">
+
+                                        <div class="col-sm-12 col-sm-offset-1">
+                                            <div class="col-sm-2">
+                                                <div class="choice" id="btn_new_company" data-toggle="wizard-checkbox">
+                                                    <input type="checkbox" name="new_company" id="new_company" value="new_company">
+                                                    <div class="icon">
+                                                        <i class="fa fa-building"></i>
+                                                    </div>
+                                                    <h6>{% trans "New Company"%}</h6>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="choice" id="btn_ifta" data-toggle="wizard-checkbox">
+                                                    <input type="checkbox" name="ifta" id="ifta" value="ifta">
+                                                    <div class="icon">
+                                                        <i class="fa fa-money"></i>
+                                                    </div>
+                                                    <h6>{% trans "IFTA"%}</h6>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="choice" id="btn_dispatch" data-toggle="wizard-checkbox">
+                                                    <input type="checkbox" name="dispatch" id="dispatch" value="dispatch">
+                                                    <div class="icon">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                    <h6>{% trans "Dispatch"%}</h6>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="choice" id="btn_audit" data-toggle="wizard-checkbox">
+                                                    <input type="checkbox" name="audit" id="audit" value="audit">
+                                                    <div class="icon">
+                                                        <i class="fa fa-car"></i>
+                                                    </div>
+                                                    <h6>{% trans "DIOT Audit"%}</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-sm-offset-1">
+                                            <div class="col-sm-2">
+                                                <div class="choice" id="btn_training" data-toggle="wizard-checkbox">
+                                                    <input type="checkbox" name="training" id="training" value="training">
+                                                    <div class="icon">
+                                                        <i class="fa fa-graduation-cap"></i>
+                                                    </div>
+                                                    <h6>{% trans "Training"%}</h6>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="choice" id="btn_apportioned" data-toggle="wizard-checkbox">
+                                                    <input type="checkbox" name="apportions" id="apportions" value="apportions">
+                                                    <div class="icon">
+                                                        <i class="fa fa-object-group"></i>
+                                                    </div>
+                                                    <h6>{% trans "Apportioned"%}</h6>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="choice" id="btn_title" data-toggle="wizard-checkbox">
+                                                    <input type="checkbox" name="title" id="title" value="title">
+                                                    <div class="icon">
+                                                        <i class="fa fa-gavel"></i>
+                                                    </div>
+                                                    <h6>{% trans "Title"%}</h6>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="choice" id="btn_insurance" data-toggle="wizard-checkbox">
+                                                    <input type="checkbox" name="insurance" id="insurance" value="insurance">
+                                                    <div class="icon">
+                                                        <i class="fa fa-truck"></i>
+                                                    </div>
+                                                    <h6>{% trans "Insurances"%}</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="infserv">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4 class="info-text">{% trans "Information needed to process the services" %}</h4>
+                                        </div>
+                                        <div id="inf_company" style="display: none;">
+                                            <div class="col-sm-12">
+                                                <h5 class="info-text">{% trans "New Company" %}</h5>
+                                            </div>
+                                            <div class="col-sm-4 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "Name Option 1" %} <small>({% trans "required" %})</small></label>
+                                                    {{form_newcompany.name1}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "Name Option 2" %} <small>({% trans "required" %})</small></label>
+                                                    {{form_newcompany.name2}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "Name Option 3" %} <small>({% trans "required" %})</small></label>
+                                                    {{form_newcompany.name3}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "License Driver Number" %} <small>({% trans "required" %})</small></label>
+                                                    {{form_newcompany.licdriver}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="inf_ifta" style="display: none;">
+                                            <div class="col-sm-12">
+                                                <h5 class="info-text">{% trans "IFTA" %}</h5>
+                                            </div>
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "RT Code" %}</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">RT</div>
+                                                        {{form_ifta.rtcode}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "Bank Name" %} <small>({% trans "required" %})</small></label>
+                                                    {{form_ifta.namebank}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "Rooting Number" %} <small>({% trans "required" %})</small></label>
+                                                    {{form_ifta.rootingnumb}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "Account Number" %} <small>({% trans "required" %})</small></label>
+                                                    {{form_ifta.accountnumb}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="inf_dispatch" style="display: none;">
+                                            <div class="col-sm-12">
+                                                <h5 class="info-text">{% trans "Dispatch Services" %}</h5>
+                                            </div>
+                                            <div class="col-xs-4 col-sm-3 col-md-2 col-sm-offset-1 nopad text-center">
+                                                <label class="image-checkbox">
+                                                    {% trans "Flatbead" %}
+                                                    <img class="img-responsive" src="{% static '/img/flatbead.png'%}" />
+                                                    {{form_dispatch.flatbead}}
+                                                    <i class="fa fa-check hidden"></i>
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-4 col-sm-3 col-md-2 col-sm-offset-1 nopad text-center">
+                                                <label class="image-checkbox">
+                                                    {% trans "Van" %}
+                                                    <img class="img-responsive" src="{% static '/img/van.png'%}" />
+                                                    {{form_dispatch.van}}
+                                                    <i class="fa fa-check hidden"></i>
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-4 col-sm-3 col-md-2 col-sm-offset-1 nopad text-center">
+                                                <label class="image-checkbox">
+                                                    {% trans "Refer" %}
+                                                    <img class="img-responsive" src="{% static '/img/refer.png'%}" />
+                                                    {{form_dispatch.refer}}
+                                                    <i class="fa fa-check hidden"></i>
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-4 col-sm-3 col-md-2 col-sm-offset-1 nopad text-center">
+                                                <label class="image-checkbox">
+                                                    {% trans "Others" %}
+                                                    <img class="img-responsive" src="{% static '/img/other.png'%}" />
+                                                    {{form_dispatch.other}}
+                                                    <i class="fa fa-check hidden"></i>
+                                                </label>
+                                                 {{form_dispatch.otherdescrp}}
+                                            </div>
+                                        </div>
+                                        <div id="inf_audit" style="display: none;">
+                                            <div class="col-sm-12">
+                                                <h5 class="info-text">{% trans "DIOT Audit" %}</h5>
+                                            </div>
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "USDOT PIN Number" %}</label>
+                                                    {{form_audit.usdotpin}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "USDOT Number" %}</label>
+                                                    {{form_audit.usdotnumb}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "Number of Units" %}</label>
+                                                    {{form_audit.unitnumb}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "Number of Driver" %}</label>
+                                                    {{form_audit.drivernumb}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "Name of Auditor" %}</label>
+                                                    {{form_audit.auditormane}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "Address of Audit" %}</label>
+                                                    {{form_audit.auditaddress}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "Date of Audit" %}</label>
+                                                    <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                                        {{form_audit.date}}
+                                                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="inf_apportioned" style="display: none;">
+                                            <div class="col-sm-12">
+                                                <h5 class="info-text">{% trans "Apportioned" %}</h5>
+                                            </div>
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "Company EIN Number" %} <small>({% trans "required" %})</small></label>
+                                                    {{form_apportioned.companyein}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "Number of Unit" %}</label>
+                                                    {{form_apportioned.unitnumb}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "VIN Number" %}</label>
+                                                    {{form_apportioned.vin}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "IRP Account Number" %} <small>({% trans "required" %})</small></label>
+                                                    {{form_apportioned.irpacount}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="inf_insurance" style="display: none;">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <h5 class="info-text">{% trans "Comercial Auto Insurance" %}</h5>
+                                                </div>
+
+                                                <div class="col-sm-10 col-sm-offset-1">
+                                                    <!--<div class="form-group col-md-offset-11">
+                                                        <a type="button" id="add_driver" class="btn btn-success test-tooltip" data-type="info" data-trigger="focus" title="{% trans 'Other Driver' %}" data-animation="am-flip-x">
+                                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                                            <tooltip md-direction="left"></tooltip>
+                                                        </a>
+                                                    </div>-->
+                                                    <div class="table-responsive">
+                                                        <h6>{% trans "Drives" %}</h6>
+                                                    <table id="driver_table" class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th class=" text-center col-md-3">{% trans "Name" %}</th>
+                                                            <th class=" text-center col-md-2">{% trans "License Driver" %}</th>
+                                                            <th class="text-center col-md-2">{% trans "Date Expired" %}</th>
+                                                            <th class="text-center col-md-2">{% trans "DOB" %}</th>
+                                                            <th class="text-center col-md-1">{% trans "Experience" %}</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {{ form_driver.management_form }}
+                                                        {% for form in form_driver %}
+                                                        <tr>
+                                                            <td>{{form.name}}</td>
+                                                            <td>{{form.license_numb}}</td>
+                                                            <td>{{form.lic_date_exp}}</td>
+                                                            <td>{{form.dob}}</td>
+                                                            <td>{{form.experience}}</td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10 col-sm-offset-1">
+                                                    <!--<div class="form-group col-md-offset-11">
+                                                        <a type="button" id="add_vehicle" class="btn btn-success test-tooltip" data-type="info" data-trigger="focus" title="{% trans 'Other Vehicle' %}" data-animation="am-flip-x">
+                                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                                            <tooltip md-direction="left"></tooltip>
+                                                        </a>
+                                                    </div>-->
+                                                    <div class="table-responsive">
+                                                        <h6>{% trans "Vehicles" %}</h6>
+                                                    <table id="second_table" class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th class=" text-center col-md-2">{% trans "Type" %}</th>
+                                                            <th class=" text-center col-md-2">{% trans "Year" %}</th>
+                                                            <th class="text-center col-md-2">{% trans "Marke" %}</th>
+                                                            <th class="text-center col-md-3">{% trans "VIN Number" %}</th>
+                                                            <th class="text-center col-md-1">{% trans "Owned" %}</th>
+                                                            <th class="text-center col-md-1">{% trans "Leased" %}</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {{ form_vehicle.management_form }}
+                                                        {% for form in form_vehicle %}
+                                                        <tr>
+                                                            <td>{{form.type}}</td>
+                                                            <td>{{form.year}}</td>
+                                                            <td>{{form.marke}}</td>
+                                                            <td>{{form.vin}}</td>
+                                                            <td>{{form.owned}}</td>
+                                                            <td>{{form.leased}}</td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                <div class="tab-pane" id="files">
+                                            <div class="col-sm-12">
+                                                <h4 class="info-text">{% trans "Attach the files required for your services" %}</h4>
+                                            </div>
+                                                <div class="row">
+
+                                                <div class="col-sm-10 col-sm-offset-1">
+                                                    <!--<div class="form-group col-md-offset-11">
+                                                        <a type="button" id="list_file" class="btn btn-success test-tooltip" data-type="info" data-trigger="focus" title="{% trans 'Other Driver' %}" data-animation="am-flip-x">
+                                                            <i class="fa fa-list" aria-hidden="true"></i>
+                                                            <tooltip md-direction="left"></tooltip>
+                                                        </a>
+                                                    </div>-->
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped">
+                                                            <thead>
+                                                            <th>{% trans "File Name" %}</th>
+                                                            <th>{% trans "Category" %}</th>
+                                                            <th>{% trans "Select Files" %}</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            {{ form_file.management_form }}
+                                                            {% for f in form_file %}
+                                                            {{ f.errors }}
+                                                            {{ f.non_field_errors }}
+                                                            <tr>
+                                                                <td>{{ f.name }}</td>
+                                                                <td>{{ f.category }}</td>
+                                                                <td>{{ f.url }}</td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="payment">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h4 class="info-text"> Are you living in a nice area? </h4>
+                                            </div>
+                                            <div class="col-sm-5 col-sm-offset-7">
+                                                <img src="{% static '/img/creditcards.png'%}">
+                                            </div>
+                                             <div class="col-sm-4 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "Name on de Card" %} <small>({% trans "required" %})</small></label>
+                                                    {{form_payment.namecard}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans  "Crad Number" %} <small>({% trans "required" %})</small></label>
+                                                    {{form_payment.credicard}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "Card Expiration Date" %} <small>({% trans "required" %})</small></label>
+                                                    {{form_payment.expdate}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    <label>{% trans "Card Security Code" %} <small>({% trans "required" %})</small></label>
+                                                    {{form_payment.securitycode}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wizard-footer height-wizard">
+                                        <div class="pull-right">
+                                            <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='{% trans "Next" %}' />
+                                            <input type='submit' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='{% trans "Finish" %}' />
+                                        </div>
+
+                                        <div class="pull-left">
+                                            <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='{% trans "Previous" %}' />
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                        </form>
+                    </div>
+                </div> <!-- wizard container -->
+            </div>
+        </div><!-- end row -->
+    </div> <!--  big container -->
+</div>
+
+</body>
+<!--   Core JS Files   -->
+<script src="{% static 'js/jquery-2.2.4.min.js'%}" type="text/javascript"></script>
+<script src="{% static 'js/bootstrap.min.js'%}" type="text/javascript"></script>
+<script src="{% static 'js/jquery.bootstrap.wizard.js'%}" type="text/javascript"></script>
+
+<!--  Plugin for the Wizard -->
+<script src="{% static 'js/gsdk-bootstrap-wizard.js'%}"></script>
+
+<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
+<script src="{% static 'js/jquery.validate.min.js'%}"></script>
+<script src="{% static 'js/jq_app.js'%}"></script>
+<script src="{% static 'js/datetimepicker.min.js'%}"></script>
+<script type="text/javascript">
+     $(document).ready(function() {
+
+     });
+
+    </script>
+</html>

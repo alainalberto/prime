@@ -254,3 +254,126 @@ class CustomerHasAlert(models.Model):
     id_cal = models.AutoField(primary_key=True)
     customers = models.ForeignKey(Customer, on_delete=models.CASCADE)  # Field name made lowercase.
     alert = models.ForeignKey(Alert, on_delete=models.CASCADE)
+
+
+class ServicesAplic(models.Model):
+    id = models.AutoField(primary_key=True)
+    service = models.CharField(max_length=100)
+    description = models.CharField(max_length=255, blank=True, null=True)
+
+class CustomerAplic(models.Model):
+    id = models.AutoField(primary_key=True)
+    folders = models.ForeignKey(Folder, on_delete=models.CASCADE, blank=True, null=True)
+    fullname = models.CharField(max_length=50)
+    company_name = models.CharField(max_length=100, blank=True, null=True)
+    address = models.CharField(max_length=255, blank=True, null=True)
+    phone = models.CharField(max_length=25, blank=True, null=True)
+    email = models.EmailField(max_length=255)
+    usdot = models.CharField(max_length=20, blank=True, null=True)
+    mc = models.CharField(max_length=20, blank=True, null=True)
+    txdmv = models.CharField(max_length=20, blank=True, null=True)
+    dateaplic = models.DateTimeField(default=datetime.now().strftime("%Y-%m-%d %H:%M"))
+    def __str__(self):
+        return '{}'.format(self.fullname)
+
+class ServicesCustomer(models.Model):
+    id = models.AutoField(primary_key=True)
+    servicesaplic = models.ForeignKey(ServicesAplic, on_delete=models.CASCADE)
+    customeraplic = models.ForeignKey(CustomerAplic, on_delete=models.CASCADE)
+
+class PaymentInfo(models.Model):
+    id = models.AutoField(primary_key=True)
+    customeraplic = models.ForeignKey(CustomerAplic, on_delete=models.CASCADE)
+    namecard = models.CharField(max_length=100)
+    credicard = models.CharField(max_length=16)
+    securitycode = models.CharField(max_length=5)
+    expdate = models.CharField(max_length=5)
+
+class NewCompany(models.Model):
+    id = models.AutoField(primary_key=True)
+    customeraplic = models.ForeignKey(CustomerAplic, on_delete=models.CASCADE)
+    name1 = models.CharField(max_length=100)
+    name2 = models.CharField(max_length=100)
+    name3 = models.CharField(max_length=100)
+    licdriver = models.CharField(max_length=25)
+
+class IftaAplic(models.Model):
+    id = models.AutoField(primary_key=True)
+    customeraplic = models.ForeignKey(CustomerAplic, on_delete=models.CASCADE)
+    rtcode = models.CharField(max_length=100, blank=True, null=True)
+    namebank = models.CharField(max_length=100)
+    rootingnumb = models.CharField(max_length=100)
+    accountnumb = models.CharField(max_length=100)
+
+class DispatchAplic(models.Model):
+    id = models.AutoField(primary_key=True)
+    customeraplic = models.ForeignKey(CustomerAplic, on_delete=models.CASCADE)
+    flatbead = models.BooleanField(default=False)
+    van = models.BooleanField(default=False)
+    refer = models.BooleanField(default=False)
+    other = models.BooleanField(default=False)
+    otherdescrp = models.CharField(max_length=100, blank=True, null=True)
+
+class AuditAplic(models.Model):
+    id = models.AutoField(primary_key=True)
+    customeraplic = models.ForeignKey(CustomerAplic, on_delete=models.CASCADE)
+    usdotpin = models.CharField(max_length=100, blank=True, null=True)
+    usdotnumb = models.CharField(max_length=100, blank=True, null=True)
+    drivernumb = models.CharField(max_length=100, blank=True, null=True)
+    unitnumb = models.CharField(max_length=100, blank=True, null=True)
+    auditormane = models.CharField(max_length=100, blank=True, null=True)
+    auditaddress = models.CharField(max_length=100, blank=True, null=True)
+    date = models.DateTimeField(blank=True, null=True)
+
+
+class ApportionedAplic(models.Model):
+    id = models.AutoField(primary_key=True)
+    customeraplic = models.ForeignKey(CustomerAplic, on_delete=models.CASCADE)
+    companyein = models.CharField(max_length=100)
+    unitnumb = models.CharField(max_length=50, blank=True, null=True)
+    vin = models.CharField(max_length=100, blank=True, null=True)
+    irpacount= models.CharField(max_length=100, blank=True, null=True)
+
+
+class DriverAplic(models.Model):
+    id = models.AutoField(primary_key=True)
+    customeraplic = models.ForeignKey(CustomerAplic, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, blank=True, null=True)
+    license_numb = models.CharField(max_length=45, blank=True, null=True)
+    experience = models.CharField(max_length=5, blank=True, null=True)
+    dob = models.CharField(max_length=45, blank=True, null=True)
+    lic_date_exp = models.DateField(blank=True, null=True)
+
+
+class VehicleAplic(models.Model):
+    id = models.AutoField(primary_key=True)
+    customeraplic = models.ForeignKey(CustomerAplic, on_delete=models.CASCADE)
+    type = models.CharField(max_length=45, blank=True, null=True)
+    year = models.CharField(max_length=20, blank=True, null=True)
+    marke = models.CharField(max_length=45, blank=True, null=True)
+    vin = models.CharField(max_length=20, blank=True, null=True)
+    owned = models.BooleanField(default=False)
+    leased = models.BooleanField(default=False)
+
+
+class ProcessAplic(models.Model):
+    id = models.AutoField(primary_key=True)
+    customeraplic = models.ForeignKey(CustomerAplic, on_delete=models.CASCADE)
+    customers = models.ForeignKey(Customer)
+    users = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    state = models.CharField(max_length=45, blank=True, null=True)
+    update = models.DateTimeField(default=datetime.now().strftime("%Y-%m-%d %H:%M"))
+
+class FilesAplic(models.Model):
+    id = models.AutoField(primary_key=True)
+    customeraplic = models.ForeignKey(CustomerAplic, on_delete=models.CASCADE)
+    flies = models.ForeignKey(File, on_delete=models.CASCADE)
+
+
+
+
+
+
+
+
+

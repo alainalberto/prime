@@ -20,11 +20,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.decorators import login_required, permission_required
 from apps.tools.views import panel_view, Chats, Post, Message
+from apps.services.views import CustomerAplicCreate
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^$', login_required(panel_view), name='home'),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^$', CustomerAplicCreate ,name='aplic'),
+    url(r'^home/$', login_required(panel_view), name='home'),
     url(r'^panel/', include('apps.tools.urls', namespace='panel')),
     url(r'^accounting/', include('apps.accounting.urls', namespace='accounting')),
     url(r'^services/', include('apps.services.urls', namespace='services')),

@@ -2219,3 +2219,250 @@ class InvoicesLogDelete(DeleteView):
             return HttpResponseRedirect('/accounting/customers/view/' + str(customer.id_cut))
 
 
+class CustomerAplicView(ListView):
+    model = File
+    template_name = 'services/form/fileViews.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CustomerAplicView, self).get_context_data(**kwargs)
+        if Folder.objects.filter(name='Forms'):
+            folder_father = Folder.objects.get(name='Forms')
+            forms = pagination(self.request, File.objects.filter(folders=folder_father).order_by('name'))
+            context['forms'] = forms
+            return context
+
+def CustomerAplicCreate(request):
+
+    form_customer = CustomerAplicForm()
+    form_payment = PaymentInfoForm()
+    form_newcompany = NewCompanyForm()
+    form_ifta = IftaAplicForm()
+    form_dispatch = DispatchAplicForm()
+    form_audit = AuditAplicForm()
+    form_apportioned = ApportionedAplicForm()
+    Form_file = inlineformset_factory(
+        Folder,
+        File,
+        form=FileForm,
+        fields=['name',
+                'category',
+                'url',
+                ],
+        extra=10
+    )
+    Form_driver = inlineformset_factory(
+        CustomerAplic,
+        DriverAplic,
+        form=DriverAplicForm,
+        fields=['name',
+                'license_numb',
+                'experience',
+                'dob',
+                'lic_date_exp'],
+        extra=5
+    )
+    Form_vehicle = inlineformset_factory(
+        CustomerAplic,
+        VehicleAplic,
+        form=VehicleAplicForm,
+        fields=['type',
+                'year',
+                'marke',
+                'vin',
+                'owned',
+                'leased'],
+        extra=5
+    )
+
+    if request.method == 'POST':
+        user = request.user
+        form_customer = CustomerAplicForm(request.POST)
+        form_payment = PaymentInfoForm(request.POST)
+        form_newcompany = NewCompanyForm(request.POST)
+        form_ifta = IftaAplicForm(request.POST)
+        form_dispatch = DispatchAplicForm(request.POST)
+        form_audit = AuditAplicForm(request.POST)
+        form_apportioned = ApportionedAplicForm(request.POST)
+        form_file = FileForm(request.POST, request.FILES)
+        form_driver = Form_driver(request.POST)
+        form_vehicle = Form_vehicle(request.POST)
+        if form_customer.is_valid() and form_payment.is_valid():
+            folder = Folder.objects.create(name=form_customer.data['fullname'] + "_Customer",
+                                           description=form_customer.data['fullname'] + "_Customer",
+                                           )
+            customer = form_customer.save(commit=False)
+            customer.folders = folder
+            customer.save()
+            payment = form_payment.save(commit=False)
+            payment.customeraplic = customer
+            payment.save()
+            if request.POST.get('new_company', False):
+                comp = ServicesAplic.objects.filter(service='new_company')
+                if comp:
+                    comp = ServicesAplic.objects.get(service='new_company')
+                    ServicesCustomer.objects.create(servicesaplic=comp, customeraplic=customer)
+                else:
+                    serv = ServicesAplic.objects.create(service='new_company', description= 'New Company')
+                    ServicesCustomer.objects.create(servicesaplic=serv, customeraplic=customer)
+            if request.POST.get('ifta', False):
+                comp = ServicesAplic.objects.filter(service='ifta')
+                if comp:
+                    comp = ServicesAplic.objects.get(service='ifta')
+                    ServicesCustomer.objects.create(servicesaplic=comp, customeraplic=customer)
+                else:
+                    serv = ServicesAplic.objects.create(service='ifta', description='IFTA')
+                    ServicesCustomer.objects.create(servicesaplic=serv, customeraplic=customer)
+            if request.POST.get('dispatch', False):
+                comp = ServicesAplic.objects.filter(service='dispatch')
+                if comp:
+                    comp = ServicesAplic.objects.get(service='dispatch')
+                    ServicesCustomer.objects.create(servicesaplic=comp, customeraplic=customer)
+                else:
+                    serv = ServicesAplic.objects.create(service='dispatch', description= 'Dispatch')
+                    ServicesCustomer.objects.create(servicesaplic=serv, customeraplic=customer)
+            if request.POST.get('audit', False):
+                comp = ServicesAplic.objects.filter(service='audit')
+                if comp:
+                    comp = ServicesAplic.objects.get(service='audit')
+                    ServicesCustomer.objects.create(servicesaplic=comp, customeraplic=customer)
+                else:
+                    serv = ServicesAplic.objects.create(service='audit', description= 'Audit')
+                    ServicesCustomer.objects.create(servicesaplic=serv, customeraplic=customer)
+            if request.POST.get('training', False):
+                comp = ServicesAplic.objects.filter(service='training')
+                if comp:
+                    comp = ServicesAplic.objects.get(service='training')
+                    ServicesCustomer.objects.create(servicesaplic=comp, customeraplic=customer)
+                else:
+                    serv = ServicesAplic.objects.create(service='training', description= 'Training')
+                    ServicesCustomer.objects.create(servicesaplic=serv, customeraplic=customer)
+            if request.POST.get('apportions', False):
+                comp = ServicesAplic.objects.filter(service='apportions')
+                if comp:
+                    comp = ServicesAplic.objects.get(service='apportions')
+                    ServicesCustomer.objects.create(servicesaplic=comp, customeraplic=customer)
+                else:
+                    serv = ServicesAplic.objects.create(service='apportions', description= 'Apportioned')
+                    ServicesCustomer.objects.create(servicesaplic=serv, customeraplic=customer)
+            if request.POST.get('title', False):
+                comp = ServicesAplic.objects.filter(service='title')
+                if comp:
+                    comp = ServicesAplic.objects.get(service='title')
+                    ServicesCustomer.objects.create(servicesaplic=comp, customeraplic=customer)
+                else:
+                    serv = ServicesAplic.objects.create(service='title', description= 'Title')
+                    ServicesCustomer.objects.create(servicesaplic=serv, customeraplic=customer)
+            if request.POST.get('insurance', False):
+                comp = ServicesAplic.objects.filter(service='insurance')
+                if comp:
+                    comp = ServicesAplic.objects.get(service='insurance')
+                    ServicesCustomer.objects.create(servicesaplic=comp, customeraplic=customer)
+                else:
+                    serv = ServicesAplic.objects.create(service='insurance', description= 'Insurance')
+                    ServicesCustomer.objects.create(servicesaplic=serv, customeraplic=customer)
+            if form_newcompany.is_valid():
+                newcompany = form_newcompany.save(commit=False)
+                newcompany.customeraplic = customer
+                newcompany.save()
+            if form_ifta.is_valid():
+                ifta = form_ifta.save(commit=False)
+                ifta.customeraplic = customer
+                ifta.save()
+            if form_ifta.is_valid():
+                ifta = form_ifta.save(commit=False)
+                ifta.customeraplic = customer
+                ifta.save()
+            if form_dispatch.is_valid():
+                dispatch = form_dispatch.save(commit=False)
+                dispatch.customeraplic = customer
+                dispatch.save()
+            if form_audit.is_valid():
+                audit = form_audit.save(commit=False)
+                audit.customeraplic = customer
+                audit.save()
+            if form_apportioned.is_valid():
+                apportioned = form_ifta.save(commit=False)
+                apportioned.customeraplic = customer
+                apportioned.save()
+            if form_driver.is_valid():
+                driver = form_driver.save(commit=False)
+                for d in driver:
+                    d.customeraplic = customer
+                    d.save()
+            if form_vehicle.is_valid():
+                vehicle = form_vehicle.save(commit=False)
+                for v in vehicle:
+                    v.customeraplic = customer
+                    v.save()
+            #if form_file.is_valid():
+                #files = form_file.save(commit=False)
+                #for f in files:
+                 #   f.users = user
+                 #   f.folders = folder
+                  #  f.save()
+
+            messages.success(request, "Form saved with an extension")
+            return render(request, 'services/customerAplic/aplicsucces.html')
+    return render(request, 'services/customerAplic/customeraplic.html',{
+        'form_customer':form_customer,
+        'form_payment': form_payment,
+        'form_newcompany': form_newcompany,
+        'form_ifta': form_ifta,
+        'form_dispatch': form_dispatch,
+        'form_audit': form_audit,
+        'form_apportioned': form_apportioned,
+        'form_driver': Form_driver,
+        'form_vehicle': Form_vehicle,
+        'form_file' : Form_file
+    })
+
+
+
+class CustomerAplicEdit(UpdateView):
+    model = File
+    form_class = FileForm
+    template_name = 'services/form/fileForm.html'
+    success_url = reverse_lazy('services:forms')
+
+    def get_context_data(self, **kwargs):
+        context = super(FormEdit, self).get_context_data(**kwargs)
+        id = self.kwargs.get('pk', 0)
+        if self.kwargs.__contains__('popup'):
+            popup = self.kwargs.get('popup')
+        else:
+            popup = 0
+        if 'form' not in context:
+            context['form'] = self.form_class
+        context['id'] = id
+        context['is_popup'] = popup
+        context['title'] = 'Edit Form'
+        return context
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object
+        id_fil = kwargs['pk']
+        file = self.model.objects.get(id_fil=id_fil)
+        form = self.form_class(request.POST, request.FILES, instance=file)
+        if form.is_valid():
+            file =form.save()
+            accion_user(file, CHANGE, request.user)
+            messages.success(request, "File update")
+            return HttpResponseRedirect(self.success_url)
+        else:
+            for er in form.errors:
+                messages.error(request, "ERROR: "+er)
+            return render(request, self.template_name, {'form': form, 'title': 'Edit File'})
+
+class CustomerAplicDelete(DeleteView):
+    model = File
+    template_name = 'confirm_delete.html'
+    success_url = reverse_lazy('services:forms')
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object
+        id = kwargs['pk']
+        file = self.model.objects.get(id_fil=id)
+        accion_user(file, DELETION, request.user)
+        file.delete()
+        messages.success(request, "File delete")
+        return HttpResponseRedirect(self.success_url)

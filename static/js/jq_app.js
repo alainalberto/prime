@@ -7,6 +7,55 @@ $(document).ready( function () {
    $('.lower').keyup(function() {
       $(this).val($(this).val().toLowerCase());
    });
+   $('#btn_new_company').click(function(){
+          if (document.getElementById('new_company').checked) {
+
+              $('#inf_company').attr("style", "display : initial;");
+          }
+          else {
+               $('#inf_company').attr("style", "display : none;");
+          }
+        });
+
+    $('#btn_ifta').click(function(){
+          if (document.getElementById('ifta').checked) {
+
+              $('#inf_ifta').attr("style", "display : initial;");
+          }
+          else {
+            $('#inf_ifta').attr("style", "display : none;");
+          }
+        });
+
+      $('#btn_dispatch').click(function(){
+          if (document.getElementById('dispatch').checked) {
+
+              $('#inf_dispatch').attr("style", "display : initial;");
+          }
+          else {
+            $('#inf_dispatch').attr("style", "display : none;");
+          }
+        });
+
+        $('#btn_apportioned').click(function(){
+          if (document.getElementById('apportions').checked) {
+
+              $('#inf_apportioned').attr("style", "display : initial;");
+          }
+          else {
+            $('#inf_apportioned').attr("style", "display : none;");
+          }
+        });
+
+        $('#btn_insurance').click(function(){
+          if (document.getElementById('insurance').checked) {
+
+              $('#inf_insurance').attr("style", "display : initial;");
+          }
+          else {
+            $('#inf_insurance').attr("style", "display : none;");
+          }
+        });
 
 
 // Switch

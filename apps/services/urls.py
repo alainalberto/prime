@@ -5,6 +5,7 @@ from apps.services.components.ServicePDF import *
 
 urlpatterns = [
 
+
     url(r'^service/pending/$', login_required((PendingListPDF)),name='pending_pdf'),
     url(r'^service/select/(?P<pk>\d+)/$', login_required((SelectView)),name='service_select'),
     url(r'^email/(?P<pk>\d+)&(?P<fl>[^/]+)/$', login_required((EmailSend)),name='email_send'),
