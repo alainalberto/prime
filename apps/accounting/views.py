@@ -532,26 +532,27 @@ def InvoicesCreate(request):
         for s in invs:
             serials.append(s.serial)
         if form.is_valid() and formset.is_valid():
-            if serials:
-                serial = int(serials[0]) + 1
-            invoice = form.save(commit=False)
-            invoice.customers = Customer.objects.get(id_cut=request.POST['customers'])
-            invoice.serial = serial
-            invoice.users_id = user.id
-            invoice.type = 'service'
-            accion_user(invoice, ADDITION, request.user)
             itemhasInv = formset.save(commit=False)
             if not itemhasInv:
                 messages.error(request, "ERROR: Insert one Items ")
                 return render(request, 'accounting/invoices/invoicesForm.html', {
-                        'form': form,
-                        'formset': formset,
-                        'items': items,
-                        'accounts': accounts,
-                        'customers': customer,
-                        'title': 'Create new Invoice'
-                    })
+                    'form': form,
+                    'formset': formset,
+                    'items': items,
+                    'accounts': accounts,
+                    'customers': customer,
+                    'title': 'Create new Invoice'
+                })
             else:
+                if serials:
+                     serial = int(serials[0]) + 1
+                invoice = form.save(commit=False)
+                invoice.customers = Customer.objects.get(id_cut=request.POST['customers'])
+                invoice.serial = serial
+                invoice.users_id = user.id
+                invoice.type = 'service'
+                accion_user(invoice, ADDITION, request.user)
+
                 invoice.save()
                 for itinv in itemhasInv:
                     if Item.objects.filter(name=itinv.description, value=itinv.value):
@@ -574,9 +575,9 @@ def InvoicesCreate(request):
             return HttpResponseRedirect(reverse_lazy('accounting:invoices'))
         else:
             for er in form.errors:
-                messages.error(request, er)
+                messages.error(request, str(er))
             for er in formset.errors:
-                messages.error(request, er)
+                messages.error(request, str(er))
 
     return render(request, 'accounting/invoices/invoicesForm.html', {
         'form': form,
@@ -653,7 +654,7 @@ class InvoicesEdit(UpdateView):
         invoice = self.model.objects.get(id_inv=id_inv)
         formset = self.form_class_item(request.POST, instance=invoice)
         form = self.form_class(request.POST, instance=invoice)
-        if form.is_valid():
+        if form.is_valid() and formset.is_valid():
                 form.save()
                 InvoicesHasItem.objects.filter(invoices=invoice).delete()
                 itemhasInv = formset.save(commit=False)
@@ -682,9 +683,10 @@ class InvoicesEdit(UpdateView):
                 return HttpResponseRedirect(reverse_lazy('accounting:invoices'))
         else:
             for er in form.errors:
-                messages.error(request, "ERROR: "+er)
+                messages.error(request, "ERROR: "+str(er))
             for er in formset.errors:
-                messages.error(request, "ERROR: " + er)
+                messages.error(request, "ERROR: " + str(er))
+            return self.get_context_data(self)
 
 class InvoicesDelete(DeleteView):
     model = Invoice
@@ -775,7 +777,7 @@ class ReceiptsCreate(CreateView):
              return HttpResponseRedirect(reverse_lazy('accounting:receipts'))
          else:
              for er in form.errors:
-                 messages.error(request, "ERROR: " + er)
+                 messages.error(request, "ERROR: " + str(er))
              return self.get_context_data()
 
 class ReceiptsEdit(UpdateView):
