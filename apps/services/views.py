@@ -2200,7 +2200,7 @@ class InvoicesLogEdit(UpdateView):
                 return HttpResponseRedirect('/accounting/customers/view/' + str(customer.id_cut))
             else:
                 for er in form.errors:
-                    messages.error(request, "ERROR: " + er)
+                    messages.error(request, "ERROR: " + str(er))
                 return self.get_context_data()
 
 class InvoicesLogDelete(DeleteView):
@@ -2220,16 +2220,18 @@ class InvoicesLogDelete(DeleteView):
 
 
 class CustomerAplicView(ListView):
-    model = File
-    template_name = 'services/form/fileViews.html'
+    model = CustomerAplic
+    template_name = 'services/customerAplic/adminAplication.html'
 
     def get_context_data(self, **kwargs):
         context = super(CustomerAplicView, self).get_context_data(**kwargs)
-        if Folder.objects.filter(name='Forms'):
-            folder_father = Folder.objects.get(name='Forms')
-            forms = pagination(self.request, File.objects.filter(folders=folder_father).order_by('name'))
-            context['forms'] = forms
-            return context
+        customer = []
+        newcustomer = CustomerAplic.objects.all()
+        for c in newcustomer:
+            if not ProcessAplic.objects.filter(customeraplic=c):
+                customer.append(c)
+        context['customers'] = customer
+        return context
 
 def CustomerAplicCreate(request):
 
@@ -2418,40 +2420,56 @@ def CustomerAplicCreate(request):
 
 
 
-class CustomerAplicEdit(UpdateView):
-    model = File
-    form_class = FileForm
-    template_name = 'services/form/fileForm.html'
-    success_url = reverse_lazy('services:forms')
+def CustomerAplicProce(request, pk):
 
-    def get_context_data(self, **kwargs):
-        context = super(FormEdit, self).get_context_data(**kwargs)
-        id = self.kwargs.get('pk', 0)
-        if self.kwargs.__contains__('popup'):
-            popup = self.kwargs.get('popup')
-        else:
-            popup = 0
-        if 'form' not in context:
-            context['form'] = self.form_class
-        context['id'] = id
-        context['is_popup'] = popup
-        context['title'] = 'Edit Form'
-        return context
+    customer = CustomerAplic.objects.get(id=pk)
+    payment = PaymentInfo.objects.get(customeraplic=customer)
+    company = None
+    ifta = None
+    driver = None
+    vehicle = None
+    audit = None
+    apportioned = None
+    dispatch = None
+    services = ServicesCustomer.objects.filter(customeraplic=customer)
+    files = File.objects.filter(folders=customer.folders).order_by('category')
 
-    def post(self, request, *args, **kwargs):
-        self.object = self.get_object
-        id_fil = kwargs['pk']
-        file = self.model.objects.get(id_fil=id_fil)
-        form = self.form_class(request.POST, request.FILES, instance=file)
-        if form.is_valid():
-            file =form.save()
-            accion_user(file, CHANGE, request.user)
-            messages.success(request, "File update")
-            return HttpResponseRedirect(self.success_url)
-        else:
-            for er in form.errors:
-                messages.error(request, "ERROR: "+er)
-            return render(request, self.template_name, {'form': form, 'title': 'Edit File'})
+    if NewCompany.objects.filter(customeraplic=customer):
+        company = NewCompany.objects.get(customeraplic=customer)
+
+    if IftaAplic.objects.filter(customeraplic=customer):
+        ifta = IftaAplic.objects.get(customeraplic=customer)
+
+    if DriverAplic.objects.filter(customeraplic=customer):
+        driver= DriverAplic.objects.get(customeraplic=customer)
+
+    if VehicleAplic.objects.filter(customeraplic=customer):
+        vehicle = VehicleAplic.objects.get(customeraplic=customer)
+
+    if AuditAplic.objects.filter(customeraplic=customer):
+        audit = AuditAplic.objects.get(customeraplic=customer)
+
+    if ApportionedAplic.objects.filter(customeraplic=customer):
+        apportioned = ApportionedAplic.objects.get(customeraplic=customer)
+
+    if DispatchAplic.objects.filter(customeraplic=customer):
+        dispatch = DispatchAplic.objects.get(customeraplic=customer)
+
+
+
+    return render(request, 'services/customerAplic/procecingAplic.html', {
+        'customer': customer,
+        'payment' : payment,
+        'company' : company,
+        'ifta' : ifta,
+        'driver' : driver,
+        'vehicle' : vehicle,
+        'audit' : audit,
+        'apportioned' : apportioned,
+        'dispatch' : dispatch,
+        'files': files,
+        'services' : services,
+        'title': 'Process Request'})
 
 class CustomerAplicDelete(DeleteView):
     model = File

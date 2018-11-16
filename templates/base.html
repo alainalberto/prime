@@ -267,6 +267,11 @@
                             <a class="item" href="{% url 'services:dispatch_select' %}"> Companies Dispatch</a>
                         </li>
                         {% endif %}
+                        {% if perms.accounting.add_customer %}
+                        <li>
+                            <a class="item" href="{% url 'services:customer_aplic' %}"> Request Services</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </li>
                 {% endif %}

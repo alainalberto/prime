@@ -82,7 +82,9 @@ urlpatterns = [
     url(r'^dispatch/invoices/(?P<pk>\d+)/$', login_required(permission_required('services.delete_dispatchload')(InvoicesLogDelete.as_view())), name='dispatch_invoice_delete'),
     url(r'^dispatch/invoices/print/(?P<pk>\d+)/$', login_required(permission_required('services.add_dispatchload')(InvoicesLog)), name='dispatch_invoice_pdf'),
 
-
+    #Service Aplication
+    url(r'^aplication/newcustomer$', login_required(permission_required('accounting.add_customers')(CustomerAplicView.as_view())), name='customer_aplic'),
+    url(r'^aplication/process/(?P<pk>\d+)/$', login_required(permission_required('accounting.add_customers')(CustomerAplicProce)), name='customer_process'),
 
 
 

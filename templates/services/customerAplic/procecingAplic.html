@@ -1,0 +1,418 @@
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-users fa-4x"></i>
+                </div>
+                <div class="col-md-offset-4">
+                    <div><h3>{{ title }}</h3></div>
+                </div>
+            </div>
+        </div>
+        <form name="form_customer" method="post" action="{% url 'services:customer_process' customer.id %}" class="form" role="form" id="form_customer">{% csrf_token %}
+            <div class="panel-body">
+
+                <!-- Form Name -->
+                <!-- Text input-->
+                <div class="form-group col-md-3 col-md-offset-1" >
+                    <label class="label-control">First and Last Name:</label>
+                    <div>{{customer.fullname}}</div>
+
+                </div>
+                <!-- Text input-->
+                <div class="form-group col-md-4 col-md-offset-1">
+                    <label class="label-control">Company Name:</label>
+                    <div>{{ customer.company_name }}</div>
+                </div>
+                <!-- Select Basic -->
+                <div class="form-group col-md-4 col-md-offset-1">
+                    <label class="label-control">Address:</label>
+                    <div>{{ customer.address }}</div>
+                </div>
+                <div class="form-group col-md-3 col-md-offset-1">
+                    <label class="label-control">Phone:</label>
+                    <div>{{ customer.phone }}</div>
+                </div>
+                <div class="form-group col-md-4 col-md-offset-1">
+                    <label class="label-control">Email:</label>
+                    <div>{{ customer.email }}</div>
+                </div>
+                <div class="form-group col-md-3 col-md-offset-1">
+                    <label class="label-control">USDOT:</label>
+                    <div>{{ customer.usdot }}</div>
+                </div>
+                <div class="form-group col-md-3 col-md-offset-1">
+                    <label class="label-control">MC:</label>
+                    <div>{{ customer.mc }}</div>
+                </div>
+                <div class="form-group col-md-3 col-md-offset-1">
+                    <label class="label-control">Texas DMV:</label>
+                    <div>{{ customer.txdmv }}</div>
+                </div>
+                <div class="form-group col-md-12">
+                    <p class="bg-primary text-center">CUSTOMER SERVICES</p>
+
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <ul class="nav nav-tabs " role="tablist">
+                                {% for s in services %}
+                                <li id="tab{{s.servicesaplic.name}}" role="presentation"><a href="#{{s.servicesaplic.name}}" role="tab" data-toggle="tab">{{s.servicesaplic.description}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="panel-body">
+                            <div  class="tab-content">
+                                {% if company %}
+                                <div role="tabpanel" class="tab-pane fade" id="new_company">
+                                    <div id="inf_company">
+                                        <div class="col-sm-12">
+                                            <h5 class="info-text">New Company</h5>
+                                        </div>
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Name Option 1</label>
+                                                {{company.name1}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Name Option 2</label>
+                                                {{company.name2}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Name Option 3</label>
+                                                {{company.name3}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>License Driver Number</label>
+                                                {{company.licdriver}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% if ifta %}
+                                <div role="tabpanel" class="tab-pane fade" id="ifta">
+                                    <div id="inf_ifta">
+                                        <div class="col-sm-12">
+                                            <h5 class="info-text">IFTA</h5>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>RT Code</label>
+                                                <div class="input-group">
+                                                    <samp class="input-group-addon">RT</samp>
+                                                    {{ifta.rtcode}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Bank Name</label>
+                                                {{ifta.namebank}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Rooting Number</label>
+                                                {{ifta.rootingnumb}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Account Number</label>
+                                                {{ifta.accountnumb}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% if insurance %}
+                                <div role="tabpanel" class="tab-pane fade" id="insurance">
+                                    <div id="inf_insurance">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h5 class="info-text">Comercial Auto Insurance</h5>
+                                            </div>
+
+                                            <div class="col-sm-10 col-sm-offset-1">
+                                                <div class="table-responsive">
+                                                    <h6>Drives</h6>
+                                                    <table id="driver_table" class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th class=" text-center col-md-3">Name</th>
+                                                            <th class=" text-center col-md-2">License Driver</th>
+                                                            <th class="text-center col-md-2">Date Expired</th>
+                                                            <th class="text-center col-md-2">DOB</th>
+                                                            <th class="text-center col-md-1">Experience</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% for form in driver %}
+                                                        <tr>
+                                                            <td>{{form.name}}</td>
+                                                            <td>{{form.license_numb}}</td>
+                                                            <td>{{form.lic_date_exp}}</td>
+                                                            <td>{{form.dob}}</td>
+                                                            <td>{{form.experience}}</td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10 col-sm-offset-1">
+                                                <div class="table-responsive">
+                                                    <h6>Vehicles</h6>
+                                                    <table id="second_table" class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th class=" text-center col-md-2">Type</th>
+                                                            <th class=" text-center col-md-2">Year</th>
+                                                            <th class="text-center col-md-2">Marke</th>
+                                                            <th class="text-center col-md-3">VIN Number</th>
+                                                            <th class="text-center col-md-1">Owned</th>
+                                                            <th class="text-center col-md-1">Leased</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% for form in vehicle %}
+                                                        <tr>
+                                                            <td>{{form.type}}</td>
+                                                            <td>{{form.year}}</td>
+                                                            <td>{{form.marke}}</td>
+                                                            <td>{{form.vin}}</td>
+                                                            <td>{{form.owned}}</td>
+                                                            <td>{{form.leased}}</td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% if audit %}
+                                <div role="tabpanel" class="tab-pane fade" id="audit">
+                                    <div id="inf_audit">
+                                        <div class="col-sm-12">
+                                            <h5 class="info-text">DIOT Audit</h5>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>USDOT PIN Number</label>
+                                                {{audit.usdotpin}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>USDOT Number</label>
+                                                {{audit.usdotnumb}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Number of Units</label>
+                                                {{audit.unitnumb}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Number of Driver</label>
+                                                {{audit.drivernumb}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Name of Auditor</label>
+                                                {{audit.auditormane}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Address of Audit</label>
+                                                {{audit.auditaddress}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Date of Audit</label>
+                                                <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                                    {{audit.date}}
+                                                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% if apportions %}
+                                <div role="tabpanel" class="tab-pane fade" id="apportions">
+                                    <div id="inf_apportioned">
+                                        <div class="col-sm-12">
+                                            <h5 class="info-text">Apportioned</h5>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Company EIN Number</label>
+                                                {{apportioned.companyein}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Number of Unit</label>
+                                                {{apportioned.unitnumb}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>VIN Number</label>
+                                                {{apportioned.vin}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>IRP Account Number</label>
+                                                {{apportioned.irpacount}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% if dispatch %}
+                                <div role="tabpanel" class="tab-pane fade" id="dispatch">
+                                    <div id="inf_dispatch">
+                                        <div class="col-sm-12">
+                                            <h5 class="info-text">Dispatch Services</h5>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-3 col-md-2 col-sm-offset-1 nopad text-center">
+                                            <label class="image-checkbox">Flatbead</label>
+                                            {% if dispatch.flatbead %}
+                                            <i class="fa fa-check hidden"></i>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-xs-4 col-sm-3 col-md-2 col-sm-offset-1 nopad text-center">
+                                            <label class="image-checkbox">Van</label>
+                                            {% if dispatch.van %}
+                                            <i class="fa fa-check hidden"></i>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-xs-4 col-sm-3 col-md-2 col-sm-offset-1 nopad text-center">
+                                            <label class="image-checkbox">Refer</label>
+                                            {% if dispatch.refer %}
+                                            <i class="fa fa-check hidden"></i>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-xs-4 col-sm-3 col-md-2 col-sm-offset-1 nopad text-center">
+                                            <label class="image-checkbox">Others </label>
+                                            {% if dispatch.other%}
+                                            <i class="fa fa-check hidden"></i>
+                                            {{dispatch.otherdescrp}}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <p class="bg-primary text-center">CUSTOMER FILES</p>
+
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        {% regroup files by category as grouped %}
+                        {% for category in grouped %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="H-{{category.grouper}}">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{category.grouper}}" aria-controls="collapseOne">
+                                        {{category.grouper}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="{{category.grouper}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="H-{{category.grouper}}">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped data-table">
+                                            <thead>
+                                            <th>Name</th>
+                                            <th>Creative user </th>
+                                            <th>Up load Date</th>
+                                            <th>Category</th>
+                                            </thead>
+                                            <tbody>
+                                            {% for f in category.list %}
+                                            <tr>
+                                                <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="/static/media/{{ f.url }}" target="_blank">{{f.name}}</br></a></td>
+                                                <td>{% if f.users.first_name %} {{ f.users.first_name }} {% else %} {{ f.users }} {% endif %}</td>
+                                                <td>{{ f.date_save }}</td>
+                                                <td>{{ f.category }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <p class="bg-primary text-center">PAYMENT INFORMATION</p>
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-offset-1">
+                            <div class="form-group">
+                                <label>Name on de Card</label>
+                                {{payment.namecard}}
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-sm-offset-1">
+                            <div class="form-group">
+                                <label>Crad Number</label>
+                                {{payment.credicard}}
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-sm-offset-1">
+                            <div class="form-group">
+                                <label>Card Expiration Date</label>
+                                {{payment.expdate}}
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-sm-offset-1">
+                            <div class="form-group">
+                                <label>Card Security Code</label>
+                                {{payment.securitycode}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="panel-footer">
+                <a class="col-sm-offset-11" type="submit" data-dismiss="modal">
+                    <i class="fa fa-arrow-circle-right fa-3x"></i>
+                </a>
+            </div>
+        </form>
+    </div>
+</section>
+<div class="modal fade" id="note" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
