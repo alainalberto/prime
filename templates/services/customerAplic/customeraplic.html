@@ -3,16 +3,16 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-icon.png'%}">
-	<link rel="icon" type="image/png" href="{% static '/img/icon/Icon.ico'%}">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>Prime 1 Services</title>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-icon.png'%}">
+    <link rel="icon" type="image/png" href="{% static '/img/icon/Icon.ico'%}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Prime 1 Services</title>
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-	<!--     Fonts and icons     -->
+    <!--     Fonts and icons     -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
 
     <!-- CSS Files -->
@@ -323,7 +323,7 @@
                                                     {{form_dispatch.other}}
                                                     <i class="fa fa-check hidden"></i>
                                                 </label>
-                                                 {{form_dispatch.otherdescrp}}
+                                                {{form_dispatch.otherdescrp}}
                                             </div>
                                         </div>
                                         <div id="inf_audit" style="display: none;">
@@ -420,29 +420,29 @@
                                                     </div>-->
                                                     <div class="table-responsive">
                                                         <h6>{% trans "Drives" %}</h6>
-                                                    <table id="driver_table" class="table">
-                                                        <thead>
-                                                        <tr>
-                                                            <th class=" text-center col-md-3">{% trans "Name" %}</th>
-                                                            <th class=" text-center col-md-2">{% trans "License Driver" %}</th>
-                                                            <th class="text-center col-md-2">{% trans "Date Expired" %}</th>
-                                                            <th class="text-center col-md-2">{% trans "DOB" %}</th>
-                                                            <th class="text-center col-md-1">{% trans "Experience" %}</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        {{ form_driver.management_form }}
-                                                        {% for form in form_driver %}
-                                                        <tr>
-                                                            <td>{{form.name}}</td>
-                                                            <td>{{form.license_numb}}</td>
-                                                            <td>{{form.lic_date_exp}}</td>
-                                                            <td>{{form.dob}}</td>
-                                                            <td>{{form.experience}}</td>
-                                                        </tr>
-                                                        {% endfor %}
-                                                        </tbody>
-                                                    </table>
+                                                        <table id="driver_table" class="table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class=" text-center col-md-3">{% trans "Name" %}</th>
+                                                                <th class=" text-center col-md-2">{% trans "License Driver" %}</th>
+                                                                <th class="text-center col-md-2">{% trans "Date Expired" %}</th>
+                                                                <th class="text-center col-md-2">{% trans "DOB" %}</th>
+                                                                <th class="text-center col-md-1">{% trans "Experience" %}</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            {{ form_driver.management_form }}
+                                                            {% for form in form_driver %}
+                                                            <tr>
+                                                                <td>{{form.name}}</td>
+                                                                <td>{{form.license_numb}}</td>
+                                                                <td>{{form.lic_date_exp}}</td>
+                                                                <td>{{form.dob}}</td>
+                                                                <td>{{form.experience}}</td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                            </tbody>
+                                                        </table>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-10 col-sm-offset-1">
@@ -454,50 +454,50 @@
                                                     </div>-->
                                                     <div class="table-responsive">
                                                         <h6>{% trans "Vehicles" %}</h6>
-                                                    <table id="second_table" class="table">
-                                                        <thead>
-                                                        <tr>
-                                                            <th class=" text-center col-md-2">{% trans "Type" %}</th>
-                                                            <th class=" text-center col-md-2">{% trans "Year" %}</th>
-                                                            <th class="text-center col-md-2">{% trans "Marke" %}</th>
-                                                            <th class="text-center col-md-3">{% trans "VIN Number" %}</th>
-                                                            <th class="text-center col-md-1">{% trans "Owned" %}</th>
-                                                            <th class="text-center col-md-1">{% trans "Leased" %}</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        {{ form_vehicle.management_form }}
-                                                        {% for form in form_vehicle %}
-                                                        <tr>
-                                                            <td>{{form.type}}</td>
-                                                            <td>{{form.year}}</td>
-                                                            <td>{{form.marke}}</td>
-                                                            <td>{{form.vin}}</td>
-                                                            <td>{{form.owned}}</td>
-                                                            <td>{{form.leased}}</td>
-                                                        </tr>
-                                                        {% endfor %}
-                                                        </tbody>
-                                                    </table>
+                                                        <table id="second_table" class="table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class=" text-center col-md-2">{% trans "Type" %}</th>
+                                                                <th class=" text-center col-md-2">{% trans "Year" %}</th>
+                                                                <th class="text-center col-md-2">{% trans "Marke" %}</th>
+                                                                <th class="text-center col-md-3">{% trans "VIN Number" %}</th>
+                                                                <th class="text-center col-md-1">{% trans "Owned" %}</th>
+                                                                <th class="text-center col-md-1">{% trans "Leased" %}</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            {{ form_vehicle.management_form }}
+                                                            {% for form in form_vehicle %}
+                                                            <tr>
+                                                                <td>{{form.type}}</td>
+                                                                <td>{{form.year}}</td>
+                                                                <td>{{form.marke}}</td>
+                                                                <td>{{form.vin}}</td>
+                                                                <td>{{form.owned}}</td>
+                                                                <td>{{form.leased}}</td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                            </tbody>
+                                                        </table>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    </div>
+                                </div>
                                 <div class="tab-pane" id="files">
-                                            <div class="col-sm-12">
-                                                <h4 class="info-text">{% trans "Attach the files required for your services" %}</h4>
-                                            </div>
-                                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h4 class="info-text">{% trans "Attach the files required for your services" %}</h4>
+                                    </div>
+                                    <div class="row">
 
-                                                <div class="col-sm-10 col-sm-offset-1">
-                                                    <!--<div class="form-group col-md-offset-11">
-                                                        <a type="button" id="list_file" class="btn btn-success test-tooltip" data-type="info" data-trigger="focus" title="{% trans 'Other Driver' %}" data-animation="am-flip-x">
+                                        <div class="col-sm-10 col-sm-offset-1">
+                                                    <div class="form-group col-md-offset-11">
+                                                        <a type="button" id="list_file" class="btn btn-success test-tooltip" data-type="info" data-trigger="focus" title="{% trans 'Other Driver' %}" data-animation="am-flip-x" data-toggle="modal" data-target="#select">
                                                             <i class="fa fa-list" aria-hidden="true"></i>
                                                             <tooltip md-direction="left"></tooltip>
                                                         </a>
-                                                    </div>-->
+                                                    </div>
                                                     <div class="table-responsive">
                                                         <table class="table table-striped">
                                                             <thead>
@@ -519,36 +519,37 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
+
                                                 </div>
 
+                                                </div>
+                                </div>
+                                <div class="tab-pane" id="payment">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+
                                         </div>
-                                    </div>
-                                    <div class="tab-pane" id="payment">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <h4 class="info-text"> Are you living in a nice area? </h4>
+                                        <div class="col-sm-5 col-sm-offset-7">
+                                            <img src="{% static '/img/creditcards.png'%}">
+                                        </div>
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>{% trans "Name on de Card" %} <small>({% trans "required" %})</small></label>
+                                                {{form_payment.namecard}}
                                             </div>
-                                            <div class="col-sm-5 col-sm-offset-7">
-                                                <img src="{% static '/img/creditcards.png'%}">
+                                        </div>
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>{% trans  "Crad Number" %} <small>({% trans "required" %})</small></label>
+                                                {{form_payment.credicard}}
                                             </div>
-                                             <div class="col-sm-4 col-sm-offset-1">
-                                                <div class="form-group">
-                                                    <label>{% trans "Name on de Card" %} <small>({% trans "required" %})</small></label>
-                                                    {{form_payment.namecard}}
-                                                </div>
+                                        </div>
+                                        <div class="col-sm-2 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>{% trans "Card Expiration Date" %} <small>({% trans "required" %})</small></label>
+                                                {{form_payment.expdate}}
                                             </div>
-                                            <div class="col-sm-4 col-sm-offset-1">
-                                                <div class="form-group">
-                                                    <label>{% trans  "Crad Number" %} <small>({% trans "required" %})</small></label>
-                                                    {{form_payment.credicard}}
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-2 col-sm-offset-1">
-                                                <div class="form-group">
-                                                    <label>{% trans "Card Expiration Date" %} <small>({% trans "required" %})</small></label>
-                                                    {{form_payment.expdate}}
-                                                </div>
-                                            </div>
+                                        </div>
                                             <div class="col-sm-2 col-sm-offset-1">
                                                 <div class="form-group">
                                                     <label>{% trans "Card Security Code" %} <small>({% trans "required" %})</small></label>
@@ -575,6 +576,57 @@
             </div>
         </div><!-- end row -->
     </div> <!--  big container -->
+    <div class="modal" id="select" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title">{% trans "Documents Request" %}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row col-sm-offset-1">
+                                            <h3>{% trans "New Company" %}</h3>
+                                            <ul>
+                                                <li>{% trans "MVR" %}</li>
+                                                <li>{% trans "Copy of current and old driver's license" %}</li>
+                                                <li>{% trans "Tranctor registration" %}</li>
+                                                <li>{% trans "Tranctor title if no registration avaible" %}</li>
+                                                <li>{% trans "Previous Driving experience form" %}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="row col-sm-offset-1">
+                                            <h3>{% trans "For Physical Damage" %}</h3>
+                                            <ul>
+                                                <li>{% trans "MVR" %}</li>
+                                                <li>{% trans "Copy of current and old driver's license" %}</li>
+                                                <li>{% trans "Previous Driving experience form" %}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="row col-sm-offset-1">
+                                            <h3>{% trans "Non Trucker" %}</h3>
+                                            <ul>
+                                                <li>{% trans "Lease agreement contract" %}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="row col-sm-offset-1">
+                                            <h3>{% trans "Renewal" %}</h3>
+                                            <ul>
+                                                <li>{% trans "MVR" %}</li>
+                                                <li>{% trans "Copy of current and old driver's license" %}</li>
+                                                <li>{% trans "Tranctor registration" %}</li>
+                                                <li>{% trans "Tranctor title if no registration avaible" %}</li>
+                                                <li>{% trans "Previous Driving experience form" %}</li>
+                                                <li>{% trans "IFTA-Last 4 quarters" %}</li>
+                                                <li>{% trans "Loss runs for all polices" %}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 </div>
 
 </body>

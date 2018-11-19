@@ -711,3 +711,47 @@ msgstr "LA SOLICITUD FUE ENVIADA SATIFACTORIAMENTE"
 msgid "One of our agents will process your request and communicate with you"
 msgstr "Uno de nuestros agentes procesará su sulicitud y se comunicarad con usted"
 
+#: .\templates\services\customerAplic\customeraplic.html:563
+msgid "Documents Request"
+msgstr "Documentos Requeridos"
+
+#: .\templates\services\customerAplic\customeraplic.html:563
+msgid "MVR"
+msgstr "MVR"
+
+#: .\templates\services\customerAplic\customeraplic.html:563
+msgid "Copy of current and old driver's license"
+msgstr "Copia de Licencia de conductor actual y antigua"
+
+#: .\templates\services\customerAplic\customeraplic.html:563
+msgid "Tranctor registration"
+msgstr "Registracion del Tractor"
+
+#: .\templates\services\customerAplic\customeraplic.html:563
+msgid "Tranctor title if no registration avaible"
+msgstr "Si no tiene la registracion el titulo del tractor "
+
+#: .\templates\services\customerAplic\customeraplic.html:563
+msgid "Previous Driving experience form"
+msgstr "Formulario de Experiencia condiciendo"
+
+#: .\templates\services\customerAplic\customeraplic.html:563
+msgid "Non Trucker"
+msgstr "No camionero"
+
+#: .\templates\services\customerAplic\customeraplic.html:563
+msgid "Lease agreement contract"
+msgstr "Contrato de Arrendamiento"
+
+#: .\templates\services\customerAplic\customeraplic.html:563
+msgid "Renewal"
+msgstr "Renovacion"
+
+#: .\templates\services\customerAplic\customeraplic.html:563
+msgid "IFTA-Last 4 quarters"
+msgstr "IFTA-Pasado 4 cuarto "
+
+#: .\templates\services\customerAplic\customeraplic.html:563
+msgid "Loss runs for all polices"
+msgstr "Perdidas para todas las polisas"
+
