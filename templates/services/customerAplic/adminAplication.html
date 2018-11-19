@@ -2,7 +2,9 @@
 {% block extrastyle %}
 <script type="text/javascript">
     $(document).ready( function () {
-
+       $("#select").on('hidden.bs.modal', function () {
+            location.reload();
+    });
     });
 </script>
 
@@ -30,20 +32,30 @@
                     <th class="col-md-1">Phone</th>
                     <th class="col-md-4">Email</th>
                     <th class="col-md-1"></th>
+                    <th class="col-md-1"></th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for c in customers %}
-                    <tr class="success">
+                {% for c in customers_all %}
+                    <tr {% if c in customers %} class="success" {% endif %}>
                         <td>{{c.fullname}}</td>
                         <td>{{c.address}}</td>
                         <td>{{c.phone}}</td>
                         <td>{{c.email}}</td>
+                        <td>{% if c in customers %}<span class="label label-default text-primary">New</span>{% endif %}</td>
                         <td>
+                            {% if c in customers %}
                             <toolbar class="md-accent">
-                            <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Open Request" type="button" class="text-primary test-tooltip glyphicon glyphicon-check"  href="{% url 'services:customer_process' c.id %}" data-toggle="modal" data-target="#select" >
+                            <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Open Request" type="button" class="text-primary test-tooltip glyphicon glyphicon-check"  href="{% url 'services:customer_process' c.id %}">
                             </a>
                         </toolbar>
+                            {% else %}
+
+                            <toolbar class="md-accent">
+                            <a data-type="info" data-animation="am-flip-x" data-trigger="focus" title="Open Request" type="button" class="text-primary test-tooltip glyphicon glyphicon-edit"  href="{% url 'services:customer_view' c.id 1%}" data-toggle="modal" data-target="#select" >
+                            </a>
+                        </toolbar>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}

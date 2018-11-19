@@ -3,34 +3,34 @@
                 <table id="listDriver" class="data-table table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                     <thead>
                     <tr>
-                        <th class="col-md-2">Name</th>
-                        <th class="col-md-3">License Number</th>
-                        <th class="col-md-3">License Date Expiration</th>
+                        <th class="col-md-2">Date Audit</th>
+                        <th class="col-md-3">Auditor Name</th>
+                        <th class="col-md-3">Contract</th>
                         <th class="col-md-2">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for i in driver %}
-                    <tr {% if i.state == "Initiated" %} class="warning" {% endif %}  {% if i.state == "Pending" %} class="danger" {% endif %} {% if i.state == "Finalized" %} class="success" {% endif %}>
-                        <td><a onclick="openpopup('{% url 'services:driver' pk=i.id_drv popup=1%}')">{{i.name}}</a></td>
-                        <td>{{i.license_numb}}</td>
-                        <td>{{i.lic_date_exp}}</td>
+                    {% for a in audits %}
+                    <tr {% if a.state == "Initiated" %} class="warning" {% endif %}  {% if a.state == "Pending" %} class="danger" {% endif %} {% if a.state == "Finalized" %} class="success" {% endif %}>
+                    <td><a onclick="openpopup('{% url 'services:audit' pk=a.id_aud popup=1%}')">{{a.date}}</a></td>
+                    <td>{{a.auditor_name}}</a></td>
+                    <td><a onclick="openpopup('{% url 'services:contract' pk=a.contracts.id_con popup=1%}')">{{a.contracts}}</a></td>
 
-                        <td>
-                            {% if perms.services.change_audit %}
-                            <toolbar class="md-accent">
-                                <a type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'services:driver_edit' i.id_drv %}"></a>
-                            </toolbar>
-                            {% endif %}
-                            {% if perms.services.delete_audit %}
-                            <toolbar class="md-accent">
-                                <a type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash" href="{% url 'services:driver_delete' i.id_drv %}"></a>
-                            </toolbar>
-                            {% endif %}
-                        </td>
-                        {% endfor %}
+                    <td>
+                        {% if perms.services.change_audit %}
+                        <toolbar class="md-accent">
+                            <a type="button" class="btn btn-primary test-tooltip glyphicon glyphicon-edit" href="{% url 'services:audit_edit' a.id_aud %}"></a>
+                        </toolbar>
+                        {% endif %}
+                        {% if perms.services.delete_audit %}
+                        <toolbar class="md-accent">
+                            <a type="button" class="btn btn-danger test-tooltip glyphicon glyphicon-trash" href="{% url 'services:audit_delete' a.id_aud %}"></a>
+                        </toolbar>
+                        {% endif %}
+                    </td>
+                    {% endfor %}
                     </tr>
                     </tbody>
                 </table>
-            </div>
+    </div>
 </section>

@@ -2226,11 +2226,12 @@ class CustomerAplicView(ListView):
     def get_context_data(self, **kwargs):
         context = super(CustomerAplicView, self).get_context_data(**kwargs)
         customer = []
-        newcustomer = CustomerAplic.objects.all()
+        newcustomer = CustomerAplic.objects.all().order_by('-dateaplic')
         for c in newcustomer:
             if not ProcessAplic.objects.filter(customeraplic=c):
                 customer.append(c)
         context['customers'] = customer
+        context['customers_all'] = newcustomer
         return context
 
 def CustomerAplicCreate(request):
@@ -2397,9 +2398,9 @@ def CustomerAplicCreate(request):
                     v.customeraplic = customer
                     v.save()
             #if form_file.is_valid():
-                #files = form_file.save(commit=False)
-                #for f in files:
-                 #   f.users = user
+               # files = form_file.save(commit=False)
+               # for f in files:
+                #    f.users = user
                  #   f.folders = folder
                   #  f.save()
 
@@ -2418,12 +2419,11 @@ def CustomerAplicCreate(request):
         'form_file' : Form_file
     })
 
+def CustomerProce(request, pk, popup):
 
-
-def CustomerAplicProce(request, pk):
-
-    customer = CustomerAplic.objects.get(id=pk)
-    payment = PaymentInfo.objects.get(customeraplic=customer)
+    newcustomer = CustomerAplic.objects.get(id=pk)
+    payment = PaymentInfo.objects.get(customeraplic=newcustomer)
+    customer = ProcessAplic.objects.get(customeraplic=newcustomer).customers
     company = None
     ifta = None
     driver = None
@@ -2431,34 +2431,187 @@ def CustomerAplicProce(request, pk):
     audit = None
     apportioned = None
     dispatch = None
-    services = ServicesCustomer.objects.filter(customeraplic=customer)
-    files = File.objects.filter(folders=customer.folders).order_by('category')
+    services = ServicesCustomer.objects.filter(customeraplic=newcustomer)
+    files = File.objects.filter(folders=newcustomer.folders).order_by('category')
 
-    if NewCompany.objects.filter(customeraplic=customer):
-        company = NewCompany.objects.get(customeraplic=customer)
+    if NewCompany.objects.filter(customeraplic=newcustomer):
+        company = NewCompany.objects.get(customeraplic=newcustomer)
 
-    if IftaAplic.objects.filter(customeraplic=customer):
-        ifta = IftaAplic.objects.get(customeraplic=customer)
+    if IftaAplic.objects.filter(customeraplic=newcustomer):
+        ifta = IftaAplic.objects.get(customeraplic=newcustomer)
 
-    if DriverAplic.objects.filter(customeraplic=customer):
-        driver= DriverAplic.objects.get(customeraplic=customer)
+    if DriverAplic.objects.filter(customeraplic=newcustomer):
+        driver= DriverAplic.objects.filter(customeraplic=newcustomer)
 
-    if VehicleAplic.objects.filter(customeraplic=customer):
-        vehicle = VehicleAplic.objects.get(customeraplic=customer)
+    if VehicleAplic.objects.filter(customeraplic=newcustomer):
+        vehicle = VehicleAplic.objects.filter(customeraplic=newcustomer)
 
-    if AuditAplic.objects.filter(customeraplic=customer):
-        audit = AuditAplic.objects.get(customeraplic=customer)
+    if AuditAplic.objects.filter(customeraplic=newcustomer):
+        audit = AuditAplic.objects.get(customeraplic=newcustomer)
 
-    if ApportionedAplic.objects.filter(customeraplic=customer):
-        apportioned = ApportionedAplic.objects.get(customeraplic=customer)
+    if ApportionedAplic.objects.filter(customeraplic=newcustomer):
+        apportioned = ApportionedAplic.objects.get(customeraplic=newcustomer)
 
-    if DispatchAplic.objects.filter(customeraplic=customer):
-        dispatch = DispatchAplic.objects.get(customeraplic=customer)
-
-
+    if DispatchAplic.objects.filter(customeraplic=newcustomer):
+        dispatch = DispatchAplic.objects.get(customeraplic=newcustomer)
 
     return render(request, 'services/customerAplic/procecingAplic.html', {
-        'customer': customer,
+        'customer': newcustomer,
+        'payment': payment,
+        'company': company,
+        'ifta': ifta,
+        'driver': driver,
+        'vehicle': vehicle,
+        'audit': audit,
+        'apportioned': apportioned,
+        'dispatch': dispatch,
+        'files': files,
+        'services': services,
+        'customers': customer,
+        'is_popup': popup,
+        'title': 'Process Request'})
+
+
+
+def CustomerAplicProce(request, pk):
+
+    newcustomer = CustomerAplic.objects.get(id=pk)
+    payment = PaymentInfo.objects.get(customeraplic=newcustomer)
+    company = None
+    ifta = None
+    driver = None
+    vehicle = None
+    audit = None
+    apportioned = None
+    dispatch = None
+    busines = Busines.objects.all()
+    services = ServicesCustomer.objects.filter(customeraplic=newcustomer)
+    files = File.objects.filter(folders=newcustomer.folders).order_by('category')
+
+    if NewCompany.objects.filter(customeraplic=newcustomer):
+        company = NewCompany.objects.get(customeraplic=newcustomer)
+
+    if IftaAplic.objects.filter(customeraplic=newcustomer):
+        ifta = IftaAplic.objects.get(customeraplic=newcustomer)
+
+    if DriverAplic.objects.filter(customeraplic=newcustomer):
+        driver= DriverAplic.objects.filter(customeraplic=newcustomer)
+
+    if VehicleAplic.objects.filter(customeraplic=newcustomer):
+        vehicle = VehicleAplic.objects.filter(customeraplic=newcustomer)
+
+    if AuditAplic.objects.filter(customeraplic=newcustomer):
+        audit = AuditAplic.objects.get(customeraplic=newcustomer)
+
+    if ApportionedAplic.objects.filter(customeraplic=newcustomer):
+        apportioned = ApportionedAplic.objects.get(customeraplic=newcustomer)
+
+    if DispatchAplic.objects.filter(customeraplic=newcustomer):
+        dispatch = DispatchAplic.objects.get(customeraplic=newcustomer)
+
+    if request.method == 'POST':
+        customer_exist = Customer.objects.filter(email=newcustomer.email, fullname=newcustomer.fullname)
+        if customer_exist:
+            messages.error(request, 'The customer already exists')
+            return render(request, 'services/customerAplic/procecingAplic.html', {
+                'customer': newcustomer,
+                'payment': payment,
+                'company': company,
+                'ifta': ifta,
+                'driver': driver,
+                'vehicle': vehicle,
+                'audit': audit,
+                'apportioned': apportioned,
+                'dispatch': dispatch,
+                'files': files,
+                'services': services,
+                'busines': busines,
+                'title': 'Process Request'})
+        else:
+            customer = Customer.objects.create(
+                users = request.user,
+                folders =  newcustomer.folders,
+                fullname = newcustomer.fullname,
+                email = newcustomer.email,
+                company_name = newcustomer.company_name,
+                address = newcustomer.address,
+                phone = newcustomer.phone,
+                usdot = newcustomer.usdot,
+                mc = newcustomer.mc,
+                txdmv = newcustomer.txdmv,
+             )
+            customer.business = request.POST.getlist('business')
+            customer.save()
+            if NewCompany.objects.filter(customeraplic=newcustomer):
+               company = NewCompany.objects.get(customeraplic=newcustomer)
+               Permit.objects.create(
+                  users = request.user,
+                  customers = customer
+               )
+
+            if IftaAplic.objects.filter(customeraplic=newcustomer):
+                 ifta = IftaAplic.objects.get(customeraplic=newcustomer)
+                 Ifta.objects.create(
+                    users=request.user,
+                    customers=customer
+                  )
+            if DriverAplic.objects.filter(customeraplic=newcustomer):
+                 driver = DriverAplic.objects.filter(customeraplic=newcustomer)
+                 for d in driver:
+                    Driver.objects.create(
+                        users=request.user,
+                        customers=customer,
+                        name = d.name,
+                        license_numb = d.license_numb,
+                        dob = d.dob,
+                    )
+
+            if VehicleAplic.objects.filter(customeraplic=newcustomer):
+                vehicle = VehicleAplic.objects.filter(customeraplic=newcustomer)
+                for v in vehicle:
+                    Equipment.objects.create(
+                       users=request.user,
+                       customers=customer,
+                       type = v.type,
+                       year = v.year,
+                       model = v.marke,
+                       serial = v.vin
+                    )
+            if VehicleAplic.objects.filter(customeraplic=newcustomer) or DriverAplic.objects.filter(customeraplic=newcustomer):
+                Insurance.objects.create(
+                    users=request.user,
+                    customers=customer,
+                )
+
+            if AuditAplic.objects.filter(customeraplic=newcustomer):
+                audit = AuditAplic.objects.get(customeraplic=newcustomer)
+                Audit.objects.create(
+                    users=request.user,
+                    customers=customer,
+                    folders = newcustomer.folders,
+                    contracts = Contract.objects.create(users=request.user, customers=customer),
+                    auditor_name = audit.auditormane,
+                    date = audit.date,
+                 )
+
+            if ApportionedAplic.objects.filter(customeraplic=newcustomer):
+               apportioned = ApportionedAplic.objects.get(customeraplic=newcustomer)
+
+            if DispatchAplic.objects.filter(customeraplic=newcustomer):
+                dispatch = DispatchAplic.objects.get(customeraplic=newcustomer)
+
+            ProcessAplic.objects.create(
+                customeraplic = newcustomer,
+                customers = customer,
+                users = request.user,
+                state = 'Process'
+            )
+
+            accion_user(customer,ADDITION, request.user)
+            messages.success(request, 'The Customer was saved successfully')
+            return HttpResponseRedirect('/accounting/customers/view/' + str(customer.id_cut))
+    return render(request, 'services/customerAplic/procecingAplic.html', {
+        'customer': newcustomer,
         'payment' : payment,
         'company' : company,
         'ifta' : ifta,
@@ -2469,6 +2622,7 @@ def CustomerAplicProce(request, pk):
         'dispatch' : dispatch,
         'files': files,
         'services' : services,
+        'busines' : busines,
         'title': 'Process Request'})
 
 class CustomerAplicDelete(DeleteView):

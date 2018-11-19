@@ -85,6 +85,7 @@ urlpatterns = [
     #Service Aplication
     url(r'^aplication/newcustomer$', login_required(permission_required('accounting.add_customers')(CustomerAplicView.as_view())), name='customer_aplic'),
     url(r'^aplication/process/(?P<pk>\d+)/$', login_required(permission_required('accounting.add_customers')(CustomerAplicProce)), name='customer_process'),
+    url(r'^aplication/process/(?P<pk>\d+)&(?P<popup>[^/]+)/$', login_required(permission_required('accounting.add_customers')(CustomerProce)), name='customer_view'),
 
 
 
