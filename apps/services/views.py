@@ -2397,12 +2397,12 @@ def CustomerAplicCreate(request):
                 for v in vehicle:
                     v.customeraplic = customer
                     v.save()
-            if form_file.is_valid():
-                files = form_file.save(commit=False)
-                for f in files:
-                    f.users = user
-                    f.folders = folder
-                    f.save()
+            #if form_file.is_valid():
+                #files = form_file.save(commit=False)
+               # for f in files:
+                   # f.users = user
+                   # f.folders = folder
+                    #f.save()
 
             messages.success(request, "Form saved with an extension")
             return render(request, 'services/customerAplic/aplicsucces.html')
