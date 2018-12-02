@@ -83,9 +83,9 @@ urlpatterns = [
     url(r'^dispatch/invoices/print/(?P<pk>\d+)/$', login_required(permission_required('services.add_dispatchload')(InvoicesLog)), name='dispatch_invoice_pdf'),
 
     #Service Aplication
-    url(r'^aplication/newcustomer$', login_required(permission_required('accounting.add_customers')(CustomerAplicView.as_view())), name='customer_aplic'),
-    url(r'^aplication/process/(?P<pk>\d+)/$', login_required(permission_required('accounting.add_customers')(CustomerAplicProce)), name='customer_process'),
-    url(r'^aplication/process/(?P<pk>\d+)&(?P<popup>[^/]+)/$', login_required(permission_required('accounting.add_customers')(CustomerProce)), name='customer_view'),
+    url(r'^aplication/newcustomer$', login_required(permission_required('services.add_processaplic')(CustomerAplicView.as_view())), name='customer_aplic'),
+    url(r'^aplication/process/(?P<pk>\d+)/$', login_required(permission_required('services.add_processaplic')(CustomerAplicProce)), name='customer_process'),
+    url(r'^aplication/process/(?P<pk>\d+)&(?P<popup>[^/]+)/$', login_required(permission_required('services.add_processaplic')(CustomerProce)), name='customer_view'),
 
 
 
