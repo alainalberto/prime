@@ -485,8 +485,8 @@ msgstr "Despachador"
 
 #: .\templates\services\customerAplic\customeraplic.html:165
 #: .\templates\services\customerAplic\customeraplic.html:315
-msgid "DIOT Audit"
-msgstr "DIOT Auditoría"
+msgid "DOT Audit"
+msgstr "DOT Auditoría"
 
 #: .\templates\services\customerAplic\customeraplic.html:176
 msgid "Training"
@@ -672,11 +672,11 @@ msgid "Attach the files required for your services"
 msgstr "Adjunte los archivos requerios para sus servicios"
 
 #: .\templates\services\customerAplic\customeraplic.html:520
-msgid "Name on de Card"
+msgid "Name on Card"
 msgstr "Numero en la Tarjeta"
 
 #: .\templates\services\customerAplic\customeraplic.html:526
-msgid "Crad Number"
+msgid "Card Number"
 msgstr "Numero de Tarjeta"
 
 #: .\templates\services\customerAplic\customeraplic.html:532
@@ -704,7 +704,7 @@ msgid "!!!CONGRATULATIONS!!! "
 msgstr "!!!FELICITACIONES!!! "
 
 #: .\templates\services\customerAplic\aplicsucces.html:67
-msgid "THE APPLICATION WAS SENT SATIFACTORILY"
+msgid "THE APPLICATION WAS SENT SUCCESSFULLY"
 msgstr "LA SOLICITUD FUE ENVIADA SATIFACTORIAMENTE"
 
 #: .\templates\services\customerAplic\aplicsucces.html:70
