@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="Alain: Agrego de Permit en las aplicaciones y botones de alerta">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/services/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/services/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,7 +33,7 @@
           <entry key="js" value="20" />
           <entry key="php" value="1" />
           <entry key="po" value="8" />
-          <entry key="py" value="101" />
+          <entry key="py" value="102" />
           <entry key="rnc" value="2" />
         </counts>
       </usages-collector>
@@ -44,7 +43,7 @@
           <entry key="HTML" value="60" />
           <entry key="JavaScript" value="20" />
           <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Python" value="100" />
+          <entry key="Python" value="101" />
           <entry key="RNG Compact" value="2" />
           <entry key="Scratch" value="1" />
         </counts>
@@ -55,7 +54,7 @@
           <entry key="html" value="10117" />
           <entry key="js" value="239" />
           <entry key="po" value="1830" />
-          <entry key="py" value="10138" />
+          <entry key="py" value="10161" />
           <entry key="txt" value="420" />
         </counts>
       </usages-collector>
@@ -65,7 +64,7 @@
           <entry key="HTML" value="10117" />
           <entry key="JavaScript" value="239" />
           <entry key="PLAIN_TEXT" value="2250" />
-          <entry key="Python" value="10138" />
+          <entry key="Python" value="10161" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -136,8 +135,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="15" column="61" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="61" />
+                <state relative-caret-position="323">
+                  <caret line="61" column="43" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
                 </state>
               </provider>
             </entry>
@@ -149,10 +148,22 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/apps/services/views.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="280">
-                  <caret line="2230" column="30" lean-forward="true" selection-start-line="2230" selection-start-column="30" selection-end-line="2230" selection-end-column="30" />
+                <state relative-caret-position="212">
+                  <caret line="2232" column="14" selection-start-line="2232" selection-start-column="14" selection-end-line="2232" selection-end-column="14" />
                   <folding>
                     <element signature="e#0#52#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Prime/context_processors.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="344">
+                  <caret line="46" column="27" lean-forward="true" selection-start-line="44" selection-start-column="4" selection-end-line="46" selection-end-column="27" />
+                  <folding>
+                    <element signature="e#0#31#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -256,8 +267,8 @@
         <option value="$PROJECT_DIR$/Prime/context_processors.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/services/customerAplic/customeraplic.html" />
-        <option value="$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html" />
         <option value="$PROJECT_DIR$/apps/services/views.py" />
+        <option value="$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html" />
       </list>
     </option>
   </component>
@@ -345,12 +356,6 @@
               <item name="prime" type="b2602c69:ProjectViewProjectNode" />
               <item name="prime" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="prime" type="b2602c69:ProjectViewProjectNode" />
-              <item name="prime" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="prime" type="b2602c69:ProjectViewProjectNode" />
@@ -597,20 +602,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518580326498</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Alain: Arreglos  Alertas">
-      <created>1519780727450</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1519780727450</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Alain: Arreglos1 Permisos">
-      <created>1519832600849</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1519832600849</updated>
     </task>
     <task id="LOCAL-00040" summary="Alain: Arreglos1 Permisos">
       <created>1519843750075</created>
@@ -941,7 +932,21 @@
       <option name="project" value="LOCAL" />
       <updated>1545014317863</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Alain: Agrego de Permit en las aplicaciones y botones de alerta">
+      <created>1545015504305</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1545015504305</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Alain: Agrego de Permit en las aplicaciones y botones de alerta">
+      <created>1545016718046</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1545016718046</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1294,16 +1299,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Prime/context_processors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="50" column="21" lean-forward="true" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/aplicsucces.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
@@ -1360,20 +1355,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html">
+    <entry file="file://$PROJECT_DIR$/Prime/context_processors.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="61" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="61" />
+        <state relative-caret-position="344">
+          <caret line="46" column="27" lean-forward="true" selection-start-line="44" selection-start-column="4" selection-end-line="46" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/services/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="2230" column="30" lean-forward="true" selection-start-line="2230" selection-start-column="30" selection-end-line="2230" selection-end-column="30" />
+        <state relative-caret-position="212">
+          <caret line="2232" column="14" selection-start-line="2232" selection-start-column="14" selection-end-line="2232" selection-end-column="14" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="61" column="43" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
         </state>
       </provider>
     </entry>
