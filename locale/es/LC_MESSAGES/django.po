@@ -755,3 +755,7 @@ msgstr "IFTA-Pasado 4 cuarto "
 msgid "Loss runs for all polices"
 msgstr "Perdidas para todas las polisas"
 
+#: .\templates\services\customerAplic\customeraplic.html:227
+msgid "Permit"
+msgstr "Permiso"
+

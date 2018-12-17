@@ -1,5 +1,5 @@
 from apps.tools.models import *
-from apps.services.models import CustomerHasAlert
+from apps.services.models import CustomerHasAlert, CustomerAplic, ProcessAplic
 from django.contrib.auth.models import User, Group
 from datetime import datetime, date, time, timedelta
 
@@ -10,6 +10,7 @@ def base(request):
     alert = []
     urgent = []
     alerts = []
+    apply = []
 
     alertNot = Alert.objects.filter(category='Notification')
     alertAlt = Alert.objects.filter(category='Alerts')
@@ -40,7 +41,11 @@ def base(request):
             if u.group.filter(name=g.name).exists():
                if u.show_date <= date_now and u.end_date >= date_now:
                   urgent.append(u)
+    newcustomer = CustomerAplic.objects.all().order_by('-dateaplic')
+    for c in newcustomer:
+        if not ProcessAplic.objects.filter(customeraplic=c):
+            apply.append(c)
     all = len(notif) + len(alert) + len(urgent)
     c = Chat.objects.all()
-    contexto = {'notif': len(notif), 'alrt': len(alert), 'urgent': len(urgent), 'all': all, 'chat': c}
+    contexto = {'notif': len(notif), 'alrt': len(alert), 'aplic': len(apply), 'urgent': len(urgent), 'all': all, 'chat': c}
     return (contexto)

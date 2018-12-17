@@ -2363,6 +2363,14 @@ def CustomerAplicCreate(request):
                 else:
                     serv = ServicesAplic.objects.create(service='insurance', description= 'Insurance')
                     ServicesCustomer.objects.create(servicesaplic=serv, customeraplic=customer)
+            if request.POST.get('permit', False):
+                comp = ServicesAplic.objects.filter(service='permit')
+                if comp:
+                    comp = ServicesAplic.objects.get(service='permit')
+                    ServicesCustomer.objects.create(servicesaplic=comp, customeraplic=customer)
+                else:
+                    serv = ServicesAplic.objects.create(service='permit', description= 'Permit')
+                    ServicesCustomer.objects.create(servicesaplic=serv, customeraplic=customer)
             if form_newcompany.is_valid():
                 newcompany = form_newcompany.save(commit=False)
                 newcompany.customeraplic = customer

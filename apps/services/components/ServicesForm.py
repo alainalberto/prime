@@ -394,7 +394,7 @@ class CustomerAplicForm(forms.ModelForm):
             'fullname' : forms.TextInput(attrs={'class': 'form-control upper', 'name': 'fullname', 'required':'true'}),
             'company_name' : forms.TextInput(attrs={'class': 'form-control upper', 'name': 'company_name'}),
             'address' : forms.TextInput(attrs={'class': 'form-control upper', 'name': 'address'}),
-            'phone' : forms.NumberInput(attrs={'class': 'form-control phone', 'name': 'pone', 'required':'true'}),
+            'phone' : forms.NumberInput(attrs={'class': 'form-control phone', 'name': 'phone', 'required':'true'}),
             'email' : forms.EmailInput(attrs={'class': 'form-control lower email', 'name': 'email', 'required':'true'}),
             'usdot' : forms.TextInput(attrs={'class': 'form-control input-md upper', 'name': 'usdot'}),
             'mc' : forms.TextInput(attrs={'class': 'form-control input-md upper', 'name': 'mc'}),

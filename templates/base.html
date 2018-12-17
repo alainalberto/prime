@@ -82,6 +82,9 @@
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
             <li>
+                <a class="" href="{% url 'services:customer_aplic' %}"><span class="badge badge-primary">{{aplic}}</span> <i class="glyphicon glyphicon-send"></i></a>
+            </li>
+            <li>
                 <a tabindex="0" class="dropdown-toggle" role="button" data-toggle="dropdown" data-trigger="focus" title="Chat online">
                     <i class="fa fa-comments"></i>
                     Chat
@@ -269,7 +272,7 @@
                         {% endif %}
                         {% if perms.services.add_processaplic %}
                         <li>
-                            <a class="item" href="{% url 'services:customer_aplic' %}"> Request Services</a>
+                            <a class="item" href="{% url 'services:customer_aplic' %}"> Request Services{% if not aplic == 0 %} <span class="label label-warning text-primary">New</span>{% endif %}</a>
                         </li>
                         {% endif %}
                     </ul>

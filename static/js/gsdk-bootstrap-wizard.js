@@ -26,10 +26,7 @@ $(document).ready(function(){
     // Code for the Validator
     var $validator = $('.wizard-card form').validate({
 		  rules: {
-		    fullname: {
-		      required: false,
-		      minlength: 3
-		    },
+
 		    phone: {
 		      required: true,
 		      minlength: 10
