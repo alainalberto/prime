@@ -2226,7 +2226,11 @@ class CustomerAplicView(ListView):
     def get_context_data(self, **kwargs):
         context = super(CustomerAplicView, self).get_context_data(**kwargs)
         proccustomer = ProcessAplic.objects.all().order_by('update')
-        newcustomer = CustomerAplic.objects.all().order_by('-dateaplic')
+        customer = CustomerAplic.objects.all().order_by('-dateaplic')
+        newcustomer = []
+        for c in customer:
+            if not c.id in proccustomer:
+                newcustomer.append(c)
 
         context['customers_proc'] = proccustomer
         context['customers_new'] = newcustomer
