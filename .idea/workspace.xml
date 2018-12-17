@@ -4,6 +4,7 @@
     <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="Alain: Agrego de Permit en las aplicaciones y botones de alerta">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/services/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/services/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,20 +52,20 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="2" />
-          <entry key="html" value="10115" />
+          <entry key="html" value="10117" />
           <entry key="js" value="239" />
           <entry key="po" value="1830" />
-          <entry key="py" value="10106" />
+          <entry key="py" value="10138" />
           <entry key="txt" value="420" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="2" />
-          <entry key="HTML" value="10115" />
+          <entry key="HTML" value="10117" />
           <entry key="JavaScript" value="239" />
           <entry key="PLAIN_TEXT" value="2250" />
-          <entry key="Python" value="10106" />
+          <entry key="Python" value="10138" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -135,8 +136,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="17" column="46" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
+                <state relative-caret-position="204">
+                  <caret line="15" column="61" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="61" />
                 </state>
               </provider>
             </entry>
@@ -148,8 +149,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/apps/services/views.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="348">
-                  <caret line="2231" column="39" selection-start-line="2231" selection-start-column="39" selection-end-line="2231" selection-end-column="39" />
+                <state relative-caret-position="280">
+                  <caret line="2230" column="30" lean-forward="true" selection-start-line="2230" selection-start-column="30" selection-end-line="2230" selection-end-column="30" />
                   <folding>
                     <element signature="e#0#52#0" expanded="true" />
                   </folding>
@@ -160,8 +161,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/apps/services/models.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1584">
-                  <caret line="347" column="33" lean-forward="true" selection-start-line="347" selection-start-column="33" selection-end-line="347" selection-end-column="33" />
+                <state relative-caret-position="377">
+                  <caret line="285" column="17" selection-start-line="285" selection-start-column="4" selection-end-line="285" selection-end-column="17" />
                   <folding>
                     <element signature="e#0#28#0" expanded="true" />
                     <marker date="1541888541806" expanded="true" signature="13753:13920" ph="..." />
@@ -597,20 +598,6 @@
       <option name="presentableId" value="Default" />
       <updated>1518580326498</updated>
     </task>
-    <task id="LOCAL-00036" summary="Alain: Arreglos Grupos de Alertas">
-      <created>1519779591541</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1519779591541</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Alain: Arreglos Grupos de Alertas">
-      <created>1519780209540</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1519780209540</updated>
-    </task>
     <task id="LOCAL-00038" summary="Alain: Arreglos  Alertas">
       <created>1519780727450</created>
       <option name="number" value="00038" />
@@ -940,7 +927,21 @@
       <option name="project" value="LOCAL" />
       <updated>1545013686827</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="Alain: Agrego de Permit en las aplicaciones y botones de alerta">
+      <created>1545014090626</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1545014090626</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Alain: Agrego de Permit en las aplicaciones y botones de alerta">
+      <created>1545014317863</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1545014317863</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1323,25 +1324,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/procecingAplic.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="58" column="22" lean-forward="true" selection-start-line="55" selection-start-column="16" selection-end-line="58" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/services/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1584">
-          <caret line="347" column="33" lean-forward="true" selection-start-line="347" selection-start-column="33" selection-end-line="347" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <marker date="1541888541806" expanded="true" signature="13753:13920" ph="..." />
-            <marker date="1541888541806" expanded="true" signature="13954:13959" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3451">
@@ -1359,17 +1341,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/apps/services/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="285" column="17" selection-start-line="285" selection-start-column="4" selection-end-line="285" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <marker date="1541888541806" expanded="true" signature="13753:13920" ph="..." />
+            <marker date="1541888541806" expanded="true" signature="13954:13959" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/procecingAplic.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="58" column="22" lean-forward="true" selection-start-line="55" selection-start-column="16" selection-end-line="58" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="17" column="46" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
+        <state relative-caret-position="204">
+          <caret line="15" column="61" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/services/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="2231" column="39" selection-start-line="2231" selection-start-column="39" selection-end-line="2231" selection-end-column="39" />
+        <state relative-caret-position="280">
+          <caret line="2230" column="30" lean-forward="true" selection-start-line="2230" selection-start-column="30" selection-end-line="2230" selection-end-column="30" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
           </folding>

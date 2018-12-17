@@ -2228,9 +2228,9 @@ class CustomerAplicView(ListView):
         proccustomer = ProcessAplic.objects.all().order_by('update')
         customer = CustomerAplic.objects.all().order_by('-dateaplic')
         newcustomer = []
-        for c in customer:
-            for p in proccustomer:
-               if not c.id == p.customeraplic.id:
+        for p in proccustomer:
+            for c in customer:
+               if not c.id == p.customeraplic_id:
                   newcustomer.append(c)
 
         context['customers_proc'] = proccustomer
