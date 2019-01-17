@@ -9,7 +9,7 @@ urlpatterns = [
 
     #Account
     url(r'^accounts/$', login_required(permission_required('accounting.add_account')(AccountsViews)), name='accounts'),
-    url(r'^accounts/create/$', login_required(permission_required('accounting.account.add_account')(AccountCreate.as_view())), name='account_create'),
+    url(r'^accounts/create/$', login_required(permission_required('accounting.add_account')(AccountCreate.as_view())), name='account_create'),
     url(r'^accounts/description/(?P<pk>\d+)/$', login_required(permission_required('accounting.add_accountdescrip')(AccountsDescViews)), name='account_descrip'),
     url(r'^accounts/description/$', login_required(permission_required('accounting.add_accountdescrip')(AccountsDescAllViews)), name='account_descripall'),
     url(r'^accounts/document/(?P<pk>\d+)/$', login_required(permission_required('accounting')(AccountDocument)), name='account_document'),
