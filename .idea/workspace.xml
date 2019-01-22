@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="Alain: Agrego de Permit en las aplicaciones y botones de alerta">
+    <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="Alain: Agrego en Estilo y Account">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/sb-admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/sb-admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/LOGO.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,6 +18,7 @@
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="3" />
+          <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.27" value="1" />
@@ -23,47 +26,47 @@
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.34" value="2" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="8" />
+          <entry key="css" value="14" />
           <entry key="html" value="60" />
           <entry key="js" value="20" />
           <entry key="php" value="1" />
           <entry key="po" value="8" />
-          <entry key="py" value="102" />
+          <entry key="py" value="103" />
           <entry key="rnc" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="8" />
+          <entry key="CSS" value="14" />
           <entry key="HTML" value="60" />
           <entry key="JavaScript" value="20" />
           <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Python" value="101" />
+          <entry key="Python" value="102" />
           <entry key="RNG Compact" value="2" />
           <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="2" />
-          <entry key="html" value="10142" />
+          <entry key="css" value="576" />
+          <entry key="html" value="10153" />
           <entry key="js" value="239" />
           <entry key="po" value="1830" />
           <entry key="py" value="10161" />
-          <entry key="txt" value="420" />
+          <entry key="txt" value="439" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="2" />
-          <entry key="HTML" value="10142" />
+          <entry key="CSS" value="576" />
+          <entry key="HTML" value="10153" />
           <entry key="JavaScript" value="239" />
-          <entry key="PLAIN_TEXT" value="2250" />
+          <entry key="PLAIN_TEXT" value="2269" />
           <entry key="Python" value="10161" />
         </counts>
       </usages-collector>
@@ -78,7 +81,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/customeraplic.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
+                <state relative-caret-position="3162">
                   <caret line="186" column="90" selection-start-line="186" selection-start-column="90" selection-end-line="186" selection-end-column="90" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -90,8 +93,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/aplicsucces.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="448">
-                  <caret line="73" column="48" lean-forward="true" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
+                <state relative-caret-position="1241">
+                  <caret line="73" column="48" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                   </folding>
@@ -111,14 +114,41 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/base.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="372">
-                  <caret line="87" column="23" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
+                <state relative-caret-position="389">
+                  <caret line="82" column="38" selection-start-line="82" selection-start-column="38" selection-end-line="82" selection-end-column="38" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../../prime/static/css/sb-admin.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="323">
+                  <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/apps/accounting/urls.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-51">
+                  <caret line="11" column="77" selection-start-line="11" selection-start-column="77" selection-end-line="11" selection-end-column="77" />
                   <folding>
-                    <element signature="n#style#0;n#iframe#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="e#0#30#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/static/css/rtl.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="334">
+                  <caret line="261" column="19" lean-forward="true" selection-start-line="261" selection-start-column="19" selection-end-line="261" selection-end-column="19" />
                 </state>
               </provider>
             </entry>
@@ -126,16 +156,16 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3451">
-                  <caret line="317" column="26" lean-forward="true" selection-start-line="317" selection-start-column="26" selection-end-line="317" selection-end-column="26" />
+                <state relative-caret-position="5389">
+                  <caret line="317" column="26" selection-start-line="317" selection-start-column="26" selection-end-line="317" selection-end-column="26" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
+                <state relative-caret-position="680">
                   <caret line="61" column="39" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
                 </state>
               </provider>
@@ -145,7 +175,7 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/apps/services/views.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="212">
@@ -157,11 +187,20 @@
               </provider>
             </entry>
           </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/static/css/sb-admin.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="76">
+                  <caret line="36" column="27" lean-forward="true" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Prime/context_processors.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="344">
-                  <caret line="46" column="27" lean-forward="true" selection-start-line="44" selection-start-column="4" selection-end-line="46" selection-end-column="27" />
+                <state relative-caret-position="731">
+                  <caret line="46" column="27" selection-start-line="44" selection-start-column="4" selection-end-line="46" selection-end-column="27" />
                   <folding>
                     <element signature="e#0#31#0" expanded="true" />
                   </folding>
@@ -172,12 +211,10 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/apps/services/models.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="377">
+                <state relative-caret-position="4709">
                   <caret line="285" column="17" selection-start-line="285" selection-start-column="4" selection-end-line="285" selection-end-column="17" />
                   <folding>
                     <element signature="e#0#28#0" expanded="true" />
-                    <marker date="1541888541806" expanded="true" signature="13753:13920" ph="..." />
-                    <marker date="1541888541806" expanded="true" signature="13954:13959" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -186,8 +223,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/locale/es/LC_MESSAGES/django.po">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="495">
-                  <caret line="758" column="14" lean-forward="true" selection-start-line="758" selection-start-column="14" selection-end-line="758" selection-end-column="14" />
+                <state relative-caret-position="12886">
+                  <caret line="758" column="14" selection-start-line="758" selection-start-column="14" selection-end-line="758" selection-end-column="14" />
                 </state>
               </provider>
             </entry>
@@ -195,8 +232,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/procecingAplic.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="346">
-                  <caret line="58" column="22" lean-forward="true" selection-start-line="55" selection-start-column="16" selection-end-line="58" selection-end-column="22" />
+                <state relative-caret-position="986">
+                  <caret line="58" column="22" selection-start-line="55" selection-start-column="16" selection-end-line="58" selection-end-column="22" />
                 </state>
               </provider>
             </entry>
@@ -218,9 +255,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/apps/logistic/views.py" />
-        <option value="$PROJECT_DIR$/templates/services/permit/permitForm.html" />
-        <option value="$PROJECT_DIR$/templates/services/form/fileViews.html" />
         <option value="$PROJECT_DIR$/templates/services/equipment/equipmentView.html" />
         <option value="$USER_HOME$/Envs/virtual_server/Lib/site-packages/django/contrib/admin/widgets.py" />
         <option value="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" />
@@ -267,8 +301,11 @@
         <option value="$PROJECT_DIR$/Prime/context_processors.py" />
         <option value="$PROJECT_DIR$/templates/services/customerAplic/customeraplic.html" />
         <option value="$PROJECT_DIR$/apps/services/views.py" />
-        <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html" />
+        <option value="$PROJECT_DIR$/static/css/sb-admin-rtl.css" />
+        <option value="$PROJECT_DIR$/apps/accounting/urls.py" />
+        <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/static/css/sb-admin.css" />
       </list>
     </option>
   </component>
@@ -356,6 +393,25 @@
               <item name="prime" type="b2602c69:ProjectViewProjectNode" />
               <item name="prime" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prime" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prime" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prime" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prime" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prime" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prime" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+              <item name="icon" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="prime" type="b2602c69:ProjectViewProjectNode" />
@@ -602,13 +658,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518580326498</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Alain: Arreglos1 Permisos">
-      <created>1519843900150</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1519843900150</updated>
     </task>
     <task id="LOCAL-00042" summary="Alain: Arreglos1 Estilo">
       <created>1519846195489</created>
@@ -946,7 +995,14 @@
       <option name="project" value="LOCAL" />
       <updated>1545018149034</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="Alain: Agrego en Estilo y Account">
+      <created>1547700839668</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1547700839670</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -956,6 +1012,7 @@
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.09949303" />
       <window_info id="Structure" order="1" weight="0.24968314" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32957393" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49936628" visible="true" weight="0.14396285" />
@@ -978,23 +1035,24 @@
       <window_info anchor="right" id="SciView" order="5" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13878328" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.09949303" />
       <window_info id="Structure" order="1" weight="0.24968314" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32957393" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49936628" weight="0.14428571" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32972136" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5006337" side_tool="true" weight="0.32884097" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32972136" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32972136" />
+      <window_info anchor="bottom" id="Messages" order="0" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.32957393" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49936628" visible="true" weight="0.14396285" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32972136" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5006337" side_tool="true" weight="0.32884097" />
+      <window_info anchor="bottom" id="Python Console" order="11" weight="0.32972136" />
+      <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.32972136" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1010,7 +1068,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Alain: Arreglos1 Permisos" />
     <MESSAGE value="Alain: Arreglos1 Estilo" />
     <MESSAGE value="Alain: Invoice Load" />
     <MESSAGE value="Alain: Arreglos en las Alerta" />
@@ -1035,40 +1092,10 @@
     <MESSAGE value="Alain: Listados de documentos" />
     <MESSAGE value="Alain: Permisos para mod Aplication" />
     <MESSAGE value="Alain: Agrego de Permit en las aplicaciones y botones de alerta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alain: Agrego de Permit en las aplicaciones y botones de alerta" />
+    <MESSAGE value="Alain: Agrego en Estilo y Account" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alain: Agrego en Estilo y Account" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/js/jquery-2.2.4.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/x-bootstrap-wizard-v1.1.1/x-bootstrap-wizard-v1.1.1/wizard-list-boat.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="36" column="8" lean-forward="true" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/x-bootstrap-wizard-v1.1.1/x-bootstrap-wizard-v1.1.1/wizard-list-place.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="66" column="47" lean-forward="true" selection-start-line="66" selection-start-column="47" selection-end-line="66" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/jquery.bootstrap.wizard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="107" column="42" lean-forward="true" selection-start-line="107" selection-start-column="42" selection-end-line="107" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/services/migrations/0004_auto_20181105_2255.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="211" column="35" selection-start-line="211" selection-start-column="35" selection-end-line="211" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/services/migrations/0005_auto_20181110_1622.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
@@ -1238,33 +1265,11 @@
     <entry file="file://C:/MAMP/htdocs/prime1/wp-settings.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/services/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="85" column="98" selection-start-line="85" selection-start-column="73" selection-end-line="85" selection-end-column="98" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/locale/es/LC_MESSAGES/django.po">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="758" column="14" lean-forward="true" selection-start-line="758" selection-start-column="14" selection-end-line="758" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/gsdk-bootstrap-wizard.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15946">
           <caret line="971" lean-forward="true" selection-start-line="971" selection-end-line="971" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/rtl.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1530" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/app.js">
@@ -1299,19 +1304,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/aplicsucces.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="73" column="48" lean-forward="true" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/customeraplic.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="3162">
           <caret line="186" column="90" selection-start-line="186" selection-start-column="90" selection-end-line="186" selection-end-column="90" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1319,39 +1314,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
+    <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/aplicsucces.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3451">
-          <caret line="317" column="26" lean-forward="true" selection-start-line="317" selection-start-column="26" selection-end-line="317" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/services/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="285" column="17" selection-start-line="285" selection-start-column="4" selection-end-line="285" selection-end-column="17" />
+        <state relative-caret-position="1241">
+          <caret line="73" column="48" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <marker date="1541888541806" expanded="true" signature="13753:13920" ph="..." />
-            <marker date="1541888541806" expanded="true" signature="13954:13959" ph="..." />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/procecingAplic.html">
+    <entry file="file://$PROJECT_DIR$/apps/services/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="58" column="22" lean-forward="true" selection-start-line="55" selection-start-column="16" selection-end-line="58" selection-end-column="22" />
+        <state relative-caret-position="1394">
+          <caret line="85" column="98" selection-start-line="85" selection-start-column="73" selection-end-line="85" selection-end-column="98" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home/complement/panel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5389">
+          <caret line="317" column="26" selection-start-line="317" selection-start-column="26" selection-end-line="317" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="61" column="39" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Prime/context_processors.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="46" column="27" lean-forward="true" selection-start-line="44" selection-start-column="4" selection-end-line="46" selection-end-column="27" />
+        <state relative-caret-position="731">
+          <caret line="46" column="27" selection-start-line="44" selection-start-column="4" selection-end-line="46" selection-end-column="27" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/services/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4709">
+          <caret line="285" column="17" selection-start-line="285" selection-start-column="4" selection-end-line="285" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/locale/es/LC_MESSAGES/django.po">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12886">
+          <caret line="758" column="14" selection-start-line="758" selection-start-column="14" selection-end-line="758" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/procecingAplic.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="58" column="22" selection-start-line="55" selection-start-column="16" selection-end-line="58" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1365,20 +1392,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
+    <entry file="file://$PROJECT_DIR$/../../prime/static/css/sb-admin.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="87" column="23" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
+        <state relative-caret-position="323">
+          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/app.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/sb-admin-rtl.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/accounting/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret line="11" column="77" selection-start-line="11" selection-start-column="77" selection-end-line="11" selection-end-column="77" />
           <folding>
-            <element signature="n#style#0;n#iframe#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/services/customerAplic/adminAplication.html">
+    <entry file="file://$PROJECT_DIR$/static/css/rtl.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="61" column="39" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
+        <state relative-caret-position="334">
+          <caret line="261" column="19" lean-forward="true" selection-start-line="261" selection-start-column="19" selection-end-line="261" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="82" column="38" selection-start-line="82" selection-start-column="38" selection-end-line="82" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/sb-admin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="36" column="27" lean-forward="true" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
         </state>
       </provider>
     </entry>
