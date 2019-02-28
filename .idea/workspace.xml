@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="Alain: Error en las categoria">
+    <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="Alain: Arreglo longitud en los name Item">
+      <change afterPath="$PROJECT_DIR$/apps/accounting/migrations/0008_auto_20190228_1042.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/accounting/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/accounting/models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +35,7 @@
           <entry key="js" value="20" />
           <entry key="php" value="1" />
           <entry key="po" value="8" />
-          <entry key="py" value="110" />
+          <entry key="py" value="117" />
           <entry key="rnc" value="2" />
         </counts>
       </usages-collector>
@@ -45,7 +45,7 @@
           <entry key="HTML" value="62" />
           <entry key="JavaScript" value="20" />
           <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Python" value="109" />
+          <entry key="Python" value="116" />
           <entry key="RNG Compact" value="2" />
           <entry key="Scratch" value="1" />
         </counts>
@@ -57,7 +57,7 @@
           <entry key="js" value="239" />
           <entry key="po" value="1830" />
           <entry key="py" value="10163" />
-          <entry key="txt" value="474" />
+          <entry key="txt" value="507" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -65,7 +65,7 @@
           <entry key="CSS" value="576" />
           <entry key="HTML" value="10154" />
           <entry key="JavaScript" value="239" />
-          <entry key="PLAIN_TEXT" value="2304" />
+          <entry key="PLAIN_TEXT" value="2337" />
           <entry key="Python" value="10163" />
         </counts>
       </usages-collector>
@@ -102,11 +102,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/accounting/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
+            <state relative-caret-position="1438">
               <caret line="204" column="27" lean-forward="true" selection-start-line="204" selection-start-column="27" selection-end-line="204" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/accounting/migrations/0007_auto_20181111_2008.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/apps/accounting/migrations/0008_auto_20190228_1042.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -126,7 +144,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/services/equipment/equipmentView.html" />
         <option value="$USER_HOME$/Envs/virtual_server/Lib/site-packages/django/contrib/admin/widgets.py" />
         <option value="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" />
         <option value="$PROJECT_DIR$/apps/logistic/components/LogisticPDF.py" />
@@ -177,6 +194,7 @@
         <option value="$PROJECT_DIR$/templates/accounting/customer/customerView.html" />
         <option value="$PROJECT_DIR$/apps/services/components/ServicesForm.py" />
         <option value="$PROJECT_DIR$/apps/accounting/models.py" />
+        <option value="$PROJECT_DIR$/apps/accounting/migrations/0008_auto_20190228_1042.py" />
       </list>
     </option>
   </component>
@@ -217,6 +235,26 @@
               <item name="prime" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
               <item name="accounting" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prime" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prime" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="accounting" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prime" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prime" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="logistic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prime" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prime" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="logistic" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="prime" type="b2602c69:ProjectViewProjectNode" />
@@ -436,13 +474,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518580326498</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Alain: Arreglos1 Estilo">
-      <created>1519970303332</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1519970303332</updated>
     </task>
     <task id="LOCAL-00046" summary="Alain: Invoice Load">
       <created>1520388788790</created>
@@ -780,18 +811,26 @@
       <option name="project" value="LOCAL" />
       <updated>1550713485432</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="Alain: Arreglo longitud en los name Item">
+      <created>1551372245992</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1551372245992</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1774398" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1774398" />
       <window_info id="Structure" order="1" weight="0.24968314" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32957393" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49936628" visible="true" weight="0.14285715" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49936628" visible="true" weight="0.14285715" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -845,7 +884,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Alain: Arreglos en las Alerta" />
     <MESSAGE value="Alain: Arreglos Recipt" />
     <MESSAGE value="Alain: Arreglos Form Driver" />
     <MESSAGE value="Alain: Arreglos Tiempo Logout" />
@@ -870,26 +908,10 @@
     <MESSAGE value="Alain: Agrego en Estilo y Account" />
     <MESSAGE value="Alain: Agrego en Estilo responsive" />
     <MESSAGE value="Alain: Error en las categoria" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alain: Error en las categoria" />
+    <MESSAGE value="Alain: Arreglo longitud en los name Item" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alain: Arreglo longitud en los name Item" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/apps/accounting/migrations/0005_auto_20181105_2255.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/services/folder/folderForm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="79" column="28" selection-start-line="61" selection-start-column="19" selection-end-line="79" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/services/form/fileForm.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/logistic/invoiceslog/invoiceslogForm.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -901,30 +923,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="62" column="18" lean-forward="true" selection-start-line="24" selection-start-column="12" selection-end-line="62" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/logistic/migrations/0004_auto_20181105_2255.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/logistic/migrations/0005_auto_20181111_2008.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/logistic/migrations/0003_driverslogt_phone.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/accounting/migrations/0007_auto_20181111_2008.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -1185,10 +1183,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/apps/logistic/migrations/0004_auto_20181105_2255.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/logistic/migrations/0003_driverslogt_phone.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/logistic/migrations/0006_auto_20190228_1042.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/logistic/migrations/0002_auto_20180218_1904.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1020" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/logistic/migrations/0005_auto_20181111_2008.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounting/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
+        <state relative-caret-position="1438">
           <caret line="204" column="27" lean-forward="true" selection-start-line="204" selection-start-column="27" selection-end-line="204" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/accounting/migrations/0007_auto_20181111_2008.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/accounting/migrations/0008_auto_20190228_1042.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
         </state>
       </provider>
     </entry>
