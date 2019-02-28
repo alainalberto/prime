@@ -121,7 +121,7 @@ class Invoice(models.Model):
 
 class Item(models.Model):
     id_ite = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=20, blank=True, null=True)
+    name = models.CharField(max_length=45, blank=True, null=True)
     accounts = models.ForeignKey(Account, on_delete=models.CASCADE)
     value = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
