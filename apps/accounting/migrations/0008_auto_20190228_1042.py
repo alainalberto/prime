@@ -17,10 +17,5 @@ class Migration(migrations.Migration):
             name='name',
             field=models.CharField(blank=True, max_length=45, null=True),
         ),
-        migrations.AlterField(
-
-        ),
-        migrations.AlterField(
-           
-        ),
+        
     ]
