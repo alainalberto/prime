@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="Alain: Arreglo longitud en los name Item">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/accounting/migrations/0008_auto_20190228_1042.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/accounting/migrations/0008_auto_20190228_1042.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prime/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Prime/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -132,8 +132,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Prime/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="119" column="10" lean-forward="true" selection-start-line="119" selection-start-column="10" selection-end-line="119" selection-end-column="10" />
+            <state relative-caret-position="425">
+              <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -169,7 +169,6 @@
         <option value="$PROJECT_DIR$/apps/tools/migrations/0002_busines_email.py" />
         <option value="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" />
         <option value="$PROJECT_DIR$/Prime/urls.py" />
-        <option value="$PROJECT_DIR$/Prime/settings.py" />
         <option value="$PROJECT_DIR$/apps/accounting/components/AccountingForm.py" />
         <option value="$PROJECT_DIR$/templates/accounting/customer/customerForm.html" />
         <option value="$USER_HOME$/Downloads/x-bootstrap-wizard-v1.1.1/x-bootstrap-wizard-v1.1.1/wizard-list-place.html" />
@@ -204,6 +203,7 @@
         <option value="$PROJECT_DIR$/apps/services/components/ServicesForm.py" />
         <option value="$PROJECT_DIR$/apps/accounting/models.py" />
         <option value="$PROJECT_DIR$/apps/accounting/migrations/0008_auto_20190228_1042.py" />
+        <option value="$PROJECT_DIR$/Prime/settings.py" />
       </list>
     </option>
   </component>
@@ -433,13 +433,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518580326498</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Alain: Invoice Load">
-      <created>1520390858318</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1520390858318</updated>
     </task>
     <task id="LOCAL-00049" summary="Alain: Invoice Load">
       <created>1520393821341</created>
@@ -777,11 +770,19 @@
       <option name="project" value="LOCAL" />
       <updated>1551372936581</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="Alain: Arreglo longitud en los name Item">
+      <created>1566157671745</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1566157671746</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1774398" />
       <window_info id="Structure" order="1" weight="0.24968314" />
@@ -1182,8 +1183,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Prime/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="119" column="10" lean-forward="true" selection-start-line="119" selection-start-column="10" selection-end-line="119" selection-end-column="10" />
+        <state relative-caret-position="425">
+          <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
         </state>
       </provider>
     </entry>
