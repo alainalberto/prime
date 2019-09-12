@@ -167,7 +167,7 @@ def Invoices_pdf(request, pk):
 
 
     #Footer
-    p.setFillColor('#B40404')
+    p.setFillColor(str(invoice.business.color))
     p.roundRect(0, 40, 694, 10, 5, fill=1)
     p.setFont('Helvetica', 9)
     p.setFillColorRGB(0, 0, 0)
