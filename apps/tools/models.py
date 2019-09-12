@@ -35,6 +35,7 @@ class Busines(models.Model):
     deactivated = models.BooleanField(default=False)
     date_deactivated = models.DateField(blank=True, null=True)
     messager = models.CharField(max_length=255, blank=True, null=True)
+    color = models.CharField(max_length=45, blank=True, null=True)
 
     def __str__(self):
         return '{}'.format(self.name)

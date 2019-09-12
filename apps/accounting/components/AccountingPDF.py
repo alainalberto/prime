@@ -114,11 +114,15 @@ def Invoices_pdf(request, pk):
 
     #Header
 
-    p.setFillColor('#B40404')
-    p.roundRect(0, 720, 694, 10, 5, fill=1)
+    p.setFillColor(str(invoice.business.color))
+    p.roundRect(0, 715, 694, 10, 5, fill=1)
 
     if invoice.business.logo:
-       p.drawImage('static/media/'+str(invoice.business.logo), 250, 735, width=100, height=100)
+       p.drawImage('static/media/'+str(invoice.business.logo), 250, 740, width=80, height=80)
+
+    p.setFont('Helvetica', 12)
+    p.setFillColor(str(invoice.business.color))
+    p.drawCentredString(300, 730, str(invoice.business.name))
 
     p.setFont('Helvetica', 28)
     p.setFillColor('#000')

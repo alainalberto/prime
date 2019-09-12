@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="Alain: Arreglo longitud en los name Item">
+    <list default="true" id="000e03ee-6b9e-4662-80b5-8c0dc592aef6" name="Default" comment="Alain: Configuracion Servidor">
+      <change afterPath="$PROJECT_DIR$/apps/tools/migrations/0003_busines_color.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prime/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Prime/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/tools/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/tools/models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,17 +17,18 @@
     <session id="433302414">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.24" value="1" />
-          <entry key="project.open.time.26" value="1" />
+          <entry key="project.open.time.26" value="2" />
           <entry key="project.open.time.27" value="1" />
+          <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.31" value="2" />
           <entry key="project.open.time.34" value="3" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -35,7 +38,7 @@
           <entry key="js" value="20" />
           <entry key="php" value="1" />
           <entry key="po" value="8" />
-          <entry key="py" value="118" />
+          <entry key="py" value="120" />
           <entry key="rnc" value="2" />
         </counts>
       </usages-collector>
@@ -45,7 +48,7 @@
           <entry key="HTML" value="62" />
           <entry key="JavaScript" value="20" />
           <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Python" value="117" />
+          <entry key="Python" value="119" />
           <entry key="RNG Compact" value="2" />
           <entry key="Scratch" value="1" />
         </counts>
@@ -56,8 +59,8 @@
           <entry key="html" value="10154" />
           <entry key="js" value="239" />
           <entry key="po" value="1830" />
-          <entry key="py" value="10163" />
-          <entry key="txt" value="507" />
+          <entry key="py" value="10230" />
+          <entry key="txt" value="529" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -65,8 +68,8 @@
           <entry key="CSS" value="576" />
           <entry key="HTML" value="10154" />
           <entry key="JavaScript" value="239" />
-          <entry key="PLAIN_TEXT" value="2337" />
-          <entry key="Python" value="10163" />
+          <entry key="PLAIN_TEXT" value="2359" />
+          <entry key="Python" value="10230" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -106,7 +109,7 @@
         <entry file="file://$PROJECT_DIR$/apps/accounting/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3349">
-              <caret line="204" column="27" lean-forward="true" selection-start-line="204" selection-start-column="27" selection-end-line="204" selection-end-column="27" />
+              <caret line="204" column="27" selection-start-line="204" selection-start-column="27" selection-end-line="204" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -115,7 +118,7 @@
         <entry file="file://$PROJECT_DIR$/apps/accounting/migrations/0007_auto_20181111_2008.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -124,16 +127,37 @@
         <entry file="file://$PROJECT_DIR$/apps/accounting/migrations/0008_auto_20190228_1042.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Prime/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Prime/settings.py">
+        <entry file="file://$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
+            <state relative-caret-position="85">
+              <caret line="127" column="26" selection-start-line="127" selection-start-column="25" selection-end-line="127" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/tools/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="37" column="65" selection-start-line="37" selection-start-column="65" selection-end-line="37" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -153,8 +177,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$USER_HOME$/Envs/virtual_server/Lib/site-packages/django/contrib/admin/widgets.py" />
-        <option value="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" />
         <option value="$PROJECT_DIR$/apps/logistic/components/LogisticPDF.py" />
         <option value="$PROJECT_DIR$/apps/services/components/ServicePDF.py" />
         <option value="$PROJECT_DIR$/apps/tools/urls.py" />
@@ -204,6 +226,8 @@
         <option value="$PROJECT_DIR$/apps/accounting/models.py" />
         <option value="$PROJECT_DIR$/apps/accounting/migrations/0008_auto_20190228_1042.py" />
         <option value="$PROJECT_DIR$/Prime/settings.py" />
+        <option value="$PROJECT_DIR$/apps/tools/models.py" />
+        <option value="$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py" />
       </list>
     </option>
   </component>
@@ -238,36 +262,33 @@
             <path>
               <item name="prime" type="b2602c69:ProjectViewProjectNode" />
               <item name="prime" type="462c0819:PsiDirectoryNode" />
-              <item name="locale" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="prime" type="b2602c69:ProjectViewProjectNode" />
               <item name="prime" type="462c0819:PsiDirectoryNode" />
-              <item name="locale" type="462c0819:PsiDirectoryNode" />
-              <item name="es" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="accounting" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="prime" type="b2602c69:ProjectViewProjectNode" />
               <item name="prime" type="462c0819:PsiDirectoryNode" />
-              <item name="Prime" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="accounting" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="prime" type="b2602c69:ProjectViewProjectNode" />
               <item name="prime" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="prime" type="b2602c69:ProjectViewProjectNode" />
               <item name="prime" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="prime" type="b2602c69:ProjectViewProjectNode" />
-              <item name="prime" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
-              <item name="Forms" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="prime" type="b2602c69:ProjectViewProjectNode" />
@@ -433,13 +454,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518580326498</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Alain: Invoice Load">
-      <created>1520393821341</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1520393821341</updated>
     </task>
     <task id="LOCAL-00050" summary="Alain: Invoice Load">
       <created>1520395705153</created>
@@ -777,19 +791,26 @@
       <option name="project" value="LOCAL" />
       <updated>1566157671746</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="Alain: Configuracion Servidor">
+      <created>1566339953469</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1566339953470</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1774398" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12737642" />
       <window_info id="Structure" order="1" weight="0.24968314" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32957393" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49936628" visible="true" weight="0.14285715" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49936628" visible="true" weight="0.14285715" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -843,7 +864,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Alain: Arreglos Recipt" />
     <MESSAGE value="Alain: Arreglos Form Driver" />
     <MESSAGE value="Alain: Arreglos Tiempo Logout" />
     <MESSAGE value="Alain: Arreglos Envio Email" />
@@ -868,16 +888,10 @@
     <MESSAGE value="Alain: Agrego en Estilo responsive" />
     <MESSAGE value="Alain: Error en las categoria" />
     <MESSAGE value="Alain: Arreglo longitud en los name Item" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alain: Arreglo longitud en los name Item" />
+    <MESSAGE value="Alain: Configuracion Servidor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alain: Configuracion Servidor" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/logistic/invoiceslog/invoiceslogForm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="330" column="63" selection-start-line="330" selection-start-column="56" selection-end-line="330" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/logistic/drivers/driversViews.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -1100,13 +1114,6 @@
     <entry file="file://$PROJECT_DIR$/apps/tools/views.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/tools/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="80" column="7" selection-start-line="80" selection-start-column="7" selection-end-line="80" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/services/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5618">
@@ -1163,28 +1170,45 @@
     <entry file="file://$PROJECT_DIR$/apps/accounting/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3349">
-          <caret line="204" column="27" lean-forward="true" selection-start-line="204" selection-start-column="27" selection-end-line="204" selection-end-column="27" />
+          <caret line="204" column="27" selection-start-line="204" selection-start-column="27" selection-end-line="204" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounting/migrations/0007_auto_20181111_2008.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounting/migrations/0008_auto_20190228_1042.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Prime/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
+        <state relative-caret-position="119">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/tools/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="37" column="65" selection-start-line="37" selection-start-column="65" selection-end-line="37" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/accounting/components/AccountingPDF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="127" column="26" selection-start-line="127" selection-start-column="25" selection-end-line="127" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
