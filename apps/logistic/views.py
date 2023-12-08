@@ -1,7 +1,7 @@
 import datetime
 from django.contrib.auth.models import Group
 from django.shortcuts import render, redirect, HttpResponseRedirect, HttpResponse
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from apps.logistic.components.LogisticForm import *
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.contrib import messages

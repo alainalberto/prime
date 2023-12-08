@@ -84,31 +84,31 @@
                     <div class="form-group col-md-3 col-md-offset-1">
                         <label class="label-control">Period Beginning:</label>
                         {{ form.start_date }}
-                        {{ form.start_date.error }}
+                        {{ form.start_date.errors }}
                     </div>
                     <div class="form-group col-md-3 col-md-offset-1">
                         <label class="label-control">Period Ending:</label>
                           {{form.end_date}}
-                          {{form.end_date.error}}
+                          {{form.end_date.errors}}
                     </div>
                     <div class="form-group col-md-3 col-md-offset-1">
                         <label class="label-control">Pay Date:</label>
                         <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
                             {{form.pay_date}}
-                            {{form.pay_date.error}}
+                            {{form.pay_date.errors}}
                             <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
                         </div>
                     </div>
                     <div class="form-group col-md-3 col-md-offset-1">
                         <label class="label-control">{{ form.business.label }} </label>
                         {{ form.business }}
-                        {{ form.business.error }}
+                        {{ form.business.errors }}
                     </div>
                     <!-- Select Basic -->
                     <div class="form-group col-md-3 col-md-offset-1">
                         <label class="label-control">{{ form.waytopay.label }} </label>
                         {{ form.waytopay }}
-                        {{ form.waytopay.error }}
+                        {{ form.waytopay.errors }}
                     </div>
                     <div class="form-group col-md-3 col-md-offset-1">
                         <label class="label-control">Select Account:</label>

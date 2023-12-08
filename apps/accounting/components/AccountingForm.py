@@ -1,5 +1,5 @@
 from django import forms
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.html import format_html
 
 from apps.accounting.models import *
@@ -10,7 +10,7 @@ from django.core.exceptions import ValidationError
 
 class CustomerChainedSelectWidget(forms.Select):
     def render_option(self, selected_choices, option_value, option_label):
-        option_value = force_text(option_value)
+        option_value = force_str(option_value)
         if option_value in selected_choices:
             selected_html = mark_safe(u' selected="selected"')
             if not self.allow_multiple_selected:
@@ -26,7 +26,7 @@ class CustomerChainedSelectWidget(forms.Select):
                            option_value,
                            selected_html,
                            customer_reference,
-                           force_text(option_label))
+                           force_str(option_label))
 
 
 class AccountForm(forms.ModelForm):
@@ -148,83 +148,82 @@ class EmployeesForm(forms.ModelForm):
             'deactivated': forms.CheckboxInput(attrs={'data-off-color':"danger", 'class':"switch", 'data-size':"mini", 'data-on-text':"YES", 'data-off-text': "NO"}),
         }
 
+class AccountingForm(forms.Form):
+    type_salary = forms.Select(attrs={'class': 'form-control input-md'}, choices=(('commission', 'Commission'), ('salary', 'Salary'), ('hour', 'Per Hour')))
+    value = forms.NumberInput(attrs={'placeholder': 'Value', 'class': 'form-control input-md'})
+    position = forms.TextInput(attrs={'placeholder': 'Position', 'class': 'form-control input-md upper'})
+    deactivated = forms.CheckboxInput(attrs={'data-off-color': "danger", 'class': "switch", 'data-size': "mini", 'data-on-text': "YES", 'data-off-text': "NO"})
 
 class InvoicesForm(forms.ModelForm):
-
-         class Meta:
-            model = Invoice
-
-            fields = [
-                'business',
-                'start_date',
-                'waytopay',
-                'discount',
-                'paid',
-                'prefix',
-                'end_date',
-                'subtotal',
-                'total',
-                'customers',
-                'comission_fee',
-                'wire_fee',
-                'ach_fee',
-                'note',
-            ]
-            labels = {
-                'business': 'Business:',
-                'start_date': 'Start Date:',
-                'waytopay': 'Payment Method:',
-                'discount': 'Discount:',
-                'paid': 'Paid:',
-                'prefix': 'Prefix:',
-                'end_date': 'End Date:',
-                'subtotal': 'Subtotal:',
-                'total': 'Total:',
-            }
-            widgets = {
-                'business': forms.Select(attrs={'class': 'form-control input-md'}),
-                'start_date': forms.DateInput(attrs={'placeholder': 'Start Date', 'class': 'form-control input-md'}),
-                'waytopay': forms.Select(attrs={'class': 'form-control input-md'},choices=(('Cash','Cash'),('Check','Check'),('Credit Card','Credit Card'))),
-                'paid': forms.CheckboxInput(attrs={'data-off-color':"danger", 'class':"switch",  'data-size':"mini", 'data-on-text':"YES", 'data-off-text': "NO"}),
-                'prefix': forms.TextInput(attrs={'placeholder': 'Prefix', 'class': 'form-control input-md upper'}),
-                'end_date': forms.DateInput(attrs={'placeholder': 'End Date', 'class': 'form-control input-md'}),
-                'discount': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control discount fee'}),
-                'subtotal': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control servSutotal', 'readonly':''}),
-                'total': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control serviTotal', 'readonly':''}),
-                'customers': CustomerChainedSelectWidget(attrs={'class': 'form-control input-md'}),
-                'comission_fee': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control comission fee'}),
-                'wire_fee': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control wire fee'}),
-                'ach_fee': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control ach fee'}),
-                'note': forms.Textarea(attrs={'class': 'form-control input-md upper'}),
-            }
+    class Meta:
+        model = Invoice
+        fields = [
+            'business',
+            'start_date',
+            'waytopay',
+            'discount',
+            'paid',
+            'prefix',
+            'end_date',
+            'subtotal',
+            'total',
+            'customers',
+            'commission_fee',
+            'wire_fee',
+            'ach_fee',
+            'note',
+        ]
+        labels = {
+            'business': 'Business:',
+            'start_date': 'Start Date:',
+            'waytopay': 'Payment Method:',
+            'discount': 'Discount:',
+            'paid': 'Paid:',
+            'prefix': 'Prefix:',
+            'end_date': 'End Date:',
+            'subtotal': 'Subtotal:',
+            'total': 'Total:',
+        }
+        widgets = {
+            'business': forms.Select(attrs={'class': 'form-control input-md'}),
+            'start_date': forms.DateInput(attrs={'placeholder': 'Start Date', 'class': 'form-control input-md'}),
+            'waytopay': forms.Select(attrs={'class': 'form-control input-md'}, choices=(('Cash', 'Cash'), ('Check', 'Check'), ('Credit Card', 'Credit Card'))),
+            'paid': forms.CheckboxInput(attrs={'data-off-color': "danger", 'class': "switch", 'data-size': "mini", 'data-on-text': "YES", 'data-off-text': "NO"}),
+            'prefix': forms.TextInput(attrs={'placeholder': 'Prefix', 'class': 'form-control input-md upper'}),
+            'end_date': forms.DateInput(attrs={'placeholder': 'End Date', 'class': 'form-control input-md'}),
+            'discount': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control discount fee'}),
+            'subtotal': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control servSutotal', 'readonly': ''}),
+            'total': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control serviTotal', 'readonly': ''}),
+            'customers': CustomerChainedSelectWidget(attrs={'class': 'form-control input-md'}),
+            'comission_fee': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control comission fee'}),
+            'wire_fee': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control wire fee'}),
+            'ach_fee': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control ach fee'}),
+            'note': forms.Textarea(attrs={'class': 'form-control input-md upper'}),
+        }
 
 class ItemHasInvoiceForm(forms.ModelForm):
-
     class Meta:
         model = InvoicesHasItem
-        fields = {
-            'id_ind',
+        fields = [
+            'id',
             'quantity',
             'description',
             'value',
             'tax',
             'subtotal',
-        }
+        ]
         widgets = {
-            'id_ind': forms.NumberInput(attrs={'placeholder': '0', 'class': 'form-control', 'style':'display : none'}),
+            'id': forms.NumberInput(attrs={'placeholder': '0', 'class': 'form-control', 'style': 'display : none'}),
             'quantity': forms.NumberInput(attrs={'placeholder': '0', 'class': 'form-control entrada'}),
             'description': forms.TextInput(attrs={'placeholder': 'Description ', 'class': 'form-control input-md descript'}),
             'value': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control precie'}),
             'tax': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control tax'}),
-            'subtotal': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control subtotal', 'readonly':''}),
+            'subtotal': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control subtotal', 'readonly': ''}),
         }
 
-
 class ReceiptsForm(forms.ModelForm):
-
     class Meta:
         model = Receipt
-
         fields = [
             'business',
             'start_date',
@@ -246,8 +245,7 @@ class ReceiptsForm(forms.ModelForm):
         widgets = {
             'business': forms.Select(attrs={'class': 'form-control input-md'}),
             'start_date': forms.DateInput(attrs={'placeholder': 'Start Date', 'class': 'form-control input-md'}),
-            'waytopay': forms.Select(attrs={'class': 'form-control input-md'},
-                                     choices=(('Cash', 'Cash'), ('Check', 'Check'), ('Credit Card', 'Credit Card'))),
+            'waytopay': forms.Select(attrs={'class': 'form-control input-md'}, choices=(('Cash', 'Cash'), ('Check', 'Check'), ('Credit Card', 'Credit Card'))),
             'paid': forms.CheckboxInput(attrs={'class': 'checkbox'}),
             'end_date': forms.DateInput(attrs={'placeholder': 'End Date', 'class': 'form-control input-md'}),
             'description': forms.Textarea(attrs={'placeholder': 'Description', 'class': 'form-control input-md'}),
@@ -255,45 +253,39 @@ class ReceiptsForm(forms.ModelForm):
         }
 
 class PaymentForm(forms.ModelForm):
-       class Meta:
-            model = Payment
-
-            fields = [
-                'business',
-                'start_date',
-                'end_date',
-                'pay_date',
-                'regular_hours',
-                'overtime_hours',
-                'gross',
-                'discount',
-                'value',
-                'waytopay',
-                'note',
-                'paid'
-            ]
-            widgets = {
-                'business': forms.Select(attrs={'class': 'form-control input-md'}),
-                'start_date': forms.DateInput(attrs={'placeholder': 'Select Date', 'class': 'form-control input-md', 'readonly': ''}),
-                'end_date': forms.DateInput(attrs={'placeholder': 'Select Date', 'class': 'form-control input-md', 'readonly': ''}),
-                'pay_date': forms.DateInput(attrs={'placeholder': 'Select Date', 'class': 'form-control input-md'}),
-                'regular_hours': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control discount'}),
-                'overtime_hours': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control discount'}),
-                'discount': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control discount'}),
-                'value': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control total', 'readonly': ''}),
-                'waytopay': forms.Select(attrs={'class': 'form-control input-md'},
-                                         choices=(('Cash', 'Cash'), ('Check', 'Check'), ('Credit Card', 'Credit Card'))),
-                'note': forms.Textarea(attrs={'class': 'form-control input-md upper'}),
-                'paid': forms.CheckboxInput(
-                    attrs={'data-off-color': "danger", 'class': "switch", 'data-size': "mini", 'data-on-text': "YES",
-                           'data-off-text': "NO"}),
-            }
-
+    class Meta:
+        model = Payment
+        fields = [
+            'business',
+            'start_date',
+            'end_date',
+            'pay_date',
+            'regular_hours',
+            'overtime_hours',
+            'gross',
+            'discount',
+            'value',
+            'waytopay',
+            'note',
+            'paid'
+        ]
+        widgets = {
+            'business': forms.Select(attrs={'class': 'form-control input-md'}),
+            'start_date': forms.DateInput(attrs={'placeholder': 'Select Date', 'class': 'form-control input-md', 'readonly': ''}),
+            'end_date': forms.DateInput(attrs={'placeholder': 'Select Date', 'class': 'form-control input-md', 'readonly': ''}),
+            'pay_date': forms.DateInput(attrs={'placeholder': 'Select Date', 'class': 'form-control input-md'}),
+            'regular_hours': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control discount'}),
+            'overtime_hours': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control discount'}),
+            'discount': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control discount'}),
+            'value': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control total', 'readonly': ''}),
+            'waytopay': forms.Select(attrs={'class': 'form-control input-md'}, choices=(('Cash', 'Cash'), ('Check', 'Check'), ('Credit Card', 'Credit Card'))),
+            'note': forms.Textarea(attrs={'class': 'form-control input-md upper'}),
+            'paid': forms.CheckboxInput(attrs={'data-off-color': "danger", 'class': "switch", 'data-size': "mini", 'data-on-text': "YES", 'data-off-text': "NO"}),
+        }
 
 class PaymentDriverForm(forms.ModelForm):
     class Meta:
         model = DriversHasPayment
-
         fields = [
             'company_fee',
             'porc_company',
@@ -307,7 +299,7 @@ class PaymentDriverForm(forms.ModelForm):
             'total_owner',
         ]
         widgets = {
-            'company_fee': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control col-md-4', 'readonly':''}),
+            'company_fee': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control col-md-4', 'readonly': ''}),
             'porc_company': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control col-md-1'}),
             'pre_pass': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control'}),
             'escrow': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control'}),
@@ -315,65 +307,58 @@ class PaymentDriverForm(forms.ModelForm):
             'insurance': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control'}),
             'diesel': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control'}),
             'other': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control'}),
-            'total_driver': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control', 'readonly':''}),
-            'total_owner': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control', 'readonly':''}),
+            'total_driver': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control', 'readonly': ''}),
+            'total_owner': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control', 'readonly': ''}),
         }
-
 
 class InvoiceLoadForm(forms.ModelForm):
     class Meta:
         model = InvoicesHasLoad
-        fields = {
-            'id_inl',
+        fields = [
+            'id',
             'loads',
-        }
+        ]
         widgets = {
-            'id_inl': forms.NumberInput(attrs={'placeholder': '0', 'class': 'form-control', 'style': 'display : none'}),
+            'id': forms.NumberInput(attrs={'placeholder': '0', 'class': 'form-control', 'style': 'display : none'}),
             'loads': forms.Select(attrs={'class': 'form-control input-md load_id', 'name': 'load_id'}),
         }
 
 class FeeLoadForm(forms.ModelForm):
     class Meta:
         model = LoadsHasFee
-        fields = {
-            'id_lfe',
+        fields = [
+            'id',
             'fee',
             'value',
-
-        }
+        ]
         widgets = {
-            'id_inl': forms.NumberInput(attrs={'placeholder': '0', 'class': 'form-control', 'style': 'display : none'}),
+            'id': forms.NumberInput(attrs={'placeholder': '0', 'class': 'form-control', 'style': 'display : none'}),
             'fee': forms.Select(attrs={'class': 'form-control input-md load_id', 'name': 'load_id'}),
             'value': forms.NumberInput(attrs={'placeholder': '0.00', 'class': 'form-control fee-value', 'readonly': ''}),
         }
 
-
 class FeeForm(forms.ModelForm):
     class Meta:
         model = Fee
-        fields = {
+        fields = [
             'accounts',
             'description',
             'type',
             'value',
-
-        }
+        ]
         widgets = {
             'accounts': forms.Select(attrs={'class': 'form-control input-md', 'name': 'account'}),
             'description': forms.Textarea(attrs={'placeholder': 'Description', 'class': 'form-control input-md'}),
-            'type': forms.Select(attrs={'class': 'form-control input-md'},choices=(('pervent','Commission'),('salary','Salary'))),
+            'type': forms.Select(attrs={'class': 'form-control input-md'}, choices=(('pervent', 'Commission'), ('salary', 'Salary'))),
             'value': forms.NumberInput(attrs={'placeholder': '0', 'class': 'form-control', 'style': 'display : none'}),
         }
 
 class NoteForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = {
+        fields = [
             'note',
-        }
+        ]
         widgets = {
             'note': forms.Textarea(attrs={'class': 'form-control fee-value upper'}),
         }
-
-
-

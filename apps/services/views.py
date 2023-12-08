@@ -2,7 +2,7 @@ from django.core.mail import send_mail, EmailMessage
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.forms import inlineformset_factory
 from django.shortcuts import render, HttpResponseRedirect
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.contrib.admin.models import ADDITION, CHANGE, DELETION
 from django.contrib.auth.models import Group, GroupManager
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
@@ -21,7 +21,7 @@ from apps.services.components.ServicesForm import *
 from apps.tools.components.AlertForm import AlertForm
 from apps.services.models import *
 from apps.accounting.models import Customer
-from apps.logistic.models import CustomerHasLoad, Load, DispatchLoadHasLoad
+from apps.logistic.models import CustomerHasLoad, Load, DispatchLogtHasLoad
 from apps.tools.models import Folder, Busines, File, Alert
 from datetime import datetime, date, time, timedelta
 from Prime.util import accion_user

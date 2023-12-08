@@ -1,54 +1,54 @@
 {% extends 'base.html' %}
 {% block extrastyle %}
 <script type="text/javascript">
- $(document).ready( function () {
-   $("#employee").click(function() {
+    $(document).ready( function () {
+    $("#employee").click(function() {
 
-            $('#employees').attr("style", "display : initial;");
-            $('#employees').attr("required", "");
-            $(this).addClass("btn-primary");
-            $('#id_type').val("employee");
+                $('#employees').attr("style", "display : initial;");
+                $('#employees').attr("required", "");
+                $(this).addClass("btn-primary");
+                $('#id_type').val("employee");
 
-            $('#dispatchs').attr("style", "display : none;");
-            $('#dispatchs').removeAttr("required");
-            $('#dispatch').removeClass("btn-primary");
+                $('#dispatchs').attr("style", "display : none;");
+                $('#dispatchs').removeAttr("required");
+                $('#dispatch').removeClass("btn-primary");
 
-            $('#drivers').attr("style", "display : none;");
-            $('#drivers').removeAttr("required");
-            $('#driver').removeClass("btn-primary");
+                $('#drivers').attr("style", "display : none;");
+                $('#drivers').removeAttr("required");
+                $('#driver').removeClass("btn-primary");
+        });
+
+        $("#driver").click(function() {
+                $('#drivers').attr("style", "display : initial;");
+                $('#drivers').attr("required", "");
+                $(this).addClass("btn-primary");
+                $('#id_type').val("driver");
+
+                $('#dispatchs').attr("style", "display : none;");
+                $('#dispatchs').removeAttr("required");
+                $('#dispatch').removeClass("btn-primary");
+
+                $('#employees').attr("style", "display : none;");
+                $('#employees').removeAttr("required");
+                $('#employee').removeClass("btn-primary");
+        });
+
+        $("#dispatch").click(function() {
+                $('#dispatchs').attr("style", "display : initial;");
+                $('#dispatchs').attr("required", "");
+                $(this).addClass("btn-primary");
+                $('#id_type').val("dispatch");
+
+                $('#drivers').attr("style", "display : none;");
+                $('#drivers').removeAttr("required");
+                $('#driver').removeClass("btn-primary");
+
+                $('#employees').attr("style", "display : none;");
+                $('#employees').removeAttr("required");
+                $('#employee').removeClass("btn-primary");
+        });
+
     });
-
-    $("#driver").click(function() {
-            $('#drivers').attr("style", "display : initial;");
-            $('#drivers').attr("required", "");
-            $(this).addClass("btn-primary");
-            $('#id_type').val("driver");
-
-            $('#dispatchs').attr("style", "display : none;");
-            $('#dispatchs').removeAttr("required");
-            $('#dispatch').removeClass("btn-primary");
-
-            $('#employees').attr("style", "display : none;");
-            $('#employees').removeAttr("required");
-            $('#employee').removeClass("btn-primary");
-    });
-
-    $("#dispatch").click(function() {
-            $('#dispatchs').attr("style", "display : initial;");
-            $('#dispatchs').attr("required", "");
-            $(this).addClass("btn-primary");
-            $('#id_type').val("dispatch");
-
-            $('#drivers').attr("style", "display : none;");
-            $('#drivers').removeAttr("required");
-            $('#driver').removeClass("btn-primary");
-
-            $('#employees').attr("style", "display : none;");
-            $('#employees').removeAttr("required");
-            $('#employee').removeClass("btn-primary");
-    });
-
-});
 </script>
 {% endblock %}
 {% block content %}
@@ -69,47 +69,43 @@
                 <fieldset>
                     <div class="form-group col-md-5 col-md-offset-4">
                         <label class="label-control">Select One:</label>
-                    <div class="btn-group" data-toggle="buttons" >
+                        <div class="btn-group" data-toggle="buttons" >
 
-                        <button name="employee" class="btn" id="employee" > Employee</button>
+                            <button name="employee" class="btn" id="employee" > Employee</button>
 
-                        <button  name="dispatch"  class="btn" id="dispatch" > Dispatch</button>
+                            <button  name="dispatch"  class="btn" id="dispatch" > Dispatch</button>
 
-                        <button name="driver" id="driver"  class="btn" > Driver</button>
-                        <input id="id_type" name="type" value="" style="display:none">
-
-                    </div>
+                            <button name="driver" id="driver"  class="btn" > Driver</button>
+                            <input id="id_type" name="type" value="" style="display:none">
+                        </div>
                     </div>
                     <div class="form-group col-md-4 col-md-offset-4" id="employees" style="display:none">
-                            <label class="label-control">Select Employee:</label>
-
-                            <select id="id_employee" class="form-control input-md" name="lstemployee">
-                                <option value="" selected>---------</option>
-                                {% for a in employees %}
-                                <option value="{{a.id_emp}}" class="{{a.business.id_bus}}">{{a}}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
+                        <label class="label-control">Select Employee:</label>
+                        <select id="id_employee" class="form-control input-md" name="lstemployee">
+                            <option value="" selected>---------</option>
+                            {% for a in employees %}
+                            <option value="{{a.id_emp}}" class="{{a.business.id_bus}}">{{a}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                     <div class="form-group col-md-4 col-md-offset-4" id="drivers" style="display:none">
-                            <label class="label-control">Select Driver:</label>
-
-                            <select id="id_driver" class="form-control input-md" name="lstdriver">
-                                <option value="" selected>---------</option>
-                                {% for a in drivers %}
-                                <option value="{{a.id_dr}}" class="{{a.business.id_bus}}">{{a}}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
+                        <label class="label-control">Select Driver:</label>
+                        <select id="id_driver" class="form-control input-md" name="lstdriver">
+                            <option value="" selected>---------</option>
+                            {% for a in drivers %}
+                            <option value="{{a.id_dr}}" class="{{a.business.id_bus}}">{{a}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                     <div class="form-group col-md-4 col-md-offset-4" id="dispatchs" style="display:none">
-                            <label class="label-control">Select Dispatch:</label>
-
-                            <select id="id_dispatch" class="form-control input-md" name="lstdispatch">
-                                <option value="" selected>---------</option>
-                                {% for a in dispatchs %}
-                                <option value="{{a.id_dsp}}" class="{{a.business.id_bus}}">{{a}}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
+                        <label class="label-control">Select Dispatch:</label>
+                        <select id="id_dispatch" class="form-control input-md" name="lstdispatch">
+                            <option value="" selected>---------</option>
+                            {% for a in dispatchs %}
+                            <option value="{{a.id_dsp}}" class="{{a.business.id_bus}}">{{a}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                     <div class="form-group col-md-3 col-md-offset-2">
                         <label class="label-control">Period Beginning:</label>
                         <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
@@ -131,7 +127,6 @@
                 </div>
             </form>
         </div>
-    </div>
     </div>
 </section>
 {% endblock %}

@@ -3,7 +3,11 @@
 <p class="paginator">
 {% if pagination_required %}
 {% for i in page_range %}
-    {% paginator_number cl i %}
+    {% if i == cl.page_num %}
+        <span class="current-page">{{ i }}</span>
+    {% else %}
+        <a href="{{ cl.get_query_string }}" class="page-link">{{ i }}</a>
+    {% endif %}
 {% endfor %}
 {% endif %}
 {{ cl.result_count }} {% if cl.result_count == 1 %}{{ cl.opts.verbose_name }}{% else %}{{ cl.opts.verbose_name_plural }}{% endif %}

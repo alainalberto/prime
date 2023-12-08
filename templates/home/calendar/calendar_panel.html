@@ -8,19 +8,19 @@
 <script type="text/javascript">
  $(document).ready( function () {
      $('#calendar').fullCalendar({
-			header: {
-				left: 'prev,next today',
+			headerToolbar: {
+				start: 'prev,next today',
 				center: 'title',
-				right: 'month,agendaWeek,agendaDay,listMonth'
+				end: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
 			},
 
-			defaultDate: new Date(),
+			initialDate: new Date(),
 			navLinks: true, // can click day/week names to navigate views
 			businessHours: true, // display business hours
 			editable: true,
 			events: {
                      url: '/panel/calendar/list/',
-                     data: function() { // a function that returns an object
+                     extraParams: function() { // a function that returns an object
                             return {
                             dynamic_value: Math.random()
                             };
@@ -47,9 +47,9 @@
         </div>
         <div class="panel-body">
             <div class="navbar-button">
-                <a id="btnAdd" class="btn-primary btn col-md-offset-11" role="button" data-trigger="focus" title="Add new Event" href="{% url 'panel:calendar_create' %}">
+                <a id="btnAdd" class="btn-primary btn col-md-offset-11" role="button" data-bs-toggle="tooltip" title="Add new Event" href="{% url 'panel:calendar_create' %}">
                     <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
-                    <tooltip md-direction="left">Add</tooltip>
+                    <span>Add</span>
                 </a>
             </div>
             <br/>

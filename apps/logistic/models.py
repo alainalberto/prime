@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 from apps.accounting.models import Account, Invoice, Fee, Payment
 
-from apps.services.models import Customer, Driver, DispatchLoad
+from apps.services.models import *
 
 from apps.tools.models import Busines
 
@@ -12,7 +12,7 @@ from apps.tools.models import Busines
 
 
 class TrucksLogt(models.Model):
-    id_tuk = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     users = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
     business = models.ForeignKey(Busines, blank=True, null=True, on_delete=models.CASCADE)
     type = models.CharField(max_length=45, blank=True, null=True)
@@ -29,7 +29,7 @@ class TrucksLogt(models.Model):
         return '{}'.format(self.number)
 
 class DriversLogt(models.Model):
-    id_dr = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     users = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=45, blank=True, null=True)
     ssn = models.CharField(max_length=10, blank=True, null=True)
@@ -56,7 +56,7 @@ class DriversLogt(models.Model):
         return '{}'.format(self.name)
 
 class DispatchLogt(models.Model):
-    id_dsp = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     users = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=45, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)
@@ -69,7 +69,7 @@ class DispatchLogt(models.Model):
 
 
 class Load(models.Model):
-    id_lod = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     users = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)  # Field name made lowercase.
     driver = models.ForeignKey(DriversLogt, blank=True, null=True, on_delete=models.CASCADE)
     dispatch = models.ForeignKey(DispatchLogt, blank=True, null=True, on_delete=models.CASCADE)
@@ -88,7 +88,7 @@ class Load(models.Model):
         return '{}'.format(self.number)
 
 class Diesel(models.Model):
-    id_dse = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     users = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)  # Field name made lowercase.
     driver = models.ForeignKey(DriversLogt, blank=True, null=True, on_delete=models.CASCADE)
     date_start = models.DateField(blank=True, null=True)
@@ -100,7 +100,7 @@ class Diesel(models.Model):
         return '{}'.format(self.driver.name)
 
 class PermissionsLogt(models.Model):
-    id_prm = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     users = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)  # Field name made lowercase.
     business = models.ForeignKey(Busines, blank=True, null=True, on_delete=models.CASCADE)
     date = models.DateField(blank=True, null=True)
@@ -120,7 +120,7 @@ class PermissionsLogt(models.Model):
 
 
 class InsuranceLogt(models.Model):
-    id_inr = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     users = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)  # Field name made lowercase.
     accounts = models.ForeignKey(Account, blank=True, null=True, on_delete=models.CASCADE)  # Field name made lowercase.
     business = models.ForeignKey(Busines, blank=True, null=True, on_delete=models.CASCADE)
@@ -141,7 +141,7 @@ class InsuranceLogt(models.Model):
 
 
 class IftaLogt(models.Model):
-    id_ift = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     trucks = models.ForeignKey(TrucksLogt, on_delete=models.CASCADE)  # Field name made lowercase.
     users = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)  # Field name made lowercase.
     driver = models.ForeignKey(DriversLogt, on_delete=models.CASCADE)  # Field name made lowercase.
@@ -152,7 +152,7 @@ class IftaLogt(models.Model):
 
 
 class TravelExpense(models.Model):
-    id_tre = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     accounts = models.ForeignKey(Account, on_delete=models.CASCADE)  # Field name made lowercase.
     users = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)  # Field name made lowercase.
     driver = models.ForeignKey(DriversLogt, on_delete=models.CASCADE)  # Field name made lowercase.
@@ -162,19 +162,19 @@ class TravelExpense(models.Model):
 
 
 class LoadsHasFee(models.Model):
-    id_lfe = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     loads = models.ForeignKey(Load, on_delete=models.CASCADE)  # Field name made lowercase.
     fee = models.ForeignKey(Fee, on_delete=models.CASCADE)  # Field name made lowercase.
     value = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
 
 class InvoicesHasLoad(models.Model):
-    id_inl = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     invoices = models.ForeignKey(Invoice, on_delete=models.CASCADE)  # Field name made lowercase.
     loads = models.ForeignKey(Load, on_delete=models.CASCADE)  # Field name made lowercase.
 
 
 class DriversHasPayment(models.Model):
-    id_pym = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     payments = models.ForeignKey(Payment, on_delete=models.CASCADE)  # Field name made lowercase.
     driver = models.ForeignKey(DriversLogt, on_delete=models.CASCADE)  # Field name made lowercase.
     company_fee = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
@@ -190,27 +190,27 @@ class DriversHasPayment(models.Model):
 
 
 class DispatchHasPayment(models.Model):
-    id_pym = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     payments = models.ForeignKey(Payment, on_delete=models.CASCADE)  # Field name made lowercase.
     dispatch = models.ForeignKey(DispatchLogt, on_delete=models.CASCADE)  # Field name made lowercase.
 
 class PaymentHasLoad(models.Model):
-    id_pyl = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     payments = models.ForeignKey(Payment, on_delete=models.CASCADE)  # Field name made lowercase.
     loads = models.ForeignKey(Load, on_delete=models.CASCADE)  # Field name made lowercase.
 
 class CustomerHasLoad(models.Model):
-    id_csl = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     customers = models.ForeignKey(Customer, on_delete=models.CASCADE)  # Field name made lowercase.
     loads = models.ForeignKey(Load, on_delete=models.CASCADE)
     driver = models.ForeignKey(Driver, on_delete=models.CASCADE)
 
-class DispatchLoadHasLoad(models.Model):
-    id_inl = models.AutoField(primary_key=True)
-    invoices = models.ForeignKey(DispatchLoad, on_delete=models.CASCADE)  # Field name made lowercase.
+class DispatchLogtHasLoad(models.Model):
+    id = models.AutoField(primary_key=True)
+    invoices = models.ForeignKey(DispatchLogt, on_delete=models.CASCADE)  # Field name made lowercase.
     loads = models.ForeignKey(Load, on_delete=models.CASCADE)  # Field name made lowercase.
 
 class BusinessHasLoad(models.Model):
-    id_bsl = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     business = models.ForeignKey(Busines, on_delete=models.CASCADE)  # Field name made lowercase.
     loads = models.ForeignKey(Load, on_delete=models.CASCADE)

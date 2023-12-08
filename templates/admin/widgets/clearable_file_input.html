@@ -3,4 +3,4 @@
 <input type="checkbox" name="{{ checkbox_name }}" id="{{ checkbox_id }}" />
 <label for="{{ checkbox_id }}">{{ clear_checkbox_label }}</label>{% endif %}</span><br />
 {{ input_text }}:{% endif %}
-<input type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %} />{% if is_initial %}</p>{% endif %}
+<input type="{{ widget.input_type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %} />{% if is_initial %}</p>{% endif %}

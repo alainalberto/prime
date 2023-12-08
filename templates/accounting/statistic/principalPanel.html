@@ -3,16 +3,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js"></script>
 <script type="text/javascript">
         var ctx = document.getElementById("st-bybusiness");
-        var incomes = JSON.parse('{{ incomes_total_j }}');
-        var expenses = JSON.parse('{{ expenses_total_j }}');
-         var earning = JSON.parse('{{ earning_total_j }}');
+        var incomes = JSON.parse('{{ incomes_total_j|safe }}');
+        var expenses = JSON.parse('{{ expenses_total_j|safe }}');
+        var earning = JSON.parse('{{ earning_total_j|safe }}');
         var productsChart = new Chart(ctx, {
             type: 'line',
             data: {
-                   labels: {'Incomes', 'Expenses', 'Earning'}
+                   labels: ['Incomes', 'Expenses', 'Earning'],
                    datasets: [{
                                label: 'Produtos',
-                               data: incomes, expenses, earning
+                               data: [incomes, expenses, earning],
                                backgroundColor: [
                                      'rgba(255, 99, 132, 0.2)',
                                      'rgba(54, 162, 235, 0.2)',
@@ -34,11 +34,9 @@
             },
             options: {
                 scales: {
-                   yAxes: [{
-                      ticks: {
-                         beginAtZero:true
-                      }
-                   }]
+                   y: {
+                      beginAtZero:true
+                   }
                 }
             }
         });

@@ -9,7 +9,7 @@ from reportlab.pdfgen import canvas
 from django.http import HttpResponse
 from reportlab.platypus import Paragraph, Table, TableStyle
 from apps.services.models import *
-from apps.logistic.models import DispatchLoadHasLoad, Load, CustomerHasLoad
+from apps.logistic.models import DispatchLogtHasLoad, Load, CustomerHasLoad
 
 def PendingListPDF(request):
     permit = Permit.objects.all()
@@ -58,33 +58,33 @@ def PendingListPDF(request):
     stylesBD.fontSize = 8
     high = 730
     for pr in permit:
-     this_permit = [Paragraph(str(pr.customers),stylesBD), Paragraph('Permit',stylesBD), Paragraph(str(pr.name),stylesBD), Paragraph(str(pr.update),stylesBD), Paragraph(str(pr.users),stylesBD)]
-     data.append(this_permit)
-     high = high - 25
+        this_permit = [Paragraph(str(pr.customers),stylesBD), Paragraph('Permit',stylesBD), Paragraph(str(pr.name),stylesBD), Paragraph(str(pr.update),stylesBD), Paragraph(str(pr.users),stylesBD)]
+        data.append(this_permit)
+        high = high - 25
     for i in insurance:
-     this_insurance = [Paragraph(str(i.customers),stylesBD), Paragraph('Insurance',stylesBD), Paragraph(str(i.sale_type),stylesBD), Paragraph(str(i.update),stylesBD), Paragraph(str(i.users),stylesBD)]
-     data.append(this_insurance)
-     high = high - 25
+        this_insurance = [Paragraph(str(i.customers),stylesBD), Paragraph('Insurance',stylesBD), Paragraph(str(i.sale_type),stylesBD), Paragraph(str(i.update),stylesBD), Paragraph(str(i.users),stylesBD)]
+        data.append(this_insurance)
+        high = high - 25
     for e in equipment:
-     this_equipment = [Paragraph(str(e.customers),stylesBD), Paragraph('Equipment',stylesBD), Paragraph('Serial Number: '+str(e.serial),stylesBD), Paragraph(str(e.update),stylesBD), Paragraph(str(e.users),stylesBD)]
-     data.append(this_equipment)
-     high = high - 25
+        this_equipment = [Paragraph(str(e.customers),stylesBD), Paragraph('Equipment',stylesBD), Paragraph('Serial Number: '+str(e.serial),stylesBD), Paragraph(str(e.update),stylesBD), Paragraph(str(e.users),stylesBD)]
+        data.append(this_equipment)
+        high = high - 25
     for it in ifta:
-     this_ifta = [Paragraph(str(it.customers),stylesBD), Paragraph('IFTA',stylesBD), Paragraph('Type: '+str(it.type),stylesBD), Paragraph(str(it.update),stylesBD), Paragraph(str(it.users),stylesBD)]
-     data.append(this_ifta)
-     high = high - 25
+        this_ifta = [Paragraph(str(it.customers),stylesBD), Paragraph('IFTA',stylesBD), Paragraph('Type: '+str(it.type),stylesBD), Paragraph(str(it.update),stylesBD), Paragraph(str(it.users),stylesBD)]
+        data.append(this_ifta)
+        high = high - 25
     for c in contract:
-     this_contrac = [Paragraph(str(c.customers),stylesBD), Paragraph('Contract',stylesBD), Paragraph('Serial: '+str(c.serial),stylesBD), Paragraph(str(c.update),stylesBD), Paragraph(str(c.users),stylesBD)]
-     data.append(this_contrac)
-     high = high - 25
+        this_contrac = [Paragraph(str(c.customers),stylesBD), Paragraph('Contract',stylesBD), Paragraph('Serial: '+str(c.serial),stylesBD), Paragraph(str(c.update),stylesBD), Paragraph(str(c.users),stylesBD)]
+        data.append(this_contrac)
+        high = high - 25
     for a in audit:
-     this_audit = [Paragraph(str(a.customers),stylesBD), Paragraph('Audit',stylesBD), Paragraph('Type: '+str(a.type),stylesBD), Paragraph(str(a.update),stylesBD), Paragraph(str(a.users),stylesBD)]
-     data.append(this_audit)
-     high = high - 25
+        this_audit = [Paragraph(str(a.customers),stylesBD), Paragraph('Audit',stylesBD), Paragraph('Type: '+str(a.type),stylesBD), Paragraph(str(a.update),stylesBD), Paragraph(str(a.users),stylesBD)]
+        data.append(this_audit)
+        high = high - 25
     for d in driver:
-     this_driver = [Paragraph(str(d.customers),stylesBD), Paragraph('Driver',stylesBD), Paragraph('Name: '+str(d.name),stylesBD), Paragraph(str(d.update),stylesBD), Paragraph(str(d.users),stylesBD)]
-     data.append(this_driver)
-     high = high - 25
+        this_driver = [Paragraph(str(d.customers),stylesBD), Paragraph('Driver',stylesBD), Paragraph('Name: '+str(d.name),stylesBD), Paragraph(str(d.update),stylesBD), Paragraph(str(d.users),stylesBD)]
+        data.append(this_driver)
+        high = high - 25
     width, height = A4
     table = Table(data, colWidths=[4 * cm, 2 * cm, 7 * cm, 2.5 * cm, 3.5 * cm])
     #table.setStyle(TableStyle([

@@ -1,71 +1,71 @@
 {% extends 'base.html' %}
 {% block extrastyle %}
 <script type="text/javascript">
- function openpopup(url){
-   newwindow = window.open(url,'popup',' location=1, directories=0, resizable=0, width=500,height=700,Top=20,Left=490');
-   if (window.focus) {newwindow.focus()}
-   return false;
- }
- function closepopup(){
-   window.opener.location.href=window.opener.location.href;
-   window.close();
-   return false;
- }
- $(document).ready( function () {
+    function openpopup(url){
+    newwindow = window.open(url,'popup',' location=1, directories=0, resizable=0, width=500,height=700,Top=20,Left=490');
+    if (window.focus) {newwindow.focus()}
+    return false;
+    }
+    function closepopup(){
+    window.opener.location.href=window.opener.location.href;
+    window.close();
+    return false;
+    }
+    $(document).ready( function () {
 
-{% if employee.type_salary == 'hour' %}
-    $(function() {
-       $("#id_accounts").chained("#id_business");
-       cal();
+        {% if employee.type_salary == 'hour' %}
+            $(function() {
+            $("#id_accounts").chained("#id_business");
+            cal();
+            });
+            function cal (){
+            var regular = parseFloat($('#id_regular_hours').val()|| 0);
+            var overtime = parseFloat($('#id_overtime_hours').val()|| 0);
+            var rate = parseFloat($('#rate').val()|| 0);
+            var rateovertimer = rate*1.5
+            var discounts = parseFloat($('#id_discount').val()|| 0);
+            var gross = (regular*rate)+(overtime*rateovertimer)
+            var net = gross-discounts
+            $('#gross').val(gross);
+            $('#id_value').val(net);
+            };
+    {% endif %}
+
+    {% if employee.type_salary == 'commission' %}
+        $(function() {
+        $("#id_accounts").chained("#id_business");
+        $('#gross').removeAttr("readonly");
+        cal();
+        });
+        function cal (){
+        var rate = parseFloat($('#rate').val()|| 0);
+        var discounts = parseFloat($('#id_discount').val()|| 0);
+        var gross = parseFloat($('#gross').val()|| 0);
+        var net = ((gross*rate)/100)-discounts
+        $('#id_value').val(net);
+        };
+    {% endif %}
+
+    {% if employee.type_salary == 'salary' %}
+        $(function() {
+        $("#id_accounts").chained("#id_business");
+        $('#gross').removeAttr("readonly");
+        $('#gross').val({{employee.value}});
+        cal();
+        });
+        function cal (){
+        var discounts = parseFloat($('#id_discount').val()|| 0);
+        var gross = parseFloat($('#gross').val()|| 0);
+        var net = gross-discounts
+        $('#id_value').val(net);
+        };
+    {% endif %}
+
+    $("#id_regular_hours, #id_discount, #rate, #id_overtime_hours").on("change", function() {
+        cal();
+        });
+
     });
-    function cal (){
-       var regular = parseFloat($('#id_regular_hours').val()|| 0);
-       var overtime = parseFloat($('#id_overtime_hours').val()|| 0);
-       var rate = parseFloat($('#rate').val()|| 0);
-       var rateovertimer = rate*1.5
-       var discounts = parseFloat($('#id_discount').val()|| 0);
-       var gross = (regular*rate)+(overtime*rateovertimer)
-       var net = gross-discounts
-       $('#gross').val(gross);
-       $('#id_value').val(net);
-    };
-  {% endif %}
-
-  {% if employee.type_salary == 'commission' %}
-    $(function() {
-       $("#id_accounts").chained("#id_business");
-       $('#gross').removeAttr("readonly");
-       cal();
-    });
-    function cal (){
-       var rate = parseFloat($('#rate').val()|| 0);
-       var discounts = parseFloat($('#id_discount').val()|| 0);
-       var gross = parseFloat($('#gross').val()|| 0);
-       var net = ((gross*rate)/100)-discounts
-       $('#id_value').val(net);
-    };
-  {% endif %}
-
-  {% if employee.type_salary == 'salary' %}
-    $(function() {
-       $("#id_accounts").chained("#id_business");
-       $('#gross').removeAttr("readonly");
-       $('#gross').val({{employee.value}});
-       cal();
-    });
-    function cal (){
-       var discounts = parseFloat($('#id_discount').val()|| 0);
-       var gross = parseFloat($('#gross').val()|| 0);
-       var net = gross-discounts
-       $('#id_value').val(net);
-    };
-  {% endif %}
-
-   $("#id_regular_hours, #id_discount, #rate, #id_overtime_hours").on("change", function() {
-       cal();
-    });
-
-});
 </script>
 {% endblock %}
 {% block content %}
@@ -166,7 +166,6 @@
                 </div>
             </form>
         </div>
-    </div>
     </div>
 </section>
 {% endblock %}

@@ -1,27 +1,28 @@
-    {% for bus in business %}
-    <div class="col-lg-6 col-md-6">
-        <p class="bg-primary text-center">{{bus.name}}</p>
-        <div class="table-responsive">
-        <table id="tbinc" class="table data-table table-bordered table-hover table-striped">
-            <thead>
-            <tr>
-                <th>Incomes</th>
-                <th>Expenses</th>
-                <th>Earning</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for b in balance %}
-            {% if bus == b.business %}
-            <tr>
-                <td>$ {{b.incomes|default:'0'}}</td>
-                <td>$ {{b.expenses|default:'0'}}</td>
-                <td {% if b.earning < 0 %} class="danger" {% endif %}>$ {{b.earning|default:'0'}}</td>
-            </tr>
-            {% endif %}
-            {% endfor %}
-            </tbody>
-        </table>
-            </div>
-    </div>
-    {% endfor %}
+{% for bus in business %}
+<div class="col-lg-6 col-md-6">
+    <p class="bg-primary text-center">{{bus.name}}</p>
+    <div class="table-responsive">
+    <table id="tbinc" class="table data-table table-bordered table-hover table-striped">
+        <thead>
+        <tr>
+            <th>Incomes</th>
+            <th>Expenses</th>
+            <th>Earning</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for b in balance %}
+        {% if bus == b.business %}
+        <tr>
+            <td>$ {{b.incomes|default:'0'}}</td>
+            <td>$ {{b.expenses|default:'0'}}</td>
+            <td {% if b.earning < 0 %} class="danger" {% endif %}>$ {{b.earning|default:'0'}}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+        </div>
+</div>
+{% endfor %}
+

@@ -1,11 +1,9 @@
 from django.db import models
-
 from django.contrib.auth.models import User
-
 from apps.tools.models import Folder, File, Alert
-
 from apps.accounting.models import Customer, Invoice
-
+from .models import *
+from apps.tools.models import Folder, File, Alert
 from datetime import datetime
 
 # Create your models here.
@@ -15,7 +13,7 @@ class CountState(models.Manager):
         return self.filter(state=state, customers = customer ).count()
 
 class Permit(models.Model):
-    id_com = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     users = models.ForeignKey(User, on_delete=models.CASCADE)  # Field name made lowercase.
     customers = models.ForeignKey(Customer, on_delete=models.CASCADE)  # Field name made lowercase.
     is_new = models.BooleanField(default=True)
@@ -59,7 +57,7 @@ class Permit(models.Model):
 
 
 class Equipment(models.Model):
-    id_tru = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     users = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     customers = models.ForeignKey(Customer, on_delete=models.CASCADE)  # Field name made lowercase.
     type = models.CharField(max_length=45, blank=True, null=True)
@@ -84,10 +82,10 @@ class Equipment(models.Model):
 
 
 class Contract(models.Model):
-    id_con = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     customers = models.ForeignKey(Customer, on_delete=models.CASCADE)
     users = models.ForeignKey(User, on_delete=models.CASCADE)  # Field name made lowercase.
-    files = models.ForeignKey(File, blank=True, null=True)  # Field name made lowercase.
+    files = models.ForeignKey(File, on_delete=models.CASCADE, blank=True, null=True)  # Field name made lowercase.
     description = models.CharField(max_length=255, blank=True, null=True)
     serial = models.CharField(max_length=20, blank=True, null=True)
     start_date = models.DateField(blank=True, null=True)
@@ -101,7 +99,7 @@ class Contract(models.Model):
         return '{} {}'.format(self.type, self.serial)
 
 class Audit(models.Model):
-    id_aud = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     folders = models.ForeignKey(Folder, on_delete=models.CASCADE)  # Field name made lowercase.
     contracts = models.ForeignKey(Contract, on_delete=models.CASCADE)  # Field name made lowercase.
     customers = models.ForeignKey(Customer, on_delete=models.CASCADE)  # Field name made lowercase.
@@ -120,7 +118,7 @@ class Audit(models.Model):
         return '{}'.format(self.customers)
 
 class Driver(models.Model):
-    id_drv = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     customers = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)  # Field name made lowercase.
     users = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, blank=True, null=True)
@@ -146,7 +144,7 @@ class Driver(models.Model):
         return '{}'.format(self.name)
 
 class Insurance(models.Model):
-    id_ins = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     users = models.ForeignKey(User, on_delete=models.CASCADE)  # Field name made lowercase.
     customers = models.ForeignKey(Customer, on_delete=models.CASCADE)  # Field name made lowercase.
     down_payment = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
@@ -183,9 +181,9 @@ class Insurance(models.Model):
 
 
 class Ifta(models.Model):
-    id_ift = models.AutoField(primary_key=True)
-    users = models.ForeignKey(User, on_delete=models.CASCADE)  # Field name made lowercase.
-    customers = models.ForeignKey(Customer, on_delete=models.CASCADE)  # Field name made lowercase.
+    id = models.AutoField(primary_key=True)
+    users = models.ForeignKey(User, on_delete=models.CASCADE)
+    customers = models.ForeignKey(Customer, on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
     type = models.CharField(max_length=45, blank=True, null=True)
     period = models.CharField(max_length=45, blank=True, null=True)
@@ -199,13 +197,14 @@ class Ifta(models.Model):
     def __str__(self):
         return '{}'.format(self.type)
 
+
 class DispatchLoad(models.Model):
-    id_inv = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     biller = models.CharField(max_length=45, blank=True, null=True)
     biller_address = models.CharField(max_length=100, blank=True, null=True)
-    biller_email = models.EmailField( blank=True, null=True)
-    customers = models.ForeignKey(Customer, on_delete=models.CASCADE)  # Field name made lowercase.
-    users = models.ForeignKey(User,  on_delete=models.CASCADE)  # Field name made lowercase.
+    biller_email = models.EmailField(blank=True, null=True)
+    customers = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    users = models.ForeignKey(User, on_delete=models.CASCADE)
     serial = models.IntegerField()
     type = models.CharField(max_length=20, blank=True, null=True)
     start_date = models.DateField(default=datetime.now().strftime("%Y-%m-%d"))
@@ -225,7 +224,7 @@ class DispatchLoad(models.Model):
 
 
 class Application(models.Model):
-    id_apl = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     date = models.DateTimeField(blank=True, null=True)
     fullname = models.CharField(max_length=20)
     company_name = models.CharField(max_length=100, blank=True, null=True)
@@ -251,15 +250,10 @@ class Application(models.Model):
 
 
 class CustomerHasAlert(models.Model):
-    id_cal = models.AutoField(primary_key=True)
-    customers = models.ForeignKey(Customer, on_delete=models.CASCADE)  # Field name made lowercase.
+    id = models.AutoField(primary_key=True)
+    customers = models.ForeignKey(Customer, on_delete=models.CASCADE)
     alert = models.ForeignKey(Alert, on_delete=models.CASCADE)
 
-
-class ServicesAplic(models.Model):
-    id = models.AutoField(primary_key=True)
-    service = models.CharField(max_length=100)
-    description = models.CharField(max_length=255, blank=True, null=True)
 
 class CustomerAplic(models.Model):
     id = models.AutoField(primary_key=True)
@@ -273,13 +267,20 @@ class CustomerAplic(models.Model):
     mc = models.CharField(max_length=20, blank=True, null=True)
     txdmv = models.CharField(max_length=20, blank=True, null=True)
     dateaplic = models.DateTimeField(default=datetime.now().strftime("%Y-%m-%d %H:%M"))
+
     def __str__(self):
         return '{}'.format(self.fullname)
 
+class ServicesAplic(models.Model):
+    id = models.AutoField(primary_key=True)
+    service = models.CharField(max_length=100)
+    description = models.CharField(max_length=255, blank=True, null=True)
+    
 class ServicesCustomer(models.Model):
     id = models.AutoField(primary_key=True)
     servicesaplic = models.ForeignKey(ServicesAplic, on_delete=models.CASCADE)
     customeraplic = models.ForeignKey(CustomerAplic, on_delete=models.CASCADE)
+
 
 class PaymentInfo(models.Model):
     id = models.AutoField(primary_key=True)
@@ -289,6 +290,7 @@ class PaymentInfo(models.Model):
     securitycode = models.CharField(max_length=5)
     expdate = models.CharField(max_length=5)
 
+
 class NewCompany(models.Model):
     id = models.AutoField(primary_key=True)
     customeraplic = models.ForeignKey(CustomerAplic, on_delete=models.CASCADE)
@@ -296,6 +298,7 @@ class NewCompany(models.Model):
     name2 = models.CharField(max_length=100)
     name3 = models.CharField(max_length=100)
     licdriver = models.CharField(max_length=25)
+
 
 class IftaAplic(models.Model):
     id = models.AutoField(primary_key=True)
@@ -305,6 +308,7 @@ class IftaAplic(models.Model):
     rootingnumb = models.CharField(max_length=100)
     accountnumb = models.CharField(max_length=100)
 
+
 class DispatchAplic(models.Model):
     id = models.AutoField(primary_key=True)
     customeraplic = models.ForeignKey(CustomerAplic, on_delete=models.CASCADE)
@@ -313,6 +317,7 @@ class DispatchAplic(models.Model):
     refer = models.BooleanField(default=False)
     other = models.BooleanField(default=False)
     otherdescrp = models.CharField(max_length=100, blank=True, null=True)
+
 
 class AuditAplic(models.Model):
     id = models.AutoField(primary_key=True)
@@ -332,7 +337,7 @@ class ApportionedAplic(models.Model):
     companyein = models.CharField(max_length=100)
     unitnumb = models.CharField(max_length=50, blank=True, null=True)
     vin = models.CharField(max_length=100, blank=True, null=True)
-    irpacount= models.CharField(max_length=100, blank=True, null=True)
+    irpacount = models.CharField(max_length=100, blank=True, null=True)
 
 
 class DriverAplic(models.Model):
@@ -359,21 +364,13 @@ class VehicleAplic(models.Model):
 class ProcessAplic(models.Model):
     id = models.AutoField(primary_key=True)
     customeraplic = models.ForeignKey(CustomerAplic, on_delete=models.CASCADE)
-    customers = models.ForeignKey(Customer)
+    customers = models.ForeignKey(Customer, on_delete=models.CASCADE)
     users = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     state = models.CharField(max_length=45, blank=True, null=True)
     update = models.DateTimeField(default=datetime.now().strftime("%Y-%m-%d %H:%M"))
+
 
 class FilesAplic(models.Model):
     id = models.AutoField(primary_key=True)
     customeraplic = models.ForeignKey(CustomerAplic, on_delete=models.CASCADE)
     flies = models.ForeignKey(File, on_delete=models.CASCADE)
-
-
-
-
-
-
-
-
-

@@ -1,11 +1,9 @@
 from django.core.mail.backends import console
 from django.db.models import Sum
 from django.shortcuts import render, redirect
-from django.shortcuts import render, render_to_response, HttpResponseRedirect, HttpResponse
-from django.contrib.auth.models import User, Group
-from django.http import JsonResponse
-from django.core.urlresolvers import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DeleteView, View, TemplateView
+from django.http import JsonResponse, HttpResponse
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView, TemplateView
 from django.contrib.admin.models import ADDITION, CHANGE, DELETION
 from Prime.util import accion_user
 from apps.accounting.models import AccountDescrip, Account
@@ -19,23 +17,23 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from datetime import datetime, date, time, timedelta
 from django.core.mail import send_mail
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.conf import settings
 
-# Create your views here.
+
+
 def pagination(request, objects):
     paginator = Paginator(objects, 5)  # Show 25 contacts per page
 
     page = request.GET.get('page')
     try:
-        objs = paginator.page(page)
+        objs = paginator.get_page(page)
     except PageNotAnInteger:
         # If page is not an integer, deliver first page.
-        objs = paginator.page(1)
+        objs = paginator.get_page(1)
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
-        objs = paginator.page(paginator.num_pages)
+        objs = paginator.get_page(paginator.num_pages)
     return objs
 
 def Chats(request):

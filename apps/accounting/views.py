@@ -1,6 +1,5 @@
 from django.contrib.admin.models import ADDITION, CHANGE, DELETION
-from django.core.urlresolvers import reverse_lazy, reverse
-from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.shortcuts import render, reverse, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.forms import modelform_factory, inlineformset_factory, formset_factory, BaseModelFormSet
 from django.contrib import messages
@@ -17,6 +16,10 @@ from datetime import datetime, date, time, timedelta
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 import json
+from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
+from datetime import datetime
+
 # Create your views here.
 
 def pagination(request, objects):
@@ -607,7 +610,7 @@ class InvoicesEdit(UpdateView):
                           Invoice,
                           InvoicesHasItem,
                           form=ItemHasInvoiceForm,
-                          fields=['id_ind',
+                          fields=['id',
                                   'quantity',
                                   'description',
                                   'accounts',
@@ -1530,6 +1533,7 @@ class PaymentDispatchCreate(CreateView):
     model = Payment
     form_class = PaymentForm
     template_name = 'accounting/payments/dispatchpayForm.html'
+    success_url = reverse_lazy('accounting:payments')
 
     def get(self, request, *args, **kwargs):
         id = self.kwargs.get('pk', 0)
@@ -1546,20 +1550,20 @@ class PaymentDispatchCreate(CreateView):
         form = self.form_class(initial={'start_date': kwargs.get('start'), 'end_date': kwargs.get('end')})
         account = []
         exp = Account.objects.get(primary=True, name='Expenses')
-        exp_acconts = Account.objects.filter(accounts_id_id=exp.id_acn)
-        for e in exp_acconts:
+        exp_accounts = Account.objects.filter(accounts_id_id=exp.id_acn)
+        for e in exp_accounts:
             account.append(e)
-        for a in exp_acconts:
-            exp_accont = Account.objects.filter(accounts_id_id=a.id_acn)
-            if exp_accont != None:
-                for ac in exp_accont:
+        for a in exp_accounts:
+            exp_account = Account.objects.filter(accounts_id_id=a.id_acn)
+            if exp_account.exists():
+                for ac in exp_account:
                     account.append(ac)
         context = {'form': form,
-                   'title': 'Create new Dispatch Payment',
-                   'loads': load_dispatch,
-                   'dispatch': dispatch,
-                   'accounts': account,
-                   }
+                    'title': 'Create new Dispatch Payment',
+                    'loads': load_dispatch,
+                    'dispatch': dispatch,
+                    'accounts': account,
+                    }
         return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
@@ -1590,17 +1594,17 @@ class PaymentDispatchCreate(CreateView):
                 PaymentHasLoad.objects.create(loads=load, payments=payment)
             DispatchHasPayment.objects.create(payments=payment, dispatch=dispatch)
             if payment.paid:
-               AccountDescrip.objects.create(date=payment.pay_date,
-                                          value=payment.value,
-                                          accounts=payment.accounts,
-                                          document=payment.id_sal,
-                                          users_id=user.id,
-                                          waytopay=payment.waytopay,
-                                          type='Payments'
-                                          )
-            accion_user(payment, ADDITION, request.user)
+                AccountDescrip.objects.create(date=payment.pay_date,
+                                                value=payment.value,
+                                                accounts=payment.accounts,
+                                                document=payment.id_sal,
+                                                users_id=user.id,
+                                                waytopay=payment.waytopay,
+                                                type='Payments'
+                                                )
+            accion_user(payment, 'ADDITION', request.user)
             messages.success(request, "Payment save with an extension")
-            return HttpResponseRedirect(reverse_lazy('accounting:payments'))
+            return HttpResponseRedirect(self.success_url)
         else:
             for er in form.errors:
                 messages.error(request, "ERROR: " + er)
@@ -1610,10 +1614,11 @@ class PaymentDispatchEdit(UpdateView):
     model = Payment
     form_class = PaymentForm
     template_name = 'accounting/payments/dispatchpayForm.html'
+    success_url = reverse_lazy('accounting:payments')
 
     def get_context_data(self, **kwargs):
-        context = super(PaymentDispatchEdit, self).get_context_data(**kwargs)
-        pk = self.kwargs.get('pk',0)
+        context = super().get_context_data(**kwargs)
+        pk = self.kwargs.get('pk', 0)
         payment = self.model.objects.get(id_sal=pk)
         account = Account.objects.get(id_acn=payment.accounts_id)
         payDispatch = DispatchHasPayment.objects.get(payments=payment)
@@ -1625,13 +1630,13 @@ class PaymentDispatchEdit(UpdateView):
         dispatch = DispatchLogt.objects.get(id_dsp=payDispatch.dispatch_id)
         accounts = []
         exp = Account.objects.get(primary=True, name='Expenses')
-        exp_acconts = Account.objects.filter(accounts_id_id=exp.id_acn)
-        for e in exp_acconts:
+        exp_accounts = Account.objects.filter(accounts_id_id=exp.id_acn)
+        for e in exp_accounts:
             accounts.append(e)
-        for a in exp_acconts:
-            exp_accont = Account.objects.filter(accounts_id_id=a.id_acn)
-            if exp_accont != None:
-                for ac in exp_accont:
+        for a in exp_accounts:
+            exp_account = Account.objects.filter(accounts_id_id=a.id_acn)
+            if exp_account.exists():
+                for ac in exp_account:
                     accounts.append(ac)
         if 'form' not in context:
             context['form'] = self.form_class()
@@ -1656,19 +1661,19 @@ class PaymentDispatchEdit(UpdateView):
             payment.gross = request.POST['subtotal']
             payment.save()
             if payment.paid:
-               if acountDescp:
-                   acountDescp.delete()
-               AccountDescrip.objects.create(date=payment.pay_date,
-                                             value=payment.value,
-                                             accounts=payment.accounts,
-                                             document=payment.id_sal,
-                                             users_id=request.user.id,
-                                             waytopay=payment.waytopay,
-                                             type='Payments'
-                                             )
-            accion_user(payment, CHANGE, request.user)
+                if acountDescp.exists():
+                    acountDescp.delete()
+                AccountDescrip.objects.create(date=payment.pay_date,
+                                                value=payment.value,
+                                                accounts=payment.accounts,
+                                                document=payment.id_sal,
+                                                users_id=request.user.id,
+                                                waytopay=payment.waytopay,
+                                                type='Payments'
+                                                )
+            accion_user(payment, 'CHANGE', request.user)
             messages.success(request, "Payment update with an extension")
-            return HttpResponseRedirect(reverse_lazy('accounting:payments'))
+            return HttpResponseRedirect(self.success_url)
         else:
             for e in form.errors:
                 messages.error(request, "ERROR: " + e)
@@ -1686,12 +1691,10 @@ class PaymentDispatchDelete(DeleteView):
         DispatchHasPayment.objects.filter(payments=payment).delete()
         PaymentHasLoad.objects.filter(payments=payment).delete()
         AccountDescrip.objects.filter(document=int(payment.id_sal), type='Payments').delete()
-        accion_user(payment, DELETION, request.user)
+        accion_user(payment, 'DELETION', request.user)
         payment.delete()
         messages.success(request, "Payment delete with an extension")
         return HttpResponseRedirect(self.success_url)
-
-
 
 class NoteCreate(CreateView):
     model = Note
@@ -1700,16 +1703,16 @@ class NoteCreate(CreateView):
 
     def post(self, request, *args, **kwargs):
         id = kwargs['pk']
-        customer  = Customer.objects.get(id_cut=id)
+        customer = Customer.objects.get(id_cut=id)
         form = self.form_class(request.POST)
         if form.is_valid():
             note = form.save(commit=False)
             note.users = request.user
             note.customers = customer
             note.save()
-            accion_user(note, CHANGE, request.user)
+            accion_user(note, 'CHANGE', request.user)
             messages.success(request, 'Add your note to customer')
-            return HttpResponseRedirect('/accounting/customers/view/' + str(customer.id_cut))
+            return HttpResponseRedirect(reverse('accounting:customer_view', args=[customer.id_cut]))
         else:
             for er in form.errors:
                 messages.error(request, "ERROR: " + er)
@@ -1720,9 +1723,8 @@ class NoteEdit(UpdateView):
     form_class = NoteForm
     template_name = 'accounting/customer/noteForm.html'
 
-
     def get_context_data(self, **kwargs):
-        context = super(NoteEdit, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         id = self.kwargs.get('pk', 0)
         if 'form' not in context:
             context['form'] = self.form_class
@@ -1735,10 +1737,10 @@ class NoteEdit(UpdateView):
         note = self.model.objects.get(id=id)
         form = self.form_class(request.POST, instance=note)
         if form.is_valid():
-             note = form.save()
-             accion_user(note, CHANGE, request.user)
-             messages.success(request, 'Update your note to customer')
-             return HttpResponseRedirect('/accounting/customers/view/' + str(note.customers_id))
+            note = form.save()
+            accion_user(note, 'CHANGE', request.user)
+            messages.success(request, 'Update your note to customer')
+            return HttpResponseRedirect(reverse('accounting:customer_view', args=[note.customers_id]))
         else:
             for er in form.errors:
                 messages.error(request, "ERROR: " + er)
@@ -1753,7 +1755,7 @@ class NoteDelete(DeleteView):
         self.object = self.get_object
         id = kwargs['pk']
         note = self.model.objects.get(id=id)
-        accion_user(note, DELETION, request.user)
+        accion_user(note, 'DELETION', request.user)
         note.delete()
         messages.success(request, "Receipt delete with an extension")
-        return HttpResponseRedirect('/accounting/customers/view/' + str(note.customers_id))
+        return HttpResponseRedirect(reverse('accounting:customer_view', args=[note.customers_id]))
